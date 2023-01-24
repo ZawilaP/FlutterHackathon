@@ -19,3 +19,19 @@ flowchart LR
   RealSurveyRun --> SurveyRead
   SurveyRead --> RunDetailedSurvey
 ```
+
+
+## Barteks' Notes:
+
+I'm just uploading it here, so it will not get lost. The guys from organising team have original paper with psychologist drawings. 
+
+I'll review the questions and simplify it later.
+
+For now, I think its just enough to say that:
+1. we generally don't do open question followed by closed questions
+2. missing branch with all "no" answers have been defined
+3. some "others" were removed
+4. we generally tend to give the kid more points than less, reason being: we tolerate false positives, but we'd rather not tolerate false negatives (nothing happens when healthy kid goes to a doctor, but kid with autism not being diagnosed might be harmful)
+
+![MicrosoftTeams-image (24)](https://user-images.githubusercontent.com/52526807/214241907-a7f21181-f8dc-48af-a348-7f53deb44d43.png)
+
