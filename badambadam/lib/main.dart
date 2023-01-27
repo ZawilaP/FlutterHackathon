@@ -78,15 +78,7 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          QuestionCardWidget(
-            questionId: '1',
-            questionText:
-                'Does your child play pretend or make-believe?\nFOR EXAMPLE, pretend to drink from an empty cup, pretend to talk on a phone, or pretend to feed a doll or stuffed animal?',
-          ),
-          QuestionCardWidget(
-              questionId: '2',
-              questionText:
-                  'Have you ever wondered if your child might be deaf?'),
+          QuestionCardWidget(),
           ElevatedButton(
             onPressed: () {
               // Navigate to the second screen using a named route.
