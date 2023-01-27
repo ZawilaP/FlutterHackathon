@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../questionCardWidget.dart';
 
 class SurveyRoute extends StatelessWidget {
   const SurveyRoute({super.key});
@@ -15,6 +16,7 @@ class SurveyRoute extends StatelessWidget {
       ),
       body: Column(
         children: [
+          QuestionCardWidget(),
           ElevatedButton(
             onPressed: () {
               // Navigate to the second screen using a named route.
