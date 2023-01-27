@@ -13,10 +13,23 @@ class QuestionCardWidget extends StatefulWidget {
 class _QuestionCardWidgetState extends State<QuestionCardWidget> {
   Survey? survey;
   NodeAnswer? nodeAnswer;
+  NodeStatus? nodeStatus = NodeStatus.unansweredYet;
 
   void showSurvey(Survey s) {
     setState(() {
       survey = s;
+    });
+  }
+
+  void updateStatus() {
+    nodeStatus = NodeStatus.answered;
+  }
+
+  void buttonClick(List<Node> topLevelSurvey, int index, NodeAnswer answer) {
+    return setState(() {
+      topLevelSurvey[index].status = NodeStatus.answered;
+      topLevelSurvey[index].answer = NodeAnswer.yes;
+      print(survey!.calculateResult());
     });
   }
 
@@ -29,11 +42,8 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
       return Center(child: Text('loading'));
     } else {
       List<Node> topLevelSurvey = survey!.getTopLevelNodesOnly();
-
-      print("Build");
-      print(survey!.nodes.length);
       return SizedBox(
-        height: 400,
+        height: 500,
         child: Center(
           child: ListView.builder(
             physics: ScrollPhysics(),
@@ -45,7 +55,6 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       ListTile(
-                        // leading: Icon(Icons.help_center_outlined),
                         title: Text(
                           'Question ${topLevelSurvey[index].id}',
                           style: Theme.of(context).textTheme.titleLarge,
@@ -65,7 +74,8 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                                   style:
                                       Theme.of(context).textTheme.titleLarge),
                               onPressed: () {
-                                print(topLevelSurvey[index].answer);
+                                buttonClick(
+                                    topLevelSurvey, index, NodeAnswer.yes);
                               },
                             ),
                           ),
@@ -77,7 +87,8 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                                   style:
                                       Theme.of(context).textTheme.titleLarge),
                               onPressed: () {
-                                print(topLevelSurvey[index].answer);
+                                buttonClick(
+                                    topLevelSurvey, index, NodeAnswer.no);
                               },
                             ),
                           ),

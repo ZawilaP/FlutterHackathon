@@ -70,6 +70,7 @@ class Survey {
         // checking top level nodes only
         if (node.isTopLevel) {
           if (node.status != NodeStatus.answered) {
+            print('No answer for ${node.questions[0].text}');
             return -1; // at least one not answered, unable to calculate
           }
         }
