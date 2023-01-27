@@ -30,8 +30,19 @@ class FakeBackendSingleton {
   }
 }
 
+enum DetailLevel { highLevel, detailed }
+
+enum NodeStatus { unansweredYet, answered }
+
+enum NodeAnswer { yes, no, third }
+
 class Survey {
   List<Node> nodes = [];
+  DetailLevel detailLevel = DetailLevel.highLevel;
+  late String postalCode;
+  late DateTime birthDate;
+  late String simpleID;
+  late String accessGUID;
 
   // load survey from json file (from backend later)
   Future<Survey> load() async {
@@ -67,10 +78,6 @@ class Survey {
     return result;
   }
 }
-
-enum NodeStatus { unansweredYet, answered }
-
-enum NodeAnswer { yes, no, third }
 
 class Node {
   late String id;
