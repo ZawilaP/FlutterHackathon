@@ -17,13 +17,13 @@ class SurveyRoute extends StatelessWidget {
       body: Column(
         children: [
           QuestionCardWidget(),
-          ElevatedButton(
-            onPressed: () {
-              // Navigate to the second screen using a named route.
-              Navigator.pushNamed(context, '/result');
-            },
-            child: const Text('Survey result'),
-          )
+          // ElevatedButton(
+          //   onPressed: () {
+          //     // Navigate to the second screen using a named route.
+          //     Navigator.pushNamed(context, '/result');
+          //   },
+          //   child: const Text('Survey result'),
+          // )
         ],
       ),
     );
