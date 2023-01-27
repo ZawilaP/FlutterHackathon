@@ -1,5 +1,6 @@
 import pandas as pd
 import pprint
+import unicodedata
 
 df = pd.read_excel('mchatrf.xlsx')
 
@@ -13,7 +14,13 @@ class Node:
         self.yes_path = dict_input["YesPath"]
         self.third_path = dict_input["OtherAnswerPath"]
         self.is_inverted = dict_input["IsInverted"]
-        self.questions = dict_input['Questions_semicolon_separated'].split(";")
+        questions = dict_input['Questions_semicolon_separated'].split(";")
+        parsed_questions = []
+        for question in questions: 
+            question = question.replace("\r","")
+            question = question.replace("\n","")
+            parsed_questions.append(str(question))
+        self.questions = parsed_questions
         self.question_group_id = dict_input['Question']
         
     def __str__(self):
@@ -33,11 +40,10 @@ class Node:
     def questions_as_json(self):
         questions_string = "["
         for q in self.questions:
-            q= q.replace("\n","")
-            q= q.replace("\r","")
-            questions_string += f"\"{q}\","
+            questions_string += f"\"{str(q)}\","
         questions_string = questions_string[:-1] # remove last comma
         questions_string += "]"
+        questions_string = unicodedata.normalize('NFKD', questions_string).encode('ascii', 'ignore').decode('ascii')
         return questions_string
 
 df = df[df["ID"].notna()] # drop empty ones
