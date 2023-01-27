@@ -1,8 +1,10 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'questionCardWidget.dart';
 import 'model.dart';
 import 'dart:developer';
+
 
 void main() {
   runApp(MyApp());
@@ -28,6 +30,12 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme:
               ColorScheme.fromSeed(seedColor: Color.fromRGBO(255, 222, 0, 1)),
+          textTheme: const TextTheme(
+            displayLarge:
+                TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+            titleLarge: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+            bodyMedium: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+          ),
         ),
         home: MyHomePage(),
       ),
@@ -42,8 +50,6 @@ class MyAppState extends ChangeNotifier {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(
@@ -54,55 +60,17 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Text('A random idea:'),
-          Text(appState.current.asLowerCase),
-          YesNoButtons()
+          QuestionCardWidget(
+            questionId: '1',
+            questionText:
+                'Does your child play pretend or make-believe?\nFOR EXAMPLE, pretend to drink from an empty cup, pretend to talk on a phone, or pretend to feed a doll or stuffed animal?',
+          ),
+          QuestionCardWidget(
+              questionId: '2',
+              questionText:
+                  'Have you ever wondered if your child might be deaf?')
         ],
       ),
-    );
-  }
-}
-
-class YesNoButtons extends StatelessWidget {
-  const YesNoButtons({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final ButtonStyle style = ElevatedButton.styleFrom(
-      textStyle: const TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ElevatedButton(
-            style: style,
-            onPressed: () {
-              print('Yes');
-            },
-            child: const Text('YES'),
-          ),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ElevatedButton(
-            style: style,
-            onPressed: () {
-              print('No');
-            },
-            child: const Text('NO'),
-          ),
-        )
-      ],
     );
   }
 }
