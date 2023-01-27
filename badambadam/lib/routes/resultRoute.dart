@@ -18,9 +18,9 @@ class ResultRoute extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               // Navigate to the second screen using a named route.
-              Navigator.pushNamed(context, '/result');
+              Navigator.pushNamed(context, '/advancedSurvey');
             },
-            child: const Text('Survey result'),
+            child: const Text('Take Advanced Survey'),
           )
         ],
       ),
