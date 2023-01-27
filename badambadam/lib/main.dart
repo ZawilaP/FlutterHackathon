@@ -7,7 +7,11 @@ import 'dart:developer';
 import 'routes/ageCheck.dart';
 import 'routes/surveyRoute.dart';
 import 'routes/surveysRoute.dart';
-
+import 'routes/resultRoute.dart';
+import 'routes/advancedSurveyRoute.dart';
+import 'routes/advancedResultRoute.dart';
+import 'routes/adminPanelRoute.dart';
+import 'routes/editQuestionsRoute.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,16 +50,11 @@ class MyApp extends StatelessWidget {
           '/age': (context) => const AgeCheckRoute(),
           '/survey': (context) => const SurveyRoute(),
           '/surveys': (context) => const SurveysRoute(),
-          // '/advancedSurvey': (context) => const AdvancedSurveyRoute(),
-          // // When navigating to the "/second" route, build the ResultRoute widget.
-          // '/result': (context) => const ResultRoute(),
-          // '/advancedResult': (context) => const AdvancedResultRoute(),
-          // // When navigating to the "/second" route, build the AdminPanelRoute widget.
-          // '/admin': (context) => const AdminPanelRoute(),
-          // // When navigating to the "/second" route, build the EditQuestionsRoute widget.
-          // '/questions': (context) => const EditQuestionsRoute(),
-          // // When navigating to the "/second" route, build the AdminPanelRoute widget.
-          // '/admin': (context) => const AdminPanelRoute(),
+          '/advancedSurvey': (context) => const AdvancedSurveyRoute(),
+          '/result': (context) => const ResultRoute(),
+          '/advancedResult': (context) => const AdvancedResultRoute(),
+          '/admin': (context) => const AdminPanelRoute(),
+          '/questions': (context) => const EditQuestionsRoute(),
         },
       ),
     );
@@ -101,6 +100,13 @@ class MyHomePage extends StatelessWidget {
               Navigator.pushNamed(context, '/surveys');
             },
             child: const Text("Past Surveys"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              // Navigate to the second screen using a named route.
+              Navigator.pushNamed(context, '/admin');
+            },
+            child: const Text("Admin Panel (will be separate page later)"),
           )
         ],
       ),
