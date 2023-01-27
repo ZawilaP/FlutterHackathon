@@ -32,8 +32,9 @@ class FakeBackendSingleton {
 
 class Survey {
   List<Node> nodes = [];
+
+  // load survey from json file (from backend later)
   Future<Survey> load() async {
-    // load survey from json file
     String data = await rootBundle.loadString("assets/survey_v1.json");
     final jsonResult = jsonDecode(data);
     // get all the nodes processed one by one
@@ -44,7 +45,32 @@ class Survey {
     }
     return this;
   }
+
+  /// returns a node by its id
+  Node? getNodeById(String id) {
+    for (var node in nodes) {
+      if (node.id == id) {
+        return node;
+      }
+    }
+    return null;
+  }
+
+  /// returns a list of all top level nodes (For first, high level only survey)
+  List<Node> getTopLevelNodesOnly() {
+    List<Node> result = [];
+    for (var node in nodes) {
+      if (node.isTopLevel) {
+        result.add(node);
+      }
+    }
+    return result;
+  }
 }
+
+enum NodeStatus { unansweredYet, answered }
+
+enum NodeAnswer { yes, no, third }
 
 class Node {
   late String id;
@@ -52,10 +78,15 @@ class Node {
   late bool isTopLevel;
   late bool isInverted;
   late String nodeType;
+  List<Question> questions = [];
+
   String? noPath;
   String? yesPath;
   String? thirdPath;
-  List<Question> questions = [];
+
+  NodeStatus status = NodeStatus.unansweredYet;
+  NodeAnswer? answer;
+
   Node(String _id, String _author, String _isTopLevel, String _isInverted,
       String _nodeType, List<dynamic> _questions) {
     id = _id;
