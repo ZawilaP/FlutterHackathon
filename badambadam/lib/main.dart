@@ -1,7 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'questionCardWidget.dart';
 import 'routes/ageCheck.dart';
 import 'routes/surveyRoute.dart';
 import 'routes/surveysRoute.dart';
@@ -76,7 +75,6 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          QuestionCardWidget(),
           ElevatedButton(
             onPressed: () {
               // Navigate to the second screen using a named route.
