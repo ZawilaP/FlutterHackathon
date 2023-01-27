@@ -35,22 +35,3 @@ For now, I think its just enough to say that:
 
 ![MicrosoftTeams-image (24)](https://user-images.githubusercontent.com/52526807/214241907-a7f21181-f8dc-48af-a348-7f53deb44d43.png)
 
-
-
-## Page Graph
-```mermaid
-graph TD
-  Home[Home Page] --> |Take Survey| AgeCheck(Age Check)
-  AgeCheck --> |Age within 16-30 months| BasicSurvey(Take Basic Survey)
-  AgeCheck --> |Age not within 16-30 months| Home
-  BasicSurvey --> |See Results| BasicResults(Basic Survey Result Page)
-  BasicResults --> |Take Advanced Survey| AdvancedSurvey(Advanced Survey)
-  AdvancedSurvey --> |Advanced Survey Results| AdvancedResults(Advanced Survey Result Page)
-  
-  Home --> |Past Surveys| SurveyList(List of Surveys)
-  SurveyList --> |Basic Survey| BasicResults
-  SurveyList --> |Advanced Survey| AdvancedResults
-  
-  Admin[Admin Panel] --> |Edit Questions| EditQuestions(Edit Questions)
-  Admin --> |Review Surveys| SurveyList(List of Surveys)
-```
