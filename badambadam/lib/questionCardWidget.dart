@@ -12,6 +12,7 @@ class QuestionCardWidget extends StatefulWidget {
 
 class _QuestionCardWidgetState extends State<QuestionCardWidget> {
   Survey? survey;
+  NodeAnswer? nodeAnswer;
 
   void showSurvey(Survey s) {
     setState(() {
@@ -28,6 +29,7 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
       return Center(child: Text('loading'));
     } else {
       List<Node> topLevelSurvey = survey!.getTopLevelNodesOnly();
+
       print("Build");
       print(survey!.nodes.length);
       return SizedBox(
@@ -59,15 +61,12 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: TextButton(
-                              child: Text(
-                                'YES',
-                                style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                              style: TextButton.styleFrom(
-                                  foregroundColor: Theme.of(context)
-                                      .colorScheme
-                                      .secondary),
-                              onPressed: () {/* ... */},
+                              child: Text('YES',
+                                  style:
+                                      Theme.of(context).textTheme.titleLarge),
+                              onPressed: () {
+                                print(topLevelSurvey[index].answer);
+                              },
                             ),
                           ),
                           const SizedBox(width: 8),
@@ -77,7 +76,9 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                               child: Text('NO',
                                   style:
                                       Theme.of(context).textTheme.titleLarge),
-                              onPressed: () {/* ... */},
+                              onPressed: () {
+                                print(topLevelSurvey[index].answer);
+                              },
                             ),
                           ),
                           const SizedBox(width: 8),

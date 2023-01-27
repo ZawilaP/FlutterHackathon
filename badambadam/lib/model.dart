@@ -89,7 +89,7 @@ class Survey {
         result.add(node);
       }
     }
-    result.sort((a, b) => a.id.compareTo(b.id));
+    result.sort((a, b) => int.parse(a.id).compareTo(int.parse(b.id)));
     return result;
   }
 }
