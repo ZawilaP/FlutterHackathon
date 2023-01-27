@@ -5,23 +5,35 @@ import 'questionCardWidget.dart';
 import 'model.dart';
 import 'dart:developer';
 
-
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Survey? survey;
+
+  void showSurvey(Survey s) {
+    setState(() {
+      survey = s;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // print("czytam survey z backendu");
-    // Survey s = FakeBackendSingleton().getSurvey(null);
-    // print("nodes count = ${s.nodes.length}");
-    // s.nodes.forEach((element) {
-    //   log(element.toString());
-    // });
-    // print("koniec");
+    if (survey == null) {
+      // if not there - then load one
+      FakeBackendSingleton().getSurvey(null).then(showSurvey);
+    } else {
+      print("Build");
+      print(survey!.nodes.length);
+    }
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(

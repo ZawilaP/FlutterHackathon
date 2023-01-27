@@ -15,25 +15,27 @@ class FakeBackendSingleton {
 
   Survey? survey;
 
-  Survey getSurvey(String? guid) {
+  Future<Survey> getSurvey(String? guid) async {
     // can get a survey from backend (not implemented now) via a guid
     // or get the survey from the local json file (if guid is null)
     // if the survey is already loaded, returns it from memory
     if (guid == null) {
       if (this.survey == null) {
         this.survey = Survey();
-        this.survey!.load();
+        return survey!.load();
+      } else {
+        return Future(() => survey!);
       }
-      return survey!;
     } else {
       throw Exception("GetSurvey(guid) not implemented");
     }
+    throw Exception("GetSurvey(guid) not implemented");
   }
 }
 
 class Survey {
   List<Node> nodes = [];
-  Future<void> load() async {
+  Future<Survey> load() async {
     // load survey from json file
     String data = await rootBundle.loadString("assets/survey_v1.json");
     final jsonResult = jsonDecode(data);
@@ -42,8 +44,9 @@ class Survey {
       Node n = Node(node["id"], node["author"], node["is_top_level"],
           node["is_inverted"], node["node_type"], node["questions"]);
       nodes.add(n);
-      print(n);
+      //print(n);
     }
+    return this;
   }
 }
 
