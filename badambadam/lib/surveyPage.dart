@@ -14,15 +14,6 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          QuestionCardWidget(
-            questionId: '1',
-            questionText:
-                'If you point at something across the room, does your child look at it?',
-          ),
-          QuestionCardWidget(
-              questionId: '2',
-              questionText:
-                  'Have you ever wondered if your child might be deaf?')
         ],
       ),
     );
