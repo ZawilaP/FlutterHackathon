@@ -1,3 +1,4 @@
+import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
 
 class ResultRoute extends StatelessWidget {
@@ -21,7 +22,8 @@ class ResultRoute extends StatelessWidget {
               Navigator.pushNamed(context, '/advancedSurvey');
             },
             child: const Text('Take Advanced Survey'),
-          )
+          ),
+          Text("Your Survey GUIDs ${getGuidList().toString()}")
         ],
       ),
     );

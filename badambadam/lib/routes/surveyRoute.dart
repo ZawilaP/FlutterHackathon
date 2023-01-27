@@ -1,3 +1,4 @@
+import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
 import '../questionCardWidget.dart';
 
@@ -17,13 +18,14 @@ class SurveyRoute extends StatelessWidget {
       body: Column(
         children: [
           QuestionCardWidget(),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     // Navigate to the second screen using a named route.
-          //     Navigator.pushNamed(context, '/result');
-          //   },
-          //   child: const Text('Survey result'),
-          // )
+          Center(child: ElevatedButton(
+            onPressed: () {
+              updateGuidList(DateTime.now().toString().trim() + "_test");
+              // Navigate to the second screen using a named route.
+              Navigator.pushNamed(context, '/result');
+            },
+            child: const Text('Survey result'),
+          ))
         ],
       ),
     );

@@ -8,7 +8,6 @@ import 'routes/advancedSurveyRoute.dart';
 import 'routes/advancedResultRoute.dart';
 import 'routes/adminPanelRoute.dart';
 import 'routes/editQuestionsRoute.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(MyApp());
