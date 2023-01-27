@@ -58,6 +58,11 @@ class Survey {
   late String simpleID;
   late String accessGUID;
 
+  // -1 is "not able to calculate"
+  int calculateResult() {
+    return -1;
+  }
+
   // load survey from json file (from backend later)
   Future<Survey> load() async {
     String data = await rootBundle.loadString("assets/survey_v1.json");
