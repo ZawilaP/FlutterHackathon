@@ -34,7 +34,6 @@ class _MyAppState extends State<MyApp> {
       print("Build");
       print(survey!.nodes.length);
     }
-
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
