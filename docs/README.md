@@ -1,33 +1,39 @@
-Below is the starting model that sums up how we decomposed the "domain".
-
-Flutter will be having a "QuestionType" visualizer and a "SurveyNavigator" that will take the user through the survey. 
-
-The plan is to have less QuestionTypes than QuestionNodes (i.e. less than 20) and looks like this will be doable. 
-
+## Model 
 
 ```mermaid
 classDiagram
-    QuestionNode --> QuestionType
 
-    class QuestionNode {
-        string ID
-        string Author
-        bool IsTopLevel
-        bool IsInverted
-        string[] Questions
-        QuestionType NodeType
-        string QuestionGroupID
-        ------
-        string YesPathID
-        string NoPathID
-        string ThirdPathID
+    class Backend{
+        load_survey(guid) returns Survey, loads historical one
+        register_new_survey(): returns id and guid
+        save_survey(Survey): saves it to backend (and locally!)
+        get_empty_survey(): get Survey details for user to fill in
+    }
+
+    class Survey{
+        id/guid - when is a filled/being filled one 
+        birth date 
+        postal code
         
+        getTopLevelQuestions(): List of Nodes
+        getNodeByID(String): Node
     }
-    class QuestionType{
-        various building blocks:
-        SimpleYesNo, 
-        OpenTextAnyAnswerWillDo,
-        YesNoBranching,
-        etc...
+
+    Survey --"*" Node
+
+    class Node {
+
     }
+
+    Node --> NodeStatus
+    Node --> NodeAnswer
+
+    class NodeStatus{
+        (enum actually)
+    }
+
+    class NodeAnswer{
+        (enum actually)
+    }
+
 ```
