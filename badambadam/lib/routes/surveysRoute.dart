@@ -15,6 +15,7 @@ class SurveysRoute extends StatelessWidget {
       ),
       body: Column(
         children: [
+          Text("If you got here from Admin Panel it needs to know about it and show all surveys"),
           ElevatedButton(
             onPressed: () {
               // Navigate to the second screen using a named route.
