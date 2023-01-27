@@ -6,8 +6,14 @@ classDiagram
     class FakeBackendSingleton{
         DONE getSurvey(): get Survey details for user to fill in
         TODO load_survey(guid) returns Survey, loads historical one
-        TODO register_new_survey(): returns id and guid
+        TODO registerNewSurvey(): returns id and guid
         TODO save_survey(Survey): saves it to backend (and locally!)
+    }
+
+    class SurveyIDPair {
+        String surveyID;
+        String accessGUID;
+        SurveyIDPair(this.surveyID, this.accessGUID);
     }
 
     class Survey{

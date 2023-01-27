@@ -1,5 +1,14 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:uuid/uuid.dart';
+
+/// Survey id is always two IDs
+/// user readable one and a guid for secure access
+class SurveyIDPair {
+  String surveyID;
+  String accessGUID;
+  SurveyIDPair(this.surveyID, this.accessGUID);
+}
 
 class FakeBackendSingleton {
   static final FakeBackendSingleton _singleton =
@@ -11,7 +20,12 @@ class FakeBackendSingleton {
 
   FakeBackendSingleton._internal();
 
-  Survey? survey; // null at start, filled in asynchonously
+  Survey? survey; // null at start, filled in asynchonously via getSurvey()
+
+  /// currently hardcoded ID to start with, backend will need to handle that somehow
+  SurveyIDPair registerNewSurvey() {
+    return SurveyIDPair("1", Uuid().v4().toString());
+  }
 
   Future<Survey> getSurvey(String? guid) async {
     // can get a past survey from backend (not implemented now) via a guid
@@ -75,6 +89,7 @@ class Survey {
         result.add(node);
       }
     }
+    result.sort((a, b) => a.id.compareTo(b.id));
     return result;
   }
 }
