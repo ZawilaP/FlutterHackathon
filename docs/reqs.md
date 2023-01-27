@@ -47,12 +47,10 @@ graph TD
   BasicResults --> |Take Advanced Survey| AdvancedSurvey(Advanced Survey)
   AdvancedSurvey --> |Advanced Survey Results| AdvancedResults(Advanced Survey Result Page)
   
-  Home --> |Past Surveys| PastSurveys(Past Survey's List)
-  PastSurveys --> |Basic Survey| BasicResults
-  PastSurveys --> |Advanced Survey| AdvancedResults
+  Home --> |Past Surveys| SurveyList(List of Surveys)
+  SurveyList --> |Basic Survey| BasicResults
+  SurveyList --> |Advanced Survey| AdvancedResults
   
   Admin[Admin Panel] --> |Edit Questions| EditQuestions(Edit Questions)
   Admin --> |Review Surveys| SurveyList(List of Surveys)
-  SurveyList --> |Basic Survey| BasicResults
-  SurveyList --> |Advanced Survey| AdvancedResults
 ```
