@@ -15,13 +15,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("czytam survey z backendu");
-    Survey s = FakeBackendSingleton().getSurvey(null);
-    print("nodes count = ${s.nodes.length}");
-    s.nodes.forEach((element) {
-      log(element.toString());
-    });
-    print("koniec");
+    // print("czytam survey z backendu");
+    // Survey s = FakeBackendSingleton().getSurvey(null);
+    // print("nodes count = ${s.nodes.length}");
+    // s.nodes.forEach((element) {
+    //   log(element.toString());
+    // });
+    // print("koniec");
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
