@@ -1,0 +1,32 @@
+{
+    "questions": [
+        {
+            "id": "1",
+            "author": "Gabi",
+            "is_top_level": "YES",
+            "node_type": "Simple_Yes_No",
+            "no_path": "1_02",
+            "yes_path": "1_01",
+            "third_path": "nan",
+            "is_inverted": "NO",
+            "questions": [
+                "If you point at something across the room, does <NAME> look at it?"
+            ],
+            "question_group_id": "1.0"
+        },
+        {
+            "id": "1_02",
+            "author": "Gabi",
+            "is_top_level": "NO",
+            "node_type": "OpenTextAnyAnswerWillDo",
+            "no_path": "nan",
+            "yes_path": "1_04",
+            "third_path": "nan",
+            "is_inverted": "NO",
+            "questions": [
+                "Please give me an example of how he/she will respond if you point at something (If parent does not give a PASS example below, ask each individually.)"
+            ],
+            "question_group_id": "1.0"
+        }
+    ]
+}

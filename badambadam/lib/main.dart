@@ -2,6 +2,9 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'questionCardWidget.dart';
+import 'model.dart';
+import 'dart:developer';
+
 
 void main() {
   runApp(MyApp());
@@ -12,6 +15,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("czytam survey z backendu");
+    Survey s = FakeBackendSingleton().getSurvey(null);
+    print("nodes count = ${s.nodes.length}");
+    s.nodes.forEach((element) {
+      log(element.toString());
+    });
+    print("koniec");
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
