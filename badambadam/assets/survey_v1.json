@@ -138,6 +138,6 @@
 
 { "id": "20", "author": "Jakub", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "20_2", "yes_path": "20_1", "third_path": "nan", "is_inverted": "NO", "questions": ["Does ____ like movement activities?"], "question_group_id": "20.0" },
 
-{ "id": "20_1", "author": "Jakub", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "20_2", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she enjoy being bounced or swung?"], "question_group_id": "20.0" },
+{ "id": "20_1", "author": "Jakub", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "20_2", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she enjoy being bounced or swung?"], "question_group_id": "20.0" },
 
 { "id": "20_2", "author": "Jakub", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Laught or smile?"," Talk or babble?"," Request more by holding out his/her arms?"," Other(describe):"], "question_group_id": "20.0" }] }

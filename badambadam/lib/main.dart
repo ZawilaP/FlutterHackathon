@@ -1,7 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'questionCardWidget.dart';
 import 'routes/ageCheck.dart';
 import 'routes/surveyRoute.dart';
 import 'routes/surveysRoute.dart';
@@ -76,15 +75,6 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          QuestionCardWidget(
-            questionId: '1',
-            questionText:
-                'Does your child play pretend or make-believe?\nFOR EXAMPLE, pretend to drink from an empty cup, pretend to talk on a phone, or pretend to feed a doll or stuffed animal?',
-          ),
-          QuestionCardWidget(
-              questionId: '2',
-              questionText:
-                  'Have you ever wondered if your child might be deaf?'),
           ElevatedButton(
             onPressed: () {
               // Navigate to the second screen using a named route.
@@ -105,82 +95,7 @@ class MyHomePage extends StatelessWidget {
               Navigator.pushNamed(context, '/admin');
             },
             child: const Text("Admin Panel (will be separate page later)"),
-          ),
-          TextSubmitForm(onSubmit: (value) => print(value))
-        ],
-      ),
-    );
-  }
-}
-
-class TextSubmitForm extends StatefulWidget {
-  const TextSubmitForm({Key? key, required this.onSubmit}) : super(key: key);
-  final ValueChanged<String> onSubmit;
-
-  @override
-  State createState() => _TextSubmitFormState();
-}
-
-class _TextSubmitFormState extends State<TextSubmitForm> {
-  // declare a GlobalKey
-  final _formKey = GlobalKey<FormState>();
-  bool _submitted = false;
-  String _name = '';
-
-  void _submit() {
-    setState(() => _submitted = true);
-    if (_formKey.currentState!.validate()) {
-      widget.onSubmit(_name);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
-    return Form(
-      key: _formKey,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          SizedBox(
-            height: 80,
-            child: TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Enter age of your child in months',
-              ),
-              autovalidateMode: _submitted
-                  ? AutovalidateMode.onUserInteraction
-                  : AutovalidateMode.disabled,
-              // The validator receives the text that the user has entered.
-              validator: (text) {
-                if (text == null || text.isEmpty) {
-                  return 'Can\'t be empty';
-                }
-                if (int.tryParse(text) == null) {
-                  return 'Please enter a numerical value';
-                }
-                if (int.parse(text) < 16 || int.parse(text) > 30) {
-                  return 'Your child needs to be between 16 and 30 months to be eligible for survey';
-                }
-                return null;
-              },
-              onChanged: (text) => setState(() => _name = text),
-            ),
-          ),
-          SizedBox(
-            height: 40,
-            child: ElevatedButton(
-              onPressed: _name.isNotEmpty ? _submit : null,
-              child: Text(
-                'Submit',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6!
-                    .copyWith(color: Colors.white),
-              ),
-            ),
-          ),
+          )
         ],
       ),
     );
