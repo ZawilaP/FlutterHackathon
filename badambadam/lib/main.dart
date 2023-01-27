@@ -4,7 +4,14 @@ import 'package:provider/provider.dart';
 import 'questionCardWidget.dart';
 import 'model.dart';
 import 'dart:developer';
-
+import 'routes/ageCheck.dart';
+import 'routes/surveyRoute.dart';
+import 'routes/surveysRoute.dart';
+import 'routes/resultRoute.dart';
+import 'routes/advancedSurveyRoute.dart';
+import 'routes/advancedResultRoute.dart';
+import 'routes/adminPanelRoute.dart';
+import 'routes/editQuestionsRoute.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,7 +44,18 @@ class MyApp extends StatelessWidget {
             bodyMedium: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
           ),
         ),
-        home: MyHomePage(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => MyHomePage(),
+          '/age': (context) => const AgeCheckRoute(),
+          '/survey': (context) => const SurveyRoute(),
+          '/surveys': (context) => const SurveysRoute(),
+          '/advancedSurvey': (context) => const AdvancedSurveyRoute(),
+          '/result': (context) => const ResultRoute(),
+          '/advancedResult': (context) => const AdvancedResultRoute(),
+          '/admin': (context) => const AdminPanelRoute(),
+          '/questions': (context) => const EditQuestionsRoute(),
+        },
       ),
     );
   }
@@ -68,7 +86,28 @@ class MyHomePage extends StatelessWidget {
           QuestionCardWidget(
               questionId: '2',
               questionText:
-                  'Have you ever wondered if your child might be deaf?')
+                  'Have you ever wondered if your child might be deaf?'),
+          ElevatedButton(
+            onPressed: () {
+              // Navigate to the second screen using a named route.
+              Navigator.pushNamed(context, '/age');
+            },
+            child: const Text("Check age"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              // Navigate to the second screen using a named route.
+              Navigator.pushNamed(context, '/surveys');
+            },
+            child: const Text("Past Surveys"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              // Navigate to the second screen using a named route.
+              Navigator.pushNamed(context, '/admin');
+            },
+            child: const Text("Admin Panel (will be separate page later)"),
+          )
         ],
       ),
     );
