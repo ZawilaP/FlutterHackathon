@@ -30,7 +30,7 @@
 
 { "id": "4_01", "author": "o", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she enjoy climbing on..."," stairs?"," chairs?"," furniture?"," playground equipment",""], "question_group_id": "4.0" },
 
-{ "id": "5", "author": "s", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "PASS", "yes_path": "5_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does ___ make unusual finger movements near his/her eyes?"], "question_group_id": "5.0" },
+{ "id": "5", "author": "s", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "PASS", "yes_path": "5_01", "third_path": "nan", "is_inverted": "YES", "questions": ["Does ___ make unusual finger movements near his/her eyes?"], "question_group_id": "5.0" },
 
 { "id": "5_01", "author": "t", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "5_02", "yes_path": "5_02", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she "," Look at hands? "," Move fingers when playing peek-a-boo?"], "question_group_id": "5.0" },
 

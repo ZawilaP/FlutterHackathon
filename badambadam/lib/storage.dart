@@ -18,3 +18,15 @@ void updateGuidList(dynamic newGuid) {
   newGuidList.addAll(guidList);
   addGuidList(newGuidList);
 }
+
+void addScoredQuestionsList (Set<dynamic> scoredQuestions) {
+  final box  = GetStorage();
+  box.remove('scoredQuestions');
+  box.write('scoredQuestions', scoredQuestions.toList());
+}
+
+List<dynamic> getScoredQuestionsList () {
+  final box = GetStorage();
+  print(box.read("scoredQuestions"));
+  return box.read("scoredQuestions") ?? List.empty();
+}

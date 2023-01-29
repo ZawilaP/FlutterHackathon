@@ -23,7 +23,9 @@ class ResultRoute extends StatelessWidget {
             },
             child: const Text('Take Advanced Survey'),
           ),
-          Text("Your Survey GUIDs ${getGuidList().toString()}")
+          Text("Your Survey GUIDs ${getGuidList().toString()}"),
+          Text('Scored questions ${getScoredQuestionsList().toString()}'),
+          Text('Final score ${getScoredQuestionsList().length}')
         ],
       ),
     );
