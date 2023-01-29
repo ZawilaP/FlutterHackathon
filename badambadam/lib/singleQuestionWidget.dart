@@ -6,11 +6,11 @@ class SingleSurveyQuestion extends StatefulWidget {
   SingleSurveyQuestion({
     super.key,
     this.questionNode,
-    required this.scoredQuestionNotifier,
+    required this.allAnswers,
   });
 
   final Node? questionNode;
-  final ValueNotifier<Set> scoredQuestionNotifier;
+  final ValueNotifier<List<int>> allAnswers;
 
   @override
   State<SingleSurveyQuestion> createState() => _SingleSurveyQuestionState();
@@ -53,17 +53,18 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion> {
                         }
                       }
 
-                      // I know it's super shitty but works well
+                      // I know it's a bit shitty but works well.
                       if ((widget.questionNode!.isInverted && index == 0) ||
                           (!widget.questionNode!.isInverted && index == 1)) {
-                        widget.scoredQuestionNotifier.value
-                            .add(widget.questionNode!.id);
+                        widget.allAnswers
+                            .value[int.parse(widget.questionNode!.id) - 1] = 1;
+
                       } else {
-                        widget.scoredQuestionNotifier.value
-                            .remove(widget.questionNode!.id);
+                        widget.allAnswers
+                            .value[int.parse(widget.questionNode!.id) - 1] = 0;
                       }
 
-                      print(widget.scoredQuestionNotifier.value);
+                      print(widget.allAnswers);
                     });
                   },
                   borderColor: Colors.transparent,

@@ -19,14 +19,26 @@ void updateGuidList(dynamic newGuid) {
   addGuidList(newGuidList);
 }
 
-void addScoredQuestionsList (Set<dynamic> scoredQuestions) {
+void addAllAnswersList (List<int> answers) {
   final box  = GetStorage();
-  box.remove('scoredQuestions');
-  box.write('scoredQuestions', scoredQuestions.toList());
+  box.remove('answersList');
+  box.write('answersList', answers);
 }
 
-List<dynamic> getScoredQuestionsList () {
+List<int> getAllAnswersList () {
   final box = GetStorage();
-  print(box.read("scoredQuestions"));
-  return box.read("scoredQuestions") ?? List.empty();
+  print(box.read("answersList"));
+  return box.read("answersList") ?? List.empty();
+}
+
+void addFinalScore() {
+  final box = GetStorage();
+  List<int> allAnswers = getAllAnswersList();
+  var score = allAnswers.reduce((a, b) => a + b);
+  box.write('score', score);
+}
+
+int getFinalScore() {
+  final box = GetStorage();
+  return box.read('score');
 }
