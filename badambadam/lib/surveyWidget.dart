@@ -15,10 +15,6 @@ class SurveyWidget extends StatefulWidget {
 class _SurveyWidgetState extends State<SurveyWidget> {
   Survey? survey;
 
-  // used for storing scored questions (their ids)
-  final ValueNotifier<Set> _scoredQuestionSet =
-      ValueNotifier<Set>(<dynamic>{});
-
   void showSurvey(Survey s) {
     setState(() {
       survey = s;
@@ -34,6 +30,10 @@ class _SurveyWidgetState extends State<SurveyWidget> {
     } else {
       List<Node> topLevelSurvey = survey!.getTopLevelNodesOnly();
 
+      // used for storing answers. Initialized with -1.
+      final ValueNotifier<List<int>> allAnswers = ValueNotifier<List<int>>(
+          List<int>.generate(topLevelSurvey.length, (i) => -1));
+
       return Column(
         children: [
           SizedBox(
@@ -46,15 +46,18 @@ class _SurveyWidgetState extends State<SurveyWidget> {
               itemBuilder: ((context, index) {
                 return SingleSurveyQuestion(
                   questionNode: topLevelSurvey[index],
-                  scoredQuestionNotifier: _scoredQuestionSet,
+                  allAnswers: allAnswers,
                 );
               }),
             ),
           ),
-          ElevatedButton(onPressed: () {
-            addScoredQuestionsList(_scoredQuestionSet.value);
-            Navigator.pushNamed(context, '/result');
-          }, child: Text('Submit'))
+          ElevatedButton(
+              onPressed: () {
+                addAllAnswersList(allAnswers.value);
+                addFinalScore();
+                Navigator.pushNamed(context, '/result');
+              },
+              child: Text('Submit'))
         ],
       );
     }
