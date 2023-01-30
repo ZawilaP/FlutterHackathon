@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'model.dart';
+import '../../model.dart';
 import 'singleQuestionWidget.dart';
-import 'storage.dart';
+import '../../storage.dart';
 
 class SurveyWidget extends StatefulWidget {
   SurveyWidget({
