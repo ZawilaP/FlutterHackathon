@@ -18,26 +18,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print("czytam survey z backendu");
-    // Survey s = FakeBackendSingleton().getSurvey(null);
-    // print("nodes count = ${s.nodes.length}");
-    // s.nodes.forEach((element) {
-    //   log(element.toString());
-    // });
-    // print("koniec");
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
         title: 'M-CHAT-RF',
         theme: ThemeData(
           useMaterial3: true,
+          fontFamily: 'Poppins',
           colorScheme:
-              ColorScheme.fromSeed(seedColor: Color.fromRGBO(255, 222, 0, 1)),
+              ColorScheme.fromSeed(seedColor: Color.fromRGBO(255, 178, 0, 1), primary: Color.fromRGBO(255, 178, 0, 1), onPrimary: Color.fromRGBO(45, 42, 40, 1)),
           textTheme: const TextTheme(
             displayLarge:
                 TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-            titleLarge: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-            bodyMedium: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+            titleLarge: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, fontFamily: 'RobotoCondensed'),
+            bodyMedium: TextStyle(fontSize: 18.0),
           ),
         ),
         initialRoute: '/',

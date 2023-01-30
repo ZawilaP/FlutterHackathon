@@ -38,7 +38,7 @@
 
 { "id": "5_03", "author": "w", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "PASS", "yes_path": "FAIL", "third_path": "nan", "is_inverted": "NO", "questions": ["Does this happen more than twice a week?"], "question_group_id": "5.0" },
 
-{ "id": "9", "author": "c", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "9_02", "yes_path": "9_01", "third_path": "nan", "is_inverted": "No", "questions": ["Does ___ show you things by bringing them to you or holding them up for you to see? Not just to get help, but to share?"], "question_group_id": "9.0" },
+{ "id": "9", "author": "c", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "9_02", "yes_path": "9_01", "third_path": "nan", "is_inverted": "No", "questions": ["Does ___ show you things by bringing them to you or holding them up for you to see? Not just to get help, but to share?"], "question_group_id": "9.0" },
 
 { "id": "9_01", "author": "i", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "9_02", "third_path": "nan", "is_inverted": "No", "questions": ["Please give me an example of something he/she might bring to show you or hold up for you to see."], "question_group_id": "9.0" },
 
