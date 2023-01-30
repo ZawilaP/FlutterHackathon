@@ -69,7 +69,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                       style: style,
                       onPressed: () {
                         updateGuidList(
-                            DateTime.now().toString().trim() + "_test");
+                            "${DateTime.now().toString().trim()}_test");
                         addAllAnswersList(allAnswers.value);
                         addFinalScore();
                         Navigator.pushNamed(context, '/result');

@@ -15,11 +15,14 @@ class SingleSurveyQuestion extends StatefulWidget {
   State<SingleSurveyQuestion> createState() => _SingleSurveyQuestionState();
 }
 
-class _SingleSurveyQuestionState extends State<SingleSurveyQuestion> {
+class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
+    with AutomaticKeepAliveClientMixin {
   List<bool> selected = <bool>[false, false];
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+    
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
       child: Card(
@@ -58,21 +61,21 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion> {
 
                           // I know it's a bit shitty but works well.
                           if ((widget.questionNode!.isInverted && index == 0) ||
-                              (!widget.questionNode!.isInverted && index == 1)) {
-                            widget.allAnswers
-                                .value[int.parse(widget.questionNode!.id) - 1] = 1;
-
+                              (!widget.questionNode!.isInverted &&
+                                  index == 1)) {
+                            widget.allAnswers.value[
+                                int.parse(widget.questionNode!.id) - 1] = 1;
                           } else {
-                            widget.allAnswers
-                                .value[int.parse(widget.questionNode!.id) - 1] = 0;
+                            widget.allAnswers.value[
+                                int.parse(widget.questionNode!.id) - 1] = 0;
                           }
 
                           print(widget.allAnswers);
                         });
                       },
                       borderColor: Colors.transparent,
-                      highlightColor: Theme.of(context).primaryColor,
-                      selectedBorderColor: Color.fromRGBO(255, 178, 0, 1),
+                      highlightColor: Theme.of(context).colorScheme.primary,
+                      selectedBorderColor: Theme.of(context).colorScheme.primary,
                       children: <Widget>[Text('YES'), Text('NO')]),
                 ),
               ],
@@ -82,4 +85,8 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
+
 }
