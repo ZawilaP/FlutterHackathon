@@ -16,20 +16,7 @@ class SurveyRoute extends StatelessWidget {
           scale: 2,
         ),
       ),
-      body: Column(
-        children: [
-          SurveyWidget(),
-          Center(
-              child: ElevatedButton(
-            onPressed: () {
-              updateGuidList(DateTime.now().toString().trim() + "_test");
-              // Navigate to the second screen using a named route.
-              Navigator.pushNamed(context, '/result');
-            },
-            child: const Text('Survey result'),
-          ))
-        ],
-      ),
+      body: SurveyWidget(),
     );
   }
 }
