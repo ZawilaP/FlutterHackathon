@@ -76,7 +76,6 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
                       borderColor: Colors.transparent,
                       highlightColor: Theme.of(context).colorScheme.primary,
                       selectedBorderColor: Theme.of(context).colorScheme.primary,
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
                       children: <Widget>[Text('YES'), Text('NO')]),
                 ),
               ],

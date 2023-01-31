@@ -1,6 +1,6 @@
 import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
-import '../screens/basicSurveyScreen/surveyWidget.dart';
+import '../screens/basicSurveyScreen/basicSurveyDisplayScreen.dart';
 
 class SurveyRoute extends StatelessWidget {
   const SurveyRoute({super.key});

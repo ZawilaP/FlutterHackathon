@@ -40,5 +40,5 @@ void addFinalScore() {
 
 int getFinalScore() {
   final box = GetStorage();
-  return box.read('score');
+  return box.read('score') ?? 0;
 }

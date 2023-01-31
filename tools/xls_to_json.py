@@ -2,7 +2,7 @@ import pandas as pd
 import pprint
 import unicodedata
 
-df = pd.read_excel('mchatrf.xlsx')
+df = pd.read_excel('tools/mchatrf.xlsx')
 
 class Node:
     def __init__(self, dict_input):
