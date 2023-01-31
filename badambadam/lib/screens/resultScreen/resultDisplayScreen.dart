@@ -4,9 +4,10 @@ import 'package:badambadam/screens/resultScreen/result_texts_pl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class ResultDisplayScreen extends StatefulWidget {
-  const ResultDisplayScreen({this.score});
+  const ResultDisplayScreen({this.score, this.allAnswers});
 
   final int? score;
+  final List<int>? allAnswers;
 
   @override
   State<ResultDisplayScreen> createState() => _ResultDisplayScreenState();
@@ -19,6 +20,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
     String paragraph = " ";
     List<String> actions = [];
 
+    // setting texts based on child's score
     setState(() {
       if (widget.score! <= 2) {
         intro = noRiskIntro;
@@ -46,7 +48,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
         SizedBox(
           height: 10,
         ),
-        ScoreDisplayContainer(),
+        ScoreDisplayContainer(score: widget.score, allAnswers: widget.allAnswers,),
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Text(
@@ -91,10 +93,16 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
   }
 }
 
+// Container for animated score display
 class ScoreDisplayContainer extends StatelessWidget {
-  const ScoreDisplayContainer({
+   ScoreDisplayContainer({
     Key? key,
+    required this.score,
+    required this.allAnswers
   }) : super(key: key);
+
+  final int? score;
+  final List<int>? allAnswers;
 
   @override
   Widget build(BuildContext context) {
@@ -116,14 +124,11 @@ class ScoreDisplayContainer extends StatelessWidget {
             animation: true,
             animationDuration: 1000,
             lineWidth: 15.0,
-            // percent: 1 / 3, // comment lines below and uncomment percent and center if you don't want to be bothered by state
-            percent: int.parse(getFinalScore().toString()) /
-                getAllAnswersList().length,
+            percent: score! / allAnswers!.length,
             center: Text(
-              "${getFinalScore().toString()}/${getAllAnswersList().length}",
+              "$score/${allAnswers!.length}",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32.0),
             ),
-            // center: Text('1/3'),
             circularStrokeCap: CircularStrokeCap.round,
             backgroundColor: Colors.white,
             progressColor: Colors.yellow,

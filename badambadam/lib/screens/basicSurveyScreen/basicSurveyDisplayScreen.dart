@@ -30,12 +30,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
     } else {
       List<Node> topLevelSurvey = survey!.getTopLevelNodesOnly();
 
-      // used for storing answers. Initialized with -1.
-      // for now hard-coded 20 questions because we don't have them all
-      // final ValueNotifier<List<int>> allAnswers =
-      //     ValueNotifier<List<int>>(List<int>.generate(20, (i) => -1));
-
-      // that's correct version, will be uncommented once we have all questions
+      // used for storing answers. Initialized with -1 for no answer.
       final ValueNotifier<List<int>> allAnswers = ValueNotifier<List<int>>(
           List<int>.generate(topLevelSurvey.length, (i) => -1));
 

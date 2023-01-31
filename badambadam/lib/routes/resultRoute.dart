@@ -16,7 +16,8 @@ class ResultRoute extends StatelessWidget {
         ),
       ),
       body: ResultDisplayScreen(
-        score: getFinalScore(), // for testing 
+        score: getFinalScore(), 
+        allAnswers: getAllAnswersList(),
       ),
     );
   }
