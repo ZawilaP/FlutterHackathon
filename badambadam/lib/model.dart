@@ -86,7 +86,7 @@ class Survey {
 
   // load survey from json file (from backend later)
   Future<Survey> load() async {
-    String data = await rootBundle.loadString("assets/survey_v1.json");
+    String data = await rootBundle.loadString("assets/survey_v1_1.json");
     final jsonResult = jsonDecode(data);
     // get all the nodes processed one by one
     for (var node in jsonResult["questions"]) {

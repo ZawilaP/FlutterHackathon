@@ -13,12 +13,14 @@ const bigRiskParagraph =
     'Pamiętaj jednak, że kwestionariusz M-CHAT-R jest jedynie wstępnym badaniem przesiewowym, a nie narzędziem diagnostycznym. Dlatego bardzo ważne jest, abyś konsultował się ze specjalistą zajmującym się diagnozowaniem spektrum autyzmu u małych dzieci. Podczas rozmowy wyjaśnisz swoje wątpliwości, uzyskasz poradę oraz wskazówki odnośnie dalszych działań.';
 
 const noRiskActions = [
+  'Pamiętaj:',
   'Jeśli Twoje dziecko w chwili badania nie ukończyło jeszcze 24 miesięcy, zalecane jest powtórne wypełnienie kwestionariusza M-CHAT-R pomiędzy 24 a 30 miesiącem życia.',
   'Możesz skorzystać z bezpłatnej teleporady w ramach kontraktu z NFZ. W celu umówienia się wypełnij ankietę: https://ankieta.synapsis.waw.pl/ankieta/',
   'Więcej informacji na temat umiejętności, które dziecko w tym wieku powinno posiadać oraz wspierania jego rozwoju znajdziesz na stronie http://badabada.pl/dla-rodzicow/rozwoj-dziecka'
 ];
 
 const smallRiskActions = [
+  'Co możesz teraz zrobić:',
   'Wypełnij drugą część badania, w której znajdziesz pytania uszczegóławiające (przycisk przenoszący do follow-up)',
   'Skontaktuj się ze specjalistą (lekarzem, psychologiem, pedagogiem), aby porozmawiać i omówić wyniki badania oraz wyjaśnić swoje wątpliwości',
   'Skorzystaj z bezpłatnej teleporady w ramach kontraktu z NFZ. W celu umówienia się wypełnij ankietę: https://ankieta.synapsis.waw.pl/ankieta/',
@@ -26,6 +28,7 @@ const smallRiskActions = [
 ];
 
 const bigRiskActions = [
+  'Co możesz teraz zrobić:',
   'Jeśli chcesz uzyskać więcej informacji o rozwoju swojego dziecka, wypełnij drugą część badania, w której znajdziesz pytania uszczegóławiające (przycisk do follow-up)',
   'Skontaktuj się ze specjalistą zajmującym się diagnozowaniem spektrum autyzmu u małych dzieci, aby porozmawiać i omówić wyniki badania oraz wyjaśnić swoje wątpliwości',
   'Skorzystaj z bezpłatnej teleporady w ramach kontraktu z NFZ. W celu umówienia się wypełnij ankietę: https://ankieta.synapsis.waw.pl/ankieta/',

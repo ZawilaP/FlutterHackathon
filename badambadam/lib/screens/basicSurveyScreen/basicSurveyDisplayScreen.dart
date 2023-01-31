@@ -32,12 +32,12 @@ class _SurveyWidgetState extends State<SurveyWidget> {
 
       // used for storing answers. Initialized with -1.
       // for now hard-coded 20 questions because we don't have them all
-      final ValueNotifier<List<int>> allAnswers =
-          ValueNotifier<List<int>>(List<int>.generate(20, (i) => -1));
+      // final ValueNotifier<List<int>> allAnswers =
+      //     ValueNotifier<List<int>>(List<int>.generate(20, (i) => -1));
 
       // that's correct version, will be uncommented once we have all questions
-      // final ValueNotifier<List<int>> allAnswers = ValueNotifier<List<int>>(
-      //     List<int>.generate(topLevelSurvey.length, (i) => -1));
+      final ValueNotifier<List<int>> allAnswers = ValueNotifier<List<int>>(
+          List<int>.generate(topLevelSurvey.length, (i) => -1));
 
       final ButtonStyle style = ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).colorScheme.primary,
