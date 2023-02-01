@@ -66,6 +66,26 @@ class MyHomePage extends StatelessWidget {
           fit: BoxFit.cover,
           scale: 2,
         ),
+        actions: <Widget>[
+          Padding(
+              padding: EdgeInsets.only(right: 50.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/login');
+                },
+                child: Icon(
+                    Icons.login
+                ),
+              )
+          ),
+        //   ElevatedButton(
+        //   onPressed: () {
+        //     // Navigate to the second screen using a named route.
+        //     Navigator.pushNamed(context, '/login');
+        //   },
+        //   child: const Text("Admin Panel"),
+        // )
+        ],
       ),
       body: Column(
         children: [
@@ -82,13 +102,6 @@ class MyHomePage extends StatelessWidget {
               Navigator.pushNamed(context, '/surveys');
             },
             child: const Text("Past Surveys"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              // Navigate to the second screen using a named route.
-              Navigator.pushNamed(context, '/login');
-            },
-            child: const Text("Admin Panel (will be separate page later)"),
           ),
           TextSubmitForm(onSubmit: (value) => print(value))
         ],
