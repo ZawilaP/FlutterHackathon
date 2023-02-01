@@ -8,6 +8,7 @@ import 'routes/advancedSurveyRoute.dart';
 import 'routes/advancedResultRoute.dart';
 import 'routes/adminPanelRoute.dart';
 import 'routes/editQuestionsRoute.dart';
+import 'routes/loginPageRoute.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
           '/surveys': (context) => const SurveysRoute(),
           '/result': (context) => const ResultRoute(),
           '/advancedResult': (context) => const AdvancedResultRoute(),
+          '/login': (context) => LoginFormValidation(),
           '/admin': (context) => const AdminPanelRoute(),
           '/questions': (context) => const EditQuestionsRoute(),
         },
@@ -84,7 +86,7 @@ class MyHomePage extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               // Navigate to the second screen using a named route.
-              Navigator.pushNamed(context, '/admin');
+              Navigator.pushNamed(context, '/login');
             },
             child: const Text("Admin Panel (will be separate page later)"),
           ),
