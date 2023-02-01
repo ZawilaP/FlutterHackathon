@@ -19,6 +19,7 @@ dependencies:
   percent_indicator: ^4.0.1
   pdf: ^3.9.0
   open_file: ^2.1.1
+  form_field_validator: ^1.1.0
 
 dev_dependencies:
   flutter_test:
