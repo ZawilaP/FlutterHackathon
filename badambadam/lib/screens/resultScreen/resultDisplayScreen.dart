@@ -1,3 +1,4 @@
+import 'package:badambadam/screens/resultScreen/pdfReport.dart';
 import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:badambadam/screens/resultScreen/result_texts_pl.dart';
@@ -54,6 +55,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
           child: Text(
               "Identyfikator Twojego badania wykonanego ${DateTime.now()}: ${getGuidList().toString()}"),
         ),
+        PDFSave(score: widget.score), // for saving pdf version of report. How to style it??? TODO: Add d
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Text(
