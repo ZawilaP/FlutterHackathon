@@ -1,78 +1,104 @@
 import 'package:flutter/material.dart';
 
-class LoginPageRoute extends StatefulWidget {
+class LoginFormValidation extends StatefulWidget {
   @override
-  _LoginDemoState createState() => _LoginDemoState();
+  _LoginFormValidation createState() => _LoginFormValidation();
 }
 
-class _LoginDemoState extends State<LoginPageRoute> {
+class _LoginFormValidation extends State<LoginFormValidation> {
+  final scaffoldKey = new GlobalKey<ScaffoldState>();
+  final formKey = new GlobalKey<FormState>();
+
+  dynamic _email = '';
+  dynamic _state = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      key: scaffoldKey,
       appBar: AppBar(
         title: Text("Admin Login Page"),
+        centerTitle: true,
       ),
-      body: SingleChildScrollView(
+      body: Form(
+        key: formKey,
         child: Column(
-          children: <Widget>[
+          children: [
             Padding(
               padding: const EdgeInsets.only(top: 60.0),
               child: Center(
                 child: Container(
                     width: 200,
                     height: 150,
-                    child: Image.asset('graphics/SYNAPSIS_herb_2.png')),
+                    child: Image.asset('graphics/SYNAPSIS_herb.png')),
               ),
             ),
-            Center(
-              child: SizedBox(
-                  width: 400,
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Email',
-                      hintText: 'Enter email'),
-                ),
-               ),
-              ),
-          Center(
-            child: SizedBox(
-              width: 400,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 15, bottom: 5),
-                //padding: EdgeInsets.symmetric(horizontal: 15),
-                child: TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Password',
-                      hintText: 'Enter password'),
-                ),
-            ),
-            ),
-          ),
-            Container(
-              height: 50,
-              width: 250,
-              decoration: BoxDecoration(
-                  color: Colors.black, borderRadius: BorderRadius.circular(20)),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black54
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/admin');
-                },
-                child: Text(
-                  'Login',
-                  style: TextStyle(color: Colors.yellow, fontSize: 25),
-                ),
-              ),
-            ),
-          ],
+        Center(
+        child: SizedBox(
+        width: 400,
+          child: TextFormField(
+              validator: (text) {
+      if (text == null || text.isEmpty) {
+      return 'Can\'t be empty';
+      }
+      if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+          .hasMatch(text)) {
+        return 'Enter valid email adress';
+      }
+      if (text != 'sample@admin.com') {
+        return 'Your user ID or password is incorrect';
+      }
+      return null;
+      },
+      onSaved: (text) => _email = text,
+      decoration: InputDecoration(
+      labelText: "Email",
+      hintText: "Enter Email"
+      ),
+      ),
+        ),
+        ),
+      Center(
+        child: SizedBox(
+          width: 400,
+          child: TextFormField(
+            obscureText: true,
+      onSaved: (text) => _state = text,
+      validator: (text) {
+        if (text == null || text.isEmpty) {
+    return 'Can\'t be empty';
+    }
+    if (text != 'admin') {
+    return 'Your user ID or password is incorrect';
+    }
+    return null;
+    },
+      decoration: InputDecoration(
+      labelText: "Password",
+      hintText: "Enter Password"
+      ),
+      ),
         ),
       ),
+      Padding(
+      padding: const EdgeInsets.all(15.0),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black54
+                  ),
+                child: Text("Login",
+                  style: TextStyle(color: Colors.yellow, fontSize: 20),),
+                onPressed: () {
+                  if(formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                      Navigator.pushNamed(context, '/admin');
+                    }
+                  }
+    ),
+    ),
+    ],
+    ),
+    ),
     );
   }
 }

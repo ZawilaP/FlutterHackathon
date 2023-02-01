@@ -9,7 +9,6 @@ import 'routes/advancedResultRoute.dart';
 import 'routes/adminPanelRoute.dart';
 import 'routes/editQuestionsRoute.dart';
 import 'routes/loginPageRoute.dart';
-import 'routes/loginPageRoute2.dart';
 
 void main() {
   runApp(MyApp());
