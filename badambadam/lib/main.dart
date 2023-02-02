@@ -83,7 +83,7 @@ class MyHomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
+      body: ListView(
         children: [
       Text.rich(
       TextSpan(

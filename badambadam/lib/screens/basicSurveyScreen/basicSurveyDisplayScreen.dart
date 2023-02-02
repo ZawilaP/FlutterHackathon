@@ -40,6 +40,38 @@ class _SurveyWidgetState extends State<SurveyWidget> {
           shadowColor: Theme.of(context).colorScheme.onPrimary,
           elevation: 8);
 
+      Future<void> _showMyDialog() async {
+        return showDialog<void>(
+          context: context,
+          barrierDismissible: false, // user must tap button!
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Please check yes or no for every question'),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: const <Widget>[
+                    Text('Keep in mind how your child usually behaves.'),
+                    Text(
+                        'If you have seen your child do the behavior a few times, but he or she does not usually do it, then please answer no.', style: TextStyle(fontWeight: FontWeight.bold),),
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text(
+                    'Close',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+
       return CustomScrollView(
         slivers: [
           SliverPadding(
@@ -63,11 +95,15 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                   ElevatedButton(
                       style: style,
                       onPressed: () {
-                        updateGuidList(
-                            "${DateTime.now().toString().trim()}_test");
-                        addAllAnswersList(allAnswers.value);
-                        addFinalScore();
-                        Navigator.pushNamed(context, '/result');
+                        if (allAnswers.value.contains(-1)) {
+                          _showMyDialog();
+                        } else {
+                          updateGuidList(
+                              "${DateTime.now().toString().trim()}_test");
+                          addAllAnswersList(allAnswers.value);
+                          addFinalScore();
+                          Navigator.pushNamed(context, '/result');
+                        }
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
