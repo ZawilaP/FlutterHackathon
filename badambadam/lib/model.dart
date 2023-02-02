@@ -135,7 +135,7 @@ class Survey {
     print("Printuje snapshot");
     await register();
     await saveSurvey("231231", {"dummykey": "dummyvalue"});
-    await updateQuestion(81, {"questions/0": "duuuupsko"});
+    await updateQuestion(81, {"questions/0": "PG13"});
 
     final ref2 = FirebaseDatabase.instance.ref();
     final snapshot = await ref2.get();
