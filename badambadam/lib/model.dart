@@ -107,13 +107,13 @@ class Survey {
   Future<void> register() async {
     //
     DatabaseReference ref = FirebaseDatabase.instance.ref("surveyIds");
-    final snapshot = await ref.orderByKey().limitToLast(1).get();
+    final snapshot = await ref.orderByValue().limitToLast(1).get();
     dynamic lastIdsnap = snapshot.value as Map;
-    dynamic lastId = lastIdsnap.keys.toList().first + 1;
+    dynamic lastId = lastIdsnap[lastIdsnap.keys.toList().first];
     String newGuid = generateRandomString(128);
     DatabaseReference refNew =
-        FirebaseDatabase.instance.ref("surveyIds/$lastId");
-    await refNew.set(newGuid);
+        FirebaseDatabase.instance.ref("surveyIds/$newGuid");
+    await refNew.set(lastId + 1);
     // final snapshotNew = await refNew.get();
     // return snapshotNew.value as Map;
   }
