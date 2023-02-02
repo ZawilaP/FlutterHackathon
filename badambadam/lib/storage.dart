@@ -1,3 +1,4 @@
+import 'package:badambadam/model.dart';
 import 'package:get_storage/get_storage.dart';
 
 List<dynamic> getGuidList() {
@@ -55,11 +56,8 @@ int getFinalScore() {
   return box.read('score') ?? 0;
 }
 
-void writeCurrentAnswers() {
-  final box = GetStorage();
-  List<dynamic> myList = [getCurrentGuid(), getAllAnswersList()];
-  box.remove('currentAnswersTuple');
-  box.write('currentAnswersTuple', myList);
+Future<void> writeCurrentAnswers() async {
+  saveSurvey(getCurrentGuid(), getAllAnswersList());
 }
 
 List<dynamic> getCurrentAnswers() {

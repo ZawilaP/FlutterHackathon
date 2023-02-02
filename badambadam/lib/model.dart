@@ -118,11 +118,6 @@ class Survey {
     // return snapshotNew.value as Map;
   }
 
-  Future<void> saveSurvey(String guid, Map data) async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref("answers/$guid");
-    await ref.set(data);
-  }
-
   //
   Future<void> updateQuestion(int questionId, Map<String, dynamic> data) async {
     DatabaseReference ref =
@@ -134,7 +129,7 @@ class Survey {
   Future<Survey> load() async {
     print("Printuje snapshot");
     await register();
-    await saveSurvey("231231", {"dummykey": "dummyvalue"});
+    await saveSurvey("231231", ["dummyvalue"]);
     await updateQuestion(81, {"questions/0": "PG13"});
 
     final ref2 = FirebaseDatabase.instance.ref();
@@ -226,4 +221,9 @@ class Question {
   String toString() {
     return text;
   }
+}
+
+Future<void> saveSurvey(String guid, List<dynamic> data) async {
+  DatabaseReference ref = FirebaseDatabase.instance.ref("answers/${guid.replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}");
+  await ref.set(data);
 }
