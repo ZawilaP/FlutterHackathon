@@ -1,6 +1,26 @@
-import 'dart:convert';
-import 'package:flutter/services.dart';
 import 'package:uuid/uuid.dart';
+import 'package:firebase_database/firebase_database.dart';
+
+import 'dart:math';
+
+String generateRandomString(int length) {
+  var rand = Random();
+  var codeUnits = List.generate(length, (index) {
+    int charCode;
+    do {
+      charCode = rand.nextInt(127);
+    } while (!isAlphanumeric(charCode));
+    return charCode;
+  });
+
+  return String.fromCharCodes(codeUnits);
+}
+
+bool isAlphanumeric(int charCode) {
+  return (charCode >= 48 && charCode <= 57) ||
+      (charCode >= 65 && charCode <= 90) ||
+      (charCode >= 97 && charCode <= 122);
+}
 
 /// Survey id is always two IDs
 /// user readable one and a guid for secure access
@@ -84,17 +104,57 @@ class Survey {
   //   }
   // }
 
+  // Future<void> register() async {
+  //   //
+  //   DatabaseReference ref = FirebaseDatabase.instance.ref("surveysIds");
+  //   final snapshot = await ref.orderByValue().limitToLast(1).get();
+  //   int lastId = (snapshot.value as Map)["id"];
+  //   String newGuid = generateRandomString(512);
+  //   DatabaseReference refNew =
+  //       FirebaseDatabase.instance.ref("surveysIds/$newGuid");
+  //   await refNew.set(lastId + 1);
+  //   // final snapshotNew = await refNew.get();
+  //   // return snapshotNew.value as Map;
+  // }
+  //
+  // Future<void> saveSurvey(String guid, Map data) async {
+  //   DatabaseReference ref = FirebaseDatabase.instance.ref("answers/$guid");
+  //   await ref.set(data);
+  // }
+  //
+  // Future<void> updateSurvey(
+  //     String questionId, Map<String, dynamic> data) async {
+  //   DatabaseReference ref =
+  //       FirebaseDatabase.instance.ref("questions/$questionId");
+  //   await ref.update(data);
+  // }
+
   // load survey from json file (from backend later)
   Future<Survey> load() async {
-    String data = await rootBundle.loadString("assets/survey_v1_1.json");
-    final jsonResult = jsonDecode(data);
-    // get all the nodes processed one by one
-    for (var node in jsonResult["questions"]) {
-      Node n = Node(node["id"], node["author"], node["is_top_level"],
-          node["is_inverted"], node["node_type"], node["questions"]);
+    print("Printuje snapshot");
+    // await register();
+    DatabaseReference ref = FirebaseDatabase.instance.ref("users/23");
+
+    // await ref.set({
+    //   "author": "Bartek",
+    //   "age": 18,
+    //   "address": {"line1": "100 Mountain View"}
+    // });
+    // // load survey from json file
+    // await ref.update({
+    //   "age": 19,
+    // });
+    final ref2 = FirebaseDatabase.instance.ref();
+    final snapshot = await ref2.get();
+    var x = snapshot.value as Map;
+
+    List dupa = x["questions"] as List;
+
+    for (var item in dupa) {
+      Node n = Node(item["id"], item["author"], item["is_top_level"],
+          item["is_inverted"], item["node_type"], item["questions"]);
       nodes.add(n);
     }
-    // nodes.sort(((a, b) => a.id.compareTo(b.id)));
     return this;
   }
 

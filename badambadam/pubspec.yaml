@@ -21,6 +21,8 @@ dependencies:
   open_file: ^2.1.1
   url_launcher: 6.0.17
   link_text: ^0.2.0
+  firebase_database: ^10.0.9
+  firebase_core: ^2.4.1
 
 dev_dependencies:
   flutter_test:
