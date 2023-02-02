@@ -26,7 +26,7 @@
 
 { "id": "7_04", "author": "Piotr", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["It is to show their interest?"], "question_group_id": "7.0" },
 
-{ "id": "4", "author": "z", "is_top_level": "YES", "node_type": "Simple_yes_no", "no_path": "nan", "yes_path": "4_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does ___ like climbing on things "], "question_group_id": "4.0" },
+{ "id": "4", "author": "z", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "nan", "yes_path": "4_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does ___ like climbing on things "], "question_group_id": "4.0" },
 
 { "id": "4_01", "author": "o", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she enjoy climbing on..."," stairs?"," chairs?"," furniture?"," playground equipment",""], "question_group_id": "4.0" },
 
@@ -80,7 +80,7 @@
 
 { "id": "16_02", "author": "nan", "is_top_level": "no", "node_type": "OneYesWillDoKeepAsking", "no_path": "16_03", "yes_path": "16_03", "third_path": "nan", "is_inverted": "nan", "questions": ["Does your child  "," look toward the things you are looking at? "," Point toward the thing you are looking at? "," lOOK AROUND TO SEE WHAT YOU ARE LOOKING AT?"], "question_group_id": "nan" },
 
-{ "id": "16_03", "author": "nan", "is_top_level": "No", "node_type": "simple_yes_no", "no_path": "nan", "yes_path": "nan", "third_path": "nan", "is_inverted": "No", "questions": ["Invisible [ Is there at least one positive answer in PASS? "," Is there at least one positive answer in FAIL ] "], "question_group_id": "nan" },
+{ "id": "16_03", "author": "nan", "is_top_level": "No", "node_type": "Simple_Yes_No", "no_path": "nan", "yes_path": "nan", "third_path": "nan", "is_inverted": "No", "questions": ["Invisible [ Is there at least one positive answer in PASS? "," Is there at least one positive answer in FAIL ] "], "question_group_id": "nan" },
 
 { "id": "6", "author": "Piotr", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "6_01", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does ___________ point with one finger to ask for something or to get help?"], "question_group_id": "6.0" },
 
