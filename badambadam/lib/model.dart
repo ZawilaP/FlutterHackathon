@@ -61,32 +61,32 @@ class Survey {
   /// Calculates the survey result
   /// -1 is "not able to calculate", 0+ integer is a real result
   /// implemented only for high level survey
-  int calculateResult() {
-    if (detailLevel == DetailLevel.detailed) {
-      return -1;
-    } else {
-      int result = 0;
-      for (var node in nodes) {
-        // checking top level nodes only
-        if (node.isTopLevel) {
-          if (node.status != NodeStatus.answered) {
-            print('No answer for ${node.questions[0].text}');
-            return -1; // at least one not answered, unable to calculate
-          }
-        }
-        if (node.isInverted) {
-          result += node.answer == NodeAnswer.no ? 1 : 0;
-        } else {
-          result += node.answer == NodeAnswer.yes ? 1 : 0;
-        }
-      }
-      return result;
-    }
-  }
+  // int calculateResult() {
+  //   if (detailLevel == DetailLevel.detailed) {
+  //     return -1;
+  //   } else {
+  //     int result = 0;
+  //     for (var node in nodes) {
+  //       // checking top level nodes only
+  //       if (node.isTopLevel) {
+  //         if (node.status != NodeStatus.answered) {
+  //           print('No answer for ${node.questions[0].text}');
+  //           return -1; // at least one not answered, unable to calculate
+  //         }
+  //       }
+  //       if (node.isInverted) {
+  //         result += node.answer == NodeAnswer.no ? 1 : 0;
+  //       } else {
+  //         result += node.answer == NodeAnswer.yes ? 1 : 0;
+  //       }
+  //     }
+  //     return result;
+  //   }
+  // }
 
   // load survey from json file (from backend later)
   Future<Survey> load() async {
-    String data = await rootBundle.loadString("assets/survey_small.json");
+    String data = await rootBundle.loadString("assets/survey_v1_1.json");
     final jsonResult = jsonDecode(data);
     // get all the nodes processed one by one
     for (var node in jsonResult["questions"]) {
@@ -94,6 +94,7 @@ class Survey {
           node["is_inverted"], node["node_type"], node["questions"]);
       nodes.add(n);
     }
+    // nodes.sort(((a, b) => a.id.compareTo(b.id)));
     return this;
   }
 
