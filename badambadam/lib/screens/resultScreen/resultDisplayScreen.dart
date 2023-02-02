@@ -3,6 +3,7 @@ import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:badambadam/screens/resultScreen/result_texts_pl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:link_text/link_text.dart';
 
 class ResultDisplayScreen extends StatefulWidget {
   const ResultDisplayScreen({this.score, this.allAnswers});
@@ -49,15 +50,18 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
         SizedBox(
           height: 10,
         ),
-        ScoreDisplayContainer(score: widget.score, allAnswers: widget.allAnswers,),
+        ScoreDisplayContainer(
+          score: widget.score,
+          allAnswers: widget.allAnswers,
+        ),
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(12.0),
           child: Text(
               "Identyfikator Twojego badania wykonanego ${DateTime.now()}: ${getGuidList().toString()}"),
         ),
-        PDFSave(score: widget.score), // for saving pdf version of report. How to style it??? TODO: Add d
+        PDFSave(),
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(12.0),
           child: Text(
             intro,
             style: widget.score! >= 3
@@ -67,7 +71,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
         ),
         Divider(),
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(12.0),
           child: Text(paragraph),
         ),
         Divider(),
@@ -75,10 +79,13 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
           padding: const EdgeInsets.all(10.0),
           child: Text(actions[0]),
         ),
-        // TODO: displaying this shit
         Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(actions.toString()),
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            children: actions.sublist(1, actions.length).map((e) {
+              return ListTile(leading: Icon(Icons.check), title: LinkText(e),);
+            }).toList()
+          ),
         ),
         widget.score! >= 3
             ? ElevatedButton(
@@ -97,11 +104,9 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
 
 // Container for animated score display
 class ScoreDisplayContainer extends StatelessWidget {
-   ScoreDisplayContainer({
-    Key? key,
-    required this.score,
-    required this.allAnswers
-  }) : super(key: key);
+  ScoreDisplayContainer(
+      {Key? key, required this.score, required this.allAnswers})
+      : super(key: key);
 
   final int? score;
   final List<int>? allAnswers;
