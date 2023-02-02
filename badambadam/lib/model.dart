@@ -1,6 +1,28 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:uuid/uuid.dart';
+import 'package:firebase_database/firebase_database.dart';
+
+import 'dart:math';
+
+String generateRandomString(int length) {
+  var rand = Random();
+  var codeUnits = List.generate(length, (index) {
+    int charCode;
+    do {
+      charCode = rand.nextInt(127);
+    } while (!isAlphanumeric(charCode));
+    return charCode;
+  });
+
+  return String.fromCharCodes(codeUnits);
+}
+
+bool isAlphanumeric(int charCode) {
+  return (charCode >= 48 && charCode <= 57) ||
+      (charCode >= 65 && charCode <= 90) ||
+      (charCode >= 97 && charCode <= 122);
+}
 
 /// Survey id is always two IDs
 /// user readable one and a guid for secure access
@@ -83,6 +105,31 @@ class Survey {
   //     return result;
   //   }
   // }
+
+  Future<void> register() async {
+    //
+    DatabaseReference ref = FirebaseDatabase.instance.ref("surveysIds");
+    final snapshot = await ref.orderByValue().limitToLast(1).get();
+    int lastId = (snapshot.value as Map)["id"];
+    String newGuid = generateRandomString(512);
+    DatabaseReference refNew =
+        FirebaseDatabase.instance.ref("surveysIds/$newGuid");
+    await refNew.set(lastId + 1);
+    // final snapshotNew = await refNew.get();
+    // return snapshotNew.value as Map;
+  }
+
+  Future<void> saveSurvey(String guid, Map data) async {
+    DatabaseReference ref = FirebaseDatabase.instance.ref("answers/$guid");
+    await ref.set(data);
+  }
+
+  Future<void> updateSurvey(
+      String questionId, Map<String, dynamic> data) async {
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref("questions/$questionId");
+    await ref.update(data);
+  }
 
   // load survey from json file (from backend later)
   Future<Survey> load() async {
