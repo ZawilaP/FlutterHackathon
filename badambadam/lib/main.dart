@@ -156,14 +156,7 @@ Narzędzie M-CHAT-R przeznaczone jest dla dzieci w wieku 16 do 30 miesięcy. Wyp
                     text:
                         "\n\nBy wziąć udział w ankiecie wypełnij wiek swojego dziecka w miesiącach poniżej:"),
               ])),
-          TextSubmitForm(onSubmit: (value) => print(value)),
-          ElevatedButton(
-            onPressed: () {
-              // Navigate to the second screen using a named route.
-              Navigator.pushNamed(context, '/surveys');
-            },
-            child: const Text("Past Surveys"),
-          ),
+          TextSubmitForm(onSubmit: (value) => print(value))
         ],
       ),
     );

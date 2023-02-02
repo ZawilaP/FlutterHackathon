@@ -59,6 +59,11 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
           child: Text(
               "Identyfikator Twojego badania wykonanego ${DateTime.now()}: ${getGuidList().toString()}"),
         ),
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Text(
+              "Twoje guid i odpowiedzi to: ${getCurrentAnswers().toString()}"),
+        ),
         PDFSave(),
         Padding(
           padding: const EdgeInsets.all(12.0),

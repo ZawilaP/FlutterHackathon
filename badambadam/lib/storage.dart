@@ -6,6 +6,17 @@ List<dynamic> getGuidList() {
   return box.read("guidList") ?? List.empty();
 }
 
+dynamic getCurrentGuid() {
+  final box = GetStorage();
+  return box.read("currentGuid") ?? "";
+}
+
+void updateCurrentGuid(dynamic newGuid) {
+  final box = GetStorage();
+  box.remove("currentGuid");
+  box.write("currentGuid", newGuid);
+}
+
 void addGuidList(List<dynamic> guidList) {
   final box = GetStorage();
   box.remove("guidList");
@@ -15,6 +26,7 @@ void addGuidList(List<dynamic> guidList) {
 void updateGuidList(dynamic newGuid) {
   List<dynamic> guidList = getGuidList();
   List<dynamic> newGuidList = <dynamic>[newGuid];
+  updateCurrentGuid(newGuid);
   newGuidList.addAll(guidList);
   addGuidList(newGuidList);
 }
@@ -41,4 +53,16 @@ void addFinalScore() {
 int getFinalScore() {
   final box = GetStorage();
   return box.read('score') ?? 0;
+}
+
+void writeCurrentAnswers() {
+  final box = GetStorage();
+  List<dynamic> myList = [getCurrentGuid(), getAllAnswersList()];
+  box.remove('currentAnswersTuple');
+  box.write('currentAnswersTuple', myList);
+}
+
+List<dynamic> getCurrentAnswers() {
+  final box = GetStorage();
+  return box.read("currentAnswersTuple") ?? List.empty();
 }
