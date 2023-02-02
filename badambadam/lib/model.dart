@@ -104,46 +104,39 @@ class Survey {
   //   }
   // }
 
-  // Future<void> register() async {
-  //   //
-  //   DatabaseReference ref = FirebaseDatabase.instance.ref("surveysIds");
-  //   final snapshot = await ref.orderByValue().limitToLast(1).get();
-  //   int lastId = (snapshot.value as Map)["id"];
-  //   String newGuid = generateRandomString(512);
-  //   DatabaseReference refNew =
-  //       FirebaseDatabase.instance.ref("surveysIds/$newGuid");
-  //   await refNew.set(lastId + 1);
-  //   // final snapshotNew = await refNew.get();
-  //   // return snapshotNew.value as Map;
-  // }
+  Future<void> register() async {
+    //
+    DatabaseReference ref = FirebaseDatabase.instance.ref("surveyIds");
+    final snapshot = await ref.orderByKey().limitToLast(1).get();
+    dynamic lastIdsnap = snapshot.value as Map;
+    dynamic lastId = lastIdsnap.keys.toList().first + 1;
+    String newGuid = generateRandomString(128);
+    DatabaseReference refNew =
+        FirebaseDatabase.instance.ref("surveyIds/$lastId");
+    await refNew.set(newGuid);
+    // final snapshotNew = await refNew.get();
+    // return snapshotNew.value as Map;
+  }
+
+  Future<void> saveSurvey(String guid, Map data) async {
+    DatabaseReference ref = FirebaseDatabase.instance.ref("answers/$guid");
+    await ref.set(data);
+  }
+
   //
-  // Future<void> saveSurvey(String guid, Map data) async {
-  //   DatabaseReference ref = FirebaseDatabase.instance.ref("answers/$guid");
-  //   await ref.set(data);
-  // }
-  //
-  // Future<void> updateSurvey(
-  //     String questionId, Map<String, dynamic> data) async {
-  //   DatabaseReference ref =
-  //       FirebaseDatabase.instance.ref("questions/$questionId");
-  //   await ref.update(data);
-  // }
+  Future<void> updateQuestion(int questionId, Map<String, dynamic> data) async {
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref("questions/$questionId");
+    await ref.update(data);
+  }
 
   // load survey from json file (from backend later)
   Future<Survey> load() async {
     print("Printuje snapshot");
-    // await register();
-    DatabaseReference ref = FirebaseDatabase.instance.ref("users/23");
+    await register();
+    await saveSurvey("231231", {"dummykey": "dummyvalue"});
+    await updateQuestion(81, {"questions/0": "duuuupsko"});
 
-    // await ref.set({
-    //   "author": "Bartek",
-    //   "age": 18,
-    //   "address": {"line1": "100 Mountain View"}
-    // });
-    // // load survey from json file
-    // await ref.update({
-    //   "age": 19,
-    // });
     final ref2 = FirebaseDatabase.instance.ref();
     final snapshot = await ref2.get();
     var x = snapshot.value as Map;
