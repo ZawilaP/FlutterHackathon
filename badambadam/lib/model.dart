@@ -234,3 +234,14 @@ Future<void> saveNewAdmin(String email, String password) async {
   await refEmail.set(email);
   await refPassword.set(password);
 }
+
+Future<dynamic> getAdminCredentials(String id) async {
+  final ref2 = FirebaseDatabase.instance.ref();
+  final snapshot = await ref2.get();
+  var x = snapshot.value as Map;
+  try {
+    return x["admin"][id];
+  } on Error catch (_) {
+    return {};
+  }
+}
