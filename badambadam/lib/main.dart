@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
           '/result': (context) => const ResultRoute(),
           '/advancedResult': (context) => const AdvancedResultRoute(),
           '/login': (context) => LoginFormValidation(),
-          '/admin': (context) => const AdminPanelRoute(),
+          '/admin': (context) => AdminPanelRoute(),
           '/questions': (context) => const EditQuestionsRoute(),
         },
       ),
