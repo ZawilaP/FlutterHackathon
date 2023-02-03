@@ -229,6 +229,8 @@ Future<void> saveSurvey(String guid, List<dynamic> data) async {
 }
 
 Future<void> saveNewAdmin(String email, String password) async {
-  DatabaseReference ref = FirebaseDatabase.instance.ref("admin/${email.split("@").first}");
-  await ref.set([email,password]);
+  DatabaseReference refEmail = FirebaseDatabase.instance.ref("admin/${email.split("@").first}/email");
+  DatabaseReference refPassword = FirebaseDatabase.instance.ref("admin/${email.split("@").first}/password");
+  await refEmail.set(email);
+  await refPassword.set(password);
 }

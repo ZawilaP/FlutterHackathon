@@ -70,19 +70,12 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
             },
             child: const Text('See all surveys'),
           ),
+          Divider(),
           Form(
             key: formKey,
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 60.0),
-                  child: Center(
-                    child: Container(
-                        width: 200,
-                        height: 150,
-                        child: Image.asset('graphics/SYNAPSIS_herb.png')),
-                  ),
-                ),
+
                 Center(
                   child: SizedBox(
                     width: 400,

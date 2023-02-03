@@ -10,7 +10,7 @@ class _LoginFormValidation extends State<LoginFormValidation> {
   final formKey = new GlobalKey<FormState>();
 
   dynamic _email = '';
-  dynamic _state = '';
+  dynamic _password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class _LoginFormValidation extends State<LoginFormValidation> {
           width: 400,
           child: TextFormField(
             obscureText: true,
-      onSaved: (text) => _state = text,
+      onSaved: (text) => _password = text,
       validator: (text) {
         if (text == null || text.isEmpty) {
     return 'Can\'t be empty';
