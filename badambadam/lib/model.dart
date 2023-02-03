@@ -239,5 +239,9 @@ Future<dynamic> getAdminCredentials(String id) async {
   final ref2 = FirebaseDatabase.instance.ref();
   final snapshot = await ref2.get();
   var x = snapshot.value as Map;
-  return x["admin"];
+  try {
+    return x["admin"][id];
+  } on Error catch (_) {
+    return {};
+  }
 }
