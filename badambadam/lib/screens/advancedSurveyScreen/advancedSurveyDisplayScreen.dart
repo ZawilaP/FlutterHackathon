@@ -94,28 +94,58 @@ class _AdvancedSurveyDisplayScreenState
                   questionNode.nodeType == 'YesNoBranching') {
                 return Column(
                   children: [
-                    Text(questionNode.id),
-                    Container(
-                        height: MediaQuery.of(context).size.height * 0.6,
-                        width: MediaQuery.of(context).size.width * 0.6,
-                        child: ListView.builder(
-                            itemCount: questionNode.questions.length,
-                            itemBuilder: ((context, inputIndex) {
-                              return RadioButtons(
-                                  question: questionNode.questions[inputIndex]
-                                      .toString());
-                            }))),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        color: Colors.white,
+                        child: ListTile(
+                          title: Text(
+                              '${questionNode.id} ${questionNode.questions[0]}', style: Theme.of(context).textTheme.titleLarge,),
+                          subtitle: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                  minHeight:
+                                      MediaQuery.of(context).size.height * 0.2,
+                                  maxHeight:
+                                      MediaQuery.of(context).size.height * 0.7),
+                              child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: questionNode.questions.length - 1,
+                                  itemBuilder: ((context, inputIndex) {
+                                      return RadioButtons(
+                                          question: questionNode
+                                              .questions.sublist(1, questionNode.questions.length)[inputIndex]
+                                              .toString());
+
+                                  }))),
+                        ),
+                      ),
+                    ),
                   ],
                 );
-              } else if (questionNode.nodeType == 'OpenTextAnyAnswerWillDo') {
-                return TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: '${questionNode.id} + ${questionNode.questions[0].toString()}',
-                  ),
-                );
               }
-              return Text('dupa');
+              // else if (questionNode.nodeType == 'OpenTextAnyAnswerWillDo') {
+              //   return Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Card(
+              //       color: Colors.white,
+              //       child: Column(
+              //         children: [
+              //           ListTile(
+              //             title: Padding(
+              //               padding: const EdgeInsets.all(8.0),
+              //               child: Text('${questionNode.id} ${questionNode.questions[0].toString()}'),
+              //             ),
+              //             subtitle: Padding(
+              //               padding: const EdgeInsets.all(8.0),
+              //               child: AdvancedTextField(),
+              //             ),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   );
+              // }
+              return SizedBox();
             }, childCount: allNodes.length)),
           ),
           SliverFillRemaining(
@@ -155,5 +185,36 @@ class _AdvancedSurveyDisplayScreenState
         ],
       );
     }
+  }
+}
+
+class AdvancedTextField extends StatefulWidget {
+  const AdvancedTextField({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<AdvancedTextField> createState() => _AdvancedTextFieldState();
+}
+
+class _AdvancedTextFieldState extends State<AdvancedTextField> {
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: myController,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: 'If you want to add something, do it here'),
+      onChanged: (text) => print(myController.text),
+    );
   }
 }

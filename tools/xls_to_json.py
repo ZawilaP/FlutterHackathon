@@ -2,7 +2,7 @@ import pandas as pd
 import pprint
 import unicodedata
 
-df = pd.read_excel('tools/mchatrf.xlsx')
+df = pd.read_excel('tools/mchatrf_1.xlsx')
 
 class Node:
     def __init__(self, dict_input):
@@ -55,4 +55,5 @@ for row in df.to_dict(orient='records'):
     output += str(n) + ",\n\n"
 output = output[:-3] # remove last comma and line break ;)
 output += "] }"
-print (output)
+with open('output1.json', 'w') as f:
+    f.write(output)
