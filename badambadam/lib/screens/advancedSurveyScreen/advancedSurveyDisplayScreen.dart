@@ -1,6 +1,7 @@
+import 'package:badambadam/screens/advancedSurveyScreen/advancedSingleQuestionWidget.dart';
 import 'package:flutter/material.dart';
 import '../../model.dart';
-import '../basicSurveyScreen/singleQuestionWidget.dart';
+import '../advancedSurveyScreen/advancedSingleQuestionWidget.dart';
 import '../../storage.dart';
 import 'radioResponseWidget.dart';
 
@@ -32,11 +33,21 @@ class _AdvancedSurveyDisplayScreenState
       return Center(child: Text('Loading...'));
     } else {
       List<Node> allNodes = survey!.nodes;
+      List<Node> topLevelSurvey = survey!.getTopLevelNodesOnly();
 
       // used for storing answers. Initialized with -1 for no answer.
       final ValueNotifier<List<int>> allAdvancedAnswers =
           ValueNotifier<List<int>>(
-              List<int>.generate(allNodes.length, (i) => -1));
+              List<int>.generate(allNodes.length, (i) => 0));
+
+      final ValueNotifier<Map<String, List<String>>> allAdvancedAnswersDetail =
+          ValueNotifier<Map<String, List<String>>>({
+        for (var item in allNodes)
+          item.id: List<String>.generate(item.questions.length, (index) => '-1')
+      });
+
+
+      print(allAdvancedAnswersDetail);
 
       final ButtonStyle style = ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).colorScheme.primary,
@@ -86,9 +97,10 @@ class _AdvancedSurveyDisplayScreenState
                 delegate: SliverChildBuilderDelegate((context, index) {
               Node questionNode = allNodes[index];
               if (allNodes[index].nodeType == 'Simple_Yes_No') {
-                return SingleSurveyQuestion(
+                return AdvancedSingleQuestion(
                   questionNode: questionNode,
-                  allAnswers: allAdvancedAnswers,
+                  allAnswers: allAdvancedAnswersDetail,
+                  mainIndex: index,
                 );
               } else if (questionNode.nodeType == 'OneYesWillDoStopAsking' ||
                   questionNode.nodeType == 'YesNoBranching') {
@@ -100,7 +112,9 @@ class _AdvancedSurveyDisplayScreenState
                         color: Colors.white,
                         child: ListTile(
                           title: Text(
-                              '${questionNode.id} ${questionNode.questions[0]}', style: Theme.of(context).textTheme.titleLarge,),
+                            '${questionNode.id} ${questionNode.questions[0]}',
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
                           subtitle: ConstrainedBox(
                               constraints: BoxConstraints(
                                   minHeight:
@@ -111,40 +125,45 @@ class _AdvancedSurveyDisplayScreenState
                                   shrinkWrap: true,
                                   itemCount: questionNode.questions.length - 1,
                                   itemBuilder: ((context, inputIndex) {
-                                      return RadioButtons(
-                                          question: questionNode
-                                              .questions.sublist(1, questionNode.questions.length)[inputIndex]
-                                              .toString());
-
+                                    return RadioButtons(
+                                        question: questionNode.questions
+                                            .sublist(
+                                                1,
+                                                questionNode.questions
+                                                    .length)[inputIndex]
+                                            .toString(), inputIndex: inputIndex);
                                   }))),
                         ),
                       ),
                     ),
                   ],
                 );
+              } else if (questionNode.nodeType == 'OpenTextAnyAnswerWillDo') {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                                '${questionNode.id} ${questionNode.questions[0].toString()}'),
+                          ),
+                          subtitle: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: AdvancedTextField(
+                                allAdvancedAnswersDetails:
+                                    allAdvancedAnswersDetail,
+                                nodeId: questionNode.id),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
               }
-              // else if (questionNode.nodeType == 'OpenTextAnyAnswerWillDo') {
-              //   return Padding(
-              //     padding: const EdgeInsets.all(8.0),
-              //     child: Card(
-              //       color: Colors.white,
-              //       child: Column(
-              //         children: [
-              //           ListTile(
-              //             title: Padding(
-              //               padding: const EdgeInsets.all(8.0),
-              //               child: Text('${questionNode.id} ${questionNode.questions[0].toString()}'),
-              //             ),
-              //             subtitle: Padding(
-              //               padding: const EdgeInsets.all(8.0),
-              //               child: AdvancedTextField(),
-              //             ),
-              //           ),
-              //         ],
-              //       ),
-              //     ),
-              //   );
-              // }
               return SizedBox();
             }, childCount: allNodes.length)),
           ),
@@ -166,6 +185,7 @@ class _AdvancedSurveyDisplayScreenState
                               "${DateTime.now().toString().trim()}_test");
                           addAllAnswersList(allAdvancedAnswers.value);
                           addFinalScore();
+                          calculateAll(allAdvancedAnswers);
                           Navigator.pushNamed(context, '/result');
                         }
                       },
@@ -186,12 +206,19 @@ class _AdvancedSurveyDisplayScreenState
       );
     }
   }
+  
+  void calculateAll(ValueNotifier<List<int>> allAdvancedAnswers) {
+    print(allAdvancedAnswers);
+  }
 }
 
 class AdvancedTextField extends StatefulWidget {
-  const AdvancedTextField({
-    Key? key,
-  }) : super(key: key);
+  const AdvancedTextField(
+      {Key? key, required this.allAdvancedAnswersDetails, required this.nodeId})
+      : super(key: key);
+
+  final ValueNotifier<Map<String, List<String>>> allAdvancedAnswersDetails;
+  final String nodeId;
 
   @override
   State<AdvancedTextField> createState() => _AdvancedTextFieldState();
@@ -214,7 +241,11 @@ class _AdvancedTextFieldState extends State<AdvancedTextField> {
       decoration: InputDecoration(
           border: OutlineInputBorder(),
           hintText: 'If you want to add something, do it here'),
-      onChanged: (text) => print(myController.text),
+      onChanged: (text) {
+        widget.allAdvancedAnswersDetails.value[widget.nodeId] =
+            ["open_" + myController.text].toList();
+        print(widget.allAdvancedAnswersDetails.toString());
+      },
     );
   }
 }
