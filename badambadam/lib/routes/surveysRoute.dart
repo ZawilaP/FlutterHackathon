@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../storage.dart';
-
 class SurveysRoute extends StatelessWidget {
   const SurveysRoute({super.key});
 
@@ -21,7 +19,7 @@ class SurveysRoute extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-                "Twoje guid i odpowiedzi to: ${getCurrentAnswers().toString()}"),
+                "Twoje guid i odpowiedzi to: add reading from database here}"),
           ),
           ElevatedButton(
             onPressed: () {
