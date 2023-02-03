@@ -22,6 +22,14 @@ bool isAlphanumeric(int charCode) {
       (charCode >= 97 && charCode <= 122);
 }
 
+void sortListById(List<dynamic> list) {
+  list.sort((a, b) {
+    double idA = double.parse(a['id'].replaceAll('_', '.'));
+    double idB = double.parse(b['id'].replaceAll('_', '.'));
+    return idA.compareTo(idB);
+  });
+}
+
 /// Survey id is always two IDs
 /// user readable one and a guid for secure access
 class SurveyIDPair {
@@ -137,9 +145,9 @@ class Survey {
     final snapshot = await ref2.get();
     var x = snapshot.value as Map;
 
-    List dupa = x["questions"] as List;
-
-    for (var item in dupa) {
+    List questions = x["questions"] as List;
+    sortListById(questions);
+    for (var item in questions) {
       Node n = Node(item["id"], item["author"], item["is_top_level"],
           item["is_inverted"], item["node_type"], item["questions"]);
       nodes.add(n);
@@ -225,13 +233,16 @@ class Question {
 }
 
 Future<void> saveSurvey(String guid, List<dynamic> data) async {
-  DatabaseReference ref = FirebaseDatabase.instance.ref("answers/${guid.replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}");
+  DatabaseReference ref = FirebaseDatabase.instance.ref(
+      "answers/${guid.replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}");
   await ref.set(data);
 }
 
 Future<void> saveNewAdmin(String email, String password) async {
-  DatabaseReference refEmail = FirebaseDatabase.instance.ref("admin/${email.split("@").first}/email");
-  DatabaseReference refPassword = FirebaseDatabase.instance.ref("admin/${email.split("@").first}/password");
+  DatabaseReference refEmail =
+      FirebaseDatabase.instance.ref("admin/${email.split("@").first}/email");
+  DatabaseReference refPassword =
+      FirebaseDatabase.instance.ref("admin/${email.split("@").first}/password");
   await refEmail.set(email);
   await refPassword.set(password);
 }
