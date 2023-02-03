@@ -246,3 +246,10 @@ Future<dynamic> getAdminCredentials(String id) async {
     return {};
   }
 }
+
+Future<dynamic> getSurveyAnswers() async {
+  final ref2 = FirebaseDatabase.instance.ref("answers");
+  final snapshot = await ref2.get();
+  var x = snapshot.value as Map;
+  return x;
+}

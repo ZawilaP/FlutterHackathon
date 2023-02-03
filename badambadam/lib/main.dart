@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => MyHomePage(),
           '/survey': (context) => const SurveyRoute(),
           '/advancedSurvey': (context) => const AdvancedSurveyRoute(),
-          '/surveys': (context) => const SurveysRoute(),
+          '/surveys': (context) => SurveysRoute(),
           '/result': (context) => const ResultRoute(),
           '/advancedResult': (context) => const AdvancedResultRoute(),
           '/login': (context) => LoginFormValidation(),
