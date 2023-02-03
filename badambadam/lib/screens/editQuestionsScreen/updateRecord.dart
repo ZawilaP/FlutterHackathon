@@ -13,8 +13,8 @@ class UpdateRecord extends StatefulWidget {
 
 class _UpdateRecordState extends State<UpdateRecord> {
 
-  final  userNameController = TextEditingController();
-  final  userAgeController= TextEditingController();
+  final  userIdController = TextEditingController();
+  final  userQuestionController = TextEditingController();
 
   late DatabaseReference dbRef;
 
@@ -30,8 +30,8 @@ class _UpdateRecordState extends State<UpdateRecord> {
 
     Map question = snapshot.value as Map;
 
-    userNameController.text = question['id'].toString();
-    userAgeController.text = question['questions'].toString();
+    userIdController.text = question['id'].toString();
+    userQuestionController.text = question['questions'].join("[do_not_remove]");
   }
 
 
@@ -64,7 +64,7 @@ class _UpdateRecordState extends State<UpdateRecord> {
                 height: 30,
               ),
               TextField(
-                controller: userAgeController,
+                controller: userQuestionController,
                 keyboardType: TextInputType.multiline,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -81,8 +81,8 @@ class _UpdateRecordState extends State<UpdateRecord> {
               MaterialButton(
                 onPressed: () {
                   Map<String, dynamic> questions = {
-                    'id': userNameController.text.toString(),
-                    'questions': userAgeController.text.toString(),
+                    'id': userIdController.text.toString(),
+                    'questions': userQuestionController.text.split("[do_not_remove]"),
                   };
 
                   dbRef.child(widget.questionKey).update(questions)

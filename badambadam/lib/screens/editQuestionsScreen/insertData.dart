@@ -10,8 +10,8 @@ class InsertData extends StatefulWidget {
 
 class _InsertDataState extends State<InsertData> {
 
-  final  userNameController = TextEditingController();
-  final  userAgeController= TextEditingController();
+  final  userIdController = TextEditingController();
+  final  userQuestionController= TextEditingController();
 
   late DatabaseReference dbRef;
 
@@ -51,7 +51,7 @@ class _InsertDataState extends State<InsertData> {
                 height: 30,
               ),
               TextField(
-                controller: userAgeController,
+                controller: userQuestionController,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -68,8 +68,8 @@ class _InsertDataState extends State<InsertData> {
               MaterialButton(
                 onPressed: () {
                   Map<String, dynamic> questions = {
-                    'id': userNameController.text.toString(),
-                    'questions': userAgeController.text.toString(),
+                    'id': userIdController.text.toString(),
+                    'questions': userQuestionController.text.split("[do_not_remove]"),
                   };
 
                   dbRef.push().set(questions);
