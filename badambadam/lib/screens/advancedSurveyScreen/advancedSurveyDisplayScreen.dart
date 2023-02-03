@@ -186,7 +186,7 @@ class _AdvancedSurveyDisplayScreenState
                           addAllAnswersList(allAdvancedAnswers.value);
                           addFinalScore();
                           calculateAll(allAdvancedAnswers);
-                          Navigator.pushNamed(context, '/result');
+                          Navigator.pushNamed(context, '/advancedResult');
                         }
                       },
                       child: Padding(

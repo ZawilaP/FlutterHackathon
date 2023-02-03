@@ -94,7 +94,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
                   // Navigate to the second screen using a named route.
                   Navigator.pushNamed(context, '/advancedSurvey');
                 },
-                child: const Text('Take Advanced Survey'),
+                child: const Text('Wykonaj ankietę dodatkową'),
               )
             : SizedBox(),
       ],
