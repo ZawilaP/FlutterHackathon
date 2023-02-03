@@ -5,9 +5,11 @@ class RadioButtons extends StatefulWidget {
   const RadioButtons({
     Key? key,
     required this.question,
+    required this.inputIndex,
   }) : super(key: key);
 
   final String question;
+  final int inputIndex;
 
   @override
   State<RadioButtons> createState() => _RadioButtonsState();
