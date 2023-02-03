@@ -123,6 +123,9 @@ class _LoginFormValidation extends State<LoginFormValidation> {
                       id["email"] == _email && id["password"] == _password)) {
                         Navigator.pushNamed(context, '/admin');
                       }
+                      else {
+                        _showMyDialog();
+                      }
                     } on Error catch (_) {
                       _showMyDialog();
                     }
