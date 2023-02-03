@@ -1,4 +1,5 @@
 import 'package:badambadam/screens/homePageScreen/TextSubmitForm.dart';
+import 'package:badambadam/storage.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:link_text/link_text.dart';
@@ -82,8 +83,44 @@ class MyHomePage extends StatelessWidget {
         actions: <Widget>[
           Padding(
               padding: EdgeInsets.only(right: 50.0),
-              child: GestureDetector(
-                onTap: () {
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                    overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                          (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.pressed)) {
+                          return Colors.black; //<-- SEE HERE
+                        }
+                        return null; // Defer to the widget's default.
+                      },
+                    ),
+                  ),
+                onPressed: () {
+                  setCurrentLanguage("PL");
+                },
+                child: Text("PL")
+              )),
+          Padding(
+              padding: EdgeInsets.only(right: 50.0),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                        (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed)) {
+                        return Colors.black; //<-- SEE HERE
+                      }
+                      return null; // Defer to the widget's default.
+                    },
+                  ),
+                ),
+                onPressed: () {
+                  setCurrentLanguage("ENG");
+                },
+                child: Text("ENG"),
+              )),
+          Padding(
+              padding: EdgeInsets.only(right: 50.0),
+              child: ElevatedButton(
+                onPressed: () {
                   Navigator.pushNamed(context, '/login');
                 },
                 child: Icon(Icons.login),

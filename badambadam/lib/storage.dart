@@ -1,6 +1,18 @@
 import 'package:badambadam/model.dart';
 import 'package:get_storage/get_storage.dart';
 
+
+String getCurrentLanguage() {
+  final box = GetStorage();
+  return box.read("language") ?? "";
+}
+
+void setCurrentLanguage(String lang) {
+  final box = GetStorage();
+  box.remove("language");
+  box.write("language", lang);
+}
+
 List<dynamic> getGuidList() {
   final box = GetStorage();
   print(box.read("guidList"));
