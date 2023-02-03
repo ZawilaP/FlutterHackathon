@@ -99,6 +99,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
       ),
       body: Column(
         children: [
+        Divider(height: 100),
           ElevatedButton(
             onPressed: () {
               // Navigate to the second screen using a named route.
@@ -106,6 +107,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
             },
             child: const Text('Edit Questions'),
           ),
+          Divider(height: 100),
           ElevatedButton(
             child: Text("Show all past surveys"),
             onPressed: () async {
@@ -113,7 +115,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
               _showMyDialog2();
             },
           ),
-          Divider(),
+          Divider(height: 100),
           Form(
             key: formKey,
             child: Column(
