@@ -84,16 +84,6 @@ class MyHomePage extends StatelessWidget {
           Padding(
               padding: EdgeInsets.only(right: 50.0),
               child: ElevatedButton(
-                  style: ButtonStyle(
-                    overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                          (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed)) {
-                          return Colors.black; //<-- SEE HERE
-                        }
-                        return null; // Defer to the widget's default.
-                      },
-                    ),
-                  ),
                 onPressed: () {
                   setCurrentLanguage("PL");
                 },
@@ -102,16 +92,6 @@ class MyHomePage extends StatelessWidget {
           Padding(
               padding: EdgeInsets.only(right: 50.0),
               child: ElevatedButton(
-                style: ButtonStyle(
-                  overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                        (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed)) {
-                        return Colors.black; //<-- SEE HERE
-                      }
-                      return null; // Defer to the widget's default.
-                    },
-                  ),
-                ),
                 onPressed: () {
                   setCurrentLanguage("ENG");
                 },
