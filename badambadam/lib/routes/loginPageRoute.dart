@@ -1,3 +1,4 @@
+import 'package:badambadam/model.dart';
 import 'package:flutter/material.dart';
 
 class LoginFormValidation extends StatefulWidget {
@@ -45,9 +46,6 @@ class _LoginFormValidation extends State<LoginFormValidation> {
           .hasMatch(text)) {
         return 'Enter valid email adress';
       }
-      if (text != 'sample@admin.com') {
-        return 'Your user ID or password is incorrect';
-      }
       return null;
       },
       onSaved: (text) => _email = text,
@@ -68,9 +66,6 @@ class _LoginFormValidation extends State<LoginFormValidation> {
         if (text == null || text.isEmpty) {
     return 'Can\'t be empty';
     }
-    if (text != 'admin') {
-    return 'Your user ID or password is incorrect';
-    }
     return null;
     },
       decoration: InputDecoration(
@@ -88,10 +83,16 @@ class _LoginFormValidation extends State<LoginFormValidation> {
                   ),
                 child: Text("Login",
                   style: TextStyle(color: Colors.yellow, fontSize: 20),),
-                onPressed: () {
+                onPressed: () async {
                   if(formKey.currentState!.validate()) {
                       formKey.currentState!.save();
-                      Navigator.pushNamed(context, '/admin');
+                      getAdminCredentials(_email.split("@").first).then((id) => print(id));
+                      if (await getAdminCredentials(_email.split("@").first).then((id) => id["email"] == _email && id["password"] == _password)) {
+                        Navigator.pushNamed(context, '/admin');
+                      }
+                      else {
+                        Navigator.pushNamed(context, '/admin');
+                      }
                     }
                   }
     ),
