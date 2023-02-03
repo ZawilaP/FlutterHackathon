@@ -27,7 +27,7 @@ class _FetchDataState extends State<FetchData> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Id: " + question['id'],
+            "Id: ${question['id']}",
             style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400),
           ),
           const SizedBox(
