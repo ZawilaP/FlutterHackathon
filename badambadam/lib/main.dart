@@ -1,3 +1,4 @@
+import 'package:badambadam/screens/homePageScreen/DatePick.dart';
 import 'package:badambadam/screens/homePageScreen/TextSubmitForm.dart';
 import 'package:badambadam/storage.dart';
 import 'package:english_words/english_words.dart';
@@ -84,11 +85,10 @@ class MyHomePage extends StatelessWidget {
           Padding(
               padding: EdgeInsets.only(right: 50.0),
               child: ElevatedButton(
-                onPressed: () {
-                  setCurrentLanguage("PL");
-                },
-                child: Text("PL")
-              )),
+                  onPressed: () {
+                    setCurrentLanguage("PL");
+                  },
+                  child: Text("PL"))),
           Padding(
               padding: EdgeInsets.only(right: 50.0),
               child: ElevatedButton(
@@ -117,11 +117,22 @@ class MyHomePage extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             child: Column(
                 children: entryTextPl.sublist(1, entryTextPl.length).map((e) {
-                  return ListTile(leading: Icon(Icons.circle), title: LinkText(e),);
-                }).toList()
-            ),
+              return ListTile(
+                leading: Icon(Icons.circle),
+                title: LinkText(e),
+              );
+            }).toList()),
           ),
-          TextSubmitForm(onSubmit: (value) => print(value))
+          Row(
+            children: [
+              Expanded(
+                child: TextSubmitForm(onSubmit: (value) => print(value)),
+              ),
+              Expanded(
+                child: DatePick(onSubmit: (value) => print(value)),
+              )
+            ],
+          )
         ],
       ),
     );

@@ -38,7 +38,7 @@ class _TextSubmitFormState extends State<TextSubmitForm> {
                 height: 80,
                 child: TextFormField(
                   decoration: const InputDecoration(
-                    labelText: 'Enter age of your child in months',
+                    labelText: 'Enter your zip code',
                   ),
                   autovalidateMode: _submitted
                       ? AutovalidateMode.onUserInteraction
@@ -49,10 +49,7 @@ class _TextSubmitFormState extends State<TextSubmitForm> {
                       return 'Can\'t be empty';
                     }
                     if (int.tryParse(text) == null) {
-                      return 'Please enter a numerical value';
-                    }
-                    if (int.parse(text) < 16 || int.parse(text) > 30) {
-                      return 'Your child needs to be between 16 and 30 months to be eligible for survey';
+                      return 'Please enter a valid post code';
                     }
                     return null;
                   },
@@ -60,16 +57,6 @@ class _TextSubmitFormState extends State<TextSubmitForm> {
                 ),
               ),
               SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: _name.isNotEmpty ? _submit : null,
-                child: Text(
-                  'Submit',
-                  // style: Theme.of(context)
-                  //     .textTheme
-                  //     .headline6!
-                  //     .copyWith(color: Colors.white),
-                ),
-              ),
             ],
           ),
         ),
