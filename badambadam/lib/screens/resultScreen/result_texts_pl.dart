@@ -21,7 +21,7 @@ const noRiskActions = [
 
 const smallRiskActions = [
   'Co możesz teraz zrobić:',
-  'Wypełnij drugą część badania, w której znajdziesz pytania uszczegóławiające (przycisk przenoszący do follow-up)',
+  'Wypełnij drugą część badania, w której znajdziesz pytania uszczegóławiające',
   'Skontaktuj się ze specjalistą (lekarzem, psychologiem, pedagogiem), aby porozmawiać i omówić wyniki badania oraz wyjaśnić swoje wątpliwości',
   'Skorzystaj z bezpłatnej teleporady w ramach kontraktu z NFZ. W celu umówienia się wypełnij ankietę: https://ankieta.synapsis.waw.pl/ankieta/',
   'Więcej informacji na temat umiejętności, które dziecko w tym wieku powinno posiadać oraz wspierania jego rozwoju znajdziesz na stronie http://badabada.pl/dla-rodzicow/rozwoj-dziecka'
@@ -29,7 +29,7 @@ const smallRiskActions = [
 
 const bigRiskActions = [
   'Co możesz teraz zrobić:',
-  'Jeśli chcesz uzyskać więcej informacji o rozwoju swojego dziecka, wypełnij drugą część badania, w której znajdziesz pytania uszczegóławiające (przycisk do follow-up)',
+  'Jeśli chcesz uzyskać więcej informacji o rozwoju swojego dziecka, wypełnij drugą część badania, w której znajdziesz pytania uszczegóławiające',
   'Skontaktuj się ze specjalistą zajmującym się diagnozowaniem spektrum autyzmu u małych dzieci, aby porozmawiać i omówić wyniki badania oraz wyjaśnić swoje wątpliwości',
   'Skorzystaj z bezpłatnej teleporady w ramach kontraktu z NFZ. W celu umówienia się wypełnij ankietę: https://ankieta.synapsis.waw.pl/ankieta/',
   'W oczekiwaniu na konsultację ze specjalistą lub diagnozę: prowadź notatki o zdobywanych przez dziecko umiejętnościach i zachowaniach, które Cię niepokoją, nagrywaj swoje dziecko podczas zabawy, w kontakcie z osobami bliskimi i innymi dziećmi, zgłoś się do swojej rejonowej Poradni Psychologiczno-Pedagogicznej',

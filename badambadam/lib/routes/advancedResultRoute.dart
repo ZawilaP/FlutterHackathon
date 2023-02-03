@@ -1,3 +1,4 @@
+import 'package:badambadam/screens/advancedSurveyScreen/advancedResultScreen.dart';
 import 'package:flutter/material.dart';
 
 class AdvancedResultRoute extends StatelessWidget {
@@ -13,11 +14,7 @@ class AdvancedResultRoute extends StatelessWidget {
           scale: 2,
         ),
       ),
-      body: Column(
-        children: [
-          Text("Where now?")
-        ],
-      ),
+      body: AdvancedResultDisplayScreen()
     );
   }
 }
