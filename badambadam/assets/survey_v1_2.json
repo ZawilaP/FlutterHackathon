@@ -1,0 +1,163 @@
+{ "questions": [{ "id": "1", "author": "Gabi", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "1_02", "yes_path": "1_01", "third_path": "nan", "is_inverted": "NO", "questions": ["If you point at something across the room, does <NAME> look at it?"], "question_group_id": "1.0" },
+
+{ "id": "1_02", "author": "Gabi", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "1_04", "third_path": "nan", "is_inverted": "NO", "questions": ["Please give me an example of how he/she will respond if you point at something (If parent does not give a PASS example below, ask each individually.)"], "question_group_id": "1.0" },
+
+{ "id": "1_03", "author": "Gabi", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "1_04", "third_path": "nan", "is_inverted": "NO", "questions": ["If you point at something, what does your child typically do?"], "question_group_id": "1.0" },
+
+{ "id": "1_04", "author": "Gabi", "is_top_level": "NO", "node_type": "YesNoBranching", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Please give me an example of how he/she will respond if you point at something"," [P] Look at object?"," [P] Point to object?"," [P] Look and comment on object?"," [P] Look if you point and say look!?"," [F] Ignores you?"," [F] Look around room randomly?"," [F] Look at your finger?"], "question_group_id": "1.0" },
+
+{ "id": "2", "author": "Gabi", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "2_01", "yes_path": "2_01", "third_path": "nan", "is_inverted": "NO", "questions": ["You reported that you have wondered if you child is deaf. What led you to wonder that?"], "question_group_id": "2.0" },
+
+{ "id": "2_01", "author": "Gabi", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she often ignore sounds?"," Does he/she often ignore people?"], "question_group_id": "2.0" },
+
+{ "id": "3", "author": "Gabi", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "3_02", "yes_path": "3_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does <NAME> play pretend or make-believe?"], "question_group_id": "3.0" },
+
+{ "id": "3_01", "author": "Gabi", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "3_02", "third_path": "nan", "is_inverted": "NO", "questions": ["Please give me an example of his/her pretend play. (If parent does not give a PASS example below, ask each individually.)"], "question_group_id": "3.0" },
+
+{ "id": "3_02", "author": "Gabi", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Please give me an example of his/her pretend play"," Pretend to drink from a toy cup?","Pretend to eat from a toy spoon or fork?","Pretend to talk on the telephone?","Pretend to feed a doll or stuffed animal with real orimaginary food?","Push a car as if it is going along a pretend road?","Pretend to be a robot, an airplane, a ballerina, or any other favorite character?","Put a toy pot on a pretend stove?","Stir imaginary food?","Put an action figure or doll into a car or truck as if it is the driver or passenger?","Pretend to vacuum the rug, sweep the floor, or the mow lawn?",""], "question_group_id": "3.0" },
+
+{ "id": "7", "author": "Piotr", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "7_02", "yes_path": "7_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does PIOTR point with one finger just to show you something interesting?"], "question_group_id": "7.0" },
+
+{ "id": "7_01", "author": "Piotr", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "7_02", "third_path": "nan", "is_inverted": "NO", "questions": ["Please give me an example something he / she might point at to shout you? "], "question_group_id": "7.0" },
+
+{ "id": "7_02", "author": "Piotr", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "FAIL", "yes_path": "7_03", "third_path": "nan", "is_inverted": "NO", "questions": ["Please give me an example something he / she might point at to shout you?","An Airplane in the sky?"," A truck on the road?"," A bug on the ground?"," An animal in the yard?"], "question_group_id": "7.0" },
+
+{ "id": "7_03", "author": "Piotr", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "7_04", "third_path": "nan", "is_inverted": "NO", "questions": ["How does your child draw your attention to it? Would he/she point with one finger?"], "question_group_id": "7.0" },
+
+{ "id": "7_04", "author": "Piotr", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["It is to show their interest?"], "question_group_id": "7.0" },
+
+{ "id": "4", "author": "z", "is_top_level": "YES", "node_type": "Simple_yes_no", "no_path": "nan", "yes_path": "4_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does ___ like climbing on things "], "question_group_id": "4.0" },
+
+{ "id": "4_01", "author": "o", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she enjoy climbing on..."," stairs?"," chairs?"," furniture?"," playground equipment",""], "question_group_id": "4.0" },
+
+{ "id": "5", "author": "s", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "PASS", "yes_path": "5_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does ___ make unusual finger movements near his/her eyes?"], "question_group_id": "5.0" },
+
+{ "id": "5_01", "author": "t", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "5_02", "yes_path": "5_02", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she "," Look at hands? "," Move fingers when playing peek-a-boo?"], "question_group_id": "5.0" },
+
+{ "id": "5_02", "author": "a", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "PASS", "yes_path": "5_03", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she "," Wiggle his/her fingers near his/her eyes? "," Hold his/her hands-up close to his/her eyes? "," Hold his/her hands off to the side of his/her eyes? "," Flap his/her hands off to the side of his/her eyes? "," Flap his/her hands near his/her face? "," Other (describe)"], "question_group_id": "5.0" },
+
+{ "id": "5_03", "author": "w", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "PASS", "yes_path": "FAIL", "third_path": "nan", "is_inverted": "NO", "questions": ["Does this happen more than twice a week?"], "question_group_id": "5.0" },
+
+{ "id": "9", "author": "c", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "9_02", "yes_path": "9_01", "third_path": "nan", "is_inverted": "No", "questions": ["Does ___ show you things by bringing them to you or holding them up for you to see? Not just to get help, but to share?"], "question_group_id": "9.0" },
+
+{ "id": "9_01", "author": "i", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "9_02", "third_path": "nan", "is_inverted": "No", "questions": ["Please give me an example of something he/she might bring to show you or hold up for you to see."], "question_group_id": "9.0" },
+
+{ "id": "9_02", "author": "e", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "FAIL", "yes_path": "9_03", "third_path": "nan", "is_inverted": "No", "questions": ["Does your child sometimes bring you... "," A picture or toy just to show you? "," A drawing he/she has done? "," A flower he/she has picked? "," A bug he/she has found in the grass? "," A few blocks he/she has put together? "," Other ( describe)"], "question_group_id": "9.0" },
+
+{ "id": "9_03", "author": "nan", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "No", "questions": ["Is this sometimes just to show you, not to get help?"], "question_group_id": "nan" },
+
+{ "id": "10", "author": "JJ", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "10_02", "yes_path": "10_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does __ respond when you call his/her name?"], "question_group_id": "10.0" },
+
+{ "id": "10_1", "author": "JJ", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "10_3", "third_path": "nan", "is_inverted": "NO", "questions": ["Please give me an example of how he/she responds when you call his/her name?"], "question_group_id": "10.0" },
+
+{ "id": "10_2", "author": "JJ", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "10_3", "third_path": "nan", "is_inverted": "NO", "questions": ["If he/she is not involved in something fun or interesting, what does he/she do when you call his/her name?"], "question_group_id": "10.0" },
+
+{ "id": "10_3", "author": "JJ", "is_top_level": "NO", "node_type": "YesNoBranching", "no_path": "FAIL", "yes_path": "PASS", "third_path": "10_4", "is_inverted": "NO", "questions": ["If he/she is not involved in something fun or interesting, what does he/she do when you call his/her name?"," [P] Look up?"," [P] Talk or babble?"," [P] Stop what he/she is doing? [F] Seem to hear but ignores parent?"," [F] Respond only if parent is right in front of the childs face?"," [F] Respond only if touched?"], "question_group_id": "10.0" },
+
+{ "id": "10_4", "author": "JJ", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "nan", "yes_path": "nan", "third_path": "See comments", "is_inverted": "NO", "questions": ["Which one does he/she do most often?"], "question_group_id": "10.0" },
+
+{ "id": "11", "author": "JJ", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "11_1", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["When you smile at ____________, does he/she smile back at you?"], "question_group_id": "11.0" },
+
+{ "id": "11_1", "author": "JJ", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "11_2", "third_path": "nan", "is_inverted": "NO", "questions": ["What makes _____________ smile? (If parent does not give a PASS example below, ask each individually.)"], "question_group_id": "11.0" },
+
+{ "id": "11_2", "author": "JJ", "is_top_level": "NO", "node_type": "YesNoBranching", "no_path": "FAIL", "yes_path": "PASS", "third_path": "11_3", "is_inverted": "NO", "questions": ["What makes _____________ smile?"," [P] Smile when you smile?"," [P] Smile when you enter the room?"," [P] Smile when you return from being away? [F] Always smile?"," [F] Smile at a favorite toy or activity?"," [F] Smile randomly or at nothing in particular?"], "question_group_id": "11.0" },
+
+{ "id": "11_3", "author": "JJ", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "nan", "yes_path": "nan", "third_path": "See comments", "is_inverted": "NO", "questions": ["Which one does he/she do most often?"], "question_group_id": "10.0" },
+
+{ "id": "12", "author": "JJ", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "PASS", "yes_path": "12_1", "third_path": "nan", "is_inverted": "NO", "questions": ["Does __________ get upset by everyday noises"], "question_group_id": "12.0" },
+
+{ "id": "12_1", "author": "JJ", "is_top_level": "NO", "node_type": "OneYesWillDoKeepAsking", "no_path": "12_2", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does __________ get upset by everyday noises"," A washing machine?"," Babies crying?"," Vacuum cleaner?"," Hairdryer?"," Traffic?"," Babies squealing or screeching?"," Loud music?"," Telephone/ doorbell ringing?"," Noisy places such as a supermarket or restaurant?"," Other (describe):"], "question_group_id": "12.0" },
+
+{ "id": "12_2", "author": "JJ", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "12_3", "third_path": "nan", "is_inverted": "NO", "questions": ["How does your child react to those noises?"], "question_group_id": "12.0" },
+
+{ "id": "12_3", "author": "JJ", "is_top_level": "NO", "node_type": "YesNoBranching", "no_path": "FAIL", "yes_path": "PASS", "third_path": "11_3", "is_inverted": "NO", "questions": ["How does your child react to those noises?"," [P] Calmly cover his/her ears?"," [P] Tell you that he/she doesn't like the noise?"," [F] Scream? [F] Cry?"," [F] Cover his/her ears while upset?"], "question_group_id": "11.0" },
+
+{ "id": "12_4", "author": "JJ", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "nan", "yes_path": "nan", "third_path": "See comments", "is_inverted": "NO", "questions": ["Which one does he/she do most often?"], "question_group_id": "10.0" },
+
+{ "id": "16", "author": "nan", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "16_01", "yes_path": "PASS", "third_path": "nan", "is_inverted": "No", "questions": ["If you turn your head to look at something, does ________ look around to see what you are looking at?"], "question_group_id": "nan" },
+
+{ "id": "16_01", "author": "nan", "is_top_level": "nO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "16_02", "yes_path": "16_02", "third_path": "nan", "is_inverted": "NO", "questions": ["What does he/she do when you turn to look at something?"], "question_group_id": "nan" },
+
+{ "id": "16_02", "author": "nan", "is_top_level": "no", "node_type": "OneYesWillDoKeepAsking", "no_path": "16_03", "yes_path": "16_03", "third_path": "nan", "is_inverted": "nan", "questions": ["Does your child  "," look toward the things you are looking at? "," Point toward the thing you are looking at? "," lOOK AROUND TO SEE WHAT YOU ARE LOOKING AT?"], "question_group_id": "nan" },
+
+{ "id": "16_03", "author": "nan", "is_top_level": "No", "node_type": "simple_yes_no", "no_path": "nan", "yes_path": "nan", "third_path": "nan", "is_inverted": "No", "questions": ["Invisible [ Is there at least one positive answer in PASS? "," Is there at least one positive answer in FAIL ] "], "question_group_id": "nan" },
+
+{ "id": "6", "author": "Piotr", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "6_01", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does ___________ point with one finger to ask for something or to get help?"], "question_group_id": "6.0" },
+
+{ "id": "6_01", "author": "Piotr", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "6_02", "third_path": "nan", "is_inverted": "NO", "questions": ["If there is something your child wants that is out ofreach, such as a snack or toy that is out of reach,how does he/she get it? (If parent does not give aPASS example below, ask each individually.)"], "question_group_id": "6.0" },
+
+{ "id": "6_02", "author": "Piotr", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "FAIL", "yes_path": "6_03", "third_path": "nan", "is_inverted": "NO", "questions": ["If there is something your child wants that is out ofreach, such as a snack or toy that is out of reach,how does he/she get it?"," Reach for the object with his/her whole hand?","Lead you to the object?","Try to get the object for him/herself?","Ask for it using words or sounds?",""], "question_group_id": "6.0" },
+
+{ "id": "6_03", "author": "Piotr", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["If you said Show me,would he/she point at it?"], "question_group_id": "6.0" },
+
+{ "id": "8", "author": "Piotr", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "8_02", "yes_path": "8_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Is ____________ interested in other children?"], "question_group_id": "8.0" },
+
+{ "id": "8_01", "author": "Piotr", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "8_02", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Is he/she interested in children who arenot his/her brother or sister?"], "question_group_id": "8.0" },
+
+{ "id": "8_02", "author": "Piotr", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "8_03", "third_path": "nan", "is_inverted": "NO", "questions": ["When you are at the playground or supermarket, does your child usually respond to other children?"], "question_group_id": "8.0" },
+
+{ "id": "8_03", "author": "Piotr", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "8_04", "third_path": "nan", "is_inverted": "NO", "questions": ["How does your child respond?(If parent does not give a PASSexample below, ask eachindividually.)"], "question_group_id": "8.0" },
+
+{ "id": "8_04", "author": "Piotr", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "FAIL", "yes_path": "8_05", "third_path": "nan", "is_inverted": "NO", "questions": ["How does your child respond?","Play with another child?","Talk to another child?","Babble or make vocal noises?","Watch another child?","Smile at another child?","Act shy at first but then smile?","Get excited about another child?",""], "question_group_id": "8.0" },
+
+{ "id": "8_05", "author": "Piotr", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she respond to otherchildren more than half of thetime?"], "question_group_id": "8.0" },
+
+{ "id": "16", "author": "JJ", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "10_01", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["If you turn your head to look at something, does ________ look around to see what you are looking at?"], "question_group_id": "10.0" },
+
+{ "id": "16_01", "author": "JJ", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "10_3", "third_path": "nan", "is_inverted": "NO", "questions": ["Please give me an example of how he/she responds when you call his/her name?"], "question_group_id": "10.0" },
+
+{ "id": "16_02", "author": "JJ", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "10_3", "third_path": "nan", "is_inverted": "NO", "questions": ["If he/she is not involved in something fun or interesting, what does he/she do when you call his/her name?"], "question_group_id": "10.0" },
+
+{ "id": "16_03", "author": "JJ", "is_top_level": "NO", "node_type": "YesNoBranching", "no_path": "FAIL", "yes_path": "PASS", "third_path": "10_4", "is_inverted": "NO", "questions": ["If he/she is not involved in something fun or interesting, what does he/she do when you call his/her name?"," [P] Look up?"," [P] Talk or babble?"," [P] Stop what he/she is doing? [F] Seem to hear but ignores parent?"," [F] Respond only if parent is right in front of the childs face?"," [F] Respond only if touched?"], "question_group_id": "10.0" },
+
+{ "id": "16_04", "author": "JJ", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "nan", "yes_path": "nan", "third_path": "See comments", "is_inverted": "NO", "questions": ["Which one does he/she do most often?"], "question_group_id": "10.0" },
+
+{ "id": "17", "author": "Nela", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "17_02", "yes_path": "17_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does __________ try to get you to watch him/her?"], "question_group_id": "17.0" },
+
+{ "id": "17_01", "author": "Nela", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "17_02", "third_path": "nan", "is_inverted": "NO", "questions": ["Please give me an example of how he/she would try to get you to watch him/her."], "question_group_id": "17.0" },
+
+{ "id": "17_02", "author": "Nela", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "FAIL", "yes_path": "PASS", "third_path": "True", "is_inverted": "NO", "questions": ["Please give me an example of how he/she would try to get you to watch him/her."," Say Look! or Watch me!?"," Babble or make a noise to get you to watch what he/ she is doing?"," Look at you to get praise or comment?"," Keep looking to see if you are looking?"," Other(describe)"], "question_group_id": "17.0" },
+
+{ "id": "18", "author": "Nela", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "18_02", "yes_path": "18_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does ____________ understand when you tell him/her to do something?"], "question_group_id": "18.0" },
+
+{ "id": "18_01", "author": "Nela", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "18_02", "third_path": "nan", "is_inverted": "NO", "questions": ["Please give me an example of how you know he/she understands you."], "question_group_id": "18.0" },
+
+{ "id": "18_02", "author": "Nela", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "18_04", "yes_path": "18_03", "third_path": "nan", "is_inverted": "NO", "questions": ["When the situation gives him/her a clue, can he/she follow a command? For example when you are dressed to go out and you tell him/her to get his/her shoes, does he/she understand"], "question_group_id": "18.0" },
+
+{ "id": "18_03", "author": "Nela", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "18_04", "third_path": "nan", "is_inverted": "NO", "questions": ["If it is dinnertime and food is on the table, and you tell the child to sit down, will he/she come sit at the table?"], "question_group_id": "18.0" },
+
+{ "id": "18_04", "author": "Nela", "is_top_level": "NO", "node_type": "OneYesWillDoStopAsking", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["When the situation does not give any clues, can he/she follow a command? For example...: If you say, Show me your shoe without pointing, making gestures, or giving hints(when you are not going out or getting dressed), does your child show you his/her shoe?"," If you say, Bring me the blanket or ask for another object without pointing, making gestures, or giving hints, does your child bring it to you?"," If you say, Put the book on the chair without pointing, making gestures, or giving any other hints , does your child put the book on the chair?"], "question_group_id": "18.0" },
+
+{ "id": "19", "author": "Jakub", "is_top_level": "YES", "node_type": "OneYesWillDoStopAsking", "no_path": "19_01", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["If something new happends, does ____ look at your face to see how you feel about it?"], "question_group_id": "19.0" },
+
+{ "id": "19_01", "author": "Jakub", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "19_02", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["If your child hears a strange or scary noise, will he/she look at you before responding?"], "question_group_id": "19.0" },
+
+{ "id": "19_02", "author": "Jakub", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "19_03", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does your child look at you when someone new approaches?"], "question_group_id": "19.0" },
+
+{ "id": "19_03", "author": "Jakub", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does your child look at you when he/she is faced with something unfamiliar or a little scary?"], "question_group_id": "19.0" },
+
+{ "id": "20", "author": "Jakub", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "20_2", "yes_path": "20_1", "third_path": "nan", "is_inverted": "NO", "questions": ["Does ____ like movement activities?"], "question_group_id": "20.0" },
+
+{ "id": "20_1", "author": "Jakub", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "20_2", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she enjoy being bounced or swung?"], "question_group_id": "20.0" },
+
+{ "id": "20_2", "author": "Jakub", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does your child?"," Laught or smile?"," Talk or babble?"," Request more by holding out his/her arms?"," Other(describe):"], "question_group_id": "20.0" },
+
+{ "id": "13", "author": "Francisco ", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "13_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she walk?"], "question_group_id": "13.0" },
+
+{ "id": "13_01", "author": "Francisco ", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she walk without holding on to anything?"], "question_group_id": "13.0" },
+
+{ "id": "14", "author": "Francisco ", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "14_02", "yes_path": "14_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she look you in the eye when you are talking to him/her, playing with him/her, or changing him/her?"], "question_group_id": "14.0" },
+
+{ "id": "14_01", "author": "Francisco ", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "14_02", "third_path": "nan", "is_inverted": "NO", "questions": ["Please give me an example of when he/she looks you in the eye."], "question_group_id": "14.0" },
+
+{ "id": "14_02", "author": "Francisco ", "is_top_level": "NO", "node_type": "YesNoBranching", "no_path": "FAIL", "yes_path": "14_03", "third_path": "PASS", "is_inverted": "NO", "questions": ["Does he/she look you in the eye..."," When he/she needs something?"," When you are playing with him/her?"," During feeding?"," During diaper changes?"," When you are reading him/her a story?"," When you are talking to him/her?"], "question_group_id": "14.0" },
+
+{ "id": "14_03", "author": "Francisco ", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "14_04", "third_path": "nan", "is_inverted": "NO", "questions": ["Does your child look you in the eye every day?"], "question_group_id": "14.0" },
+
+{ "id": "14_04", "author": "Francisco ", "is_top_level": "NO", "node_type": "Simple_Yes_No", "no_path": "FAIL", "yes_path": "PASS", "third_path": "nan", "is_inverted": "NO", "questions": ["On a day when you are together all day, does he/she look you in the eye at least 5 times?"], "question_group_id": "14.0" },
+
+{ "id": "15", "author": "Francisco ", "is_top_level": "YES", "node_type": "Simple_Yes_No", "no_path": "15_02", "yes_path": "15_01", "third_path": "nan", "is_inverted": "NO", "questions": ["Does he/she try to copy what you do?"], "question_group_id": "15.0" },
+
+{ "id": "15_01", "author": "Francisco ", "is_top_level": "NO", "node_type": "OpenTextAnyAnswerWillDo", "no_path": "nan", "yes_path": "15_02", "third_path": "nan", "is_inverted": "NO", "questions": ["Please give me an example of something he/she would try to copy."], "question_group_id": "15.0" },
+
+{ "id": "15_02", "author": "Francisco ", "is_top_level": "NO", "node_type": "YesNoBranching", "no_path": "nan", "yes_path": "PASS", "third_path": "FAIL", "is_inverted": "NO", "questions": ["Does your child try to copy you if you... ","Stick out your tongue?"," Make a funny sound?"," Wave good bye?"," Clap your hands?"," Put your fingers to your lips to signal Shhh?"," Blow a kiss?",""], "question_group_id": "15.0" }] }
