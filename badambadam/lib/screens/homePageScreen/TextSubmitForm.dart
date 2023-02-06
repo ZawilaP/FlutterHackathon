@@ -28,36 +28,39 @@ class _TextSubmitFormState extends State<TextSubmitForm> {
     return Form(
       key: _formKey,
       child: Center(
-        child: SizedBox(
-          width: 400,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(
-                height: 80,
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Enter your zip code',
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          child: SizedBox(
+            width: 400,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  height: 80,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Enter your zip code',
+                    ),
+                    autovalidateMode: _submitted
+                        ? AutovalidateMode.onUserInteraction
+                        : AutovalidateMode.disabled,
+                    // The validator receives the text that the user has entered.
+                    validator: (text) {
+                      if (text == null || text.isEmpty) {
+                        return 'Can\'t be empty';
+                      }
+                      if (int.tryParse(text) == null) {
+                        return 'Please enter a valid post code';
+                      }
+                      return null;
+                    },
+                    onChanged: (text) => setState(() => _name = text),
                   ),
-                  autovalidateMode: _submitted
-                      ? AutovalidateMode.onUserInteraction
-                      : AutovalidateMode.disabled,
-                  // The validator receives the text that the user has entered.
-                  validator: (text) {
-                    if (text == null || text.isEmpty) {
-                      return 'Can\'t be empty';
-                    }
-                    if (int.tryParse(text) == null) {
-                      return 'Please enter a valid post code';
-                    }
-                    return null;
-                  },
-                  onChanged: (text) => setState(() => _name = text),
                 ),
-              ),
-              SizedBox(height: 10),
-            ],
+                SizedBox(height: 10),
+              ],
+            ),
           ),
         ),
       ),

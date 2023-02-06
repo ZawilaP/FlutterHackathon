@@ -17,7 +17,6 @@ class PDFSave extends StatefulWidget {
 }
 
 class _PDFSaveState extends State<PDFSave> {
-
   final pdf = pw.Document();
 
   var anchor;
@@ -33,38 +32,112 @@ class _PDFSaveState extends State<PDFSave> {
     html.document.body?.children.add(anchor);
   }
 
-
   createPDF() async {
-  pdf.addPage(
-    pw.Page(
-      build: (pw.Context context) => pw.Column(
-        children: [
-          pw.Text('M-Chat-R Survey Results', style: pw.TextStyle(fontSize: 32)),
-          pw.Text("Your child's score: ${widget.score}/20")
-        ],
+    pdf.addPage(
+      pw.Page(
+        build: (pw.Context context) => pw.Column(
+          children: [
+            pw.Text('M-Chat-R Survey Results',
+                style: pw.TextStyle(fontSize: 28)),
+            pw.Text('Your child score is: ${widget.score}/20',
+                style: pw.TextStyle(fontSize: 25)),
+            pw.Table.fromTextArray(
+              context: context,
+              data: const <List<String>>[
+                <String>['Question', 'Answer'],
+                <String>[
+                  'If you point at something across the room, does ___ look at it?',
+                  "YES"
+                ],
+                <String>[
+                  'You reported that you have wondered if you child is deaf. What led you to wonder that?',
+                  "YES"
+                ],
+                <String>['Does ___ play pretend or make-believe?', "NO"],
+                <String>['Does ___ like climbing on things ?', "NO"],
+                <String>[
+                  'Does ___ make unusual finger movements near his/her eyes?',
+                  "YES"
+                ],
+                <String>[
+                  'Does ___ point with one finger to ask for something or to get help?',
+                  "YES"
+                ],
+                <String>[
+                  'Is _____ interested in other children?',
+                  "NO"
+                ],
+                <String>[
+                  'Does _____ show you things by bringing them to you or holding them up for you to see?',
+                  "YES"
+                ],
+                <String>[
+                  'Does __ respond when you call his/her name?',
+                  "NO"
+                ],
+                <String>[
+                  'When you smile at___ does he /she smile back at you?',
+                  "YES"
+                ],
+                <String>[
+                  'Does __ get upset by everyday noises?',
+                  "YES"
+                ],
+                <String>[
+                  'Does he/she walk?',
+                  "NO"
+                ],
+                <String>[
+                  'If you point at something across the room, does ___ look at it?',
+                  "YES"
+                ],
+                <String>[
+                  'Does he/she try to copy what you do?',
+                  "NO"
+                ],
+                <String>[
+                  'Does ___ make unusual finger movements near his/her eyes?',
+                  "YES"
+                ],
+                <String>[
+                  'Does ___ point with one finger to ask for something or to get help?',
+                  "YES"
+                ],
+                <String>[
+                  'Does ___ point with one finger just to show you something interesting?',
+                  "NO"
+                ],
+                <String>[
+                  'If you point at something across the room, does ___ look at it?',
+                  "YES"
+                ],
+                <String>[
+                  'If you point at something across the room, does ___ look at it?',
+                  "NO"
+                ],
+              ],
+            ),
+          ],
+        ),
       ),
-    ),
-  );
-  savePDF();
-}
+    );
+    savePDF();
+  }
 
-@override
-void initState() {
+  @override
+  void initState() {
     super.initState();
     createPDF();
   }
 
   @override
   Widget build(BuildContext context) {
-
-    return  ElevatedButton.icon(
+    return ElevatedButton.icon(
       icon: Icon(Icons.download_rounded),
-        label: Text('Pobierz wyniki'),
-        onPressed: () {
-          anchor.click();
-        },
-      );
+      label: Text('Pobierz wyniki'),
+      onPressed: () {
+        anchor.click();
+      },
+    );
   }
 }
-
-

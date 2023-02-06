@@ -26,6 +26,12 @@ class _DatePick extends State<DatePick> {
 
   @override
   Widget build(BuildContext context) {
+
+    final ButtonStyle style = ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          foregroundColor: Theme.of(context).colorScheme.onPrimary,
+          shadowColor: Theme.of(context).colorScheme.onPrimary,
+          elevation: 8);
     return Form(
       key: _dateKey,
       child: Column(children: [
@@ -33,7 +39,7 @@ class _DatePick extends State<DatePick> {
           controller: selectDate,
           decoration: const InputDecoration(
               icon: Icon(Icons.calendar_today_rounded),
-              labelText: 'Select Date'),
+              labelText: 'Select date of birth of your child'),
           autovalidateMode: _submitted
               ? AutovalidateMode.onUserInteraction
               : AutovalidateMode.disabled,
@@ -67,18 +73,19 @@ class _DatePick extends State<DatePick> {
           onChanged: (formattedDate) => setState(() => _name = formattedDate),
         ),
         SizedBox(height: 30),
-        Center(
-          child: ElevatedButton(
-            onPressed: _name.isNotEmpty ? _submit : null,
-            style: ElevatedButton.styleFrom(
-                textStyle:
-                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-            child: Text(
-              'Submit',
-              // style: Theme.of(context)
-              //     .textTheme
-              //     .headline6!
-              //     .copyWith(color: Colors.white),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: ElevatedButton(
+              onPressed: _name.isNotEmpty ? _submit : null,
+              style: style,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'SUBMIT',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)
+                ),
+              ),
             ),
           ),
         )

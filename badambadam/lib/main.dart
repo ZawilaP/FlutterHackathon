@@ -126,7 +126,10 @@ class MyHomePage extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: TextSubmitForm(onSubmit: (value) => print(value)),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: TextSubmitForm(onSubmit: (value) => print(value)),
+                ),
               ),
               Expanded(
                 child: DatePick(onSubmit: (value) => print(value)),
