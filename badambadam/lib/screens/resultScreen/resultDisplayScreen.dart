@@ -59,7 +59,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
           child: Text(
               "Identyfikator Twojego badania wykonanego ${DateTime.now()}: ${getCurrentGuid().toString().replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}"),
         ),
-        PDFSave(score: widget.score,),
+        PDFSave(score: widget.score, allAnswers: widget.allAnswers,),
         Padding(
           padding: const EdgeInsets.all(12.0),
           child: Text(

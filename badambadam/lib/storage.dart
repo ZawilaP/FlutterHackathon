@@ -68,6 +68,17 @@ int getFinalScore() {
   return box.read('score') ?? 0;
 }
 
+void addAllTopLevelNodes(List<String> topLevelSurvey) {
+  final box = GetStorage();
+  box.remove('topLevelSurvey');
+  box.write('topLevelSurvey', topLevelSurvey);
+}
+
+List<String> getTopLevelNodes() {
+  final box = GetStorage();
+  return box.read('topLevelSurvey') ?? List.empty();
+}
+
 Future<void> writeCurrentAnswers() async {
   saveSurvey(getCurrentGuid(), getAllAnswersList());
 }

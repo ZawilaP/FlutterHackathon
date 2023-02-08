@@ -29,6 +29,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
       return Center(child: Text('Loading...'));
     } else {
       List<Node> topLevelSurvey = survey!.getTopLevelNodesOnly();
+      List<String> topLevelQuestions = [];
 
       // used for storing answers. Initialized with -1 for no answer.
       final ValueNotifier<List<int>> allAnswers = ValueNotifier<List<int>>(
@@ -52,7 +53,9 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                   children: const <Widget>[
                     Text('Keep in mind how your child usually behaves.'),
                     Text(
-                        'If you have seen your child do the behavior a few times, but he or she does not usually do it, then please answer no.', style: TextStyle(fontWeight: FontWeight.bold),),
+                      'If you have seen your child do the behavior a few times, but he or she does not usually do it, then please answer no.',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ),
@@ -78,6 +81,8 @@ class _SurveyWidgetState extends State<SurveyWidget> {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             sliver: SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
+              topLevelQuestions
+                  .add(topLevelSurvey[index].questions[0].toString());
               return SingleSurveyQuestion(
                 questionNode: topLevelSurvey[index],
                 allAnswers: allAnswers,
@@ -100,6 +105,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                         } else {
                           updateGuidList(
                               "${DateTime.now().toString().trim()}_test");
+                          addAllTopLevelNodes(topLevelQuestions);
                           addAllAnswersList(allAnswers.value);
                           writeCurrentAnswers();
                           addFinalScore();
