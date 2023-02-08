@@ -137,9 +137,9 @@ class Survey {
   Future<Survey> load() async {
     print("Printuje snapshot");
     await register();
-    await saveSurvey("231231", ["dummyvalue"]);
-    await updateQuestion(81, {"questions/0": "PG13"});
-    await saveNewAdmin("admin@admin.com", "admin");
+    // await saveSurvey("231231", ["dummyvalue"]);
+    // await updateQuestion(81, {"questions/0": "PG13"});
+    // await saveNewAdmin("admin@admin.com", "admin");
 
     final ref2 = FirebaseDatabase.instance.ref();
     final snapshot = await ref2.get();
