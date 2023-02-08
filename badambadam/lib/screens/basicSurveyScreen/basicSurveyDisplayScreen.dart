@@ -82,7 +82,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
             sliver: SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
               topLevelQuestions
-                  .add(topLevelSurvey[index].questions[0].toString());
+                  .add('${topLevelSurvey[index].id}. ${topLevelSurvey[index].questions[0]}+${topLevelSurvey[index].isInverted}');
               return SingleSurveyQuestion(
                 questionNode: topLevelSurvey[index],
                 allAnswers: allAnswers,
