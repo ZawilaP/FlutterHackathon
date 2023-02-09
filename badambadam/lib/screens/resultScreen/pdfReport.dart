@@ -1,10 +1,8 @@
-import 'dart:html';
 import 'dart:typed_data';
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'dart:typed_data';
 import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:badambadam/model.dart';
@@ -67,11 +65,7 @@ class _PDFSaveState extends State<PDFSave> {
                               style:
                                   pw.TextStyle(fontWeight: pw.FontWeight.bold))
                         ])),
-                        // pw.Text("Your child's score: ${widget.score}/20",
-                        //     style: pw.TextStyle(
-                        //         fontSize: 12, fontWeight: pw.FontWeight.bold)),
-                      ]
-                      ),
+                      ]),
                   pw.Column(
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
                       children: [
@@ -79,7 +73,12 @@ class _PDFSaveState extends State<PDFSave> {
                             text: pw.TextSpan(children: <pw.TextSpan>[
                           pw.TextSpan(text: "SurveyID: "),
                           pw.TextSpan(
-                              text: getCurrentGuid().toString().replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-"),
+                              text: getCurrentGuid()
+                                  .toString()
+                                  .replaceAll(".", "-")
+                                  .replaceAll(" ", "-")
+                                  .replaceAll(":", "-")
+                                  .replaceAll("_", "-"),
                               style:
                                   pw.TextStyle(fontWeight: pw.FontWeight.bold))
                         ])),

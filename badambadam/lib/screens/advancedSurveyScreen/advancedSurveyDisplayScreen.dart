@@ -43,9 +43,13 @@ class _AdvancedSurveyDisplayScreenState
       final ValueNotifier<Map<String, List<String>>> allAdvancedAnswersDetail =
           ValueNotifier<Map<String, List<String>>>({
         for (var item in allNodes)
-          item.id: List<String>.generate(item.questions.length, (index) => '-1')
+          item.id: List<String>.generate(
+              item.questions.length > 1
+                  ? item.questions.length - 1
+                  : item.questions.length,
+              (index) =>
+                  '-1') // first question for radio buttons is not radio, just a title, that's why length - 1
       });
-
 
       print(allAdvancedAnswersDetail);
 
@@ -126,12 +130,10 @@ class _AdvancedSurveyDisplayScreenState
                                   itemCount: questionNode.questions.length - 1,
                                   itemBuilder: ((context, inputIndex) {
                                     return RadioButtons(
-                                        question: questionNode.questions
-                                            .sublist(
-                                                1,
-                                                questionNode.questions
-                                                    .length)[inputIndex]
-                                            .toString(), inputIndex: inputIndex);
+                                        allAdvancedAnswersDetails:
+                                            allAdvancedAnswersDetail,
+                                        question: questionNode,
+                                        inputIndex: inputIndex);
                                   }))),
                         ),
                       ),
@@ -206,7 +208,7 @@ class _AdvancedSurveyDisplayScreenState
       );
     }
   }
-  
+
   void calculateAll(ValueNotifier<List<int>> allAdvancedAnswers) {
     print(allAdvancedAnswers);
   }
