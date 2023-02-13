@@ -44,22 +44,22 @@ void updateGuidList(dynamic newGuid) {
   addGuidList(newGuidList);
 }
 
-void addAllAnswersList (List<int> answers) {
+void addAllAnswersMap (Map<String, int> answers) {
   final box  = GetStorage();
   box.remove('answersList');
   box.write('answersList', answers);
 }
 
-List<int> getAllAnswersList () {
+Map<String, int> getAllAnswersMap () {
   final box = GetStorage();
   print(box.read("answersList"));
-  return box.read("answersList") ?? List.empty();
+  return box.read("answersList") ?? {};
 }
 
 void addFinalScore() {
   final box = GetStorage();
-  List<int> allAnswers = getAllAnswersList();
-  var score = allAnswers.reduce((a, b) => a + b);
+  Map<String, int> allAnswers = getAllAnswersMap();
+  var score = allAnswers.values.reduce((a, b) => a + b);
   box.write('score', score);
 }
 
@@ -80,7 +80,7 @@ List<String> getTopLevelNodes() {
 }
 
 Future<void> writeCurrentAnswers() async {
-  saveSurvey(getCurrentGuid(), getAllAnswersList());
+  saveSurvey(getCurrentGuid(), getAllAnswersMap().values.toList());
 }
 
 List<dynamic> getCurrentAnswers() {

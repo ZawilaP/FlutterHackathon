@@ -9,7 +9,7 @@ class ResultDisplayScreen extends StatefulWidget {
   const ResultDisplayScreen({this.score, this.allAnswers});
 
   final int? score;
-  final List<int>? allAnswers;
+  final Map<String, int>? allAnswers;
 
   @override
   State<ResultDisplayScreen> createState() => _ResultDisplayScreenState();
@@ -52,14 +52,14 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
         ),
         ScoreDisplayContainer(
           score: widget.score,
-          allAnswers: widget.allAnswers,
+          allAnswers: widget.allAnswers!.values.toList(),
         ),
         Padding(
           padding: const EdgeInsets.all(12.0),
           child: Text(
               "Identyfikator Twojego badania wykonanego ${DateTime.now()}: ${getCurrentGuid().toString().replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}"),
         ),
-        PDFSave(score: widget.score, allAnswers: widget.allAnswers,),
+        PDFSave(score: widget.score, allAnswers: widget.allAnswers!.values.toList(),),
         Padding(
           padding: const EdgeInsets.all(12.0),
           child: Text(

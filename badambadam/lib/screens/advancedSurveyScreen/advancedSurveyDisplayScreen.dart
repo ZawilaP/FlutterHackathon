@@ -1,7 +1,6 @@
 import 'package:badambadam/screens/advancedSurveyScreen/advancedSingleQuestionWidget.dart';
 import 'package:flutter/material.dart';
 import '../../model.dart';
-import '../advancedSurveyScreen/advancedSingleQuestionWidget.dart';
 import '../../storage.dart';
 import 'radioResponseWidget.dart';
 
@@ -35,11 +34,7 @@ class _AdvancedSurveyDisplayScreenState
       List<Node> allNodes = survey!.nodes;
       List<Node> topLevelSurvey = survey!.getTopLevelNodesOnly();
 
-      // used for storing answers. Initialized with -1 for no answer.
-      final ValueNotifier<List<int>> allAdvancedAnswers =
-          ValueNotifier<List<int>>(
-              List<int>.generate(allNodes.length, (i) => 0));
-
+      // used for storing all answers
       final ValueNotifier<Map<String, List<String>>> allAdvancedAnswersDetail =
           ValueNotifier<Map<String, List<String>>>({
         for (var item in allNodes)
@@ -58,40 +53,6 @@ class _AdvancedSurveyDisplayScreenState
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
           shadowColor: Theme.of(context).colorScheme.onPrimary,
           elevation: 8);
-
-      Future<void> _showMyDialog() async {
-        return showDialog<void>(
-          context: context,
-          barrierDismissible: false, // user must tap button!
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: const Text('Please check yes or no for every question'),
-              content: SingleChildScrollView(
-                child: ListBody(
-                  children: const <Widget>[
-                    Text('Keep in mind how your child usually behaves.'),
-                    Text(
-                      'If you have seen your child do the behavior a few times, but he or she does not usually do it, then please answer no.',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-              actions: <Widget>[
-                TextButton(
-                  child: const Text(
-                    'Close',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            );
-          },
-        );
-      }
 
       return CustomScrollView(
         slivers: [
@@ -180,16 +141,9 @@ class _AdvancedSurveyDisplayScreenState
                   ElevatedButton(
                       style: style,
                       onPressed: () {
-                        if (allAdvancedAnswers.value.contains(-1)) {
-                          _showMyDialog();
-                        } else {
-                          updateGuidList(
-                              "${DateTime.now().toString().trim()}_test");
-                          addAllAnswersList(allAdvancedAnswers.value);
-                          addFinalScore();
-                          calculateAll(allAdvancedAnswers);
-                          Navigator.pushNamed(context, '/advancedResult');
-                        }
+                        updateGuidList(
+                            "${DateTime.now().toString().trim()}_test");
+                        Navigator.pushNamed(context, '/advancedResult');
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
