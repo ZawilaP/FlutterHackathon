@@ -31,8 +31,17 @@ class _AdvancedSurveyDisplayScreenState
       FakeBackendSingleton().getSurvey(null).then(showSurvey);
       return Center(child: Text('Loading...'));
     } else {
-      List<Node> allNodes = survey!.nodes;
-      List<Node> topLevelSurvey = survey!.getTopLevelNodesOnly();
+      Map<String, int> primarySurveyAnswers =
+          Map<String, int>.from(getAllAnswersMap());
+
+      // remove questions with answers that were not 1
+      primarySurveyAnswers.removeWhere((key, value) => value != 1);
+      print(primarySurveyAnswers);
+
+      List<Node> allNodes = survey!.nodes
+          .where((element) =>
+              primarySurveyAnswers.keys.contains(element.id.split('_')[0]))
+          .toList();
 
       // used for storing all answers
       final ValueNotifier<Map<String, List<String>>> allAdvancedAnswersDetail =
@@ -77,7 +86,7 @@ class _AdvancedSurveyDisplayScreenState
                         color: Colors.white,
                         child: ListTile(
                           title: Text(
-                            '${questionNode.id} ${questionNode.questions[0]}',
+                            'Question ${questionNode.id} ${questionNode.questions[0]}',
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                           subtitle: ConstrainedBox(
@@ -112,7 +121,9 @@ class _AdvancedSurveyDisplayScreenState
                           title: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                                '${questionNode.id} ${questionNode.questions[0].toString()}'),
+                              'Question ${questionNode.id} ${questionNode.questions[0].toString()}',
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
                           ),
                           subtitle: Padding(
                             padding: const EdgeInsets.all(8.0),

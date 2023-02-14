@@ -46,14 +46,14 @@ void updateGuidList(dynamic newGuid) {
 
 void addAllAnswersMap (Map<String, int> answers) {
   final box  = GetStorage();
-  box.remove('answersList');
-  box.write('answersList', answers);
+  box.remove('answersMap');
+  box.write('answersMap', answers);
 }
 
 Map<String, int> getAllAnswersMap () {
   final box = GetStorage();
-  print(box.read("answersList"));
-  return box.read("answersList") ?? {};
+  print(box.read("answersMap"));
+  return box.read("answersMap") ?? {};
 }
 
 void addFinalScore() {
