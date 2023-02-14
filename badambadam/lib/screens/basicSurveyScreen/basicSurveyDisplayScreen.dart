@@ -27,13 +27,16 @@ class _SurveyWidgetState extends State<SurveyWidget> {
       // if not there - then load one
       FakeBackendSingleton().getSurvey(null).then(showSurvey);
       return Center(child: Text('Loading...'));
+      
     } else {
       List<Node> topLevelSurvey = survey!.getTopLevelNodesOnly();
       List<String> topLevelQuestions = [];
 
       // used for storing answers. Initialized with -1 for no answer.
-      final ValueNotifier<List<int>> allAnswers = ValueNotifier<List<int>>(
-          List<int>.generate(topLevelSurvey.length, (i) => -1));
+      final ValueNotifier<Map<String, int>> allAnswers = ValueNotifier<Map<String, int>>({
+        for (var item in topLevelSurvey)
+          item.id: -1 
+      });
 
       final ButtonStyle style = ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).colorScheme.primary,
@@ -100,13 +103,13 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                   ElevatedButton(
                       style: style,
                       onPressed: () {
-                        if (allAnswers.value.contains(-1)) {
+                        if (allAnswers.value.values.contains(-1)) {
                           _showMyDialog();
                         } else {
                           updateGuidList(
                               "${DateTime.now().toString().trim()}_test");
                           addAllTopLevelNodes(topLevelQuestions);
-                          addAllAnswersList(allAnswers.value);
+                          addAllAnswersMap(allAnswers.value);
                           writeCurrentAnswers();
                           addFinalScore();
                           Navigator.pushNamed(context, '/result');

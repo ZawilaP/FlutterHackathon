@@ -9,7 +9,7 @@ class SingleSurveyQuestion extends StatefulWidget {
   });
 
   final Node? questionNode;
-  final ValueNotifier<List<int>> allAnswers;
+  final ValueNotifier<Map<String, int>> allAnswers;
 
   @override
   State<SingleSurveyQuestion> createState() => _SingleSurveyQuestionState();
@@ -64,10 +64,10 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
                               (!widget.questionNode!.isInverted &&
                                   index == 1)) {
                             widget.allAnswers.value[
-                                int.parse(widget.questionNode!.id) - 1] = 1;
+                               widget.questionNode!.id] = 1;
                           } else {
                             widget.allAnswers.value[
-                                int.parse(widget.questionNode!.id) - 1] = 0;
+                                widget.questionNode!.id] = 0;
                           }
 
                           print(widget.allAnswers);
