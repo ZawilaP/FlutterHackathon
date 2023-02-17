@@ -82,21 +82,28 @@ class MyHomePage extends StatelessWidget {
           scale: 2,
         ),
         actions: <Widget>[
-          Padding(
-              padding: EdgeInsets.only(right: 50.0),
-              child: ElevatedButton(
-                  onPressed: () {
-                    setCurrentLanguage("PL");
-                  },
-                  child: Text("PL"))),
-          Padding(
-              padding: EdgeInsets.only(right: 50.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  setCurrentLanguage("ENG");
-                },
-                child: Text("ENG"),
-              )),
+          IconButton(
+            style: IconButton.styleFrom(hoverColor: Colors.transparent),
+            icon: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Image.asset(
+                'graphics/flag_pl.png',
+              ),
+            ),
+            onPressed: () {
+              setCurrentLanguage("PL");
+            },
+          ),
+          IconButton(
+            style: IconButton.styleFrom(hoverColor: Colors.transparent),
+            icon: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Image.asset('graphics/flag_eng.png'),
+            ),
+            onPressed: () {
+              setCurrentLanguage("ENG");
+            },
+          ),
           Padding(
               padding: EdgeInsets.only(right: 50.0),
               child: ElevatedButton(
@@ -108,6 +115,7 @@ class MyHomePage extends StatelessWidget {
         ],
       ),
       body: ListView(
+        shrinkWrap: true,
         children: [
           Padding(
             padding: const EdgeInsets.all(10.0),
@@ -123,19 +131,8 @@ class MyHomePage extends StatelessWidget {
               );
             }).toList()),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: TextSubmitForm(onSubmit: (value) => print(value)),
-                ),
-              ),
-              Expanded(
-                child: DatePick(onSubmit: (value) => print(value)),
-              )
-            ],
-          )
+          TextSubmitForm(onSubmit: (value) => print(value)),
+          DatePick(onSubmit: (value) => print(value))
         ],
       ),
     );
@@ -148,5 +145,5 @@ const entryTextPl = [
   "Zachęcamy więc do wypełnienia kwestionariusza, szczególnie, że można to zrobić w najbardziej wygodnym dla siebie czasie i miejscu, ze względu na dostępność badania online.",
   "The Modified Checklist for Autism in Toddlers (M-CHAT-R), powiązane z nim materiały oraz wszelkie informacje o możliwości ich użytkowania dostępne są na stronie https://www.mchatscreen.com .",
   "Narzędzie M-CHAT-R przeznaczone jest dla dzieci w wieku 16 do 30 miesięcy. Wypełnienie kwestionariusza dla dzieci młodszych niż 16 miesięcy da nieprawdziwe wyniki, gdyż mają one prawo nie opanować jeszcze wielu umiejętności, jakie posiadają dzieci starsze. Rodziców młodszych dzieci (pomiędzy 12 a 18 miesiącem życia) zachęcamy do zapoznania się z listą umiejętności rozwojowych odpowiadających temu wiekowi http://synapsis.org.pl/zycie-z-autyzmem/dla-rodzicow-i-opiekunow/12-18-miesiac",
-  "By wziąć udział w ankiecie wypełnij wiek swojego dziecka w miesiącach poniżej:"
+  "By wziąć udział w ankiecie podaj kod pocztowy oraz datę urodzenia swojego dziecka:"
 ];
