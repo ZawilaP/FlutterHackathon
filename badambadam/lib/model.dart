@@ -148,8 +148,8 @@ class Survey {
     List questions = x["questions"] as List;
     sortListById(questions);
     for (var item in questions) {
-      Node n = Node(item["id"], item["author"], item["is_top_level"],
-          item["is_inverted"], item["node_type"], item["questions"]);
+      Node n = Node(item["id"], item["is_top_level"], item["is_inverted"],
+          item["node_type"], item["questions"]);
       nodes.add(n);
     }
     return this;
@@ -180,7 +180,6 @@ class Survey {
 
 class Node {
   late String id;
-  late String author;
   late bool isTopLevel;
   late bool isInverted;
   late String nodeType;
@@ -193,10 +192,9 @@ class Node {
   NodeStatus status = NodeStatus.unansweredYet;
   NodeAnswer? answer;
 
-  Node(String _id, String _author, String _isTopLevel, String _isInverted,
-      String _nodeType, List<dynamic> _questions) {
+  Node(String _id, String _isTopLevel, String _isInverted, String _nodeType,
+      List<dynamic> _questions) {
     id = _id;
-    author = _author;
     isTopLevel = _isTopLevel == "YES" ? true : false;
     isInverted = _isInverted == "YES" ? true : false;
     nodeType = _nodeType;
@@ -207,7 +205,7 @@ class Node {
   }
   @override
   String toString() {
-    return "Node: $id, $author, $isTopLevel, $isInverted, $nodeType, $questions";
+    return "Node: $id, $isTopLevel, $isInverted, $nodeType, $questions";
   }
 }
 
