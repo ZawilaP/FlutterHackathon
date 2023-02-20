@@ -52,7 +52,7 @@ class _AdvancedSurveyDisplayScreenState
                   ? item.questions.length - 1
                   : item.questions.length,
               (index) =>
-                  '-1') // first question for radio buttons is not radio, just a title, that's why length - 1
+                  'NO_ANSWER') // first question for radio buttons is not radio, just a title, that's why length - 1
       });
 
       print(allAdvancedAnswersDetail);
@@ -210,7 +210,7 @@ class _AdvancedTextFieldState extends State<AdvancedTextField> {
           hintText: 'If you want to add something, do it here'),
       onChanged: (text) {
         widget.allAdvancedAnswersDetails.value[widget.nodeId] =
-            ["open_" + myController.text].toList();
+            ["OPEN_" + myController.text].toList();
         print(widget.allAdvancedAnswersDetails.toString());
       },
     );

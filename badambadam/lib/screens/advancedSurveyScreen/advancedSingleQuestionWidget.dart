@@ -67,10 +67,10 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
                                   index == 1)) {
                             widget.allAnswers.value[
                                 widget.questionNode!.id] = 
-                                {'1'}.toList();
+                                {'FAIL'}.toList();
                           } else {
                             widget.allAnswers.value[
-                                widget.questionNode!.id] = {'0'}.toList();
+                                widget.questionNode!.id] = {'PASS'}.toList();
                           }
 
                           print(widget.allAnswers);
