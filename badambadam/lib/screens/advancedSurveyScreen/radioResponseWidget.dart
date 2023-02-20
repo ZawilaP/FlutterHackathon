@@ -22,6 +22,8 @@ class _RadioButtonsState extends State<RadioButtons> with AutomaticKeepAliveClie
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     List<String> questionWordsList = widget.question.questions
         .sublist(1, widget.question.questions.length)[widget.inputIndex]
         .toString()
@@ -40,7 +42,7 @@ class _RadioButtonsState extends State<RadioButtons> with AutomaticKeepAliveClie
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Radio<String>(
-                value: isReversed ? '1' : '0',
+                value: isReversed ? 'FAIL' : 'PASS',
                 activeColor: MaterialStateColor.resolveWith(
                     (states) => Theme.of(context).colorScheme.primary),
                 groupValue: _point,
@@ -60,7 +62,7 @@ class _RadioButtonsState extends State<RadioButtons> with AutomaticKeepAliveClie
                 width: 8,
               ),
               Radio<String>(
-                value: isReversed ? '0' : '1',
+                value: isReversed ? 'PASS' : 'FAIL',
                 groupValue: _point,
                 activeColor: MaterialStateColor.resolveWith(
                     (states) => Theme.of(context).colorScheme.primary),
