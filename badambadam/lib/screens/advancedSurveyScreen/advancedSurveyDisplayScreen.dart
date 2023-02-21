@@ -1,4 +1,5 @@
 import 'package:badambadam/screens/advancedSurveyScreen/advancedSingleQuestionWidget.dart';
+import 'package:badambadam/screens/advancedSurveyScreen/singleSelectWidget.dart';
 import 'package:flutter/material.dart';
 import '../../model.dart';
 import '../../storage.dart';
@@ -70,7 +71,41 @@ class _AdvancedSurveyDisplayScreenState
             sliver: SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
               Node questionNode = allNodes[index];
-              if (allNodes[index].nodeType == 'Simple_Yes_No') {
+
+              if (allNodes[index].nodeType == 'SingleSelect') {
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        color: Colors.white,
+                        child: ListTile(
+                          title: Text(
+                            'Question ${questionNode.id} ${questionNode.questions[0]}',
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          subtitle: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                  minHeight:
+                                      MediaQuery.of(context).size.height * 0.2,
+                                  maxHeight:
+                                      MediaQuery.of(context).size.height * 0.7),
+                              child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: questionNode.questions.length - 1,
+                                  itemBuilder: ((context, inputIndex) {
+                                    return SingleSelect(
+                                        allAdvancedAnswersDetails:
+                                            allAdvancedAnswersDetail,
+                                        question: questionNode,
+                                        inputIndex: inputIndex);
+                                  }))),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              } else if (questionNode.nodeType == 'Simple_Yes_No') {
                 return AdvancedSingleQuestion(
                   questionNode: questionNode,
                   allAnswers: allAdvancedAnswersDetail,
@@ -210,7 +245,7 @@ class _AdvancedTextFieldState extends State<AdvancedTextField> {
           hintText: 'If you want to add something, do it here'),
       onChanged: (text) {
         widget.allAdvancedAnswersDetails.value[widget.nodeId] =
-            ["OPEN_" + myController.text].toList();
+            ["OPEN_${myController.text}"].toList();
         print(widget.allAdvancedAnswersDetails.toString());
       },
     );
