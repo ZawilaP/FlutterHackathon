@@ -214,75 +214,74 @@ class _AdvancedSurveyDisplayScreenState
   void calculateAll(
       ValueNotifier<Map<String, List<String>>> allAdvancedAnswers) {
     Map<String, List<String>> answers = allAdvancedAnswers.value;
-    List<int> results = List<int>.filled(20, -1);
-
+    Map<String, int> resultsMap = {};
     // 1
     bool onePass = answers["1_01"]!.contains("PASS_YES");
     bool oneFail = answers["1_01"]!.contains("FAIL_YES");
     // it can be optimized, but not for now
     if (!onePass & !oneFail) {
       print("What does he do?");
-      results[0] = 0;
+      resultsMap["1"] = 0;
     } else if (onePass & !oneFail) {
       print("1");
-      results[0] = 1;
+      resultsMap["1"] = 1;
     } else if (!onePass & oneFail) {
       print("1: 0");
-      results[0] = 0;
+      resultsMap["1"] = 0;
     } else if (onePass & oneFail) {
       bool pass = answers["1_02"]!.contains("PASS_YES");
       bool fail = answers["1_02"]!.contains("FAIL_YES");
       if (pass) {
-        results[0] = 1;
+        resultsMap["1"] = 1;
       } else if (fail) {
-        results[0] = 0;
+        resultsMap["1"] = 0;
       }
     }
     // 2
-    results[1] = answers["2"]!.contains("PASS_YES") ? 0 : 1;
+    resultsMap["2"] = answers["2"]!.contains("PASS_YES") ? 0 : 1;
     // 3
     if (answers["3_01"]!.contains("PASS_YES")) {
-      results[2] = 1;
+      resultsMap["3"] = 1;
     }
     //4
-    results[3] = answers["4_01"]!.contains("PASS_YES") ? 1 : 0;
+    resultsMap["4"] = answers["4_01"]!.contains("PASS_YES") ? 1 : 0;
 
     //5
     if (!answers["5_01"]!.contains("FAIL_YES")) {
-      results[4] = 1;
+      resultsMap["5"] = 1;
     } else {
-      results[4] = answers["5_02"]!.contains("PASS_YES") ? 0 : 1;
+      resultsMap["5"] = answers["5_02"]!.contains("PASS_YES") ? 0 : 1;
     }
 
     //6
     if (!answers["6_01"]!.contains("PASS_YES")) {
-      results[5] = 0;
+      resultsMap["6"] = 0;
     } else {
-      results[5] = answers["6_02"]!.contains("PASS_YES") ? 1 : 0;
+      resultsMap["6"] = answers["6_02"]!.contains("PASS_YES") ? 1 : 0;
     }
     //7
     if (!answers["7_01"]!.contains("PASS_YES")) {
-      results[6] = 0;
+      resultsMap["7"] = 0;
     } else if (!answers["7_02"]!.contains("PASS_YES")) {
-      results[6] = 0;
+      resultsMap["7"] = 0;
     } else {
-      results[6] = answers["7_03"]!.contains("PASS_YES") ? 1 : 0;
+      resultsMap["7"] = answers["7_03"]!.contains("PASS_YES") ? 1 : 0;
     }
     //8
     if (answers["8_01"]!.contains("PASS_YES")) {
-      results[7] = 1;
+      resultsMap["8"] = 1;
     } else if (!answers["8_02"]!.contains("PASS_YES")) {
-      results[7] = 0;
+      resultsMap["8"] = 0;
     } else if (!answers["8_03"]!.contains("PASS_YES")) {
-      results[7] = 0;
+      resultsMap["8"] = 0;
     } else {
-      results[7] = answers["8_04"]!.contains("PASS_YES") ? 1 : 0;
+      resultsMap["8"] = answers["8_04"]!.contains("PASS_YES") ? 1 : 0;
     }
     //9
     if (!answers["9_01"]!.contains("PASS_YES")) {
-      results[8] = 0;
+      resultsMap["9"] = 0;
     } else {
-      results[8] = answers["9_02"]!.contains("PASS_YES") ? 1 : 0;
+      resultsMap["9"] = answers["9_02"]!.contains("PASS_YES") ? 1 : 0;
     }
     //10
     bool onePassTen = answers["10_01"]!.contains("PASS_YES");
@@ -290,90 +289,90 @@ class _AdvancedSurveyDisplayScreenState
     // it can be optimized, but not for now
     if (!onePassTen & !oneFailTen) {
       print("What does he do?");
-      results[9] = 0;
+      resultsMap["10"] = 0;
     } else if (onePassTen & !oneFailTen) {
-      results[9] = 1;
+      resultsMap["10"] = 1;
     } else if (!onePassTen & oneFailTen) {
-      results[9] = 0;
+      resultsMap["10"] = 0;
     } else if (onePassTen & oneFailTen) {
       bool passTen = answers["10_02"]!.contains("PASS_YES");
       bool failTen = answers["10_02"]!.contains("FAIL_YES");
       if (passTen) {
-        results[9] = 1;
+        resultsMap["10"] = 1;
       } else if (failTen) {
-        results[9] = 0;
+        resultsMap["10"] = 0;
       }
     }
     //11
     if (answers["11"]!.contains("PASS_YES")) {
-      results[10] = 1;
+      resultsMap["11"] = 1;
     } else {
       bool onePass11 = answers["11_01"]!.contains("PASS_YES");
       bool oneFail11 = answers["11_01"]!.contains("FAIL_YES");
       // it can be optimized, but not for now
       if (!onePass11 & !oneFail11) {
         print("What does he do?");
-        results[10] = 0;
+        resultsMap["11"] = 0;
       } else if (onePass11 & !oneFail11) {
-        results[10] = 1;
+        resultsMap["11"] = 1;
       } else if (!onePass11 & oneFail11) {
-        results[10] = 0;
+        resultsMap["11"] = 0;
       } else if (onePass11 & oneFail11) {
         bool pass11 = answers["11_02"]!.contains("PASS_YES");
         bool fail11 = answers["11_02"]!.contains("FAIL_YES");
         if (pass11) {
-          results[10] = 1;
+          resultsMap["11"] = 1;
         } else if (fail11) {
-          results[10] = 0;
+          resultsMap["11"] = 0;
         }
       }
     }
     //12
     if (answers["12_01"]!.where((element) => element == "PASS_YES").length <=
         1) {
-      results[11] = 1;
+      resultsMap["12"] = 1;
     } else {
       bool onePass12 = answers["12_02"]!.contains("PASS_YES");
       bool oneFail12 = answers["12_02"]!.contains("FAIL_YES");
       // it can be optimized, but not for now
       if (!onePass12 & !oneFail12) {
         print("What does he do?");
-        results[11] = 0;
+        resultsMap["12"] = 0;
       } else if (onePass12 & !oneFail12) {
-        results[11] = 1;
+        resultsMap["12"] = 1;
       } else if (!onePass12 & oneFail12) {
-        results[11] = 0;
+        resultsMap["12"] = 0;
       } else if (onePass12 & oneFail12) {
         bool pass12 = answers["12_03"]!.contains("PASS_YES");
         bool fail12 = answers["12_03"]!.contains("FAIL_YES");
         if (pass12) {
-          results[11] = 1;
+          resultsMap["12"] = 1;
         } else if (fail12) {
-          results[11] = 0;
+          resultsMap["12"] = 0;
         }
       }
     }
     //13
-    results[12] = answers["13_01"]!.contains("PASS_YES") ? 1 : 0;
+    resultsMap["13"] = answers["13_01"]!.contains("PASS_YES") ? 1 : 0;
 
     //14
     int numberOfYes =
         answers["14_01"]!.where((element) => element == "PASS_YES").length;
     if (numberOfYes == 0) {
-      results[13] = 0;
+      resultsMap["14"] = 0;
     } else if (numberOfYes >= 2) {
-      results[13] = 1;
+      resultsMap["14"] = 1;
     } else if (numberOfYes == 1) {
       if (answers["14_02"]!.contains("PASS_NO")) {
-        results[13] = 0;
+        resultsMap["14"] = 0;
       } else {
-        results[13] = answers["14_03"]!.contains("PASS_YES") ? 1 : 0;
+        resultsMap["14"] = answers["14_03"]!.contains("PASS_YES") ? 1 : 0;
       }
     }
     //15
     int numberOfYes15 =
         answers["15_01"]!.where((element) => element == "PASS_YES").length;
-    results[14] = numberOfYes >= 2 ? 1 : 0;
+    resultsMap["15"] = numberOfYes >= 2 ? 1 : 0;
     //16
 
     bool onePass16 = answers["16_01"]!.contains("PASS_YES");
@@ -381,46 +380,46 @@ class _AdvancedSurveyDisplayScreenState
     // it can be optimized, but not for now
     if (!onePass16 & !oneFail16) {
       print("What does he do?");
-      results[15] = 0;
+      resultsMap["16"] = 0;
     } else if (onePass16 & !oneFail16) {
-      results[15] = 1;
+      resultsMap["16"] = 1;
     } else if (!onePass16 & oneFail16) {
-      results[15] = 0;
+      resultsMap["16"] = 0;
     } else if (onePass16 & oneFail16) {
       bool pass16 = answers["16_02"]!.contains("PASS_YES");
       bool fail16 = answers["16_02"]!.contains("FAIL_YES");
       if (pass16) {
-        results[15] = 1;
+        resultsMap["16"] = 1;
       } else if (fail16) {
-        results[15] = 0;
+        resultsMap["16"] = 0;
       }
     }
     //17
-    results[16] = answers["17_01"]!.contains("PASS_YES") ? 1 : 0;
+    resultsMap["17"] = answers["17_01"]!.contains("PASS_YES") ? 1 : 0;
 
     //18
     if (!answers["18_01"]!.contains("PASS_YES") &&
         !answers["18_02"]!.contains("PASS_YES")) {
-      results[17] = 0;
+      resultsMap["18"] = 0;
     } else {
-      results[17] = answers["18_03"]!.contains("PASS_YES") ? 1 : 0;
+      resultsMap["18"] = answers["18_03"]!.contains("PASS_YES") ? 1 : 0;
     }
     //19
     if (answers["19_01"]!.contains("PASS_YES")) {
-      results[18] = 1;
+      resultsMap["19"] = 1;
     } else if (answers["19_02"]!.contains("PASS_YES")) {
-      results[18] = 1;
+      resultsMap["19"] = 1;
     } else {
-      results[18] = answers["19_03"]!.contains("PASS_YES") ? 1 : 0;
+      resultsMap["19"] = answers["19_03"]!.contains("PASS_YES") ? 1 : 0;
     }
     //20
     if (answers["20_01"]!.contains("PASS_YES")) {
-      results[19] = 1;
+      resultsMap["20"] = 1;
     } else {
-      results[19] = answers["20_02"]!.contains("PASS_YES") ? 1 : 0;
+      resultsMap["20"] = answers["20_02"]!.contains("PASS_YES") ? 1 : 0;
     }
     print("RESULTS");
-    print(results);
+    print(resultsMap);
   }
 }
 
