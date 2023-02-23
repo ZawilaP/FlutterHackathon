@@ -33,7 +33,7 @@ class _AdvancedSurveyDisplayScreenState
       return Center(child: Text('Loading...'));
     } else {
       Map<String, int> primarySurveyAnswers =
-          Map<String, int>.from(getAllAnswersMap());
+          Map<String, int>.from(getAllAnswersMap()).cast<String, int>();
 
       // remove questions with answers that were not 1
       primarySurveyAnswers.removeWhere((key, value) => value != 1);

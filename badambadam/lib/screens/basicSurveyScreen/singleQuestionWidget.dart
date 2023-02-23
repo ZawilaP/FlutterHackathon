@@ -27,13 +27,17 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
       child: Card(
         color: Colors.white,
+        shape: RoundedRectangleBorder(side: BorderSide(color: Colors.grey.shade300, width: 2), borderRadius: BorderRadius.circular(15.0),),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              title: Text(
-                'Question ${widget.questionNode!.id}',
-                style: Theme.of(context).textTheme.titleLarge,
+              title: Padding(
+                padding: const EdgeInsets.only(bottom: 8, top: 8),
+                child: Text(
+                  'Question ${widget.questionNode!.id}',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
               ),
               subtitle: Text(
                 '${widget.questionNode!.questions[0]}',
@@ -44,7 +48,7 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: ToggleButtons(
                       isSelected: selected,
                       onPressed: (int index) {
@@ -73,10 +77,11 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
                           print(widget.allAnswers);
                         });
                       },
-                      borderColor: Colors.transparent,
+                      borderWidth: 1.5,
                       highlightColor: Theme.of(context).colorScheme.primary,
                       selectedBorderColor: Theme.of(context).colorScheme.primary,
-                      children: <Widget>[Text('YES'), Text('NO')]),
+                      borderRadius: BorderRadius.circular(10),
+                      children: <Widget>[Text('YES', style: TextStyle(fontSize: 21),), Text('NO', style: TextStyle(fontSize: 21),)]),
                 ),
               ],
             )
