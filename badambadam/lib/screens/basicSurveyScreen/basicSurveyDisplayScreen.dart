@@ -39,6 +39,9 @@ class _SurveyWidgetState extends State<SurveyWidget> {
       });
 
       final ButtonStyle style = ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
           backgroundColor: Theme.of(context).colorScheme.primary,
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
           shadowColor: Theme.of(context).colorScheme.onPrimary,
@@ -81,7 +84,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
       return CustomScrollView(
         slivers: [
           SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             sliver: SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
               topLevelQuestions
