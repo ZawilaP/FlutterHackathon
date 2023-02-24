@@ -46,10 +46,10 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
       );
     }
 
-    createFutureBuild() {
+    createSurveysBuild() {
       return FutureBuilder(
           future: getSurveyAnswers(),
-          initialData: "Loading text..",
+          initialData: "Loading surveys..",
           builder: (BuildContext context, AsyncSnapshot<dynamic> text) {
             return new SingleChildScrollView(
                 padding: new EdgeInsets.all(8.0),
@@ -63,7 +63,24 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
           });
     }
 
-    Future<void> _showMyDialog2() async {
+    createAdvancedSurveysBuild() {
+      return FutureBuilder(
+          future: getAdvancedSurveyAnswers(),
+          initialData: "Loading advanced surveys..",
+          builder: (BuildContext context, AsyncSnapshot<dynamic> text) {
+            return new SingleChildScrollView(
+                padding: new EdgeInsets.all(8.0),
+                child: new Text(
+                  text.data.toString().replaceAll("],", "],\n").replaceAll("{", "").replaceAll("}", ""),
+                  style: new TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 19.0,
+                  ),
+                ));
+          });
+    }
+
+    Future<void> showSurveys() async {
       return showDialog<void>(
         context: context,
         barrierDismissible: false, // user must tap button!
@@ -71,7 +88,33 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
           return AlertDialog(
             title: const Text('All surveys:'),
             content: SingleChildScrollView(
-                child: createFutureBuild()
+                child: createSurveysBuild()
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: const Text(
+                  'Close',
+                  style: TextStyle(fontSize: 20),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+    Future<void> showAdvancedSurveys() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('All advanced surveys:'),
+            content: SingleChildScrollView(
+                child: createAdvancedSurveysBuild()
             ),
             actions: <Widget>[
               TextButton(
@@ -112,7 +155,15 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
             child: Text("Show all past surveys"),
             onPressed: () async {
               print(await getAnswers());
-              _showMyDialog2();
+              showSurveys();
+            },
+          ),
+          Divider(height: 100),
+          ElevatedButton(
+            child: Text("Show all past advanced surveys"),
+            onPressed: () async {
+              print(await getAdvancedAnswers());
+              showAdvancedSurveys();
             },
           ),
           Divider(height: 100),
@@ -191,4 +242,8 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
 
 dynamic getAnswers() async {
   return await getSurveyAnswers().then((id) => [id]);
+}
+
+dynamic getAdvancedAnswers() async {
+  return await getAdvancedSurveyAnswers().then((id) => [id]);
 }
