@@ -83,6 +83,10 @@ Future<void> writeCurrentAnswers() async {
   saveSurvey(getCurrentGuid(), getAllAnswersMap().values.toList());
 }
 
+Future<void> writeCurrentAdvancedAnswers(Map<dynamic, dynamic> allAnswers) async {
+  saveAdvancedSurvey(getCurrentGuid(), allAnswers.values.toList());
+}
+
 List<dynamic> getCurrentAnswers() {
   final box = GetStorage();
   return box.read("currentAnswersTuple") ?? List.empty();

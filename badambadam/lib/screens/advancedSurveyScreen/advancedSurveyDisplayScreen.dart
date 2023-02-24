@@ -190,7 +190,7 @@ class _AdvancedSurveyDisplayScreenState
                         // updateGuidList(
                         // "${DateTime.now().toString().trim()}_test");
                         print("BUTTON PRESSED");
-                        calculateAll(allAdvancedAnswersDetail);
+                        writeCurrentAdvancedAnswers(calculateAll(allAdvancedAnswersDetail));
                         // Navigator.pushNamed(context, '/advancedResult');
                       },
                       child: Padding(
@@ -211,7 +211,7 @@ class _AdvancedSurveyDisplayScreenState
     }
   }
 
-  void calculateAll(
+  Map<dynamic, dynamic> calculateAll(
       ValueNotifier<Map<String, List<String>>> allAdvancedAnswers) {
     Map<String, List<String>> answers = allAdvancedAnswers.value;
     Map<String, int> resultsMap = {};
@@ -420,6 +420,7 @@ class _AdvancedSurveyDisplayScreenState
     }
     print("RESULTS");
     print(resultsMap);
+    return resultsMap;
   }
 }
 

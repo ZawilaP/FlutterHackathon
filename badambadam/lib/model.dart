@@ -135,7 +135,6 @@ class Survey {
 
   // load survey from json file (from backend later)
   Future<Survey> load() async {
-    print("Printuje snapshot");
     await register();
     // await saveSurvey("231231", ["dummyvalue"]);
     // await updateQuestion(81, {"questions/0": "PG13"});
@@ -236,6 +235,12 @@ Future<void> saveSurvey(String guid, List<dynamic> data) async {
   await ref.set(data);
 }
 
+Future<void> saveAdvancedSurvey(String guid, List<dynamic> data) async {
+  DatabaseReference ref = FirebaseDatabase.instance.ref(
+      "advancedAnswers/${guid.replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}");
+  await ref.set(data);
+}
+
 Future<void> saveNewAdmin(String email, String password) async {
   DatabaseReference refEmail =
       FirebaseDatabase.instance.ref("admin/${email.split("@").first}/email");
@@ -258,6 +263,13 @@ Future<dynamic> getAdminCredentials(String id) async {
 
 Future<dynamic> getSurveyAnswers() async {
   final ref2 = FirebaseDatabase.instance.ref("answers");
+  final snapshot = await ref2.get();
+  var x = snapshot.value as Map;
+  return x;
+}
+
+Future<dynamic> getAdvancedSurveyAnswers() async {
+  final ref2 = FirebaseDatabase.instance.ref("advancedAnswers");
   final snapshot = await ref2.get();
   var x = snapshot.value as Map;
   return x;
