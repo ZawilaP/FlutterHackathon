@@ -241,6 +241,12 @@ Future<void> saveAdvancedSurvey(String guid, List<dynamic> data) async {
   await ref.set(data);
 }
 
+Future<void> saveAdvancedRawSurvey(String guid, List<dynamic> data) async {
+  DatabaseReference ref = FirebaseDatabase.instance.ref(
+      "advancedRawAnswers/${guid.replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}");
+  await ref.set(data);
+}
+
 Future<void> saveNewAdmin(String email, String password) async {
   DatabaseReference refEmail =
       FirebaseDatabase.instance.ref("admin/${email.split("@").first}/email");
@@ -270,6 +276,13 @@ Future<dynamic> getSurveyAnswers() async {
 
 Future<dynamic> getAdvancedSurveyAnswers() async {
   final ref2 = FirebaseDatabase.instance.ref("advancedAnswers");
+  final snapshot = await ref2.get();
+  var x = snapshot.value as Map;
+  return x;
+}
+
+Future<dynamic> getAdvancedSurveyRawAnswers() async {
+  final ref2 = FirebaseDatabase.instance.ref("advancedRawAnswers");
   final snapshot = await ref2.get();
   var x = snapshot.value as Map;
   return x;

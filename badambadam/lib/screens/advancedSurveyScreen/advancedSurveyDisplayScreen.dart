@@ -190,6 +190,7 @@ class _AdvancedSurveyDisplayScreenState
                         // updateGuidList(
                         // "${DateTime.now().toString().trim()}_test");
                         print("BUTTON PRESSED");
+                        writeCurrentAdvancedRawAnswers(allAdvancedAnswersDetail.value);
                         writeCurrentAdvancedAnswers(calculateAll(allAdvancedAnswersDetail));
                         // Navigator.pushNamed(context, '/advancedResult');
                       },
