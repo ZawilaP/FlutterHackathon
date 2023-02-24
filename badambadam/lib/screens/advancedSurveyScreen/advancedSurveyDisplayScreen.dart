@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../model.dart';
 import '../../storage.dart';
 import 'radioResponseWidget.dart';
+import 'advancedTextFieldWidget.dart';
 
 class AdvancedSurveyDisplayScreen extends StatefulWidget {
   AdvancedSurveyDisplayScreen({
@@ -89,7 +90,7 @@ class _AdvancedSurveyDisplayScreenState
                                   minHeight:
                                       MediaQuery.of(context).size.height * 0.2,
                                   maxHeight:
-                                      MediaQuery.of(context).size.height * 0.7),
+                                      MediaQuery.of(context).size.height * 0.8),
                               child: ListView.builder(
                                   shrinkWrap: true,
                                   itemCount: questionNode.questions.length - 1,
@@ -129,7 +130,7 @@ class _AdvancedSurveyDisplayScreenState
                                   minHeight:
                                       MediaQuery.of(context).size.height * 0.2,
                                   maxHeight:
-                                      MediaQuery.of(context).size.height * 0.7),
+                                      MediaQuery.of(context).size.height * 0.9),
                               child: ListView.builder(
                                   shrinkWrap: true,
                                   itemCount: questionNode.questions.length - 1,
@@ -425,40 +426,4 @@ class _AdvancedSurveyDisplayScreenState
   }
 }
 
-class AdvancedTextField extends StatefulWidget {
-  const AdvancedTextField(
-      {Key? key, required this.allAdvancedAnswersDetails, required this.nodeId})
-      : super(key: key);
 
-  final ValueNotifier<Map<String, List<String>>> allAdvancedAnswersDetails;
-  final String nodeId;
-
-  @override
-  State<AdvancedTextField> createState() => _AdvancedTextFieldState();
-}
-
-class _AdvancedTextFieldState extends State<AdvancedTextField> {
-  final myController = TextEditingController();
-
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    myController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: myController,
-      decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          hintText: 'If you want to add something, do it here'),
-      onChanged: (text) {
-        widget.allAdvancedAnswersDetails.value[widget.nodeId] =
-            ["OPEN_${myController.text}"].toList();
-        print(widget.allAdvancedAnswersDetails.toString());
-      },
-    );
-  }
-}
