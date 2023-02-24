@@ -80,6 +80,23 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
           });
     }
 
+    createAdvancedRawSurveysBuild() {
+      return FutureBuilder(
+          future: getAdvancedSurveyRawAnswers(),
+          initialData: "Loading advanced surveys..",
+          builder: (BuildContext context, AsyncSnapshot<dynamic> text) {
+            return new SingleChildScrollView(
+                padding: new EdgeInsets.all(8.0),
+                child: new Text(
+                  text.data.toString().replaceAll("],", "],\n").replaceAll("{", "").replaceAll("}", ""),
+                  style: new TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 19.0,
+                  ),
+                ));
+          });
+    }
+
     Future<void> showSurveys() async {
       return showDialog<void>(
         context: context,
@@ -132,6 +149,32 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
       );
     }
 
+    Future<void> showAdvancedRawSurveys() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('All advanced raw surveys:'),
+            content: SingleChildScrollView(
+                child: createAdvancedRawSurveysBuild()
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: const Text(
+                  'Close',
+                  style: TextStyle(fontSize: 20),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(
@@ -164,6 +207,14 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
             onPressed: () async {
               print(await getAdvancedAnswers());
               showAdvancedSurveys();
+            },
+          ),
+          Divider(height: 100),
+          ElevatedButton(
+            child: Text("Show all past raw advanced surveys"),
+            onPressed: () async {
+              print(await getAdvancedRawAnswers());
+              showAdvancedRawSurveys();
             },
           ),
           Divider(height: 100),
@@ -246,4 +297,8 @@ dynamic getAnswers() async {
 
 dynamic getAdvancedAnswers() async {
   return await getAdvancedSurveyAnswers().then((id) => [id]);
+}
+
+dynamic getAdvancedRawAnswers() async {
+  return await getAdvancedSurveyRawAnswers().then((id) => [id]);
 }
