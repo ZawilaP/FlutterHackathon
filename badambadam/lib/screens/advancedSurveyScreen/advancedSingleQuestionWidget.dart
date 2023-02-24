@@ -76,10 +76,11 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
                           print(widget.allAnswers);
                         });
                       },
-                      borderColor: Colors.transparent,
+                      borderWidth: 1.5,
+                      borderRadius: BorderRadius.circular(10),
                       highlightColor: Theme.of(context).colorScheme.primary,
                       selectedBorderColor: Theme.of(context).colorScheme.primary,
-                      children: <Widget>[Text('YES'), Text('NO')]),
+                      children: <Widget>[Text('YES', style: TextStyle(fontSize: 21),), Text('NO', style: TextStyle(fontSize: 21),)]),
                 ),
               ],
             )
