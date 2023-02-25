@@ -14,6 +14,15 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
   dynamic _email = '';
   dynamic _password = '';
 
+  _AdminPanelRoute() {
+    // Register for login changes upon LoginFormValidation instance creation.
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        Navigator.pushNamed(context, '/');
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Future<void> _showMyDialog() async {
@@ -192,7 +201,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
       ),
       body: Column(
         children: [
-          Divider(height: 100),
+          Divider(height: 50),
           ElevatedButton(
             onPressed: () {
               // log out user, to avoid strange "immediate log in after first one was successfull"
@@ -201,7 +210,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
             },
             child: const Text('Wyloguj się'),
           ),
-          Divider(height: 100),
+          Divider(height: 50),
           ElevatedButton(
             onPressed: () {
               // Navigate to the second screen using a named route.
@@ -209,7 +218,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
             },
             child: const Text('Edit Questions'),
           ),
-          Divider(height: 100),
+          Divider(height: 50),
           ElevatedButton(
             child: Text("Show all past surveys"),
             onPressed: () async {
@@ -217,7 +226,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
               showSurveys();
             },
           ),
-          Divider(height: 100),
+          Divider(height: 50),
           ElevatedButton(
             child: Text("Show all past advanced surveys"),
             onPressed: () async {
@@ -225,7 +234,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
               showAdvancedSurveys();
             },
           ),
-          Divider(height: 100),
+          Divider(height: 50),
           ElevatedButton(
             child: Text("Show all past raw advanced surveys"),
             onPressed: () async {
@@ -233,7 +242,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
               showAdvancedRawSurveys();
             },
           ),
-          Divider(height: 100),
+          Divider(height: 50),
           Form(
             key: formKey,
             child: Column(
