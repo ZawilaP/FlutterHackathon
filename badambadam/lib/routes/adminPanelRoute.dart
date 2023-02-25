@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../model.dart';
 
@@ -12,7 +13,6 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
 
   dynamic _email = '';
   dynamic _password = '';
-
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,11 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
             return new SingleChildScrollView(
                 padding: new EdgeInsets.all(8.0),
                 child: new Text(
-                  text.data.toString().replaceAll("],", "],\n").replaceAll("{", "").replaceAll("}", ""),
+                  text.data
+                      .toString()
+                      .replaceAll("],", "],\n")
+                      .replaceAll("{", "")
+                      .replaceAll("}", ""),
                   style: new TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 19.0,
@@ -71,7 +75,11 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
             return new SingleChildScrollView(
                 padding: new EdgeInsets.all(8.0),
                 child: new Text(
-                  text.data.toString().replaceAll("],", "],\n").replaceAll("{", "").replaceAll("}", ""),
+                  text.data
+                      .toString()
+                      .replaceAll("],", "],\n")
+                      .replaceAll("{", "")
+                      .replaceAll("}", ""),
                   style: new TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 19.0,
@@ -88,7 +96,11 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
             return new SingleChildScrollView(
                 padding: new EdgeInsets.all(8.0),
                 child: new Text(
-                  text.data.toString().replaceAll("],", "],\n").replaceAll("{", "").replaceAll("}", ""),
+                  text.data
+                      .toString()
+                      .replaceAll("],", "],\n")
+                      .replaceAll("{", "")
+                      .replaceAll("}", ""),
                   style: new TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 19.0,
@@ -104,9 +116,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('All surveys:'),
-            content: SingleChildScrollView(
-                child: createSurveysBuild()
-            ),
+            content: SingleChildScrollView(child: createSurveysBuild()),
             actions: <Widget>[
               TextButton(
                 child: const Text(
@@ -130,9 +140,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('All advanced surveys:'),
-            content: SingleChildScrollView(
-                child: createAdvancedSurveysBuild()
-            ),
+            content: SingleChildScrollView(child: createAdvancedSurveysBuild()),
             actions: <Widget>[
               TextButton(
                 child: const Text(
@@ -156,9 +164,8 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('All advanced raw surveys:'),
-            content: SingleChildScrollView(
-                child: createAdvancedRawSurveysBuild()
-            ),
+            content:
+                SingleChildScrollView(child: createAdvancedRawSurveysBuild()),
             actions: <Widget>[
               TextButton(
                 child: const Text(
@@ -185,7 +192,16 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
       ),
       body: Column(
         children: [
-        Divider(height: 100),
+          Divider(height: 100),
+          ElevatedButton(
+            onPressed: () {
+              // log out user, to avoid strange "immediate log in after first one was successfull"
+              FirebaseAuth.instance.signOut();
+              Navigator.pushNamed(context, '/');
+            },
+            child: const Text('Wyloguj się'),
+          ),
+          Divider(height: 100),
           ElevatedButton(
             onPressed: () {
               // Navigate to the second screen using a named route.
@@ -222,7 +238,6 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
             key: formKey,
             child: Column(
               children: [
-
                 Center(
                   child: SizedBox(
                     width: 400,
@@ -231,7 +246,8 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
                         if (text == null || text.isEmpty) {
                           return 'Can\'t be empty';
                         }
-                        if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                        if (!RegExp(
+                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                             .hasMatch(text)) {
                           return 'Enter valid email adress';
                         }
@@ -239,9 +255,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
                       },
                       onSaved: (text) => _email = text,
                       decoration: InputDecoration(
-                          labelText: "Email",
-                          hintText: "Enter Email"
-                      ),
+                          labelText: "Email", hintText: "Enter Email"),
                     ),
                   ),
                 ),
@@ -258,9 +272,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
                         return null;
                       },
                       decoration: InputDecoration(
-                          labelText: "Password",
-                          hintText: "Enter Password"
-                      ),
+                          labelText: "Password", hintText: "Enter Password"),
                     ),
                   ),
                 ),
@@ -268,19 +280,19 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
                   padding: const EdgeInsets.all(15.0),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black54
+                          backgroundColor: Colors.black54),
+                      child: Text(
+                        "Add new admin",
+                        style: TextStyle(color: Colors.yellow, fontSize: 20),
                       ),
-                      child: Text("Add new admin",
-                        style: TextStyle(color: Colors.yellow, fontSize: 20),),
                       onPressed: () {
-                        if(formKey.currentState!.validate()) {
+                        if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
                           saveNewAdmin(_email, _password);
                           formKey.currentState!.reset();
                           _showMyDialog();
                         }
-                      }
-                  ),
+                      }),
                 ),
               ],
             ),
