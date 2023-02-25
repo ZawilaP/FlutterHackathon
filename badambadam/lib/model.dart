@@ -148,7 +148,7 @@ class Survey {
     sortListById(questions);
     for (var item in questions) {
       Node n = Node(item["id"], item["is_top_level"], item["is_inverted"],
-          item["node_type"], item["questions"]);
+          item["node_type"], item["question_group_id"], item["questions"]);
       nodes.add(n);
     }
     return this;
@@ -182,6 +182,7 @@ class Node {
   late bool isTopLevel;
   late bool isInverted;
   late String nodeType;
+  late String questionGroupId;
   List<Question> questions = [];
 
   String? noPath;
@@ -191,12 +192,13 @@ class Node {
   NodeStatus status = NodeStatus.unansweredYet;
   NodeAnswer? answer;
 
-  Node(String _id, String _isTopLevel, String _isInverted, String _nodeType,
+  Node(String _id, String _isTopLevel, String _isInverted, String _nodeType, String _question_group_id,
       List<dynamic> _questions) {
     id = _id;
     isTopLevel = _isTopLevel == "YES" ? true : false;
     isInverted = _isInverted == "YES" ? true : false;
     nodeType = _nodeType;
+    questionGroupId = _question_group_id;
     questions = [];
     for (var q in _questions) {
       questions.add(Question(q.toString()));
@@ -204,7 +206,7 @@ class Node {
   }
   @override
   String toString() {
-    return "Node: $id, $isTopLevel, $isInverted, $nodeType, $questions";
+    return "Node: $id, $isTopLevel, $isInverted, $nodeType, $questionGroupId, $questions";
   }
 }
 

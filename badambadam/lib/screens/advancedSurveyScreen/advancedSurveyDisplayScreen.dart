@@ -9,8 +9,10 @@ import 'dart:convert';
 
 class AdvancedSurveyDisplayScreen extends StatefulWidget {
   AdvancedSurveyDisplayScreen({
-    super.key,
+    super.key, required this.allPrimaryAnswers,
   });
+
+  final Map<String, int>? allPrimaryAnswers;
 
   @override
   State<AdvancedSurveyDisplayScreen> createState() =>
@@ -20,7 +22,6 @@ class AdvancedSurveyDisplayScreen extends StatefulWidget {
 class _AdvancedSurveyDisplayScreenState
     extends State<AdvancedSurveyDisplayScreen> {
   Survey? survey;
-  Map<String, int> primarySurveyAnswers = {};
 
   void showSurvey(Survey s) {
     setState(() {
@@ -34,18 +35,18 @@ class _AdvancedSurveyDisplayScreenState
       // if not there - then load one
       FakeBackendSingleton().getSurvey(null).then(showSurvey);
       try {
-        primarySurveyAnswers = Map.castFrom(getAllAnswersMap());
+      widget.allPrimaryAnswers!.removeWhere((key, value) => value != 1);
       } catch (e) {
         print(e);
       }
 
       return Center(child: Text('Loading...'));
     } else {
-      // remove questions with answers that were not 1
-      primarySurveyAnswers.removeWhere((key, value) => value != 1);
-      print(primarySurveyAnswers);
-
-      List<Node> allNodes = survey!.nodes;
+      
+      // filter questions that were scored in the primary survey
+      List<Node> allNodes = survey!.nodes.where((element) =>
+          widget.allPrimaryAnswers!.keys.contains(element.id.split('_')[0]))
+      .toList();
 
       // used for storing all answers
       final ValueNotifier<Map<String, List<String>>> allAdvancedAnswersDetail =
