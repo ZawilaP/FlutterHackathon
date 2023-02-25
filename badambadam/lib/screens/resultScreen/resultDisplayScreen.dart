@@ -129,7 +129,7 @@ class ScoreDisplayContainer extends StatelessWidget {
           CircularPercentIndicator(
             radius: 100.0,
             animation: true,
-            animationDuration: 1000,
+            animationDuration: 900,
             lineWidth: 15.0,
             percent: score! / allAnswers!.length,
             center: Text(

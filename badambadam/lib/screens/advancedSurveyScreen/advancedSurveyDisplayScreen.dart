@@ -5,6 +5,7 @@ import '../../model.dart';
 import '../../storage.dart';
 import 'radioResponseWidget.dart';
 import 'advancedTextFieldWidget.dart';
+import 'dart:convert';
 
 class AdvancedSurveyDisplayScreen extends StatefulWidget {
   AdvancedSurveyDisplayScreen({
@@ -19,6 +20,7 @@ class AdvancedSurveyDisplayScreen extends StatefulWidget {
 class _AdvancedSurveyDisplayScreenState
     extends State<AdvancedSurveyDisplayScreen> {
   Survey? survey;
+  Map<String, int> primarySurveyAnswers = {};
 
   void showSurvey(Survey s) {
     setState(() {
@@ -31,19 +33,19 @@ class _AdvancedSurveyDisplayScreenState
     if (survey == null) {
       // if not there - then load one
       FakeBackendSingleton().getSurvey(null).then(showSurvey);
+      try {
+        primarySurveyAnswers = Map.castFrom(getAllAnswersMap());
+      } catch (e) {
+        print(e);
+      }
+
       return Center(child: Text('Loading...'));
     } else {
-      Map<String, int> primarySurveyAnswers =
-          Map<String, int>.from(getAllAnswersMap()).cast<String, int>();
-
       // remove questions with answers that were not 1
       primarySurveyAnswers.removeWhere((key, value) => value != 1);
       print(primarySurveyAnswers);
 
       List<Node> allNodes = survey!.nodes;
-      // .where((element) =>
-      //     primarySurveyAnswers.keys.contains(element.id.split('_')[0]))
-      // .toList();
 
       // used for storing all answers
       final ValueNotifier<Map<String, List<String>>> allAdvancedAnswersDetail =
@@ -56,8 +58,6 @@ class _AdvancedSurveyDisplayScreenState
               (index) =>
                   '-1') // first question for radio buttons is not radio, just a title, that's why length - 1
       });
-
-      print(allAdvancedAnswersDetail);
 
       final ButtonStyle style = ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).colorScheme.primary,
@@ -191,8 +191,10 @@ class _AdvancedSurveyDisplayScreenState
                         // updateGuidList(
                         // "${DateTime.now().toString().trim()}_test");
                         print("BUTTON PRESSED");
-                        writeCurrentAdvancedRawAnswers(allAdvancedAnswersDetail.value);
-                        writeCurrentAdvancedAnswers(calculateAll(allAdvancedAnswersDetail));
+                        writeCurrentAdvancedRawAnswers(
+                            allAdvancedAnswersDetail.value);
+                        writeCurrentAdvancedAnswers(
+                            calculateAll(allAdvancedAnswersDetail));
                         // Navigator.pushNamed(context, '/advancedResult');
                       },
                       child: Padding(
@@ -425,5 +427,3 @@ class _AdvancedSurveyDisplayScreenState
     return resultsMap;
   }
 }
-
-
