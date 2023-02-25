@@ -53,7 +53,7 @@ void addAllAnswersMap (Map<String, int> answers) {
 Map<String, int> getAllAnswersMap () {
   final box = GetStorage();
   print(box.read("answersMap"));
-  return box.read("answersMap") ?? {};
+  return box.read("answersMap")?.cast<String, int>();
 }
 
 void addFinalScore() {
