@@ -14,6 +14,15 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
   dynamic _email = '';
   dynamic _password = '';
 
+  _AdminPanelRoute() {
+    // Register for login changes upon LoginFormValidation instance creation.
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        Navigator.pushNamed(context, '/');
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Future<void> _showMyDialog() async {
