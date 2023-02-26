@@ -5,11 +5,11 @@ import '../../model.dart';
 import '../../storage.dart';
 import 'radioResponseWidget.dart';
 import 'advancedTextFieldWidget.dart';
-import 'dart:convert';
 
 class AdvancedSurveyDisplayScreen extends StatefulWidget {
   AdvancedSurveyDisplayScreen({
-    super.key, required this.allPrimaryAnswers,
+    super.key,
+    required this.allPrimaryAnswers,
   });
 
   final Map<String, int>? allPrimaryAnswers;
@@ -35,18 +35,23 @@ class _AdvancedSurveyDisplayScreenState
       // if not there - then load one
       FakeBackendSingleton().getSurvey(null).then(showSurvey);
       try {
-      widget.allPrimaryAnswers!.removeWhere((key, value) => value != 1);
+        widget.allPrimaryAnswers!.removeWhere((key, value) => value != 1);
       } catch (e) {
         print(e);
       }
 
       return Center(child: Text('Loading...'));
+    }
+    if (widget.allPrimaryAnswers!.isEmpty) {
+
+      return Center(
+          child: Text('Something went wrong. Please return to the home page.'));
     } else {
-      
       // filter questions that were scored in the primary survey
-      List<Node> allNodes = survey!.nodes.where((element) =>
-          widget.allPrimaryAnswers!.keys.contains(element.id.split('_')[0]))
-      .toList();
+      List<Node> allNodes = survey!.nodes
+          .where((element) =>
+              widget.allPrimaryAnswers!.keys.contains(element.id.split('_')[0]))
+          .toList();
 
       // used for storing all answers
       final ValueNotifier<Map<String, List<String>>> allAdvancedAnswersDetail =
