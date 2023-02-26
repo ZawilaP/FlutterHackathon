@@ -10,10 +10,13 @@ class AdvancedSurveyRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Image.asset(
-            'graphics/SYNAPSIS_herb_2.png',
-            fit: BoxFit.cover,
-            scale: 2,
+          title: InkWell(
+            onTap: () => Navigator.pushNamed(context, '/'),
+            child: Image.asset(
+              'graphics/SYNAPSIS_herb_2.png',
+              fit: BoxFit.cover,
+              scale: 2,
+            ),
           ),
         ),
         body: AdvancedSurveyDisplayScreen(
