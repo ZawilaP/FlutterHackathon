@@ -26,9 +26,10 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
     super.build(context);
     
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+      padding: const EdgeInsets.symmetric( vertical: 5),
       child: Card(
         color: Colors.white,
+        shape: RoundedRectangleBorder(side: BorderSide(color: Colors.grey.shade300, width: 2), borderRadius: BorderRadius.circular(15.0),),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -72,7 +73,8 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
                             widget.allAnswers.value[
                                 widget.questionNode!.id] = {'PASS'}.toList();
                           }
-
+                          // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
+                          widget.allAnswers.notifyListeners();
                           print(widget.allAnswers);
                         });
                       },

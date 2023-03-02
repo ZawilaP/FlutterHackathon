@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:badambadam/screens/advancedSurveyScreen/advancedSurveyDisplayScreen.dart';
-
-import '../storage.dart';
+import 'package:badambadam/storage.dart';
 
 class AdvancedSurveyRoute extends StatelessWidget {
   const AdvancedSurveyRoute({super.key});
@@ -26,21 +25,21 @@ class AdvancedSurveyRoute extends StatelessWidget {
           //   '1': 0,
           //   '2': 0,
           //   '3': 0,
-          //   '4': 1,
-          //   '5': 0,
+          //   '4': 0,
+          //   '5': 1,
           //   '6': 1,
-          //   '7': 0,
+          //   '7': 1,
           //   '8': 1,
           //   '9': 1,
           //   '10': 1,
           //   '11': 0,
-          //   '12': 0,
+          //   '12': 1,
           //   '13': 1,
-          //   '14': 0,
+          //   '14': 1,
           //   '15': 1,
           //   '16': 1,
-          //   '17': 0,
-          //   '18': 0,
+          //   '17': 1,
+          //   '18': 1,
           //   '19': 1,
           //   '20': 1
           // }),

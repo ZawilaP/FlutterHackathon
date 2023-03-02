@@ -30,7 +30,7 @@ class _SingleSelectState extends State<SingleSelect>
         .toString()
         .split(' ');
     bool isFail =
-        questionWordsList.length > 1 && questionWordsList[1] == '[F]';
+        questionWordsList.length > 1 && questionWordsList[0] == '[F]';
 
     return SwitchListTile(
       activeColor: Theme.of(context).colorScheme.primary,

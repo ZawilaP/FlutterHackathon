@@ -48,6 +48,13 @@ class _RadioButtonsState extends State<RadioButtons>
     bool isReversed =
         questionWordsList.length > 1 && questionWordsList[0] == '[F]';
 
+    void updateAnswers(String questionId, int inputIndex, String? pointValue) {
+      widget.allAdvancedAnswersDetails
+          .value[questionId]![inputIndex] = pointValue!;
+      // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
+      widget.allAdvancedAnswersDetails.notifyListeners();
+    }
+
     return Column(
       children: [
         ListTile(
@@ -66,8 +73,7 @@ class _RadioButtonsState extends State<RadioButtons>
                       setState(() {
                         _point = value;
                         _otherFlag = true;
-                        widget.allAdvancedAnswersDetails.value[
-                            widget.question.id]![widget.inputIndex] = _point!;
+                        updateAnswers(widget.question.id, widget.inputIndex, _point);
                         print(widget.allAdvancedAnswersDetails
                             .value[widget.question.id]);
                         print(widget.allAdvancedAnswersDetails.value);
@@ -88,8 +94,7 @@ class _RadioButtonsState extends State<RadioButtons>
                         _point = value;
                         _otherFlag = false;
                         myController.clear();
-                        widget.allAdvancedAnswersDetails.value[
-                            widget.question.id]![widget.inputIndex] = _point!;
+                        updateAnswers(widget.question.id, widget.inputIndex, _point);
                         print(widget.allAdvancedAnswersDetails
                             .value[widget.question.id]);
                         print(widget.allAdvancedAnswersDetails.value);
