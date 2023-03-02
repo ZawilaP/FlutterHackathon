@@ -74,6 +74,7 @@ class _AdvancedSurveyDisplayScreenState
           shadowColor: Theme.of(context).colorScheme.onPrimary,
           elevation: 8);
 
+      // ids of YesNoQuestions that don't have dependency
       List<String> singleQuestionIds = [
         '1',
         '2',
@@ -98,7 +99,7 @@ class _AdvancedSurveyDisplayScreenState
         '19',
         '20'
       ];
-
+      // ids of radio button questions that don't have dependency
       List<String> radioButtonsIds = [
         '1_01',
         '2_01',
@@ -124,20 +125,6 @@ class _AdvancedSurveyDisplayScreenState
                     Node questionNode = allNodes[index];
                     String currentId = questionNode.id;
 
-                    // rules
-                    Map<String, bool> rules = {
-                      '1_02' : currentId == '1_02' && value['1_01']!.contains('PASS_YES') && value['1_01']!.contains('FAIL_YES'),
-                      '2_03' : currentId == '2_03' && value['2_02']!.contains('PASS'),
-                      '5_01' : false,
-                      '5_02' : false,
-                      '6_01' : false,
-                      '6_02' : false,
-                      '7_02' : false, 
-                      '7_03' : false,
-                      '8_01' : false,
-                      '8_02' : false,
-                    };
-
                     if (singleQuestionIds.contains(currentId)) {
                       return AdvancedSingleQuestion(
                         questionNode: questionNode,
@@ -150,234 +137,61 @@ class _AdvancedSurveyDisplayScreenState
                           questionNode: questionNode,
                           allAdvancedAnswersDetail: allAdvancedAnswersDetail);
                     }
-                    if (currentId == '1_02' &&
-                        value['1_01']!.contains('PASS_YES') &&
-                        value['1_01']!.contains('FAIL_YES')) {
+                    // rules
+                    Map<String, bool> rules = {
+                      '1_02' : currentId == '1_02' && value['1_01']!.contains('PASS_YES') && value['1_01']!.contains('FAIL_YES'),
+                      '2_03' : currentId == '2_03' && value['2_02']!.contains('PASS'),
+                      '5_01' : currentId == '5_01' && value['5']!.contains('FAIL'),
+                      '5_02' : currentId == '5_02' && value['5_01']!.contains('FAIL_YES'),
+                      '6_01' : currentId == '6_01' && value['6']!.contains('FAIL'),
+                      '6_02' : currentId == '6_02' && value['6_01']!.contains('PASS_YES'),
+                      '7_02' : currentId == '7_02' && value['7_01']!.contains('PASS_YES'), 
+                      '7_03' : currentId == '7_03' && value['7_02']!.contains('PASS'),
+                      '8_01' : currentId == '8_01' && value['8']!.contains('PASS'),
+                      '8_02' : currentId == '8_02' && (value['8_01']!.contains('FAIL') || value['8']!.contains('FAIL')),
+                      '8_03' : currentId == '8_03' && value['8_02']!.contains('PASS'),
+                      '8_04' : currentId == '8_04' && value['8_03']!.contains('PASS_YES'),
+                      '9_02' : currentId == '9_02' &&  value['9_01']!.contains('PASS_YES'), 
+                      '10_02' : currentId == '10_02' && value['10_01']!.contains('PASS_YES') && value['10_01']!.contains('FAIL_YES'),
+                      '11_01' : currentId == '11_01' && value['11']!.contains('FAIL'),
+                      '11_02' : currentId == '11_02' && value['11_01']!.contains('PASS_YES') && value['11_01']!.contains('FAIL_YES'),
+                      '12_01' : currentId == '12_01' && value['12']!.contains('FAIL'),
+                      '12_02' : currentId == '12_02' && getAnswersLength(value['12_01'], 'PASS_YES') >= 2,
+                      '12_03' : currentId == '12_03' && value['12_02']!.contains('PASS_YES') && value['12_02']!.contains('FAIL_YES'),
+                      '13_01' : currentId == '13_01' && value['13']!.contains('PASS'),
+                      '14_02' : currentId == '14_02' && getAnswersLength(value['14_01'], 'PASS_YES') == 1,
+                      '14_03' : currentId == '14_03' && value['14_02']!.contains('PASS'),
+                      '16_01' : currentId == '16_01' && value['16']!.contains('FAIL'),
+                      '16_02' : currentId == '16_02' && value['16_01']!.contains('PASS_YES') && value['16_01']!.contains('FAIL_YES'), 
+                      '18_02' : currentId == '18_02' && value['18_01']!.contains('FAIL'),
+                      '18_03' : currentId == '18_03' && (value['18_02']!.contains('PASS') || value['18_01']!.contains('PASS')),
+                      '19_01' : currentId == '19_01' && value['19']!.contains('FAIL'),
+                      '19_02' : currentId == '19_02' && value['19_01']!.contains('FAIL'),
+                      '19_03' : currentId == '19_03' && value['19_02']!.contains('FAIL'),
+                      '20_01' : currentId == '20_01' && value['20']!.contains('PASS'),
+                      '20_02' : currentId == '20_02' && (value['20_01']!.contains('FAIL') || value['20']!.contains('FAIL')),
+                    };
+
+                    if (rules['1_02']! || rules['2_03']! || rules['10_02']! || rules['11_02']! || rules['12_03']! || rules['16_02']! || rules['18_03']!) {
                       return SingleSelectsWidget(
                           questionNode: questionNode,
                           allAdvancedAnswersDetail: allAdvancedAnswersDetail);
                     }
-                    if (currentId == '2_03' &&
-                        value['2_02']!.contains('PASS')) {
-                      return SingleSelectsWidget(
-                          questionNode: questionNode,
-                          allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                    }
-                    if (currentId == '5_01' && value['5']!.contains('FAIL')) {
+                    if (rules['5_01']! || rules['6_01']! || rules['8_03']! || rules['11_01']! || rules['12_01']! || rules['12_02']! || rules['16_01']! || rules['20_02']!) {
                       return RadioButtonsWidget(
                           questionNode: questionNode,
                           allAdvancedAnswersDetail: allAdvancedAnswersDetail);
                     }
-
-                    if (currentId == '5_02' &&
-                        value['5_01']!.contains('FAIL_YES')) {
+                    if (rules['5_02']! || rules['6_02']! || rules['7_02']! || rules['7_03']! || rules['8_01']! || rules['8_02']! || rules['8_04']!
+                    || rules['9_02']! || rules['13_01']! || rules['14_02']! 
+                    || rules['14_03']! || rules['18_02']! || rules['19_01']! || rules['19_02']! || rules['19_03']! || rules['20_01']!) {
                       return AdvancedSingleQuestion(
                         questionNode: questionNode,
                         allAnswers: allAdvancedAnswersDetail,
                         mainIndex: index,
                       );
                     }
-                    if (currentId == '6_01' && value['6']!.contains('FAIL')) {
-                      return RadioButtonsWidget(
-                          questionNode: questionNode,
-                          allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                    }
-                    if (currentId == '6_02' &&
-                        value['6_01']!.contains('PASS_YES')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-                    if (currentId == '7_02' &&
-                        value['7_01']!.contains('PASS_YES')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-                    if (currentId == '7_03' &&
-                        value['7_02']!.contains('PASS')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-                    if (currentId == '8_01' && value['8']!.contains('PASS')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-                    if (currentId == '8_02' &&
-                        (value['8_01']!.contains('FAIL') ||
-                            value['8']!.contains('FAIL'))) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-                    if (currentId == '8_03' &&
-                        value['8_02']!.contains('PASS')) {
-                      return RadioButtonsWidget(
-                          questionNode: questionNode,
-                          allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                    }
-                    if (currentId == '8_04' &&
-                        value['8_03']!.contains('PASS_YES')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-                    if (currentId == '9_02' &&
-                        value['9_01']!.contains('PASS_YES')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-                    if (currentId == '10_02' &&
-                        value['10_01']!.contains('PASS_YES') &&
-                        value['10_01']!.contains('FAIL_YES')) {
-                      return SingleSelectsWidget(
-                          questionNode: questionNode,
-                          allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                    }
-                    if (currentId == '11_01' && value['11']!.contains('FAIL')) {
-                      return RadioButtonsWidget(
-                          questionNode: questionNode,
-                          allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                    }
-                    if (currentId == '11_02' &&
-                        value['11_01']!.contains('PASS_YES') &&
-                        value['11_01']!.contains('FAIL_YES')) {
-                      return SingleSelectsWidget(
-                          questionNode: questionNode,
-                          allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                    }
-                    if (currentId == '12_01' && value['12']!.contains('FAIL')) {
-                      return RadioButtonsWidget(
-                          questionNode: questionNode,
-                          allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                    }
-                    if (currentId == '12_02') {
-                      int count = getAnswersLength(value['12_01'], 'PASS_YES');
-                      if (count >= 2) {
-                        return RadioButtonsWidget(
-                            questionNode: questionNode,
-                            allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                      }
-                    }
-                    if (currentId == '12_03' &&
-                        value['12_02']!.contains('PASS_YES') &&
-                        value['12_02']!.contains('FAIL_YES')) {
-                      return SingleSelectsWidget(
-                          questionNode: questionNode,
-                          allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                    }
-                    if (currentId == '13_01' && value['13']!.contains('PASS')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-
-                    if (currentId == '14_02') {
-                      int count = getAnswersLength(value['14_01'], 'PASS_YES');
-                      if (count == 1) {
-                        return AdvancedSingleQuestion(
-                          questionNode: questionNode,
-                          allAnswers: allAdvancedAnswersDetail,
-                          mainIndex: index,
-                        );
-                      }
-                    }
-                    if (currentId == '14_03' &&
-                        value['14_02']!.contains('PASS')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-
-                    if (currentId == '16_01' && value['16']!.contains('FAIL')) {
-                      return RadioButtonsWidget(
-                          questionNode: questionNode,
-                          allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                    }
-
-                    if (currentId == '16_02' &&
-                        value['16_01']!.contains('PASS_YES') &&
-                        value['16_01']!.contains('FAIL_YES')) {
-                      return SingleSelectsWidget(
-                          questionNode: questionNode,
-                          allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                    }
-
-                    if (currentId == '19_01' && value['19']!.contains('FAIL')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-
-                    if (currentId == '19_02' &&
-                        value['19_01']!.contains('FAIL')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-                    if (currentId == '19_03' &&
-                        value['19_02']!.contains('FAIL')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-                    if (currentId == '20_01' && value['20']!.contains('PASS')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-                    if (currentId == '20_02' &&
-                        (value['20_01']!.contains('FAIL') ||
-                            value['20']!.contains('FAIL'))) {
-                      return RadioButtonsWidget(
-                          questionNode: questionNode,
-                          allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                    }
-                    if (currentId == '18_02' &&
-                        value['18_01']!.contains('FAIL')) {
-                      return AdvancedSingleQuestion(
-                        questionNode: questionNode,
-                        allAnswers: allAdvancedAnswersDetail,
-                        mainIndex: index,
-                      );
-                    }
-                    if (currentId == '18_03' &&
-                        (value['18_02']!.contains('PASS') ||
-                            value['18_01']!.contains('PASS'))) {
-                      return RadioButtonsWidget(
-                          questionNode: questionNode,
-                          allAdvancedAnswersDetail: allAdvancedAnswersDetail);
-                    }
-                    return Text('dupa');
+                    return SizedBox();
                   }, childCount: allNodes.length)),
                 ),
                 SliverFillRemaining(

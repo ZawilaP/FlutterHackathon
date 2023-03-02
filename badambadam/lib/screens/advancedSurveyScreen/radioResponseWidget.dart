@@ -51,6 +51,7 @@ class _RadioButtonsState extends State<RadioButtons>
     void updateAnswers(String questionId, int inputIndex, String? pointValue) {
       widget.allAdvancedAnswersDetails
           .value[questionId]![inputIndex] = pointValue!;
+      // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
       widget.allAdvancedAnswersDetails.notifyListeners();
     }
 

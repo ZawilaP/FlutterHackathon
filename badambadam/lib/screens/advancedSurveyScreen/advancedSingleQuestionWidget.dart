@@ -73,6 +73,7 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
                             widget.allAnswers.value[
                                 widget.questionNode!.id] = {'PASS'}.toList();
                           }
+                          // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
                           widget.allAnswers.notifyListeners();
                           print(widget.allAnswers);
                         });
