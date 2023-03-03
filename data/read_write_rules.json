@@ -1,27 +1,27 @@
 {
-    "rules": {
-      ".read": "now > 1677818672000",  // Friday, March 3, 2023 4:44:32 AM GMT
-      ".write": "now > 1677818672000",  // kept as reminder mainly
-      "surveyIds": { // TODO: what is the rule here?
-        ".indexOn": ".value",
-        ".read": "false",
-        ".write": "true",
-      },
-      "advancedAnswers": {// all can write, logged user can read
+  "rules": {
+    ".read": "now > 1677818672000",  // Friday, March 3, 2023 4:44:32 AM GMT
+    ".write": "now > 1677818672000",  // kept as reminder mainly
+    "surveyIds": { // TODO: what is the rule here?
+      ".indexOn": ".value",
       ".read": "auth.uid !== null",
       ".write": "true",
-      },
-      "advancedRawAnswers": {// all can write, logged user can read
-      ".read": "auth.uid !== null",
-      ".write": "true",
-      },
-      "answers": { // all can write, logged user can read
-        ".read": "auth.uid !== null",
-        ".write": "true",
-      },
-      "questions": { // all can read, logged user can write
-        ".read": "true",
-        ".write": "auth.uid !== null"
-      },
     },
-  }
+    "advancedAnswers": {// all can write, logged user can read
+    ".read": "auth.uid !== null",
+    ".write": "true",
+    },
+    "advancedRawAnswers": {// all can write, logged user can read
+    ".read": "auth.uid !== null",
+    ".write": "true",
+    },
+    "answers": { // all can write, logged user can read
+      ".read": "auth.uid !== null",
+      ".write": "true",
+    },
+    "questions": { // all can read, logged user can write
+      ".read": "true",
+      ".write": "auth.uid !== null"
+    },
+  },
+}
