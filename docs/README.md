@@ -1,84 +1,25 @@
-## Model 
+## FlutterHackathonTeam2 - badambadam 
 
-```mermaid
-classDiagram
+badambadam is a web application written in flutter. It delivers the following functionalities:
 
-    class FakeBackendSingleton{
-        DONE getSurvey(): get Survey details for user to fill in
-        TODO load_survey(guid) returns Survey, loads historical one
-        TODO registerNewSurvey(): returns id and guid
-        TODO save_survey(Survey): saves it to backend (and locally!)
-    }
++ **Done01** Parent can run a basic survey (20 question) and receive:
+  +  a score, 
+  +  results in PDF format,  
+  +  unique ID that can be used for reference when talking with Synapsis
++  **Done02** In case the basic survey resulted in a score of 3-6 then Parent is presented with an option to run detailed survey. This survey again covers all the 20 questions but allows for tree like navigation as per MCHAT-R PDF rules. Same output: score, PDF with results, unique ID
++ **Done03** Parent can proceed to surveys only after providing a qualifying birth-date and postal code (no check on postal code being a real one).
++ **Done04** All responses are saved in a database, read access to it is restricted to authorized users (=Admin).
++ **Done05** Admin panel (authentication based on Firebase defined users) allows for editing question text. 
+  +  Beware: it will fail to add new question, just the existing blocks can be renamed
++ **Done06** Admin panel allows Synapsis team to look into details of a saved survey (both basic and advances)
 
-    class SurveyIDPair {
-        String surveyID;
-        String accessGUID;
-        SurveyIDPair(this.surveyID, this.accessGUID);
-    }
+The following features are within reach:
 
-    class Survey{
-        List<Node> nodes = [];
-        DetailLevel detailLevel = DetailLevel.highLevel;
-        late String postalCode;
-        late DateTime birthDate;
-        late String simpleID;
-        late String accessGUID;
++ Future01 PowerBI Dashboard, estimation: 2-3 WD
++ Future02 Internationalization - English version, estimation: 2-3 WD
++ Future03 Internationalization - more versions, estimation: 1-2 WD
++ Future04 Internationalization - translations, estimation: can be done by Synapsis, 1 WD per language with testing?
 
-        List<Node> getTopLevelNodesOnly()
-        Node? getNodeById(String id)
-    }
+The following features can be considered as v2:
 
-    class DetailLevel { ENUM: highLevel, detailed }
-    class QuestionCalcAndRenderLogic{ ENUM: ...}
-
-    class NodeStatus { ENUM: unansweredYet, answered }
-
-    class NodeAnswer { ENUM: yes, no, third }
-
-
-    class Node {
-        late String id;
-        late String author;
-        late bool isTopLevel;
-        late bool isInverted;
-        late String nodeType;
-        List<Question> questions = [];
-
-        String? noPath;
-        String? yesPath;
-        String? thirdPath;
-
-        NodeStatus status = NodeStatus.unansweredYet;
-        NodeAnswer? answer;
-
-
-    }
-
-  Survey --"*" Node
-    Node --> NodeStatus
-    Node --> NodeAnswer
-    Node --> QuestionCalcAndRenderLogic
-    Survey  --> DetailLevel
-
-  
-
-
-```
-
-## Page Graph
-```mermaid
-graph TD
-  Home[Home Page] --> |Take Survey| AgeCheck(Age Check)
-  AgeCheck --> |Age within 16-30 months| BasicSurvey(Take Basic Survey)
-  AgeCheck --> |Age not within 16-30 months| Home
-  BasicSurvey --> |See Results| BasicResults(Basic Survey Result Page)
-  BasicResults --> |Take Advanced Survey| AdvancedSurvey(Advanced Survey)
-  AdvancedSurvey --> |Advanced Survey Results| AdvancedResults(Advanced Survey Result Page)
-  
-  Home --> |Past Surveys| SurveyList(List of Surveys)
-  SurveyList --> |Basic Survey| BasicResults
-  SurveyList --> |Advanced Survey| AdvancedResults
-  
-  Admin[Admin Panel] --> |Edit Questions| EditQuestions(Edit Questions)
-  Admin --> |Review Surveys| SurveyList(List of Surveys)
-```
++ ...
