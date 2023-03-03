@@ -6,7 +6,7 @@ badambadam is a web application written in flutter. It delivers the following fu
   +  a score, 
   +  results in PDF format,  
   +  unique ID that can be used for reference when talking with Synapsis
-+  **Done02** In case the basic survey resulted in a score of 3-6 then Parent is presented with an option to run detailed survey. This survey again covers all the 20 questions but allows for tree like navigation as per MCHAT-R PDF rules. Same output: score, PDF with results, unique ID
++  **Done02** In case the basic survey resulted in a score of greater than 3 then Parent is presented with an option to run detailed survey. This survey again covers all the 20 questions but allows for tree like navigation as per MCHAT-R PDF rules. Same output: score, PDF with results, unique ID
 + **Done03** Parent can proceed to surveys only after providing a qualifying birth-date and postal code (no check on postal code being a real one).
 + **Done04** All responses are saved in a database, read access to it is restricted to authorized users (=Admin).
 + **Done05** Admin panel (authentication based on Firebase defined users) allows for editing question text. 
