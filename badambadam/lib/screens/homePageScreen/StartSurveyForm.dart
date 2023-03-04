@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import '../../storage.dart';
 
@@ -93,6 +94,7 @@ class _StartSurveyForm extends State<StartSurveyForm> {
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
+              inputFormatters: [PostalCodeFormatter()],
               autovalidateMode: AutovalidateMode.onUserInteraction,
               // The validator receives the text that the user has entered.
               validator: (String? text) {
@@ -139,5 +141,21 @@ class _StartSurveyForm extends State<StartSurveyForm> {
         )
       ]),
     );
+  }
+}
+
+class PostalCodeFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    if (newValue.text.length > 6) {
+      return oldValue;
+    }
+    if (newValue.text.length == 2 && oldValue.text.length != 3) {
+      return TextEditingValue(
+          text: newValue.text + '-',
+          selection: TextSelection.collapsed(offset: newValue.text.length + 1));
+    }
+    return newValue;
   }
 }
