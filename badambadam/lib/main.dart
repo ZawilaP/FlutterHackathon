@@ -1,4 +1,4 @@
-import 'package:badambadam/screens/homePageScreen/DatePick.dart';
+import 'package:badambadam/screens/homePageScreen/StartSurveyForm.dart';
 import 'package:badambadam/screens/homePageScreen/TextSubmitForm.dart';
 import 'package:badambadam/storage.dart';
 import 'package:english_words/english_words.dart';
@@ -82,7 +82,7 @@ class MyHomePage extends StatelessWidget {
           scale: 2,
         ),
         actions: <Widget>[
-          IconButton(
+          /*IconButton(
             style: IconButton.styleFrom(hoverColor: Colors.transparent),
             icon: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -103,7 +103,7 @@ class MyHomePage extends StatelessWidget {
             onPressed: () {
               setCurrentLanguage("ENG");
             },
-          ),
+          ),*/
           Padding(
               padding: EdgeInsets.only(right: 50.0),
               child: ElevatedButton(
@@ -131,8 +131,8 @@ class MyHomePage extends StatelessWidget {
               );
             }).toList()),
           ),
-          TextSubmitForm(onSubmit: (value) => print(value)),
-          DatePick(onSubmit: (value) => print(value))
+          //TextSubmitForm(onSubmit: (value) => print(value)),
+          StartSurveyForm(onSubmit: (value) => print(value))
         ],
       ),
     );

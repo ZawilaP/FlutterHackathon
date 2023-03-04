@@ -1,6 +1,27 @@
 import 'package:badambadam/model.dart';
 import 'package:get_storage/get_storage.dart';
 
+String getBirthDateString() {
+  final box = GetStorage();
+  return box.read("birthDate") ?? "";
+}
+
+void setBirthDateString(String birthDate) {
+  final box = GetStorage();
+  box.remove("birthDate");
+  box.write("birthDate", birthDate);
+}
+
+String getPostalCode() {
+  final box = GetStorage();
+  return box.read("postalCode") ?? "";
+}
+
+void setPostalCode(String postalCode) {
+  final box = GetStorage();
+  box.remove("postalCode");
+  box.write("postalCode", postalCode);
+}
 
 String getCurrentLanguage() {
   final box = GetStorage();
@@ -44,13 +65,13 @@ void updateGuidList(dynamic newGuid) {
   addGuidList(newGuidList);
 }
 
-void addAllAnswersMap (Map<String, int> answers) {
-  final box  = GetStorage();
+void addAllAnswersMap(Map<String, int> answers) {
+  final box = GetStorage();
   box.remove('answersMap');
   box.write('answersMap', answers);
 }
 
-Map<String, int> getAllAnswersMap () {
+Map<String, int> getAllAnswersMap() {
   final box = GetStorage();
   print(box.read("answersMap"));
   return box.read("answersMap")?.cast<String, int>() ?? {};
@@ -83,11 +104,13 @@ Future<void> writeCurrentAnswers() async {
   saveSurvey(getCurrentGuid(), getAllAnswersMap().values.toList());
 }
 
-Future<void> writeCurrentAdvancedAnswers(Map<dynamic, dynamic> allAnswers) async {
+Future<void> writeCurrentAdvancedAnswers(
+    Map<dynamic, dynamic> allAnswers) async {
   saveAdvancedSurvey(getCurrentGuid(), allAnswers.values.toList());
 }
 
-Future<void> writeCurrentAdvancedRawAnswers(Map<dynamic, dynamic> allUneditedAnswers) async {
+Future<void> writeCurrentAdvancedRawAnswers(
+    Map<dynamic, dynamic> allUneditedAnswers) async {
   saveAdvancedRawSurvey(getCurrentGuid(), allUneditedAnswers.values.toList());
 }
 
