@@ -110,7 +110,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                           _showMyDialog();
                         } else {
                           updateGuidList(
-                              "${DateTime.now().toString().trim()}_test");
+                              DateTime.now().toString().trim());
                           addAllTopLevelNodes(topLevelQuestions);
                           addAllAnswersMap(allAnswers.value);
                           writeCurrentAnswers();
