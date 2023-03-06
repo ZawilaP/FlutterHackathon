@@ -5,6 +5,7 @@ import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:badambadam/model.dart';
 import 'package:badambadam/storage.dart';
+import 'package:intl/intl.dart';
 
 class PDFSave extends StatefulWidget {
   const PDFSave({super.key, this.score, this.allAnswers});
@@ -43,6 +44,17 @@ class _PDFSaveState extends State<PDFSave> {
     final fontBase = await rootBundle.load("assets/fonts/Poppins-Regular.ttf");
     final ttfBase = pw.Font.ttf(fontBase);
 
+    var currentGuid = getCurrentGuid()
+        .toString()
+        .replaceAll(".", "-")
+        .replaceAll(" ", "-")
+        .replaceAll(":", "-")
+        .replaceAll("_", "-")
+        .toString()
+        .split('-');
+
+    var currentGuidUserNumber = currentGuid[currentGuid.length - 1];
+
     pdf.addPage(
       pw.MultiPage(
         theme: pw.ThemeData.withFont(base: ttfBase),
@@ -70,15 +82,11 @@ class _PDFSaveState extends State<PDFSave> {
                           text: pw.TextSpan(children: <pw.TextSpan>[
                         pw.TextSpan(text: "SurveyID: "),
                         pw.TextSpan(
-                            text: getCurrentGuid()
-                                .toString()
-                                .replaceAll(".", "-")
-                                .replaceAll(" ", "-")
-                                .replaceAll(":", "-")
-                                .replaceAll("_", "-"),
+                            text: currentGuidUserNumber,
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
                       ])),
-                      pw.Text('Survey date: ${DateTime.now()}')
+                      pw.Text(
+                          'Survey date: ${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()}')
                     ])
               ]),
           pw.SizedBox(height: 8),
@@ -133,12 +141,31 @@ class _PDFSaveState extends State<PDFSave> {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      icon: Icon(Icons.download_rounded),
-      label: Text('Pobierz wyniki'),
-      onPressed: () {
-        anchor.click();
-      },
+    final ButtonStyle style = ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            side: BorderSide(
+                color: Theme.of(context).colorScheme.primary, width: 2)),
+        backgroundColor: Colors.white,
+        shadowColor: Theme.of(context).colorScheme.onPrimary,
+        elevation: 1);
+
+    return Center(
+      child: ElevatedButton.icon(
+        icon: Icon(Icons.download_rounded),
+        label: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+          child: Text(
+            'Pobierz wyniki',
+            style: DefaultTextStyle.of(context).style.copyWith(
+                fontSize: 15, color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
+          ),
+        ),
+        style: style,
+        onPressed: () {
+          anchor.click();
+        },
+      ),
     );
   }
 }

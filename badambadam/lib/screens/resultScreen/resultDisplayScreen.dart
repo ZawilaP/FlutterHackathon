@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:badambadam/screens/resultScreen/result_texts_pl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:link_text/link_text.dart';
+import 'package:intl/intl.dart';
 
 class ResultDisplayScreen extends StatefulWidget {
   const ResultDisplayScreen({this.score, this.allAnswers});
@@ -40,10 +41,23 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
     });
 
     final ButtonStyle style = ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
         backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
         shadowColor: Theme.of(context).colorScheme.onPrimary,
-        elevation: 8);
+        elevation: 1);
+
+    var currentGuid = getCurrentGuid()
+        .toString()
+        .replaceAll(".", "-")
+        .replaceAll(" ", "-")
+        .replaceAll(":", "-")
+        .replaceAll("_", "-")
+        .toString()
+        .split('-');
+
+    var currentGuidUserNumber = currentGuid[currentGuid.length - 1];
 
     return ListView(
       children: [
@@ -56,10 +70,29 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
         ),
         Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Text(
-              "Identyfikator Twojego badania wykonanego ${DateTime.now()}: ${getCurrentGuid().toString().replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}"),
+          child: RichText(
+              text: TextSpan(children: [
+            TextSpan(
+                text: "Identyfikator Twojego badania wykonanego ",
+                style: DefaultTextStyle.of(context).style),
+            TextSpan(
+                text:
+                    "${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()} ",
+                style: DefaultTextStyle.of(context)
+                    .style
+                    .copyWith(fontWeight: FontWeight.bold)),
+            TextSpan(text: 'to: ', style: DefaultTextStyle.of(context).style),
+            TextSpan(
+                text: currentGuidUserNumber,
+                style: DefaultTextStyle.of(context)
+                    .style
+                    .copyWith(fontWeight: FontWeight.bold))
+          ])),
         ),
-        PDFSave(score: widget.score, allAnswers: widget.allAnswers!.values.toList(),),
+        PDFSave(
+          score: widget.score,
+          allAnswers: widget.allAnswers!.values.toList(),
+        ),
         Padding(
           padding: const EdgeInsets.all(12.0),
           child: Text(
@@ -82,19 +115,36 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
         Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
-            children: actions.sublist(1, actions.length).map((e) {
-              return ListTile(leading: Icon(Icons.check), title: LinkText(e),);
-            }).toList()
-          ),
+              children: actions.sublist(1, actions.length).map((e) {
+            return ListTile(
+              leading: Icon(Icons.check),
+              title: LinkText(e),
+            );
+          }).toList()),
         ),
         widget.score! >= 3
-            ? ElevatedButton(
-                style: style,
-                onPressed: () {
-                  // Navigate to the second screen using a named route.
-                  Navigator.pushNamed(context, '/advancedSurvey');
-                },
-                child: const Text('Wykonaj ankietę dodatkową'),
+            ? Padding(
+                padding: const EdgeInsets.only(bottom: 15, top: 8),
+                child: Center(
+                  child: ElevatedButton(
+                    style: style,
+                    onPressed: () {
+                      // Navigate to the second screen using a named route.
+                      Navigator.pushNamed(context, '/advancedSurvey');
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12),
+                      child: Text(
+                        'Wykonaj ankietę dodatkową',
+                        style: DefaultTextStyle.of(context).style.copyWith(
+                            fontSize: 20,
+                            // color: Colors.white70,
+                            fontWeight: FontWeight.bold
+                            ),
+                      ),
+                    ),
+                  ),
+                ),
               )
             : SizedBox(),
       ],
