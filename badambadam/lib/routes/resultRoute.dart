@@ -1,6 +1,6 @@
 import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
-import 'package:badambadam/screens/resultScreen/resultDisplayScreen.dart';
+import 'package:badambadam/screens/resultScreen/basicResultScreen.dart';
 
 class ResultRoute extends StatelessWidget {
   const ResultRoute({super.key});

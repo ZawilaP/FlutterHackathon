@@ -100,6 +100,29 @@ List<String> getTopLevelNodes() {
   return box.read('topLevelSurvey') ?? List.empty();
 }
 
+void addAdvancedSurveyQuestions(List<String> advancedSurveyQuestions) {
+  final box = GetStorage();
+  box.remove('advancedSurveyQuestions');
+  box.write('advancedSurveyQuestions', advancedSurveyQuestions);
+}
+
+List<String> getAdvancedSurveyQuestions() {
+  final box = GetStorage();
+  return box.read('advancedSurveyQuestions') ?? List.empty();
+}
+
+void addAllAdvancedRawAnswersMap(Map<String, List<String>> answers) {
+  final box = GetStorage();
+  box.remove('advancedRawAnswersMap');
+  box.write('advancedRawAnswersMap', answers);
+}
+
+Map<String, List<String>> getAllAdvancedRawAnswersMap() {
+  final box = GetStorage();
+  print(box.read("advancedRawAnswersMap"));
+  return box.read("advancedRawAnswersMap")?.cast<String, List<String>>() ?? {};
+}
+
 Future<void> writeCurrentAnswers() async {
   saveSurvey(getCurrentGuid(), getAllAnswersMap().values.toList());
 }
@@ -114,7 +137,18 @@ Future<void> writeCurrentAdvancedRawAnswers(
   saveAdvancedRawSurvey(getCurrentGuid(), allUneditedAnswers.values.toList());
 }
 
-List<dynamic> getCurrentAnswers() {
+ Map<dynamic, dynamic> getCurrentAdvancedAnswers() {
   final box = GetStorage();
-  return box.read("currentAnswersTuple") ?? List.empty();
+  return box.read("currentAnswersTuple") ?? {};
+}
+
+void addFinalAdvancedScore(Map<String, int> allUneditedAnswers) {
+  final box = GetStorage();
+  var score = allUneditedAnswers.values.reduce((a, b) => a + b);
+  box.write('advancedScore', score);
+}
+
+int getFinalAdvancedScore() {
+  final box = GetStorage();
+  return box.read('advancedScore') ?? 0;
 }

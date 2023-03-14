@@ -33,6 +33,15 @@ class _AdvancedSurveyDisplayScreenState
     return answers!.where((element) => element == answer).toList().length;
   }
 
+  List<String> getQuestionsList (List<Node> questions) {
+    List<String> questionsTextList = [];
+    for (var element in questions) {
+      questionsTextList.add('${element.questions}+${element.nodeType}');
+    }
+
+    return questionsTextList;
+  }
+
   @override
   Widget build(BuildContext context) {
     if (survey == null) {
@@ -73,6 +82,7 @@ class _AdvancedSurveyDisplayScreenState
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
           shadowColor: Theme.of(context).colorScheme.onPrimary,
           elevation: 8);
+
 
       // ids of YesNoQuestions that don't have dependency
       List<String> singleQuestionIds = [
@@ -273,11 +283,19 @@ class _AdvancedSurveyDisplayScreenState
                               // updateGuidList(
                               // "${DateTime.now().toString().trim()}_test");
                               print("BUTTON PRESSED");
+                              
+                              // used for writing results to db
                               calculateAll(allAdvancedAnswersDetail);
                               writeCurrentAdvancedRawAnswers(
                                   allAdvancedAnswersDetail.value);
                               writeCurrentAdvancedAnswers(
                                   calculateAll(allAdvancedAnswersDetail));
+
+                              // used for pdf
+                              addAllAdvancedRawAnswersMap(allAdvancedAnswersDetail.value);
+                              addAdvancedSurveyQuestions(getQuestionsList(allNodes));
+                              addFinalAdvancedScore(calculateAll(allAdvancedAnswersDetail).cast<String, int>());
+
                               Navigator.pushNamed(context, '/advancedResult');
                             },
                             child: Padding(
