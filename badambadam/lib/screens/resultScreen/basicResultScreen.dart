@@ -1,4 +1,4 @@
-import 'package:badambadam/screens/resultScreen/pdfReport.dart';
+import 'package:badambadam/screens/resultScreen/basicPdfReport.dart';
 import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:badambadam/screens/resultScreen/result_texts_pl.dart';
