@@ -24,8 +24,8 @@ class AdvancedSurveyRoute extends StatelessWidget {
           // allPrimaryAnswers: Map<String, int>.from({
           //   '1': 1,
           //   '2': 1,
-          //   '3': 1,
-          //   '4': 1,
+          //   '3': 0,
+          //   '4': 0,
           //   '5': 0,
           //   '6': 0,
           //   '7': 0,
@@ -39,7 +39,7 @@ class AdvancedSurveyRoute extends StatelessWidget {
           //   '15': 0,
           //   '16': 0,
           //   '17': 0,
-          //   '18': 0,
+          //   '18': 1,
           //   '19': 0,
           //   '20': 0
           // }),
