@@ -1,5 +1,4 @@
 import 'package:badambadam/screens/advancedSurveyScreen/advancedSingleQuestionWidget.dart';
-import 'package:badambadam/screens/advancedSurveyScreen/singleSelectWidget.dart';
 import 'package:flutter/material.dart';
 import '../../model.dart';
 import '../../storage.dart';
@@ -33,7 +32,7 @@ class _AdvancedSurveyDisplayScreenState
     return answers!.where((element) => element == answer).toList().length;
   }
 
-  List<String> getQuestionsList (List<Node> questions) {
+  List<String> getQuestionsList(List<Node> questions) {
     List<String> questionsTextList = [];
     for (var element in questions) {
       questionsTextList.add('${element.questions}+${element.nodeType}');
@@ -82,7 +81,6 @@ class _AdvancedSurveyDisplayScreenState
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
           shadowColor: Theme.of(context).colorScheme.onPrimary,
           elevation: 8);
-
 
       // ids of YesNoQuestions that don't have dependency
       List<String> singleQuestionIds = [
@@ -283,7 +281,7 @@ class _AdvancedSurveyDisplayScreenState
                               // updateGuidList(
                               // "${DateTime.now().toString().trim()}_test");
                               print("BUTTON PRESSED");
-                              
+
                               // used for writing results to db
                               calculateAll(allAdvancedAnswersDetail);
                               writeCurrentAdvancedRawAnswers(
@@ -292,9 +290,13 @@ class _AdvancedSurveyDisplayScreenState
                                   calculateAll(allAdvancedAnswersDetail));
 
                               // used for pdf
-                              addAllAdvancedRawAnswersMap(allAdvancedAnswersDetail.value);
-                              addAdvancedSurveyQuestions(getQuestionsList(allNodes));
-                              addFinalAdvancedScore(calculateAll(allAdvancedAnswersDetail).cast<String, int>());
+                              addAllAdvancedRawAnswersMap(
+                                  allAdvancedAnswersDetail.value);
+                              addAdvancedSurveyQuestions(
+                                  getQuestionsList(allNodes));
+                              addFinalAdvancedScore(
+                                  calculateAll(allAdvancedAnswersDetail)
+                                      .cast<String, int>());
 
                               Navigator.pushNamed(context, '/advancedResult');
                             },
@@ -665,7 +667,7 @@ class RadioButtonsWidget extends StatelessWidget {
   }
 }
 
-class SingleSelectsWidget extends StatelessWidget {
+class SingleSelectsWidget extends StatefulWidget {
   const SingleSelectsWidget({
     super.key,
     required this.questionNode,
@@ -676,7 +678,40 @@ class SingleSelectsWidget extends StatelessWidget {
   final ValueNotifier<Map<String, List<String>>> allAdvancedAnswersDetail;
 
   @override
+  State<SingleSelectsWidget> createState() => _SingleSelectsWidgetState();
+}
+
+class _SingleSelectsWidgetState extends State<SingleSelectsWidget> with AutomaticKeepAliveClientMixin {
+  List<bool> _selectedAnswers = [];
+
+  List<Widget> listQuestions(List<Question> questions) {
+    List<Widget> textWidgets = [];
+    for (var question in questions.skip(1)) {
+      textWidgets.add(Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Expanded(child: Text(question.toString())),
+          ),
+        ],
+      ));
+    }
+
+    return textWidgets;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedAnswers = List<bool>.generate(
+        widget.questionNode.questions.length - 1, (index) => false);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return Card(
       color: Colors.white,
       shape: RoundedRectangleBorder(
@@ -685,23 +720,50 @@ class SingleSelectsWidget extends StatelessWidget {
       ),
       child: ListTile(
         title: Text(
-          'Question ${questionNode.id} ${questionNode.questions[0]}',
+          'Question ${widget.questionNode.id} ${widget.questionNode.questions[0]}',
           style: Theme.of(context).textTheme.titleLarge,
         ),
-        subtitle: ConstrainedBox(
+        subtitle: Padding(
+          padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 5.0, right: 5.0),
+          child: ConstrainedBox(
             constraints: BoxConstraints(
                 minHeight: MediaQuery.of(context).size.height * 0.2,
                 maxHeight: MediaQuery.of(context).size.height * 0.8),
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: questionNode.questions.length - 1,
-                itemBuilder: ((context, inputIndex) {
-                  return SingleSelect(
-                      allAdvancedAnswersDetails: allAdvancedAnswersDetail,
-                      question: questionNode,
-                      inputIndex: inputIndex);
-                }))),
+            child: ToggleButtons(
+              isSelected: _selectedAnswers,
+              borderRadius: BorderRadius.circular(10),
+              direction: Axis.vertical,
+              onPressed: (int index) {
+                List<String> questionWordsList = widget.questionNode.questions
+                    .skip(1)
+                    .toList()[index]
+                    .toString()
+                    .split(' ');
+                bool isFail = questionWordsList.length > 1 &&
+                    questionWordsList[0] == '[F]';
+                setState(() {
+                  // The button that is tapped is set to true, and the others to false.
+                  for (int i = 0; i < _selectedAnswers.length; i++) {
+                    _selectedAnswers[i] = i == index;
+                    print(_selectedAnswers);
+                    widget.allAdvancedAnswersDetail
+                            .value[widget.questionNode.id]![i] =
+                        _selectedAnswers[i]
+                            ? (isFail ? 'FAIL_YES' : 'PASS_YES')
+                            : '-1';
+                  }
+                  print(widget
+                      .allAdvancedAnswersDetail.value);
+                });
+              },
+              children: listQuestions(widget.questionNode.questions),
+            ),
+          ),
+        ),
       ),
     );
   }
+  
+  @override
+  bool get wantKeepAlive => true;
 }
