@@ -22,22 +22,25 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
       child: Card(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(side: BorderSide(color: Colors.grey.shade300, width: 2), borderRadius: BorderRadius.circular(15.0),),
+        color: Theme.of(context).colorScheme.background,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.black45, width: 0.75),
+          borderRadius: BorderRadius.circular(15.0),
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
               title: Padding(
                 padding: const EdgeInsets.only(bottom: 8, top: 8),
-                child: Text(
-                  'Question ${widget.questionNode!.id}',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
+                child: Text('Pytanie ${widget.questionNode!.id}',
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.primary)),
               ),
               subtitle: Text(
                 '${widget.questionNode!.questions[0]}',
@@ -67,11 +70,11 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
                           if ((widget.questionNode!.isInverted && index == 0) ||
                               (!widget.questionNode!.isInverted &&
                                   index == 1)) {
-                            widget.allAnswers.value[
-                               widget.questionNode!.id] = 1;
+                            widget.allAnswers.value[widget.questionNode!.id] =
+                                1;
                           } else {
-                            widget.allAnswers.value[
-                                widget.questionNode!.id] = 0;
+                            widget.allAnswers.value[widget.questionNode!.id] =
+                                0;
                           }
 
                           print(widget.allAnswers);
@@ -79,9 +82,19 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
                       },
                       borderWidth: 1.5,
                       highlightColor: Theme.of(context).colorScheme.primary,
-                      selectedBorderColor: Theme.of(context).colorScheme.primary,
+                      selectedBorderColor:
+                          Theme.of(context).colorScheme.primary,
                       borderRadius: BorderRadius.circular(10),
-                      children: <Widget>[Text('YES', style: TextStyle(fontSize: 21),), Text('NO', style: TextStyle(fontSize: 21),)]),
+                      children: <Widget>[
+                        Text(
+                          'TAK',
+                          style: TextStyle(fontSize: 21),
+                        ),
+                        Text(
+                          'NIE',
+                          style: TextStyle(fontSize: 21),
+                        )
+                      ]),
                 ),
               ],
             )
@@ -93,5 +106,4 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
 
   @override
   bool get wantKeepAlive => true;
-
 }

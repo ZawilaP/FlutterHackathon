@@ -26,22 +26,20 @@ class _SurveyWidgetState extends State<SurveyWidget> {
     if (survey == null) {
       // if not there - then load one
       FakeBackendSingleton().getSurvey(null).then(showSurvey);
-      return Center(child: Text('Loading...'));
-      
+      return Center(child: Text('Ładowanie...'));
     } else {
       List<Node> topLevelSurvey = survey!.getTopLevelNodesOnly();
       List<String> topLevelQuestions = [];
 
       // used for storing answers. Initialized with -1 for no answer.
-      final ValueNotifier<Map<String, int>> allAnswers = ValueNotifier<Map<String, int>>({
-        for (var item in topLevelSurvey)
-          item.id: -1 
-      });
+      final ValueNotifier<Map<String, int>> allAnswers =
+          ValueNotifier<Map<String, int>>(
+              {for (var item in topLevelSurvey) item.id: -1});
 
       final ButtonStyle style = ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
           backgroundColor: Theme.of(context).colorScheme.primary,
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
           shadowColor: Theme.of(context).colorScheme.onPrimary,
@@ -53,13 +51,15 @@ class _SurveyWidgetState extends State<SurveyWidget> {
           barrierDismissible: false, // user must tap button!
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text('Please check yes or no for every question'),
+              title: const Text(
+                  'Proszę odpowiedzieć TAK lub NIE na każde pytanie.'),
               content: SingleChildScrollView(
                 child: ListBody(
                   children: const <Widget>[
-                    Text('Keep in mind how your child usually behaves.'),
                     Text(
-                      'If you have seen your child do the behavior a few times, but he or she does not usually do it, then please answer no.',
+                        'Proszę pomyśleć o tym, w jaki sposób dziecko zachowuje się na codzień.'),
+                    Text(
+                      'Jeśli widział/a Pan/Pani zachowanie kilka razy, ale dziecko zwykle się tak nie zachowuje, proszę zaznaczyć NIE.',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -68,7 +68,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
               actions: <Widget>[
                 TextButton(
                   child: const Text(
-                    'Close',
+                    'Zamknij',
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
@@ -87,8 +87,8 @@ class _SurveyWidgetState extends State<SurveyWidget> {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             sliver: SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
-              topLevelQuestions
-                  .add('${topLevelSurvey[index].id}. ${topLevelSurvey[index].questions[0]}+${topLevelSurvey[index].isInverted}');
+              topLevelQuestions.add(
+                  '${topLevelSurvey[index].id}. ${topLevelSurvey[index].questions[0]}+${topLevelSurvey[index].isInverted}');
               return SingleSurveyQuestion(
                 questionNode: topLevelSurvey[index],
                 allAnswers: allAnswers,
@@ -109,8 +109,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                         if (allAnswers.value.values.contains(-1)) {
                           _showMyDialog();
                         } else {
-                          updateGuidList(
-                              DateTime.now().toString().trim());
+                          updateGuidList(DateTime.now().toString().trim());
                           addAllTopLevelNodes(topLevelQuestions);
                           addAllAnswersMap(allAnswers.value);
                           writeCurrentAnswers();
@@ -122,7 +121,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 8.0, horizontal: 11),
                         child: Text(
-                          'SUBMIT',
+                          'Zatwierdź odpowiedzi',
                           style: TextStyle(
                               fontWeight: FontWeight.w700, fontSize: 20),
                         ),

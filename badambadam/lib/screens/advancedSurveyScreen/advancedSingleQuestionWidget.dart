@@ -24,19 +24,27 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    
+
     return Padding(
-      padding: const EdgeInsets.symmetric( vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       child: Card(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(side: BorderSide(color: Colors.grey.shade300, width: 2), borderRadius: BorderRadius.circular(15.0),),
+        color: Theme.of(context).colorScheme.background,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.black45, width: 0.75),
+          borderRadius: BorderRadius.circular(15.0),
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              title: Text(
-                'Question ${widget.questionNode!.id}',
-                style: Theme.of(context).textTheme.titleLarge,
+              title: Padding(
+                padding: const EdgeInsets.only(bottom: 8, top: 8),
+                child: Text(
+                  'Pytanie ${widget.questionNode!.id.replaceAll('_0', '.')}',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.primary),
+                ),
               ),
               subtitle: Text(
                 '${widget.questionNode!.questions[0]}',
@@ -66,12 +74,11 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
                           if ((widget.questionNode!.isInverted && index == 0) ||
                               (!widget.questionNode!.isInverted &&
                                   index == 1)) {
-                            widget.allAnswers.value[
-                                widget.questionNode!.id] = 
+                            widget.allAnswers.value[widget.questionNode!.id] =
                                 {'FAIL'}.toList();
                           } else {
-                            widget.allAnswers.value[
-                                widget.questionNode!.id] = {'PASS'}.toList();
+                            widget.allAnswers.value[widget.questionNode!.id] =
+                                {'PASS'}.toList();
                           }
                           // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
                           widget.allAnswers.notifyListeners();
@@ -81,8 +88,18 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
                       borderWidth: 1.5,
                       borderRadius: BorderRadius.circular(10),
                       highlightColor: Theme.of(context).colorScheme.primary,
-                      selectedBorderColor: Theme.of(context).colorScheme.primary,
-                      children: <Widget>[Text('YES', style: TextStyle(fontSize: 21),), Text('NO', style: TextStyle(fontSize: 21),)]),
+                      selectedBorderColor:
+                          Theme.of(context).colorScheme.primary,
+                      children: <Widget>[
+                        Text(
+                          'TAK',
+                          style: TextStyle(fontSize: 21),
+                        ),
+                        Text(
+                          'NIE',
+                          style: TextStyle(fontSize: 21),
+                        )
+                      ]),
                 ),
               ],
             )
@@ -94,5 +111,4 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
 
   @override
   bool get wantKeepAlive => true;
-
 }

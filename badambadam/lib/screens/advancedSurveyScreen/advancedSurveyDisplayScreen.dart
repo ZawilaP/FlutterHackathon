@@ -52,11 +52,11 @@ class _AdvancedSurveyDisplayScreenState
         print(e);
       }
 
-      return Center(child: Text('Loading...'));
+      return Center(child: Text('Ładowanie...'));
     }
     if (widget.allPrimaryAnswers!.isEmpty) {
       return Center(
-          child: Text('Something went wrong. Please return to the home page.'));
+          child: Text('Coś poszło nie tak. Wróć do strony głównej.'));
     } else {
       // filter questions that were scored in the primary survey
       List<Node> allNodes = survey!.nodes
@@ -76,11 +76,15 @@ class _AdvancedSurveyDisplayScreenState
                   '-1') // first question for radio buttons is not radio, just a title, that's why length - 1
       });
 
-      final ButtonStyle style = ElevatedButton.styleFrom(
+      final ButtonStyle style =  ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
           backgroundColor: Theme.of(context).colorScheme.primary,
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
           shadowColor: Theme.of(context).colorScheme.onPrimary,
           elevation: 8);
+
 
       // ids of YesNoQuestions that don't have dependency
       List<String> singleQuestionIds = [
@@ -304,7 +308,7 @@ class _AdvancedSurveyDisplayScreenState
                               padding: const EdgeInsets.symmetric(
                                   vertical: 8.0, horizontal: 11),
                               child: Text(
-                                'SUBMIT',
+                                'Zatwierdź odpowiedzi',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700, fontSize: 20),
                               ),
@@ -585,47 +589,6 @@ class _AdvancedSurveyDisplayScreenState
   }
 }
 
-class AdvancedTextFieldWidget extends StatelessWidget {
-  const AdvancedTextFieldWidget({
-    super.key,
-    required this.questionNode,
-    required this.allAdvancedAnswersDetail,
-  });
-
-  final Node questionNode;
-  final ValueNotifier<Map<String, List<String>>> allAdvancedAnswersDetail;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.grey.shade300, width: 2),
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      child: Column(
-        children: [
-          ListTile(
-            title: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Question ${questionNode.id} ${questionNode.questions[0].toString()}',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-            ),
-            subtitle: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AdvancedTextField(
-                  allAdvancedAnswersDetails: allAdvancedAnswersDetail,
-                  nodeId: questionNode.id),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class RadioButtonsWidget extends StatelessWidget {
   const RadioButtonsWidget({
     super.key,
@@ -639,29 +602,52 @@ class RadioButtonsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.background,
+      elevation: 0,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.grey.shade300, width: 2),
+        side: BorderSide(color: Colors.black45, width: 0.75),
         borderRadius: BorderRadius.circular(15.0),
       ),
       child: ListTile(
-        title: Text(
-          'Question ${questionNode.id} ${questionNode.questions[0]}',
-          style: Theme.of(context).textTheme.titleLarge,
+        title: Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8, top: 8),
+                child: Text(
+                  'Pytanie ${questionNode.id.replaceAll('_0', '.')}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(color: Theme.of(context).colorScheme.primary),
+                ),
+              ),
+              Text(
+                questionNode.questions[0].toString(),
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ],
+          ),
         ),
         subtitle: ConstrainedBox(
-            constraints: BoxConstraints(
-                minHeight: MediaQuery.of(context).size.height * 0.2,
-                maxHeight: MediaQuery.of(context).size.height * 0.9),
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: questionNode.questions.length - 1,
-                itemBuilder: ((context, inputIndex) {
-                  return RadioButtons(
-                      allAdvancedAnswersDetails: allAdvancedAnswersDetail,
-                      question: questionNode,
-                      inputIndex: inputIndex);
-                }))),
+          constraints: BoxConstraints(
+              minHeight: MediaQuery.of(context).size.height * 0.2,
+              maxHeight: MediaQuery.of(context).size.height * 0.9),
+          child: ListView.separated(
+              separatorBuilder: (context, index) {
+                return Divider();
+              },
+              shrinkWrap: true,
+              itemCount: questionNode.questions.length - 1,
+              itemBuilder: ((context, inputIndex) {
+                return RadioButtons(
+                    allAdvancedAnswersDetails: allAdvancedAnswersDetail,
+                    question: questionNode,
+                    inputIndex: inputIndex);
+              })),
+        ),
       ),
     );
   }
@@ -681,7 +667,8 @@ class SingleSelectsWidget extends StatefulWidget {
   State<SingleSelectsWidget> createState() => _SingleSelectsWidgetState();
 }
 
-class _SingleSelectsWidgetState extends State<SingleSelectsWidget> with AutomaticKeepAliveClientMixin {
+class _SingleSelectsWidgetState extends State<SingleSelectsWidget>
+    with AutomaticKeepAliveClientMixin {
   List<bool> _selectedAnswers = [];
 
   List<Widget> listQuestions(List<Question> questions) {
@@ -692,7 +679,8 @@ class _SingleSelectsWidgetState extends State<SingleSelectsWidget> with Automati
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Expanded(child: Text(question.toString())),
+            child: SizedBox(width: 350, 
+             child: Text(question.toString(), maxLines: 5, style: TextStyle(fontSize: 16),)),
           ),
         ],
       ));
@@ -713,18 +701,37 @@ class _SingleSelectsWidgetState extends State<SingleSelectsWidget> with Automati
     super.build(context);
 
     return Card(
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.background,
+      elevation: 0,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.grey.shade300, width: 2),
+        side: BorderSide(color: Colors.black45, width: 0.75),
         borderRadius: BorderRadius.circular(15.0),
       ),
       child: ListTile(
-        title: Text(
-          'Question ${widget.questionNode.id} ${widget.questionNode.questions[0]}',
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
+        title: Container(
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8, top: 8),
+                  child: Text(
+                    'Pytanie ${widget.questionNode.id.replaceAll('_0', '.')}',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(color: Theme.of(context).colorScheme.primary),
+                  ),
+                ),
+                Text(
+                  widget.questionNode.questions[0].toString(),
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
+            )),
         subtitle: Padding(
-          padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 5.0, right: 5.0),
+          padding: const EdgeInsets.only(
+              top: 15.0, bottom: 15.0, left: 5.0, right: 5.0),
           child: ConstrainedBox(
             constraints: BoxConstraints(
                 minHeight: MediaQuery.of(context).size.height * 0.2,
@@ -752,8 +759,7 @@ class _SingleSelectsWidgetState extends State<SingleSelectsWidget> with Automati
                             ? (isFail ? 'FAIL_YES' : 'PASS_YES')
                             : '-1';
                   }
-                  print(widget
-                      .allAdvancedAnswersDetail.value);
+                  print(widget.allAdvancedAnswersDetail.value);
                 });
               },
               children: listQuestions(widget.questionNode.questions),
@@ -763,7 +769,7 @@ class _SingleSelectsWidgetState extends State<SingleSelectsWidget> with Automati
       ),
     );
   }
-  
+
   @override
   bool get wantKeepAlive => true;
 }

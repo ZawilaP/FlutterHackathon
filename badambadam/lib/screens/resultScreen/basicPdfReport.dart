@@ -59,7 +59,7 @@ class _PDFSaveState extends State<PDFSave> {
       pw.MultiPage(
         theme: pw.ThemeData.withFont(base: ttfBase),
         build: (pw.Context context) => [
-          pw.Text('M-Chat-R Survey Results', style: pw.TextStyle(fontSize: 20)),
+          pw.Text('Wyniki Ankiety M-Chat-R', style: pw.TextStyle(fontSize: 20)),
           pw.Divider(thickness: 0.5),
           pw.Row(
               mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
@@ -69,7 +69,7 @@ class _PDFSaveState extends State<PDFSave> {
                     children: [
                       pw.RichText(
                           text: pw.TextSpan(children: <pw.TextSpan>[
-                        pw.TextSpan(text: "Your child's score: "),
+                        pw.TextSpan(text: "Wynik: "),
                         pw.TextSpan(
                             text: '${widget.score}/20',
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
@@ -80,18 +80,18 @@ class _PDFSaveState extends State<PDFSave> {
                     children: [
                       pw.RichText(
                           text: pw.TextSpan(children: <pw.TextSpan>[
-                        pw.TextSpan(text: "SurveyID: "),
+                        pw.TextSpan(text: "Identyfikator ankiety: "),
                         pw.TextSpan(
                             text: currentGuidUserNumber,
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
                       ])),
                       pw.Text(
-                          'Survey date: ${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()}')
+                          'Data wykonania badania: ${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()}')
                     ])
               ]),
           pw.SizedBox(height: 8),
           pw.Table.fromTextArray(
-              headers: <String>['Question', 'Answer', 'Score'],
+              headers: <String>['Pytanie', 'Odpowiedz', 'Wynik'],
               border: null,
               headerStyle: pw.TextStyle(
                 fontSize: 11,
@@ -122,8 +122,8 @@ class _PDFSaveState extends State<PDFSave> {
                   (index) => <String>[
                         topLevelSurvey![index].split('+')[0],
                         topLevelSurvey![index].split('+')[1] == 'true'
-                            ? 'YES'
-                            : 'NO',
+                            ? 'TAK'
+                            : 'NIE',
                         widget.allAnswers![index].toString()
                       ]))
         ],
