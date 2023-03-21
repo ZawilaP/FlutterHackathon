@@ -55,7 +55,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
     if (questionType == 'SingleSelect') {
       return questionList.substring(1, questionList.length - 1).split('?,')[0];
     }
-    return 'Dupa';
+    return 'Text';
   }
 
   String getAnswers(

@@ -42,8 +42,10 @@ class _RadioButtonsState extends State<RadioButtons>
     List<String> questionWordsList = nodeQuestions.split(' ');
 
     final otherRegex = RegExp(r'(Other..)');
+    final otherRegexPL = RegExp(r'(Inne..)');
     bool hasOtherWord =
         questionWordsList.any((item) => otherRegex.hasMatch(item));
+    bool hasOtherWordPL = questionWordsList.any((item) => otherRegexPL.hasMatch(item));
 
     bool isReversed =
         questionWordsList.length > 1 && questionWordsList[0] == '[F]';
@@ -80,7 +82,7 @@ class _RadioButtonsState extends State<RadioButtons>
                       });
                     },
                   ),
-                  Text('YES'),
+                  Text('TAK'),
                   SizedBox(
                     width: 8,
                   ),
@@ -101,18 +103,18 @@ class _RadioButtonsState extends State<RadioButtons>
                       });
                     },
                   ),
-                  Text('NO')
+                  Text('NIE')
                 ],
               ),
             )),
-        (_otherFlag && hasOtherWord)
+        (_otherFlag && (hasOtherWord || hasOtherWordPL))
             ? Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
                   controller: myController,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Describe other behaviours'),
+                      hintText: hasOtherWord ? 'Describe other behaviours' : "Proszę opisać inne zachowania"),
                   onChanged: (text) {
                     widget.allAdvancedAnswersDetails
                             .value[widget.question.id]![widget.inputIndex] =
