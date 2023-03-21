@@ -29,6 +29,9 @@ class _StartSurveyForm extends State<StartSurveyForm> {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
         shadowColor: Theme.of(context).colorScheme.onPrimary,
@@ -90,7 +93,7 @@ class _StartSurveyForm extends State<StartSurveyForm> {
             child: TextFormField(
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.home),
-                labelText: 'Kod pocztowy',
+                labelText: 'Wprowadź kod pocztowy',
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
@@ -117,7 +120,7 @@ class _StartSurveyForm extends State<StartSurveyForm> {
               }),
             )),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
           child: Center(
             child: ElevatedButton(
               onPressed: () {
@@ -131,7 +134,8 @@ class _StartSurveyForm extends State<StartSurveyForm> {
               },
               style: style,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 11),
                 child: Text('Rozpocznij ankietę',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),

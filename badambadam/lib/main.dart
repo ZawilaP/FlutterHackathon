@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           fontFamily: 'Poppins',
           colorScheme: ColorScheme.fromSeed(
-              seedColor: Color.fromRGBO(255, 178, 0, 1),
+              seedColor: Color.fromARGB(255, 118, 114, 105),
+              background: Color.fromRGBO(253, 253, 253, 1),
               primary: Color.fromRGBO(255, 178, 0, 1),
               onPrimary: Color.fromRGBO(45, 42, 40, 1)),
           textTheme: const TextTheme(
