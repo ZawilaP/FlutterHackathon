@@ -1,0 +1,1008 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "1_02",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "1.0",
+      "questions": [
+        "Czy gdy wskazujesz na coś po drugiej stronie pokoju, Twoje dziecko na to patrzy? (NA PRZYKŁAD, gdy wskazujesz na zabawkę lub zwierzę, Twoje dziecko patrzy na tę zabawkę lub zwierzę?)"
+      ],
+      "third_path": "nan",
+      "yes_path": "1_01"
+    },
+    {
+      "id": "1_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "YesNoBranching",
+      "question_group_id": "1.0",
+      "questions": [
+        "Jeśli wskażesz na coś, jak zwykle reaguje Twoje dziecko?",
+        "[P] Patrzy na przedmiot?",
+        "[P] Wskazuje na przedmiot?",
+        "[P] Patrzy i komentuje przedmiot?",
+        "[P] Patrzy, gdy Ty wskazujesz i mówisz 'patrz!'?",
+        "[F] Ignoruje Ciebie?",
+        "[F] Patrzy bez celu po pokoju?",
+        "[F] Patrzy na Twój palec?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "id": "1_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "SingleSelect",
+      "question_group_id": "1.0",
+      "questions": [
+        "Która z tych czynności jest przez niego/nią najczęściej wykonywana?",
+        "[P] Patrzy na przedmiot?",
+        "[P] Wskazuje na przedmiot?",
+        "[P] Patrzy i komentuje przedmiot?",
+        "[P] Patrzy, gdy Ty wskazujesz i mówisz 'patrz!'?",
+        "[F] Ignoruje Ciebie?",
+        "[F] Patrzy bez celu po pokoju?",
+        "[F] Patrzy na Twój palec?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "id": "2_01",
+      "is_inverted": "YES",
+      "is_top_level": "YES",
+      "no_path": "FAIL",
+      "node_type": "OneYesWillDoStopAsking",
+      "question_group_id": "2.0",
+      "questions": [
+        "Zgłosiłeś/aś, że zastanawiałeś/aś się, czy Twoje dziecko jest głuche. Co spowodowało takie podejrzenia? Czy ono/ona",
+        "często ignoruje dźwięki?",
+        "często ignoruje innych ludzi?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "id": "2_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "nan",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "2.0",
+      "questions": [
+        "Czy badano słuch Twojego dziecka?"
+      ],
+      "third_path": "nan",
+      "yes_path": "2_02"
+    },
+    {
+      "id": "2_03",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "OneYesWillDoStopAsking",
+      "question_group_id": "2.0",
+      "questions": [
+        "Jakie były wyniki badania słuchu? (wybierz jedną odpowiedź):",
+        "Słuch w zakresie normy",
+        "Słuch poniżej normy",
+        "Wyniki niejednoznaczne lub niewystarczające"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Gabi",
+      "id": "3",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "3_02",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "3.0",
+      "questions": [
+        "Czy Twoje dziecko bawi się w udawanie lub zabawę w wyobrażanie? (NA PRZYKŁAD, udaje picie z pustej filiżanki, udaje rozmowę przez telefon lub udaje karmienie lalki lub pluszowego zwierzątka?)"
+      ],
+      "third_path": "nan",
+      "yes_path": "3_01"
+    },
+    {
+      "author": "Gabi",
+      "id": "3_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "OneYesWillDoStopAsking",
+      "question_group_id": "3.0",
+      "questions": [
+        "Czy zwykle... ",
+        "udaje picie z zabawkowej filiżanki?",
+        "udaje jedzenie zabawkową łyżką lub widelcem?",
+        "udaje rozmowę przez telefon?",
+        "udaje karmienie lalki lub pluszowego zwierzątka prawdziwym lub wyimaginowanym jedzeniem?",
+        "pcha samochodzik, tak jakby jechał po udawanej drodze?",
+        "udaje robota, samolot, baletnicę lub inną ulubioną postać?",
+        "stawia zabawkowy garnek na udawanej kuchence?",
+        "miesza wyimaginowane jedzenie?",
+        "umieszcza figurkę akcji lub lalkę w samochodzie lub ciężarówce, tak jakby była kierowcą lub pasażerem?",
+        "udaje odkurzanie dywanu, zamiatanie podłogi lub koszenie trawnika?",
+        "Inne...."
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "z",
+      "id": "4",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "nan",
+      "node_type": "Simple_yes_no",
+      "question_group_id": "4.0",
+      "questions": [
+        "Czy Twoje dziecko lubi wspinać się na rzeczy? (NA PRZYKŁAD, meble, przeszkody na placu zabaw lub schody)"
+      ],
+      "third_path": "nan",
+      "yes_path": "4_01"
+    },
+    {
+      "author": "o",
+      "id": "4_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "OneYesWillDoStopAsking",
+      "question_group_id": "4.0",
+      "questions": [
+        "Czy lubi wspinać się na...",
+        "schody?",
+        "krzesła?",
+        "meble?",
+        "sprzęt na placu zabaw?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "s",
+      "id": "5",
+      "is_inverted": "YES",
+      "is_top_level": "YES",
+      "no_path": "PASS",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "5.0",
+      "questions": [
+        "Czy Twoje dziecko wykonuje nietypowe ruchy palcami w pobliżu oczu? (NA PRZYKŁAD, czy Twoje dziecko macha palcami blisko oczu?)"
+      ],
+      "third_path": "nan",
+      "yes_path": "5_01"
+    },
+    {
+      "author": "t",
+      "id": "5_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "5_02",
+      "node_type": "OneYesWillDoStopAsking",
+      "question_group_id": "5.0",
+      "questions": [
+        "Czy on/ona",
+        "[P] Patrzy na swoje ręce?",
+        "[P] Porusza palcami podczas zabawy w a-ku-ku?",
+        "[F] Macha palcami blisko swoich oczu?",
+        "[F] Trzyma ręce blisko swoich oczu?",
+        "[F] Trzyma ręce z boku swoich oczu?",
+        "[F] Rozwija skrzydełka (tj. trzepie rękami) na boki swoich oczu?",
+        "[F] Rozwija skrzydełka (tj. trzepie rękami) w pobliżu swojej twarzy?",
+        "[F] Inne... (opisz)"
+      ],
+      "third_path": "nan",
+      "yes_path": "5_02"
+    },
+    {
+      "author": "w",
+      "id": "5_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "PASS",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "5.0",
+      "questions": [
+        "Czy zdarza się to częściej niż dwa razy w tygodniu?"
+      ],
+      "third_path": "nan",
+      "yes_path": "FAIL"
+    },
+    {
+      "author": "Piotr",
+      "id": "6",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "6_01",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "6.0",
+      "questions": [
+        "Czy Twoje dziecko wskazuje jednym palcem, prosząc o coś lub prosząc o pomoc? (NA PRZYKŁAD, wskazując na przekąskę lub zabawkę, która jest poza zasięgiem)"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Piotr",
+      "id": "6_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "OneYesWillDoStopAsking",
+      "question_group_id": "6.0",
+      "questions": [
+        "Jeśli Twoje dziecko chce czegoś, co jest poza jego/jej zasięgiem, na przykład przekąski lub zabawki, jak to robi?",
+        "Czy sięga po przedmiot całymi rękami?",
+        "Czy prowadzi Cię do przedmiotu?",
+        "Czy próbuje zdobyć przedmiot samodzielnie?",
+        "Czy prosi o to słowami lub dźwiękami?"
+      ],
+      "third_path": "nan",
+      "yes_path": "6_03"
+    },
+    {
+      "author": "Piotr",
+      "id": "6_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "6.0",
+      "questions": [
+        "Gdybyś powiedział/a 'Pokaż mi', czy on/ona wskazałby to?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Piotr",
+      "id": "7",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "7_02",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "7.0",
+      "questions": [
+        "Czy Twoje dziecko wskazuje jednym palcem, aby pokazać Ci coś interesującego? (NA PRZYKŁAD, czy Twoje dziecko obserwuje inne dzieci, uśmiecha się do nich lub do nich idzie?)"
+      ],
+      "third_path": "nan",
+      "yes_path": "7_01"
+    },
+    {
+      "author": "Piotr",
+      "id": "7_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "OneYesWillDoStopAsking",
+      "question_group_id": "7.0",
+      "questions": [
+        "Proszę podać przykład czego mógłby mi wskazać, aby pokazać mi coś?",
+        "Samolot na niebie?",
+        "Ciężarówka na drodze?",
+        "Robaka na ziemi?",
+        "Zwierzę w ogrodzie?",
+        "Inne..."
+      ],
+      "third_path": "nan",
+      "yes_path": "7_03"
+    },
+    {
+      "author": "Piotr",
+      "id": "7_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "7.0",
+      "questions": [
+        "Jak Twoje dziecko zwraca na to Twoją uwagę? Czy wskazywałoby to jednym palcem?"
+      ],
+      "third_path": "nan",
+      "yes_path": "7_04"
+    },
+    {
+      "author": "Piotr",
+      "id": "7_03",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "7.0",
+      "questions": [
+        "Czy robi to, aby pokazać swoje zainteresowanie?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Piotr",
+      "id": "8",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "8_02",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "8.0",
+      "questions": [
+        "Czy Twoje dziecko interesuje się innymi dziećmi? (NA PRZYKŁAD, czy Twoje dziecko obserwuje inne dzieci, uśmiecha się do nich lub do nich idzie?)"
+      ],
+      "third_path": "nan",
+      "yes_path": "8_01"
+    },
+    {
+      "author": "Piotr",
+      "id": "8_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "8_02",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "8.0",
+      "questions": [
+        "Czy interesuje się dziećmi, które nie są jego/jej rodzeństwem?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Piotr",
+      "id": "8_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "8.0",
+      "questions": [
+        "Czy Twoje dziecko zwykle reaguje na inne dzieci, gdy jesteście na placu zabaw lub w supermarkecie?"
+      ],
+      "third_path": "nan",
+      "yes_path": "8_03"
+    },
+    {
+      "author": "Piotr",
+      "id": "8_03",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "OneYesWillDoStopAsking",
+      "question_group_id": "8.0",
+      "questions": [
+        "Jak Twoje dziecko reaguje?",
+        "Bawi się z innym dzieckiem?",
+        "Rozmawia z innym dzieckiem?",
+        "Bełkocze lub wydaje dźwięki głosowe?",
+        "Obserwuje inne dziecko?",
+        "Uśmiecha się do innego dziecka?",
+        "Na początku zachowuje się nieśmiało, ale później uśmiecha się?",
+        "Staje się podekscytowane na widok innego dziecka?"
+      ],
+      "third_path": "nan",
+      "yes_path": "8_04"
+    },
+    {
+      "author": "Piotr",
+      "id": "8_04",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "8.0",
+      "questions": [
+        "Czy reaguje na inne dzieci więcej niż w połowie przypadków?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "c",
+      "id": "9",
+      "is_inverted": "No",
+      "is_top_level": "YES",
+      "no_path": "9_02",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "9.0",
+      "questions": [
+        "Czy Twoje dziecko pokazuje Ci rzeczy, przynosząc je do Ciebie lub trzymając je tak, abyś mógł je zobaczyć - nie po to, żeby prosić o pomoc, ale tylko po to, żeby się nimi podzielić? (NA PRZYKŁAD, pokazując Ci kwiatek, pluszowego misia czy zabawkowy samochód)"
+      ],
+      "third_path": "nan",
+      "yes_path": "9_01"
+    },
+    {
+      "author": "e",
+      "id": "9_01",
+      "is_inverted": "No",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "OneYesWillDoStopAsking",
+      "question_group_id": "9.0",
+      "questions": [
+        "Czy Twoje dziecko czasami przynosi Ci...",
+        "Zdjęcie lub zabawkę tylko po to, żeby Ci je pokazać?",
+        "Rysunek, który zrobiło?",
+        "Kwiat, który zerwało?",
+        "Robaka, którego znalazło na trawie?",
+        "Kilka klocków, które połączyło?",
+        "Inne...(opisz)"
+      ],
+      "third_path": "nan",
+      "yes_path": "9_03"
+    },
+    {
+      "author": "nan",
+      "id": "9_02",
+      "is_inverted": "No",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "nan",
+      "questions": [
+        "Czy czasami pokazuje Ci coś, nie oczekując pomocy?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "JJ",
+      "id": "10",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "10_02",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "10.0",
+      "questions": [
+        "Czy twoje dziecko reaguje, kiedy wołasz je po imieniu? (NA PRZYKŁAD czy odwraca głowę, odpowiada mową lub bełkotem lub przestaje robić to, co akurat robi, gdy wołasz je po imieniu?)"
+      ],
+      "third_path": "nan",
+      "yes_path": "10_01"
+    },
+    {
+      "author": "JJ",
+      "id": "10_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "YesNoBranching",
+      "question_group_id": "10.0",
+      "questions": [
+        "Jeśli dziecko nie zajmuje się czymś przyjemnym lub interesującym, co robi, kiedy wołasz je po imieniu?",
+        "[P] Ogląda się na ciebie?",
+        "[P] Odpowiada mową lub bełkotem?",
+        "[P] Przerywa to co robi?",
+        "[F] Wydaje się słyszeć, ale ignoruje Cię?",
+        "[F] Odpowiada tylko wtedy, gdy jesteś tuż przed twarzą dziecka?",
+        "[F] Odpowiada tylko wtedy, gdy zostanie dotknięte?"
+      ],
+      "third_path": "10_4",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "JJ",
+      "id": "10_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "nan",
+      "node_type": "SingleSelect",
+      "question_group_id": "10.0",
+      "questions": [
+        "Która z tych opcji występuje najczęściej?",
+        "[P] Ogląda się na ciebie?",
+        "[P] Odpowiada mową lub bełkotem?",
+        "[P] Przerywa to co robi?",
+        "[F] Wydaje się słyszeć, ale ignoruje Cię?",
+        "[F] Odpowiada tylko wtedy, gdy jesteś tuż przed twarzą dziecka?",
+        "[F] Odpowiada tylko wtedy, gdy zostanie dotknięte?"
+      ],
+      "third_path": "See comments",
+      "yes_path": "nan"
+    },
+    {
+      "author": "JJ",
+      "id": "11",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "11_1",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "11.0",
+      "questions": [
+        "Kiedy uśmiechasz się do dziecka, czy dziecko odpowiada uśmiechem?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "JJ",
+      "id": "11_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "YesNoBranching",
+      "question_group_id": "11.0",
+      "questions": [
+        "Czy twoje dziecko...",
+        "[P] Uśmiecha się, kiedy ty się uśmiechasz?",
+        "[P] Uśmiecha się, kiedy wchodzisz do pokoju?",
+        "[P] Uśmiecha się, kiedy wracasz po nieobecności?",
+        "[F] Uśmiecha się zawsze?",
+        "[F] Uśmiecha się do ulubionej zabawki lub czynności?",
+        "[F] Uśmiecha się przypadkowo lub bez powodu?"
+      ],
+      "third_path": "11_3",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "JJ",
+      "id": "11_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "nan",
+      "node_type": "SingleSelect",
+      "question_group_id": "10.0",
+      "questions": [
+        "Która z tych opcji występuje najczęściej?",
+        "[P] Uśmiecha się, kiedy ty się uśmiechasz?",
+        "[P] Uśmiecha się, kiedy wchodzisz do pokoju?",
+        "[P] Uśmiecha się, kiedy wracasz po nieobecności?",
+        "[F] Uśmiecha się zawsze?",
+        "[F] Uśmiecha się do ulubionej zabawki lub czynności?",
+        "[F] Uśmiecha się przypadkowo lub bez powodu?"
+      ],
+      "third_path": "See comments",
+      "yes_path": "nan"
+    },
+    {
+      "author": "JJ",
+      "id": "12",
+      "is_inverted": "YES",
+      "is_top_level": "YES",
+      "no_path": "PASS",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "12.0",
+      "questions": [
+        "Czy Twoje dziecko reaguje niepokojem na codzienne odgłosy? (NA PRZYKŁAD, czy Twoje dziecko krzyczy lub płacze w reakcji na odgłosy, takie jak odkurzacz czy głośna muzyka?)"
+      ],
+      "third_path": "nan",
+      "yes_path": "12_1"
+    },
+    {
+      "author": "JJ",
+      "id": "12_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "12_2",
+      "node_type": "OneYesWillDoKeepAsking",
+      "question_group_id": "12.0",
+      "questions": [
+        "Czy Twoje dziecko negatywnie reaguje na dźwięk...",
+        "Pralki?",
+        "Płaczących niemowląt?",
+        "Odkurzacza?",
+        "Suszarki do włosów?",
+        "Ruchu ulicznego?",
+        "Pisków lub wrzasków niemowląt?",
+        "Głośnej muzyki?",
+        "Telefonu/dzwonka do drzwi?",
+        "Hałaśliwych miejsc, takich jak supermarket lub restauracja?",
+        "Inne...(opisz):"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "JJ",
+      "id": "12_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "YesNoBranching",
+      "question_group_id": "11.0",
+      "questions": [
+        "Jak Twoje dziecko reaguje na te odgłosy?",
+        "[P] Spokojnie zakrywa uszy?",
+        "[P] Mówi Ci, że nie lubi danego dźwięku?",
+        "[F] Krzyczy?",
+        "[F] Płacze?",
+        "[F] Zakrywa uszy w stanie zdenerwowania?"
+      ],
+      "third_path": "11_3",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "JJ",
+      "id": "12_03",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "nan",
+      "node_type": "SingleSelect",
+      "question_group_id": "10.0",
+      "questions": [
+        "Które z tych zachowań Twoje dziecko najczęściej wykazuje?",
+        "[P] Spokojnie zakrywa uszy?",
+        "[P] Mówi Ci, że nie lubi danego dźwięku?",
+        "[F] Krzyczy?",
+        "[F] Płacze?",
+        "[F] Zakrywa uszy w stanie zdenerwowania?"
+      ],
+      "third_path": "See comments",
+      "yes_path": "nan"
+    },
+    {
+      "author": "Francisco ",
+      "id": "13",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "FAIL",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "13.0",
+      "questions": [
+        "Czy Twoje dziecko chodzi?"
+      ],
+      "third_path": "nan",
+      "yes_path": "13_01"
+    },
+    {
+      "author": "Francisco ",
+      "id": "13_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "13.0",
+      "questions": [
+        "Czy Twoje dziecko chodzi bez trzymania się czegokolwiek?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Francisco ",
+      "id": "14",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "14_02",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "14.0",
+      "questions": [
+        "Czy Twoje dziecko patrzy Ci w oczy, kiedy do niego mówisz, bawisz się z nim lub przebierasz je?"
+      ],
+      "third_path": "nan",
+      "yes_path": "14_01"
+    },
+    {
+      "author": "Francisco ",
+      "id": "14_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "YesNoBranching",
+      "question_group_id": "14.0",
+      "questions": [
+        "Czy Twoje dziecko patrzy Ci w oczy...",
+        "Gdy potrzebuje czegoś?",
+        "Kiedy się z nim bawisz?",
+        "Podczas karmienia?",
+        "Podczas zmiany pieluchy?",
+        "Kiedy czytasz mu bajkę?",
+        "Kiedy do niego mówisz?"
+      ],
+      "third_path": "PASS",
+      "yes_path": "14_03"
+    },
+    {
+      "author": "Francisco ",
+      "id": "14_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "14.0",
+      "questions": [
+        "Czy Twoje dziecko patrzy Ci codziennie w oczy?"
+      ],
+      "third_path": "nan",
+      "yes_path": "14_04"
+    },
+    {
+      "author": "Francisco ",
+      "id": "14_03",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "14.0",
+      "questions": [
+        "W dni, kiedy jesteście razem cały czas, czy Twoje dziecko patrzy Ci w oczy przynajmniej 5 razy?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Francisco ",
+      "id": "15",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "15_02",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "15.0",
+      "questions": [
+        "Czy Twoje dziecko próbuje naśladować to, co robisz? (NA PRZYKŁAD, macha ręką na pożegnanie, klaska lub wydaje zabawny dźwięk, kiedy Ty to robisz)"
+      ],
+      "third_path": "nan",
+      "yes_path": "15_01"
+    },
+    {
+      "author": "Francisco ",
+      "id": "15_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "nan",
+      "node_type": "YesNoBranching",
+      "question_group_id": "15.0",
+      "questions": [
+        "Czy Twoje dziecko próbuje naśladować Cię, gdy... ",
+        "Wystawiasz język?",
+        "Wydajesz zabawny dźwięk?",
+        "Machasz na pożegnanie?",
+        "Klaskasz w dłonie?",
+        "Przykładasz palec do ust jako sygnał 'cii'?",
+        "Przesyłasz buziaka?",
+        "Inne..."
+      ],
+      "third_path": "FAIL",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "nan",
+      "id": "16",
+      "is_inverted": "No",
+      "is_top_level": "NO",
+      "no_path": "16_01",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "nan",
+      "questions": [
+        "Czy Twoje dziecko spogląda wokół, gdy odwracasz głowę, aby spojrzeć na coś?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "nan",
+      "id": "16_01",
+      "is_inverted": "nan",
+      "is_top_level": "no",
+      "no_path": "16_03",
+      "node_type": "OneYesWillDoKeepAsking",
+      "question_group_id": "nan",
+      "questions": [
+        "Czy Twoje dziecko...",
+        "[P] Spogląda w kierunku rzeczy, na które patrzysz?",
+        "[P] Wskazuje na rzecz, na którą patrzysz?",
+        "[P] Ogląda się wokół, aby zobaczyć, na co patrzysz?",
+        "[F] Ignoruje Cię?",
+        "[F] Patrzy na Twoją twarz?"
+      ],
+      "third_path": "nan",
+      "yes_path": "16_03"
+    },
+    {
+      "author": "JJ",
+      "id": "16_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "nan",
+      "node_type": "SingleSelect",
+      "question_group_id": "10.0",
+      "questions": [
+        "Które z tych zachowań dziecko prezentuje najczęściej?",
+        "[P] Spogląda w kierunku rzeczy, na które patrzysz?",
+        "[P] Wskazuje na rzecz, na którą patrzysz?",
+        "[P] Ogląda się wokół, aby zobaczyć, na co patrzysz?",
+        "[F] Ignoruje Cię?",
+        "[F] Patrzy na Twoją twarz?"
+      ],
+      "third_path": "See comments",
+      "yes_path": "nan"
+    },
+    {
+      "author": "Nela",
+      "id": "17",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "17_02",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "17.0",
+      "questions": [
+        "Czy Twoje dziecko stara się przyciągnąć Twoją uwagę? (NA PRZYKŁAD, czy Twoje dziecko patrzy na Ciebie po pochwałę lub mówi „patrz” lub „popatrz na mnie”?)"
+      ],
+      "third_path": "nan",
+      "yes_path": "17_01"
+    },
+    {
+      "author": "Nela",
+      "id": "17_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "OneYesWillDoStopAsking",
+      "question_group_id": "17.0",
+      "questions": [
+        "Proszę podaj mi przykład, jak Twoje dziecko próbuje zwrócić Twoją uwagę.",
+        "Mówi „Patrz!” lub „Popatrz na mnie!”?",
+        "Gaworzy lub wydaje dźwięk, aby zwrócić Twoją uwagę na to, co robi?",
+        "Patrzy na Ciebie, aby otrzymać pochwałę lub komentarz?",
+        "Ciągle spogląda, aby sprawdzić, czy patrzysz?",
+        "Inne...(opisz)"
+      ],
+      "third_path": "True",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Nela",
+      "id": "18",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "18_02",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "18.0",
+      "questions": [
+        "Czy Twoje dziecko rozumie, kiedy mówisz mu, żeby coś zrobiło? (NA PRZYKŁAD, jeśli nie wskazujesz palcem, czy Twoje dziecko rozumie polecenia takie jak „połóż książkę na krześle” lub „przynieś mi koc”?)"
+      ],
+      "third_path": "nan",
+      "yes_path": "18_01"
+    },
+    {
+      "author": "Nela",
+      "id": "18_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "18_04",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "18.0",
+      "questions": [
+        "Gdy sytuacja daje mu/jej wskazówkę, czy potrafi wykonać polecenie? Na przykład, kiedy jesteś ubrany(a) i mówisz mu/jej, żeby wziął(a) swoje buty, czy widzisz, że rozumie?"
+      ],
+      "third_path": "nan",
+      "yes_path": "18_03"
+    },
+    {
+      "author": "Nela",
+      "id": "18_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "18.0",
+      "questions": [
+        "Jeśli jest czas na kolację i jedzenie jest na stole, i powiesz dziecku, aby usiadło, czy podejdzie i usiądzie przy stole?"
+      ],
+      "third_path": "nan",
+      "yes_path": "18_04"
+    },
+    {
+      "author": "Nela",
+      "id": "18_03",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "OneYesWillDoStopAsking",
+      "question_group_id": "18.0",
+      "questions": [
+        "W sytuacji, kiedy nie ma żadnych wskazówek, czy twoje dziecko potrafi wykonać polecenie? Na przykład...: Jeśli powiesz 'Pokaż mi swój but' bez wskazywania, gestów lub podpowiedzi (kiedy nie wychodzicie ani się nie ubieracie), czy twoje dziecko pokaże ci swój but?",
+        "Jeśli powiesz 'Przynieś mi koc' lub poprosisz o inny przedmiot bez wskazywania, gestów lub podpowiedzi, czy twoje dziecko przyniesie ci go?",
+        "Jeśli powiesz 'Połóż książkę na krześle' bez wskazywania, gestów lub podpowiedzi, czy twoje dziecko położy książkę na krześle?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Jakub",
+      "id": "19",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "19_01",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "19.0",
+      "questions": [
+        "Czy twoje dziecko patrzy na twoją twarz, aby zobaczyć jak reagujesz, gdy dzieje się coś nowego? (NA PRZYKŁAD kiedy słyszy dziwny lub zabawny dźwięk lub widzi nową zabawkę, czy patrzy na twoją twarz?)"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Jakub",
+      "id": "19_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "19_02",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "19.0",
+      "questions": [
+        "Czy twoje dziecko patrzy na ciebie, kiedy słyszy dziwny lub przerażający dźwięk, zanim na niego zareaguje?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Jakub",
+      "id": "19_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "19_03",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "19.0",
+      "questions": [
+        "Czy twoje dziecko patrzy na ciebie, kiedy ktoś nowy się zbliża?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Jakub",
+      "id": "19_03",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "19.0",
+      "questions": [
+        "Czy twoje dziecko patrzy na ciebie, kiedy jest podstawione przed czymś nieznanym lub trochę przerażającym?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Jakub",
+      "id": "20",
+      "is_inverted": "NO",
+      "is_top_level": "YES",
+      "no_path": "20_2",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "20.0",
+      "questions": [
+        "Czy twoje dziecko lubi aktywności ruchowe? (Na przykład, być huśtanym lub podrzucanym na kolanach)"
+      ],
+      "third_path": "nan",
+      "yes_path": "20_1"
+    },
+    {
+      "author": "Jakub",
+      "id": "20_01",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "20_2",
+      "node_type": "Simple_Yes_No",
+      "question_group_id": "20.0",
+      "questions": [
+        "Czy dziecko lubi być huśtane lub podrzucane?"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    },
+    {
+      "author": "Jakub",
+      "id": "20_02",
+      "is_inverted": "NO",
+      "is_top_level": "NO",
+      "no_path": "FAIL",
+      "node_type": "OneYesWillDoStopAsking",
+      "question_group_id": "20.0",
+      "questions": [
+        "Jak dziecko reaguje, gdy je huśtasz lub podrzucasz?",
+        "Śmieje się lub uśmiecha?",
+        "Mówi lub bełkocze?",
+        "Prosi o więcej, wyciągając ręce?",
+        "Inne... (opisz)"
+      ],
+      "third_path": "nan",
+      "yes_path": "PASS"
+    }
+  ]
+}
