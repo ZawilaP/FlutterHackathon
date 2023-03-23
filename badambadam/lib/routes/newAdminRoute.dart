@@ -1,4 +1,3 @@
-import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
 
 import '../model.dart';
@@ -11,7 +10,7 @@ class NewAdminRoute extends StatefulWidget {
 }
 
 class _NewAdminRouteState extends State<NewAdminRoute> {
-  final formKey = new GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   dynamic _email = '';
   dynamic _password = '';
 
@@ -59,7 +58,7 @@ class _NewAdminRouteState extends State<NewAdminRoute> {
     return Scaffold(
       appBar: AppBar(
         title: InkWell(
-          onTap: () => Navigator.pop(context),
+          onTap: () => Navigator.pushNamed(context, '/admin'),
           child: Image.asset(
             'graphics/SYNAPSIS_herb_2.png',
             fit: BoxFit.cover,

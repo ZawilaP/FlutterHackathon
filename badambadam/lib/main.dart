@@ -1,3 +1,4 @@
+import 'package:badambadam/routes/adminBasicSurveyListRoute.dart';
 import 'package:badambadam/routes/newAdminRoute.dart';
 import 'package:badambadam/screens/homePageScreen/StartSurveyForm.dart';
 import 'package:badambadam/storage.dart';
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
           '/admin': (context) => AdminPanelRoute(),
           '/questions': (context) => FetchData(),
           '/newAdmin':(context) => NewAdminRoute(),
+          '/adminBasicSurvey':(context) => AdminBasicSurveyListRoute(),
         },
       ),
     );
