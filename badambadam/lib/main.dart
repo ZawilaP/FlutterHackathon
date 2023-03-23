@@ -1,3 +1,4 @@
+import 'package:badambadam/routes/newAdminRoute.dart';
 import 'package:badambadam/screens/homePageScreen/StartSurveyForm.dart';
 import 'package:badambadam/storage.dart';
 import 'package:english_words/english_words.dart';
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
           '/login': (context) => LoginFormValidation(),
           '/admin': (context) => AdminPanelRoute(),
           '/questions': (context) => FetchData(),
+          '/newAdmin':(context) => NewAdminRoute(),
         },
       ),
     );
