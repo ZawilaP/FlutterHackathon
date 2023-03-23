@@ -71,7 +71,7 @@ class _FetchDataState extends State<FetchData> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Fetching data'),
+          title: const Text('Edycja pytań'),
         ),
         body: Container(
           height: double.infinity,

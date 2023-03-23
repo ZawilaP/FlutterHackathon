@@ -25,8 +25,20 @@ class _LoginFormValidation extends State<LoginFormValidation> {
       }
     });
   }
+
+  
   @override
   Widget build(BuildContext context) {
+
+    final ButtonStyle style =  ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          foregroundColor: Theme.of(context).colorScheme.onPrimary,
+          shadowColor: Theme.of(context).colorScheme.onPrimary,
+          );
+          
     Future<void> _showMyDialog() async {
       return showDialog<void>(
         context: context,
@@ -60,7 +72,7 @@ class _LoginFormValidation extends State<LoginFormValidation> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text("Admin Login Page"),
+        title: Text("Logowanie Administratora"),
         centerTitle: true,
       ),
       body: Form(
@@ -82,18 +94,18 @@ class _LoginFormValidation extends State<LoginFormValidation> {
                 child: TextFormField(
                   validator: (text) {
                     if (text == null || text.isEmpty) {
-                      return 'Can\'t be empty';
+                      return 'Adres e-mail nie może być pusty';
                     }
                     if (!RegExp(
                             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                         .hasMatch(text)) {
-                      return 'Enter valid email adress';
+                      return 'Wprowadź adres e-mail';
                     }
                     return null;
                   },
                   onSaved: (text) => _email = text,
                   decoration: InputDecoration(
-                      labelText: "Email", hintText: "Enter Email"),
+                      labelText: "Email", hintText: "Wprowadź adres e-mail"),
                 ),
               ),
             ),
@@ -105,23 +117,26 @@ class _LoginFormValidation extends State<LoginFormValidation> {
                   onSaved: (text) => _password = text,
                   validator: (text) {
                     if (text == null || text.isEmpty) {
-                      return 'Can\'t be empty';
+                      return 'Hasło nie może być puste';
                     }
                     return null;
                   },
                   decoration: InputDecoration(
-                      labelText: "Password", hintText: "Enter Password"),
+                      labelText: "Hasło", hintText: "Wprowadź hasło"),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: ElevatedButton(
-                style:
-                    ElevatedButton.styleFrom(backgroundColor: Colors.black54),
-                child: Text(
-                  "Login",
-                  style: TextStyle(color: Colors.yellow, fontSize: 20),
+                style: style,
+                child: Padding(
+                  padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 11),
+                  child: Text(
+                    "Zaloguj",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  ),
                 ),
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
@@ -138,6 +153,7 @@ class _LoginFormValidation extends State<LoginFormValidation> {
                     }
                   }
                 },
+
               ),
             ),
           ],
