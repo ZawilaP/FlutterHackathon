@@ -39,7 +39,6 @@ class _AdvancedSurveyListState extends State<AdvancedSurveyList> {
   //       ),
   //     );
   //   }
-
   //   return SizedBox();
   // }
 
@@ -61,7 +60,6 @@ class _AdvancedSurveyListState extends State<AdvancedSurveyList> {
     //                 Animation<double> animation, int index) {
     //               Map question = snapshot.value as Map;
     //               question['key'] = snapshot.key;
-
     //               return listWidget(
     //                   question: question,
     //                   index: index,

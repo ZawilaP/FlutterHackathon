@@ -39,37 +39,24 @@ class _UpdateRecordState extends State<UpdateRecord> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Updating record'),
+        title: Text('Edycja pytania'),
       ),
       body:  Center(
         child: Padding(
           padding: EdgeInsets.all(8.0),
           child: Column(
             children: [
-              const SizedBox(
-                height: 50,
-              ),
-              const Text(
-                'Updating data in Firebase Realtime Database',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              TextField(
-                controller: userQuestionController,
-                keyboardType: TextInputType.multiline,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Question',
-                  hintText: 'Enter Your Question',
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextField(
+                  controller: userQuestionController,
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 10,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Pytanie',
+                    hintText: 'Podaj treść pytania',
+                  ),
                 ),
               ),
               const SizedBox(
@@ -91,11 +78,10 @@ class _UpdateRecordState extends State<UpdateRecord> {
                   });
 
                 },
-                child: const Text('Update Data'),
-                color: Colors.blue,
-                textColor: Colors.white,
+                color: Theme.of(context).colorScheme.primary,
                 minWidth: 300,
                 height: 40,
+                child: Text('Zapisz zmiany'),
               ),
             ],
           ),
