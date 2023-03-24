@@ -1,15 +1,8 @@
 import 'dart:async';
-
-import 'package:badambadam/screens/resultScreen/basicPdfReport.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import '../../model.dart';
-import '../../storage.dart';
-
-dynamic getAnswers() async {
-  return await getSurveyAnswers().then((id) => [id]);
-}
 
 class BasicSurveyList extends StatefulWidget {
   @override
@@ -37,7 +30,7 @@ class _BasicSurveyListState extends State<BasicSurveyList> {
           leading: Text(question['id']),
           title: Text(questionText),
           trailing: Text(
-            '${point == 1 ? (question['is_inverted'] == "YES" ? "YES" : "NO") : (question['is_inverted'] == "YES" ? "NO" : "YES")} (${point.toString()})',
+            '${point == 1 ? (question['is_inverted'] == "YES" ? "TAK" : "NIE") : (question['is_inverted'] == "YES" ? "NIE" : "TAK")} (${point.toString()})',
             style: TextStyle(
                 color: point > 0
                     ? Colors.red[300]

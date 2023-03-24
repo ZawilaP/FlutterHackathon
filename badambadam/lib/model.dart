@@ -283,9 +283,9 @@ Future<dynamic> getAdvancedSurveyAnswers() async {
   return x;
 }
 
-Future<dynamic> getAdvancedSurveyRawAnswers() async {
+Future<Map<String, dynamic>> getAdvancedSurveyRawAnswers() async {
   final ref2 = FirebaseDatabase.instance.ref("advancedRawAnswers");
   final snapshot = await ref2.get();
-  var x = snapshot.value as Map;
+  var x = snapshot.value as Map<String, dynamic>;
   return x;
 }
