@@ -12,57 +12,45 @@ class FetchData extends StatefulWidget {
 }
 
 class _FetchDataState extends State<FetchData> {
-
   Query dbRef = FirebaseDatabase.instance.ref().child('questions');
-  DatabaseReference reference = FirebaseDatabase.instance.ref().child('questions');
+  DatabaseReference reference =
+      FirebaseDatabase.instance.ref().child('questions');
 
   Widget listItem({required Map question}) {
-    return Container(
-      margin: const EdgeInsets.all(10),
-      padding: const EdgeInsets.all(10),
-      height: 120,
-      color: Colors.amberAccent,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Id: ${question['id']}",
-            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400),
+    return Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: Card(
+        color: Theme.of(context).colorScheme.background,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.black45, width: 0.75),
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: ListTile(
+          leading: Text(
+            question['id'].toString().replaceAll('_0', '.'),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.primary),
           ),
-          const SizedBox(
-            height: 5,
+          title: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Text("Pytanie: ${question['questions'].join(',')}"),
           ),
-          Text(
-            "Question: ${question['questions']}",
-            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400),
+          trailing: IconButton(
+            icon: Icon(
+              Icons.edit,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) =>
+                          UpdateRecord(questionKey: question['key'])));
+            },
           ),
-          const SizedBox(
-            height: 5,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) => UpdateRecord(questionKey: question['key'])));
-                },
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.edit,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                width: 6,
-              ),
-            ],
-          )
-        ],
+        ),
       ),
     );
   }
@@ -70,23 +58,19 @@ class _FetchDataState extends State<FetchData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Edycja pytań'),
-        ),
-        body: Container(
-          height: double.infinity,
-          child: FirebaseAnimatedList(
-            query: dbRef,
-            itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
+      appBar: AppBar(
+        title: const Text('Edycja pytań'),
+      ),
+      body: FirebaseAnimatedList(
+        query: dbRef,
+        itemBuilder: (BuildContext context, DataSnapshot snapshot,
+            Animation<double> animation, int index) {
+          Map question = snapshot.value as Map;
+          question['key'] = snapshot.key;
 
-              Map question = snapshot.value as Map;
-              question['key'] = snapshot.key;
-
-              return listItem(question: question);
-
-            },
-          ),
-        )
+          return listItem(question: question);
+        },
+      ),
     );
   }
 }

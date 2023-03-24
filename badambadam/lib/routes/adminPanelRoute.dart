@@ -154,7 +154,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
               "Przeglądaj ankiety podstawowe",
               style: TextStyle(fontSize: 20),
             ),
-            onPressed: () async {
+            onPressed: () {
               Navigator.pushNamed(context, '/adminBasicSurvey');
             },
           ),
@@ -164,9 +164,8 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
               "Przeglądaj ankiety rozszerzone",
               style: TextStyle(fontSize: 20),
             ),
-            onPressed: () async {
-              print(await getAdvancedAnswers());
-              showAdvancedSurveys();
+            onPressed: () {
+              Navigator.pushNamed(context, '/adminAdvancedSurvey');
             },
           ),
           OutlinedButton(
