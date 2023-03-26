@@ -100,13 +100,13 @@ List<String> getTopLevelNodes() {
   return box.read('topLevelSurvey') ?? List.empty();
 }
 
-void addAdvancedSurveyQuestions(List<String> advancedSurveyQuestions) {
+void addAdvancedSurveyQuestions(List<List<String>> advancedSurveyQuestions) {
   final box = GetStorage();
   box.remove('advancedSurveyQuestions');
   box.write('advancedSurveyQuestions', advancedSurveyQuestions);
 }
 
-List<String> getAdvancedSurveyQuestions() {
+List<List<String>> getAdvancedSurveyQuestions() {
   final box = GetStorage();
   return box.read('advancedSurveyQuestions') ?? List.empty();
 }

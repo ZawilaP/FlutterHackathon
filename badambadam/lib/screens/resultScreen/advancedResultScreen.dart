@@ -2,6 +2,8 @@ import 'package:badambadam/screens/resultScreen/advancedPdfReport.dart';
 import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:link_text/link_text.dart';
+import 'advanced_result_texts_pl.dart';
 
 class AdvancedResultDisplayScreen extends StatefulWidget {
   const AdvancedResultDisplayScreen({super.key, this.score, this.allRawAnswers});
@@ -20,6 +22,18 @@ class _AdvancedResultDisplayScreenState extends State<AdvancedResultDisplayScree
     String intro = " ";
     String paragraph = " ";
     List<String> actions = [];
+
+    setState(() {
+      if (widget.score! < 2) {
+        intro = negativeIntro;
+        paragraph = negativeParagraph;
+        actions = negativeActions;
+      } else {
+        intro = positiveIntro;
+        paragraph = positiveParagraph;
+        actions = positiveActions;
+      }
+    });
 
     var currentGuid = getCurrentGuid()
         .toString()
@@ -70,6 +84,35 @@ class _AdvancedResultDisplayScreenState extends State<AdvancedResultDisplayScree
        AdvancedPDFSave(
           score: widget.score,
           allRawAnswers: widget.allRawAnswers,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Text(
+            intro,
+            style: widget.score! >= 2
+                ? TextStyle(fontWeight: FontWeight.bold)
+                : TextStyle(),
+          ),
+        ),
+        Divider(),
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Text(paragraph, style: TextStyle(fontWeight: FontWeight.bold),),
+        ),
+        Divider(),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text(actions[0]),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+              children: actions.sublist(1, actions.length).map((e) {
+            return ListTile(
+              leading: Icon(Icons.check),
+              title: LinkText(e),
+            );
+          }).toList()),
         ),
       ],
     );

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:badambadam/model.dart';
 import 'package:badambadam/storage.dart';
 import 'package:intl/intl.dart';
+import 'dart:convert';
 
 class AdvancedPDFSave extends StatefulWidget {
   const AdvancedPDFSave({super.key, this.score, this.allRawAnswers});
@@ -20,7 +21,8 @@ class AdvancedPDFSave extends StatefulWidget {
 class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
   var pdf = pw.Document();
   Survey? survey;
-  List<String>? advancedSurveyQuestions = getAdvancedSurveyQuestions();
+  List<List<String>>? advancedSurveyQuestions = getAdvancedSurveyQuestions();
+
   var anchor;
 
   void showSurvey(Survey s) {
@@ -40,56 +42,78 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
     html.document.body?.children.add(anchor);
   }
 
-  String getQuestions(String questionType, String questionList) {
+  String getQuestions(String questionType, List<String> questionList) {
     if (questionType == 'Simple_Yes_No') {
-      return questionList.substring(1, questionList.length - 1);
+      return questionList[0].toString();
     }
 
     if (questionType == 'YesNoBranching' ||
-        questionType == 'OneYesWillDoStopAsking') {
-      return questionList
-          .substring(1, questionList.length - 1)
-          .replaceAll('?,', '?,\n');
-    }
+        questionType == 'OneYesWillDoStopAsking' ||
+        questionType == 'SingleSelect') {
+      var tempQuestionList = questionList;
+      for (int i = 1; i < tempQuestionList.length; i++) {
+        tempQuestionList[i] = '$i. ${tempQuestionList[i]}';
+      }
 
-    if (questionType == 'SingleSelect') {
-      return questionList.substring(1, questionList.length - 1).split('?,')[0];
+      return tempQuestionList.getRange(0, tempQuestionList.length-1).join('\n');
     }
     return 'Text';
   }
 
-  String getAnswers(
-      String questionType, List<String>? answers, String questionList) {
+  String getAnswers(String questionType, List<String>? answers,
+      List<String> questionList, String questionId) {
     bool noAnswer = !answers!.contains('FAIL_YES') &&
         !answers.contains('FAIL_NO') &&
         !answers.contains('PASS_YES') &&
         !answers.contains('PASS_NO');
 
+    var reversedQuestionsIds = ['2', '5', '7']; // hardcoded for now
+
     if (questionType == 'Simple_Yes_No') {
-      return answers.contains('PASS') || answers.contains('FAIL')
-          ? answers[0]
-          : 'No Answer';
+      var isReversed = reversedQuestionsIds.contains(questionId);
+      return answers.contains('-1')
+          ? 'Brak odpowiedzi'
+          : (answers[0] == 'PASS'
+              ? (isReversed ? 'NIE' : 'TAK')
+              : (isReversed ? 'TAK' : 'NIE'));
     }
     if (questionType == 'YesNoBranching' ||
         questionType == 'OneYesWillDoStopAsking' ||
         questionType == 'OneYesWillDoKeepAsking') {
-      return noAnswer ? 'No Answer' : answers.toString().replaceAll(',', '\n');
+      for (int i = 0; i < answers.length; i++) {
+        var answerWordsList = answers[i].toString().split('_');
+
+        if (!answerWordsList.contains('-1')) {
+          var passOrFailWords =
+              answers[i].toString().split('_')[0] == 'PASS' ? '(Z)' : '(NZ)';
+          var newAnswerWords =
+              answers[i].toString().split('_')[1] == 'YES' ? 'TAK' : 'NIE';
+
+          answers[i] = '${i + 1}. $passOrFailWords $newAnswerWords';
+        } else {
+          answers[i] = '${i + 1}. Brak odpowiedzi';
+        }
+      }
+
+      return noAnswer
+          ? 'Brak odpowiedzi'
+          : answers
+              .toString()
+              .replaceAll('[', '')
+              .replaceAll(']', '')
+              .replaceAll(',', '\n');
     }
     if (questionType == 'SingleSelect') {
       if (answers.contains('PASS_YES')) {
-        return questionList
-            .substring(1, questionList.length - 1)
-            .split('?,')[answers.indexOf('PASS_YES') + 1];
+        return questionList[answers.indexOf('PASS_YES') + 1].toString();
       } else if (answers.contains('FAIL_YES')) {
-        return questionList
-            .substring(1, questionList.length - 1)
-            .split('?,')[answers.indexOf('FAIL_YES') + 1];
+        return questionList[answers.indexOf('FAIL_YES') + 1].toString();
       } else {
-        return 'No Answer';
+        return 'Brak odpowiedzi';
       }
     }
 
-    return 'Dupa';
+    return 'Brak odpowiedzi';
   }
 
   createPDF() async {
@@ -111,7 +135,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
       pw.MultiPage(
         theme: pw.ThemeData.withFont(base: ttfBase),
         build: (pw.Context context) => [
-          pw.Text('M-Chat-RF Survey Results',
+          pw.Text('Wyniki badania M-Chat-RF',
               style: pw.TextStyle(fontSize: 20)),
           pw.Divider(thickness: 0.5),
           pw.Row(
@@ -122,7 +146,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
                     children: [
                       pw.RichText(
                           text: pw.TextSpan(children: <pw.TextSpan>[
-                        pw.TextSpan(text: "Your child's score: "),
+                        pw.TextSpan(text: "Wynik Twojego dziecka: "),
                         pw.TextSpan(
                             text: widget.score! >= 2 ? 'Dodatni' : 'Ujemny',
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
@@ -133,18 +157,18 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
                     children: [
                       pw.RichText(
                           text: pw.TextSpan(children: <pw.TextSpan>[
-                        pw.TextSpan(text: "SurveyID: "),
+                        pw.TextSpan(text: "Identyfikator badania: "),
                         pw.TextSpan(
                             text: currentGuidUserNumber,
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
                       ])),
                       pw.Text(
-                          'Survey date: ${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()}')
+                          'Data badania: ${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()}')
                     ])
               ]),
           pw.SizedBox(height: 8),
           pw.Table.fromTextArray(
-              headers: <String>['', 'Question', 'Answer'],
+              headers: <String>['', 'Pytanie', 'Odpowiedz'],
               border: null,
               headerStyle: pw.TextStyle(
                 fontSize: 11,
@@ -155,7 +179,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
               ),
               columnWidths: {
                 0: pw.FlexColumnWidth(1),
-                1: pw.FlexColumnWidth(3),
+                1: pw.FlexColumnWidth(4),
                 2: pw.FlexColumnWidth(2)
               },
               cellAlignment: pw.Alignment.center,
@@ -175,16 +199,15 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
               ),
               data: List<List<String>>.generate(widget.allRawAnswers!.length,
                   (index) {
-                String questionType =
-                    advancedSurveyQuestions![index].split('+')[1];
-                String questionList =
-                    advancedSurveyQuestions![index].split('+')[0];
+                List<String> questionList = advancedSurveyQuestions![index];
+                String questionType = questionList[questionList.length - 1];
                 List<String>? answers = widget
                     .allRawAnswers![widget.allRawAnswers!.keys.toList()[index]];
                 return <String>[
                   widget.allRawAnswers!.keys.toList()[index],
                   getQuestions(questionType, questionList),
-                  getAnswers(questionType, answers, questionList)
+                  getAnswers(questionType, answers, questionList,
+                      widget.allRawAnswers!.keys.toList()[index])
                 ];
               }))
         ],

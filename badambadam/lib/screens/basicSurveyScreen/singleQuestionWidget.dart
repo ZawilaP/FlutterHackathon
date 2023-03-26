@@ -23,6 +23,16 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
   Widget build(BuildContext context) {
     super.build(context);
 
+    var wholeQuestionText = widget.questionNode!.questions[0]
+        .toString()
+        .replaceAll('(', '\n')
+        .replaceAll(')', '');
+    // var exampleText = wholeQuestionText[wholeQuestionText.length - 1];
+    // var containsExampleText =
+    //     exampleText.contains('Na przykład'.toUpperCase()) ||
+    //         exampleText.contains('Na przykład');
+    // print(containsExampleText);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
       child: Card(
@@ -36,17 +46,13 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              title: Padding(
-                padding: const EdgeInsets.only(bottom: 8, top: 8),
-                child: Text('Pytanie ${widget.questionNode!.id}',
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        color: Theme.of(context).colorScheme.primary)),
-              ),
-              subtitle: Text(
-                '${widget.questionNode!.questions[0]}',
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-            ),
+                title: Padding(
+                  padding: const EdgeInsets.only(bottom: 8, top: 8),
+                  child: Text('Pytanie ${widget.questionNode!.id}',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.primary)),
+                ),
+                subtitle: Text(wholeQuestionText)),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

@@ -32,13 +32,18 @@ class _AdvancedSurveyDisplayScreenState
     return answers!.where((element) => element == answer).toList().length;
   }
 
-  List<String> getQuestionsList(List<Node> questions) {
+  List<List<String>> getQuestionsList(List<Node> questions) {
     List<String> questionsTextList = [];
+    List<List<String>> resultQuestionLists = [];
     for (var element in questions) {
-      questionsTextList.add('${element.questions}+${element.nodeType}');
+      for (var question in element.questions) {
+        questionsTextList.add(question.toString());
+      }
+      questionsTextList.add(element.nodeType);
+      resultQuestionLists.add(questionsTextList);
+      questionsTextList = [];
     }
-
-    return questionsTextList;
+    return resultQuestionLists;
   }
 
   @override
@@ -55,8 +60,7 @@ class _AdvancedSurveyDisplayScreenState
       return Center(child: Text('Ładowanie...'));
     }
     if (widget.allPrimaryAnswers!.isEmpty) {
-      return Center(
-          child: Text('Coś poszło nie tak. Wróć do strony głównej.'));
+      return Center(child: Text('Coś poszło nie tak. Wróć do strony głównej.'));
     } else {
       // filter questions that were scored in the primary survey
       List<Node> allNodes = survey!.nodes
@@ -76,7 +80,7 @@ class _AdvancedSurveyDisplayScreenState
                   '-1') // first question for radio buttons is not radio, just a title, that's why length - 1
       });
 
-      final ButtonStyle style =  ElevatedButton.styleFrom(
+      final ButtonStyle style = ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
@@ -84,7 +88,6 @@ class _AdvancedSurveyDisplayScreenState
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
           shadowColor: Theme.of(context).colorScheme.onPrimary,
           elevation: 8);
-
 
       // ids of YesNoQuestions that don't have dependency
       List<String> singleQuestionIds = [
@@ -679,8 +682,13 @@ class _SingleSelectsWidgetState extends State<SingleSelectsWidget>
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SizedBox(width: 350, 
-             child: Text(question.toString(), maxLines: 5, style: TextStyle(fontSize: 16),)),
+            child: SizedBox(
+                width: 350,
+                child: Text(
+                  question.toString(),
+                  maxLines: 5,
+                  style: TextStyle(fontSize: 16),
+                )),
           ),
         ],
       ));
