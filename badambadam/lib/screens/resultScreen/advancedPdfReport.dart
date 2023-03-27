@@ -55,23 +55,29 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
         tempQuestionList[i] = '$i. ${tempQuestionList[i]}';
       }
 
-      return tempQuestionList.getRange(0, tempQuestionList.length-1).join('\n');
+      return tempQuestionList
+          .getRange(0, tempQuestionList.length - 1)
+          .join('\n');
     }
-    return 'Text';
+    return 'Błąd';
   }
 
   String getAnswers(String questionType, List<String>? answers,
       List<String> questionList, String questionId) {
-    bool noAnswer = !answers!.contains('FAIL_YES') &&
-        !answers.contains('FAIL_NO') &&
-        !answers.contains('PASS_YES') &&
-        !answers.contains('PASS_NO');
+    // bool noAnswer = !answers!.contains('FAIL_YES') &&
+    //     !answers.contains('FAIL_NO') &&
+    //     !answers.contains('PASS_YES') &&
+    //     !answers.contains('PASS_NO') ; 
+
+    var noAnswerCount = answers!.where((element) => element == '-1');
+
+    bool noAnswer = answers.length == noAnswerCount.length;
 
     var reversedQuestionsIds = ['2', '5', '7']; // hardcoded for now
 
     if (questionType == 'Simple_Yes_No') {
       var isReversed = reversedQuestionsIds.contains(questionId);
-      return answers.contains('-1')
+      return noAnswer
           ? 'Brak odpowiedzi'
           : (answers[0] == 'PASS'
               ? (isReversed ? 'NIE' : 'TAK')
@@ -88,8 +94,13 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
               answers[i].toString().split('_')[0] == 'PASS' ? '(Z)' : '(NZ)';
           var newAnswerWords =
               answers[i].toString().split('_')[1] == 'YES' ? 'TAK' : 'NIE';
+          bool isOpenAnswer = answers[i].toString().split('_')[0] == 'OPEN';
 
-          answers[i] = '${i + 1}. $passOrFailWords $newAnswerWords';
+          if (isOpenAnswer) {
+            answers[i] = '${i + 1}. ${answers[i].toString().split('_')[1]}';
+          } else {
+            answers[i] = '${i + 1}. $passOrFailWords $newAnswerWords';
+          }
         } else {
           answers[i] = '${i + 1}. Brak odpowiedzi';
         }
@@ -185,7 +196,8 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
               cellAlignment: pw.Alignment.center,
               cellAlignments: {
                 0: pw.Alignment.centerLeft,
-                1: pw.Alignment.centerLeft
+                1: pw.Alignment.centerLeft,
+                // 2: pw.Alignment.centerLeft
               },
               headerDecoration: pw.BoxDecoration(
                 color: PdfColor.fromHex('#FFB200'),
@@ -204,7 +216,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
                 List<String>? answers = widget
                     .allRawAnswers![widget.allRawAnswers!.keys.toList()[index]];
                 return <String>[
-                  widget.allRawAnswers!.keys.toList()[index],
+                  widget.allRawAnswers!.keys.toList()[index].replaceAll('_0', '.'),
                   getQuestions(questionType, questionList),
                   getAnswers(questionType, answers, questionList,
                       widget.allRawAnswers!.keys.toList()[index])
