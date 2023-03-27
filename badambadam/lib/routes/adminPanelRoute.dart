@@ -141,16 +141,6 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
           OutlinedButton(
             style: style,
             child: const Text(
-              "Edytuj pytania",
-              style: TextStyle(fontSize: 20),
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, '/questions');
-            },
-          ),
-          OutlinedButton(
-            style: style,
-            child: const Text(
               "Przeglądaj ankiety podstawowe",
               style: TextStyle(fontSize: 20),
             ),
@@ -166,16 +156,6 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
             ),
             onPressed: () {
               Navigator.pushNamed(context, '/adminAdvancedSurvey');
-            },
-          ),
-          OutlinedButton(
-            style: style,
-            child: const Text(
-              "Dodaj nowego admina",
-              style: TextStyle(fontSize: 20),
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, '/newAdmin');
             },
           ),
           OutlinedButton(
