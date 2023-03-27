@@ -14,6 +14,9 @@ class _BasicSurveyListState extends State<BasicSurveyList> {
   Query dbRef = FirebaseDatabase.instance.ref().child('questions');
   DatabaseReference reference =
       FirebaseDatabase.instance.ref().child('questions');
+  String _searchQuery = '';
+  Map<String, dynamic> filteredMap = {};
+  Map<String, dynamic> answersMap = {};
 
   Widget listWidget(
       {required Map question,
@@ -86,69 +89,110 @@ class _BasicSurveyListState extends State<BasicSurveyList> {
       );
     }
 
-    return FutureBuilder(
-        future: _answers,
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            Map<String, dynamic> map = snapshot.data;
-
-            return ListView.builder(
-                shrinkWrap: true,
-                itemCount: map.length,
-                padding: const EdgeInsets.all(8.0),
-                itemBuilder: (BuildContext context, int index) {
-                  var surveyId = map.keys.toList()[index];
-                  var transformedId = surveyId
-                      .replaceAll(".", "-")
-                      .replaceAll(" ", "-")
-                      .replaceAll(":", "-")
-                      .replaceAll("_", "-")
-                      .toString()
-                      .split('-');
-
-                  var currentId = transformedId[transformedId.length - 1];
-
-                  return currentId == 'test'
-                      ? SizedBox()
-                      : Card(
-                          color: Theme.of(context).colorScheme.background,
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                            side:
-                                BorderSide(color: Colors.black45, width: 0.75),
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          child: ListTile(
-                            onTap: () {
-                              _showMyDialog(map.keys.toList()[index],
-                                  map.values.toList()[index]);
-                            },
-                            title: Text(
-                              'Numer badania: $currentId',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 19.0,
-                              ),
-                            ),
-                            subtitle: Text(
-                                'Data wykonania badania: ${surveyId.replaceAll(r'-' + currentId, '')}'),
-                            trailing: Icon(
-                              Icons.remove_red_eye_outlined,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                          ));
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Searchable ListView"),
+          centerTitle: true,
+        ),
+        body: Column(children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              onChanged: (value) {
+                setState(() {
+                  _searchQuery = value.toLowerCase();
+                  print(_searchQuery);
+                  // create a new map by iterating over the old map and checking if the value is in the key
+                  filteredMap = {};
+                  for (var entry in answersMap.entries) {
+                    if (entry.key.toLowerCase().contains(_searchQuery)) {
+                      filteredMap[entry.key] = entry.value;
+                    }
+                  }
+                  print(filteredMap);
                 });
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Wystąpił błąd. Przepraszamy!'));
-          }
-
-          return Center(
-            child: SizedBox(
-              width: 60,
-              height: 60,
-              child: CircularProgressIndicator(),
+              },
+              decoration: InputDecoration(
+                labelText: "Search",
+                hintText: "Search",
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                ),
+              ),
             ),
-          );
-        });
+          ),
+          Expanded(
+              child: FutureBuilder(
+                  future: _answers,
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      answersMap = snapshot.data;
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: filteredMap.length,
+                        padding: const EdgeInsets.all(8.0),
+                        itemBuilder: (BuildContext context, int index) {
+                          var surveyId = filteredMap.keys.toList()[index];
+                          var transformedId = surveyId
+                              .replaceAll(".", "-")
+                              .replaceAll(" ", "-")
+                              .replaceAll(":", "-")
+                              .replaceAll("_", "-")
+                              .toString()
+                              .split('-');
+
+                          var currentId =
+                              transformedId[transformedId.length - 1];
+
+                          return currentId == 'test'
+                              ? SizedBox()
+                              : Card(
+                                  color:
+                                      Theme.of(context).colorScheme.background,
+                                  elevation: 0,
+                                  shape: RoundedRectangleBorder(
+                                    side: BorderSide(
+                                        color: Colors.black45, width: 0.75),
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  child: ListTile(
+                                    onTap: () {
+                                      _showMyDialog(
+                                          filteredMap.keys.toList()[index],
+                                          filteredMap.values.toList()[index]);
+                                    },
+                                    title: Text(
+                                      'Numer badania: $currentId',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 19.0,
+                                      ),
+                                    ),
+                                    subtitle: Text(
+                                        'Data wykonania badania: ${surveyId.replaceAll(r'-' + currentId, '')}'),
+                                    trailing: Icon(
+                                      Icons.remove_red_eye_outlined,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                  ),
+                                );
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                          child: Text('Wystąpił błąd. Przepraszamy!'));
+                    }
+
+                    return Center(
+                      child: SizedBox(
+                        width: 60,
+                        height: 60,
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  }))
+        ]));
   }
 }
