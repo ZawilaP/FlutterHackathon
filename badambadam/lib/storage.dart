@@ -134,7 +134,7 @@ Future<void> writeCurrentAdvancedAnswers(
 
 Future<void> writeCurrentAdvancedRawAnswers(
     Map<dynamic, dynamic> allUneditedAnswers) async {
-  saveAdvancedRawSurvey(getCurrentGuid(), allUneditedAnswers.values.toList());
+  saveAdvancedRawSurvey(getCurrentGuid(), allUneditedAnswers);
 }
 
  Map<dynamic, dynamic> getCurrentAdvancedAnswers() {
