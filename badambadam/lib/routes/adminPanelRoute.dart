@@ -165,6 +165,7 @@ class _AdminPanelRoute extends State<AdminPanelRoute> {
               style: TextStyle(fontSize: 20),
             ),
             onPressed: () {
+              FirebaseAuth.instance.signOut();
               Navigator.pushNamed(context, '/');
             },
           ),
