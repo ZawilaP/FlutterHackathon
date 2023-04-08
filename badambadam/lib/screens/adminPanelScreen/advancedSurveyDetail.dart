@@ -1,4 +1,3 @@
-import 'package:badambadam/routes/adminPanelRoute.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +19,7 @@ class _AdvancedSurveyDetailState extends State<AdvancedSurveyDetail> {
   Query dbRef = FirebaseDatabase.instance.ref().child('questions');
   // final Future<dynamic> _summaryAnswers = getAdvancedAnswers();
 
-  String getYesNoAnswers (String currentAnswer) {
+  String getYesNoAnswers(String currentAnswer) {
     String answer = '';
     if (currentAnswer == '-1') {
       answer = 'Brak odpowiedzi';
@@ -91,7 +90,9 @@ class _AdvancedSurveyDetailState extends State<AdvancedSurveyDetail> {
                 )
               : Text(answers[question['id']][0] == '-1'
                   ? 'Brak odpowiedzi'
-                  : (answers[question['id']][0] == 'FAIL' ? 'Niezaliczone' : 'Zaliczone')),
+                  : (answers[question['id']][0] == 'FAIL'
+                      ? 'Niezaliczone'
+                      : 'Zaliczone')),
         ),
       );
     }
