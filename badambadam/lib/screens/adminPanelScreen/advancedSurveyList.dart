@@ -12,7 +12,6 @@ class AdvancedSurveyList extends StatefulWidget {
 
 class _AdvancedSurveyListState extends State<AdvancedSurveyList> {
   final Future<Map<String, dynamic>> _answers = getAdvancedSurveyRawAnswers();
-  Query dbRef = FirebaseDatabase.instance.ref().child('questions');
   DatabaseReference reference =
       FirebaseDatabase.instance.ref().child('questions');
 
@@ -46,46 +45,46 @@ class _AdvancedSurveyListState extends State<AdvancedSurveyList> {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> _showMyDialog(
-        String surveyId, Map<dynamic, dynamic> answers) async {
-      return showDialog<void>(
-        context: context,
-        barrierDismissible: false, // user must tap button!
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(surveyId),
-            content: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.5,
-              height: MediaQuery.of(context).size.width * 0.7,
-              child: FirebaseAnimatedList(
-                query: dbRef,
-                itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                    Animation<double> animation, int index) {
-                  Map question = snapshot.value as Map;
-                  question['key'] = snapshot.key;
-                  return listWidget(
-                      question: question,
-                      index: index,
-                      answers: answers,
-                      surveyId: surveyId);
-                },
-              ),
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: const Text(
-                  'Zamknij',
-                  style: TextStyle(fontSize: 20),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
-    }
+    // Future<void> _showMyDialog(
+    //     String surveyId, Map<dynamic, dynamic> answers) async {
+    //   return showDialog<void>(
+    //     context: context,
+    //     barrierDismissible: false, // user must tap button!
+    //     builder: (BuildContext context) {
+    //       return AlertDialog(
+    //         title: Text(surveyId),
+    //         content: SizedBox(
+    //           width: MediaQuery.of(context).size.width * 0.5,
+    //           height: MediaQuery.of(context).size.width * 0.7,
+    //           child: FirebaseAnimatedList(
+    //             query: dbRef,
+    //             itemBuilder: (BuildContext context, DataSnapshot snapshot,
+    //                 Animation<double> animation, int index) {
+    //               Map question = snapshot.value as Map;
+    //               question['key'] = snapshot.key;
+    //               return listWidget(
+    //                   question: question,
+    //                   index: index,
+    //                   answers: answers,
+    //                   surveyId: surveyId);
+    //             },
+    //           ),
+    //         ),
+    //         actions: <Widget>[
+    //           TextButton(
+    //             child: const Text(
+    //               'Zamknij',
+    //               style: TextStyle(fontSize: 20),
+    //             ),
+    //             onPressed: () {
+    //               Navigator.of(context).pop();
+    //             },
+    //           ),
+    //         ],
+    //       );
+    //     },
+    //   );
+    // }
 
     return FutureBuilder(
         future: _answers,
