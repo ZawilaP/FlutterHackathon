@@ -25,9 +25,10 @@ Uwagi do aplikacji M-CHAT-R
 11.	W pytaniu 11. Bez względu na to jakie zaznaczy się odpowiedzi, nie rozwija się część z pytaniem, które z tych zachowań występują częściej
 12.	M-CHAT-R/F treść pytania 7. Jest częściowo pomieszana z treścią pytania 8.
 13.	M-CHAT-R/F – pytanie 12.; odpowiedzi dodatkowe są ukryte, ale w pytaniu 10, 14. i 15. są od razu wszystkie widoczne (czyli jw.), ale już w pytaniu 16. rozwija się dopiero po zaznaczeniu  „Nie”; całość nie mieści się na jednej stronie
-14.	M-CHAT-R/F - pytanie 18. – od razu rozwinięta i widoczna jest całość (jeszcze przed zaznaczeniem odpowiedzi Tak/Nie); w 18.3 brakuje pierwszego przykładu; poza tym nie ma tu żadnego przycisku, trzeba kliknąć na cały przykład i wtedy on się podświetla – to zdecydowanie nie jest intuicyjne – może powinny być jakieś kropeczki z boku do zaznaczenia?
-15.	Po wypełnieniu M-CHAT R/F – inny komunikat, nie może być wynik dodatni, bo to nic nie mówi (tu mamy dostarczyć odpowiednie sformułowania)
-16.	PDF badania 018 – zaznaczone są w nim braki w odpowiedziach, ale u mnie pytania 8.1, 10.2, 11.2, 12.3, 16.2 w ogóle się nie wyświetliły ze względu na algorytm, to może być mylące dla rodzica i dla terapeuty; w poprzednich badaniach, gdzie celowo nie udzielałam odpowiedzi, zaznaczenie w PDF jest takie samo „no answer – to bardzo mylące 
+14.	M-CHAT-R/F - pytanie 18. – od razu rozwinięta i widoczna jest całość (jeszcze przed zaznaczeniem odpowiedzi Tak/Nie); 
+15.	W 18.3 brakuje pierwszego przykładu; poza tym nie ma tu żadnego przycisku, trzeba kliknąć na cały przykład i wtedy on się podświetla – to zdecydowanie nie jest intuicyjne – może powinny być jakieś kropeczki z boku do zaznaczenia? **DONE**
+16.	Po wypełnieniu M-CHAT R/F – inny komunikat, nie może być wynik dodatni, bo to nic nie mówi (tu mamy dostarczyć odpowiednie sformułowania)
+17.	PDF badania 018 – zaznaczone są w nim braki w odpowiedziach, ale u mnie pytania 8.1, 10.2, 11.2, 12.3, 16.2 w ogóle się nie wyświetliły ze względu na algorytm, to może być mylące dla rodzica i dla terapeuty; w poprzednich badaniach, gdzie celowo nie udzielałam odpowiedzi, zaznaczenie w PDF jest takie samo „no answer – to bardzo mylące 
 
 
 ## Techniczne:
