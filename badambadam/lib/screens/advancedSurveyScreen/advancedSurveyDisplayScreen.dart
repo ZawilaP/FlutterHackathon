@@ -231,8 +231,7 @@ class _AdvancedSurveyDisplayScreenState
                         rules['10_02']! ||
                         rules['11_02']! ||
                         rules['12_03']! ||
-                        rules['16_02']! ||
-                        rules['18_03']!) {
+                        rules['16_02']! ) {
                       return SingleSelectsWidget(
                           questionNode: questionNode,
                           allAdvancedAnswersDetail: allAdvancedAnswersDetail);
@@ -244,6 +243,7 @@ class _AdvancedSurveyDisplayScreenState
                         rules['12_01']! ||
                         rules['12_02']! ||
                         rules['16_01']! ||
+                        rules['18_03']! ||
                         rules['20_02']!) {
                       return RadioButtonsWidget(
                           questionNode: questionNode,
