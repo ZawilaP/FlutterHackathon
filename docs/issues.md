@@ -1,7 +1,7 @@
 Uwagi do aplikacji M-CHAT-R
 ## Grafika i wygląd:
-1.	Za wąskie marginesy, a co za tym idzie zbyt szeroki tekst – brak komfortu w czytaniu 
-2.	Na stronie startowej warto byłoby zrobić punktory w innych kolorach i może nie kropki, żeby nie kojarzyło się z zaznaczaniem (może na pomarańczowo?)
+1.	Za wąskie marginesy, a co za tym idzie zbyt szeroki tekst – brak komfortu w czytaniu **DONE, but also need more ideas how to make this page better**
+2.	Na stronie startowej warto byłoby zrobić punktory w innych kolorach i może nie kropki, żeby nie kojarzyło się z zaznaczaniem (może na pomarańczowo?) **DONE**
 3.	Na stronie wyboru daty urodzenia jest licznik/kalendarz – w polu po lewej (żółte pole) nie wyświetla się wybrany rok, a dzień i miesiąc są po angielsku – zdecydowanie lepiej byłoby po polsku (to polska wersja językowa). Poza tym rok byłby wtedy widoczny, ten w okienku po prawej stronie jest bardzo mało widoczny, a to akurat istotne dla rodziców, żeby byli pewnie, że wpisali poprawnie
 4.	Komunikat po badaniu w niskim ryzyku – trochę podkręciłabym kolory (może punktory pomarańczowe? może coś wytłuścić?), przycisk do pobrania PDF umieściłabym po prawej nieco wyżej. Tak, aby na samym dole tworzył się niewielki margines – wtedy wyraźnie widać, że jest to całość informacji i że nie trzeba nic dalej przewijać. Tak jak się teraz wyświetla, to nie jest oczywiste.
 5.	Ankieta dodatkowa, czyli M-CHAT-R/F - bardzo trudno się przewija tekst. Ważne byłoby, żeby każde pytanie  mieściło się na jednej stronie, bez przewijania, byłoby to wtedy znacznie bardziej czytelne.
