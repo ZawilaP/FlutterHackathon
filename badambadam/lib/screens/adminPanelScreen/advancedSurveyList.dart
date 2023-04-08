@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:badambadam/screens/adminPanelScreen/advancedSurveyDetail.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
@@ -11,40 +12,41 @@ class AdvancedSurveyList extends StatefulWidget {
 
 class _AdvancedSurveyListState extends State<AdvancedSurveyList> {
   final Future<Map<String, dynamic>> _answers = getAdvancedSurveyRawAnswers();
-  Query dbRef = FirebaseDatabase.instance.ref().child('questions');
   DatabaseReference reference =
       FirebaseDatabase.instance.ref().child('questions');
 
-  // Widget listWidget(
-  //     {required Map question,
-  //     required int index,
-  //     required List answers,
-  //     required String surveyId}) {
-  //   print(answers.toString());
-  //   var questionText = question['questions'][0].toString();
-// 
-  //   if (question['is_top_level'] == 'YES') {
-  //     var point = answers[int.parse(question['id']) - 1];
-  //     return Card(
-  //       child: ListTile(
-  //         leading: Text(question['id']),
-  //         title: Text(questionText),
-  //         trailing: Text(
-  //           '${point == 1 ? (question['is_inverted'] == "YES" ? "YES" : "NO") : (question['is_inverted'] == "YES" ? "NO" : "YES")} (${point.toString()})',
-  //           style: TextStyle(
-  //               color: point > 0
-  //                   ? Colors.red[300]
-  //                   : Theme.of(context).colorScheme.onPrimary),
-  //         ),
-  //       ),
-  //     );
-  //   }
-  //   return SizedBox();
-  // }
+  Widget listWidget(
+      {required Map question,
+      required int index,
+      required Map answers,
+      required String surveyId}) {
+    // var point = answers[int.parse(question['id']) - 1];
+    if (answers.keys.contains(question['id'])) {
+      var questionText = question['questions'][0].toString();
+      return Card(
+        child: ListTile(
+          // title: Text(questionText),
+          leading: Text(question['id']),
+          title: Text(answers[question['id']].toString()),
+
+          // trailing: Text(
+          //   '${point == 1 ? (question['is_inverted'] == "YES" ? "YES" : "NO") : (question['is_inverted'] == "YES" ? "NO" : "YES")} (${point.toString()})',
+          //   style: TextStyle(
+          //       color: point > 0
+          //           ? Colors.red[300]
+          //           : Theme.of(context).colorScheme.onPrimary),
+          // ),
+        ),
+      );
+    }
+
+    return SizedBox();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Future<void> _showMyDialog(String surveyId, List<dynamic> answers) async {
+    // Future<void> _showMyDialog(
+    //     String surveyId, Map<dynamic, dynamic> answers) async {
     //   return showDialog<void>(
     //     context: context,
     //     barrierDismissible: false, // user must tap button!
@@ -88,14 +90,14 @@ class _AdvancedSurveyListState extends State<AdvancedSurveyList> {
         future: _answers,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
-            Map<String, dynamic> map = snapshot.data;
+            Map<String, dynamic> answersMap = snapshot.data;
 
             return ListView.builder(
                 shrinkWrap: true,
-                itemCount: map.length,
+                itemCount: answersMap.length,
                 padding: const EdgeInsets.all(8.0),
                 itemBuilder: (BuildContext context, int index) {
-                  var surveyId = map.keys.toList()[index];
+                  var surveyId = answersMap.keys.toList()[index];
                   var transformedId = surveyId
                       .replaceAll(".", "-")
                       .replaceAll(" ", "-")
@@ -107,32 +109,38 @@ class _AdvancedSurveyListState extends State<AdvancedSurveyList> {
                   var currentId = transformedId[transformedId.length - 1];
 
                   return Card(
-                          color: Theme.of(context).colorScheme.background,
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                            side:
-                                BorderSide(color: Colors.black45, width: 0.75),
-                            borderRadius: BorderRadius.circular(15.0),
+                      color: Theme.of(context).colorScheme.background,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.black45, width: 0.75),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: ListTile(
+                        onTap: () {
+                          // _showMyDialog(answersMap.keys.toList()[index],
+                          //     answersMap.values.toList()[index]);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AdvancedSurveyDetail(
+                                        surveyId: surveyId,
+                                        answers: answersMap.values.toList()[index]
+                                      )));
+                        },
+                        title: Text(
+                          'Numer badania: $currentId',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 19.0,
                           ),
-                          child: ListTile(
-                            onTap: () {
-                              // _showMyDialog(map.keys.toList()[index],
-                                  // map.values.toList()[index]);
-                            },
-                            title: Text(
-                              'Numer badania: $currentId',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 19.0,
-                              ),
-                            ),
-                            subtitle: Text(
-                                'Data wykonania badania: ${surveyId.replaceAll(r'-' + currentId, '')}'),
-                            trailing: Icon(
-                              Icons.remove_red_eye_outlined,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                          ));
+                        ),
+                        subtitle: Text(
+                            'Data wykonania badania: ${surveyId.replaceAll(r'-' + currentId, '')}'),
+                        trailing: Icon(
+                          Icons.remove_red_eye_outlined,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ));
                 });
           } else if (snapshot.hasError) {
             return Center(child: Text('Wystąpił błąd. Przepraszamy!'));
