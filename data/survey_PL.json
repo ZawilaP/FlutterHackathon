@@ -656,7 +656,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "13.0",
       "questions": [
-        "Czy Twoje dziecko chodzi bez trzymania się czegokolwiek?"
+        "Czy chodzi, nie przytrzymując się niczego?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
