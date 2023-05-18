@@ -62,8 +62,8 @@
       "question_group_id": "2.0",
       "questions": [
         "Powiedział/a Pan/Pani, że zastanawiał/a się kiedyś, czy Pana/Pani dziecko jest głuche. Co skłoniło Pana/Panią do takich przypuszczeń? Czy dziecko?",
-        "często ignoruje odgłosy?",
-        "często ignoruje ludzi?"
+        "Często ignoruje odgłosy?",
+        "Często ignoruje ludzi?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -106,7 +106,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "3.0",
       "questions": [
-        "Czy Twoje dziecko bawi się w udawanie lub zabawę w wyobrażanie? (NA PRZYKŁAD, udaje picie z pustej filiżanki, udaje rozmowę przez telefon lub udaje karmienie lalki lub pluszowego zwierzątka?)"
+        "Czy Pana/Pani dziecko bawi się w udawanie albo w zabawy na niby? (NA PRZYKŁAD: udaje, że pije z pustego kubka, udaje, że rozmawia przez telefon albo udaje, że karmi lalkę czy pluszowego misia?)"
       ],
       "third_path": "nan",
       "yes_path": "3_01"
@@ -120,17 +120,17 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "3.0",
       "questions": [
-        "Czy zwykle... ",
-        "udaje picie z zabawkowej filiżanki?",
-        "udaje jedzenie zabawkową łyżką lub widelcem?",
-        "udaje rozmowę przez telefon?",
-        "udaje karmienie lalki lub pluszowego zwierzątka prawdziwym lub wyimaginowanym jedzeniem?",
-        "pcha samochodzik, tak jakby jechał po udawanej drodze?",
-        "udaje robota, samolot, baletnicę lub inną ulubioną postać?",
-        "stawia zabawkowy garnek na udawanej kuchence?",
-        "miesza wyimaginowane jedzenie?",
-        "umieszcza figurkę akcji lub lalkę w samochodzie lub ciężarówce, tak jakby była kierowcą lub pasażerem?",
-        "udaje odkurzanie dywanu, zamiatanie podłogi lub koszenie trawnika?",
+        "Czy dziecko zazwyczaj...",
+        "Udaje, że pije z zabawkowego kubka?",
+        "Udaje, że je zabawkową łyżką lub widelcem?",
+        "Udaje, że rozmawia przez telefon?",
+        "Udaje, że karmi lalkę lub pluszową zabawkę prawdziwym albo wyimaginowanym jedzeniem?",
+        "Jeździ samochodzikiem po zmyślonej drodze?",
+        "Udaje, że jest robotem, samolotem, baletnicą lub inną ulubioną postacią?",
+        "Umieszcza zabawkowy garnek na wymyślonej kuchence?",
+        "Miesza w garnku wymyślone jedzenie?",
+        "Wkłada do samochodzika lub ciężarówki figurkę lub lalkę, jak gdyby miała ona być kierowcą lub pasażerem?",
+        "Udaje, że odkurza dywan, zamiata podłogę lub kosi trawnik?",
         "Inne...."
       ],
       "third_path": "nan",
