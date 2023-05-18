@@ -286,12 +286,11 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "7.0",
       "questions": [
-        "Proszę podać przykład czego mógłby mi wskazać, aby pokazać mi coś?",
-        "Samolot na niebie?",
-        "Ciężarówka na drodze?",
-        "Robaka na ziemi?",
-        "Zwierzę w ogrodzie?",
-        "Inne..."
+        "Proszę podać przykład przedmiotu, który dziecko chce Panu/Pani wskazać:",
+        "Przelatujący samolot?",
+        "Ciężarówka na ulicy?",
+        "Robak na ziemi?",
+        "Zwierzę na podwórku?"
       ],
       "third_path": "nan",
       "yes_path": "7_03"
@@ -305,7 +304,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "7.0",
       "questions": [
-        "Jak Twoje dziecko zwraca na to Twoją uwagę? Czy wskazywałoby to jednym palcem?"
+        "Jak dziecko zwraca Pana/Pani uwagę na ten przedmiot? Czy wskazuje na niego palcem?"
       ],
       "third_path": "nan",
       "yes_path": "7_04"
@@ -319,7 +318,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "7.0",
       "questions": [
-        "Czy robi to, aby pokazać swoje zainteresowanie?"
+        "Czy dziecko robi to, aby pokazać swoje zainteresowanie, a nie, aby otrzymać pomoc?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
