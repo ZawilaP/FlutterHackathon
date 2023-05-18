@@ -8,7 +8,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "1.0",
       "questions": [
-        "Czy gdy wskazujesz na coś po drugiej stronie pokoju, Twoje dziecko na to patrzy? (NA PRZYKŁAD, gdy wskazujesz na zabawkę lub zwierzę, Twoje dziecko patrzy na tę zabawkę lub zwierzę?)"
+        "Jeśli wskaże Pan/Pani jakiś przedmiot znajdujący się w pomieszczeniu, to czy Pana/Pani dziecko na niego spojrzy? (NA PRZYKŁAD: jeśli wskaże Pan/Pani zabawkę albo zwierzę, to czy Pana/Pani dziecko spojrzy na tę zabawkę lub zwierzę?)"
       ],
       "third_path": "nan",
       "yes_path": "1_01"
@@ -21,14 +21,14 @@
       "node_type": "YesNoBranching",
       "question_group_id": "1.0",
       "questions": [
-        "Jeśli wskażesz na coś, jak zwykle reaguje Twoje dziecko?",
-        "[P] Patrzy na przedmiot?",
-        "[P] Wskazuje na przedmiot?",
-        "[P] Patrzy i komentuje przedmiot?",
-        "[P] Patrzy, gdy Ty wskazujesz i mówisz 'patrz!'?",
-        "[F] Ignoruje Ciebie?",
-        "[F] Patrzy bez celu po pokoju?",
-        "[F] Patrzy na Twój palec?"
+        "Gdy Pan/Pani na coś wskazuje, to jak wtedy zazwyczaj reaguje Pana/Pani dziecko?",
+        "[P] Patrzy na ten przedmiot?",
+        "[P] Wskazuje ten przedmiot?",
+        "[P] Patrzy na przedmiot i komentuje?",
+        "[P] Patrzy, czy Pan/Pani pokazuje i mówi 'spójrz!'?",
+        "[F] Ignoruje Pana/Panią?",
+        "[F] Rozgląda się po pokoju w losowych kierunkach?",
+        "[F] Patrzy na Pana/Pani palec?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -41,14 +41,14 @@
       "node_type": "SingleSelect",
       "question_group_id": "1.0",
       "questions": [
-        "Która z tych czynności jest przez niego/nią najczęściej wykonywana?",
-        "[P] Patrzy na przedmiot?",
-        "[P] Wskazuje na przedmiot?",
-        "[P] Patrzy i komentuje przedmiot?",
-        "[P] Patrzy, gdy Ty wskazujesz i mówisz 'patrz!'?",
-        "[F] Ignoruje Ciebie?",
-        "[F] Patrzy bez celu po pokoju?",
-        "[F] Patrzy na Twój palec?"
+        "Które reakcje występują u dziecka najczęściej?",
+        "[P] Patrzy na ten przedmiot?",
+        "[P] Wskazuje ten przedmiot?",
+        "[P] Patrzy na przedmiot i komentuje?",
+        "[P] Patrzy, czy Pan/Pani pokazuje i mówi 'spójrz!'?",
+        "[F] Ignoruje Pana/Panią?",
+        "[F] Rozgląda się po pokoju w losowych kierunkach?",
+        "[F] Patrzy na Pana/Pani palec?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -61,9 +61,9 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "2.0",
       "questions": [
-        "Zgłosiłeś/aś, że zastanawiałeś/aś się, czy Twoje dziecko jest głuche. Co spowodowało takie podejrzenia? Czy ono/ona",
-        "często ignoruje dźwięki?",
-        "często ignoruje innych ludzi?"
+        "Powiedział/a Pan/Pani, że zastanawiał/a się kiedyś, czy Pana/Pani dziecko jest głuche. Co skłoniło Pana/Panią do takich przypuszczeń? Czy dziecko?",
+        "Często ignoruje odgłosy?",
+        "Często ignoruje ludzi?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -76,7 +76,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "2.0",
       "questions": [
-        "Czy badano słuch Twojego dziecka?"
+        "Czy Pana/Pani dziecko miało przeprowadzane badanie słuchu?"
       ],
       "third_path": "nan",
       "yes_path": "2_02"
@@ -89,10 +89,10 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "2.0",
       "questions": [
-        "Jakie były wyniki badania słuchu? (wybierz jedną odpowiedź):",
-        "Słuch w zakresie normy",
-        "Słuch poniżej normy",
-        "Wyniki niejednoznaczne lub niewystarczające"
+        "Jakie były wyniki badania? (proszę wybrać jedną odpowiedź):",
+        "Prawidłowy słuch",
+        "Próg słyszenia poniżej normy",
+        "Wynik niejednoznaczny lub niejasny"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -106,7 +106,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "3.0",
       "questions": [
-        "Czy Twoje dziecko bawi się w udawanie lub zabawę w wyobrażanie? (NA PRZYKŁAD, udaje picie z pustej filiżanki, udaje rozmowę przez telefon lub udaje karmienie lalki lub pluszowego zwierzątka?)"
+        "Czy Pana/Pani dziecko bawi się w udawanie albo w zabawy na niby? (NA PRZYKŁAD: udaje, że pije z pustego kubka, udaje, że rozmawia przez telefon albo udaje, że karmi lalkę czy pluszowego misia?)"
       ],
       "third_path": "nan",
       "yes_path": "3_01"
@@ -120,18 +120,18 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "3.0",
       "questions": [
-        "Czy zwykle... ",
-        "udaje picie z zabawkowej filiżanki?",
-        "udaje jedzenie zabawkową łyżką lub widelcem?",
-        "udaje rozmowę przez telefon?",
-        "udaje karmienie lalki lub pluszowego zwierzątka prawdziwym lub wyimaginowanym jedzeniem?",
-        "pcha samochodzik, tak jakby jechał po udawanej drodze?",
-        "udaje robota, samolot, baletnicę lub inną ulubioną postać?",
-        "stawia zabawkowy garnek na udawanej kuchence?",
-        "miesza wyimaginowane jedzenie?",
-        "umieszcza figurkę akcji lub lalkę w samochodzie lub ciężarówce, tak jakby była kierowcą lub pasażerem?",
-        "udaje odkurzanie dywanu, zamiatanie podłogi lub koszenie trawnika?",
-        "Inne...."
+        "Czy dziecko zazwyczaj...",
+        "Udaje, że pije z zabawkowego kubka?",
+        "Udaje, że je zabawkową łyżką lub widelcem?",
+        "Udaje, że rozmawia przez telefon?",
+        "Udaje, że karmi lalkę lub pluszową zabawkę prawdziwym albo wyimaginowanym jedzeniem?",
+        "Jeździ samochodzikiem po zmyślonej drodze?",
+        "Udaje, że jest robotem, samolotem, baletnicą lub inną ulubioną postacią?",
+        "Umieszcza zabawkowy garnek na wymyślonej kuchence?",
+        "Miesza w garnku wymyślone jedzenie?",
+        "Wkłada do samochodzika lub ciężarówki figurkę lub lalkę, jak gdyby miała ona być kierowcą lub pasażerem?",
+        "Udaje, że odkurza dywan, zamiata podłogę lub kosi trawnik?",
+        "Inne..."
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -145,7 +145,7 @@
       "node_type": "Simple_yes_no",
       "question_group_id": "4.0",
       "questions": [
-        "Czy Twoje dziecko lubi wspinać się na rzeczy? (NA PRZYKŁAD, meble, przeszkody na placu zabaw lub schody)"
+        "Czy Pana/Pani dziecko lubi wdrapywać się na różne przedmioty? (NA PRZYKŁAD: na meble, na urządzenia znajdujące się na placu zabaw lub na schody?)"
       ],
       "third_path": "nan",
       "yes_path": "4_01"
@@ -159,11 +159,11 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "4.0",
       "questions": [
-        "Czy lubi wspinać się na...",
-        "schody?",
-        "krzesła?",
-        "meble?",
-        "sprzęt na placu zabaw?"
+        "Czy dziecko lubi wdrapywać się na...",
+        "Schody?",
+        "Krzesła?",
+        "Meble?",
+        "Urządzenia znajdujące się na placu zabaw?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -177,7 +177,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "5.0",
       "questions": [
-        "Czy Twoje dziecko wykonuje nietypowe ruchy palcami w pobliżu oczu? (NA PRZYKŁAD, czy Twoje dziecko macha palcami blisko oczu?)"
+        "Czy Pana/Pani dziecko wykonuje dziwne ruchy palcami blisko oczu? (NA PRZYKŁAD: czy Pana/Pani dziecko porusza palcami blisko oczu?)"
       ],
       "third_path": "nan",
       "yes_path": "5_01"
@@ -191,15 +191,14 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "5.0",
       "questions": [
-        "Czy on/ona",
-        "[P] Patrzy na swoje ręce?",
-        "[P] Porusza palcami podczas zabawy w a-ku-ku?",
-        "[F] Macha palcami blisko swoich oczu?",
-        "[F] Trzyma ręce blisko swoich oczu?",
-        "[F] Trzyma ręce z boku swoich oczu?",
-        "[F] Rozwija skrzydełka (tj. trzepie rękami) na boki swoich oczu?",
-        "[F] Rozwija skrzydełka (tj. trzepie rękami) w pobliżu swojej twarzy?",
-        "[F] Inne... (opisz)"
+        "Czy dziecko...",
+        "[P] Patrzy na dłonie?",
+        "[P] Rusza palcami podczas zabawy w 'a kuku'?",
+        "[F] Porusza palcami blisko oczu?",
+        "[F] Trzyma podniesione ręce blisko oczu?",
+        "[F] Trzyma podniesione ręce przy oczach?",
+        "[F] Macha dłońmi przy twarzy?",
+        "[F] Inne..."
       ],
       "third_path": "nan",
       "yes_path": "5_02"
@@ -227,7 +226,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "6.0",
       "questions": [
-        "Czy Twoje dziecko wskazuje jednym palcem, prosząc o coś lub prosząc o pomoc? (NA PRZYKŁAD, wskazując na przekąskę lub zabawkę, która jest poza zasięgiem)"
+        "Czy Pana/Pani dziecko wskazuje palcem, aby o coś poprosić lub otrzymać pomoc? (NA PRZYKŁAD: czy wskazuje na przekąskę lub zabawkę, która jest poza jego zasięgiem?)"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -241,11 +240,11 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "6.0",
       "questions": [
-        "Jeśli Twoje dziecko chce czegoś, co jest poza jego/jej zasięgiem, na przykład przekąski lub zabawki, jak to robi?",
-        "Czy sięga po przedmiot całymi rękami?",
-        "Czy prowadzi Cię do przedmiotu?",
-        "Czy próbuje zdobyć przedmiot samodzielnie?",
-        "Czy prosi o to słowami lub dźwiękami?"
+        "Gdy Pana/Pani dziecko chce sięgnąć po coś, co jest poza jego zasięgiem, np. przekąskę lub zabawkę, co wtedy robi?",
+        "Wyciąga całą dłoń po przedmiot?",
+        "Prowadzi Pana/Panią do tego przedmiotu?",
+        "Samo próbuje dosięgnąć tego przedmiotu?",
+        "Prosi o przedmiot za pomocą słów lub innych dźwięków?"
       ],
       "third_path": "nan",
       "yes_path": "6_03"
@@ -259,7 +258,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "6.0",
       "questions": [
-        "Gdybyś powiedział/a 'Pokaż mi', czy on/ona wskazałby to?"
+        "Jeśli powie Pan/Pani „pokaż mi”, to czy dziecko wskaże ten przedmiot?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -273,7 +272,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "7.0",
       "questions": [
-        "Czy Twoje dziecko wskazuje jednym palcem, aby pokazać Ci coś interesującego? (NA PRZYKŁAD, czy Twoje dziecko obserwuje inne dzieci, uśmiecha się do nich lub do nich idzie?)"
+        "Czy Pana/Pani dziecko wskazuje palcem, aby pokazać Panu/Pani coś ciekawego? (NA PRZYKŁAD: czy wskazuje na przelatujący samolot lub na przejeżdżającą ciężarówkę?)"
       ],
       "third_path": "nan",
       "yes_path": "7_01"
@@ -287,12 +286,11 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "7.0",
       "questions": [
-        "Proszę podać przykład czego mógłby mi wskazać, aby pokazać mi coś?",
-        "Samolot na niebie?",
-        "Ciężarówka na drodze?",
-        "Robaka na ziemi?",
-        "Zwierzę w ogrodzie?",
-        "Inne..."
+        "Proszę podać przykład przedmiotu, który dziecko chce Panu/Pani wskazać:",
+        "Przelatujący samolot?",
+        "Ciężarówka na ulicy?",
+        "Robak na ziemi?",
+        "Zwierzę na podwórku?"
       ],
       "third_path": "nan",
       "yes_path": "7_03"
@@ -306,7 +304,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "7.0",
       "questions": [
-        "Jak Twoje dziecko zwraca na to Twoją uwagę? Czy wskazywałoby to jednym palcem?"
+        "Jak dziecko zwraca Pana/Pani uwagę na ten przedmiot? Czy wskazuje na niego palcem?"
       ],
       "third_path": "nan",
       "yes_path": "7_04"
@@ -320,7 +318,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "7.0",
       "questions": [
-        "Czy robi to, aby pokazać swoje zainteresowanie?"
+        "Czy dziecko robi to, aby pokazać swoje zainteresowanie, a nie, aby otrzymać pomoc?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -334,7 +332,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "8.0",
       "questions": [
-        "Czy Twoje dziecko interesuje się innymi dziećmi? (NA PRZYKŁAD, czy Twoje dziecko obserwuje inne dzieci, uśmiecha się do nich lub do nich idzie?)"
+        "Czy Pana/Pani dziecko interesuje się innymi dziećmi? (NA PRZYKŁAD: czy Pana/Pani dziecko patrzy na inne dzieci, uśmiecha się lub podchodzi do nich?)"
       ],
       "third_path": "nan",
       "yes_path": "8_01"
@@ -348,7 +346,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "8.0",
       "questions": [
-        "Czy interesuje się dziećmi, które nie są jego/jej rodzeństwem?"
+        "Czy jest zainteresowane dziećmi innymi niż swoje rodzeństwo?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -362,7 +360,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "8.0",
       "questions": [
-        "Czy Twoje dziecko zwykle reaguje na inne dzieci, gdy jesteście na placu zabaw lub w supermarkecie?"
+        "Gdy jesteście na placu zabaw lub w supermarkecie, to czy Pana/Pani dziecko przejawia zainteresowanie innymi dziećmi?"
       ],
       "third_path": "nan",
       "yes_path": "8_03"
@@ -376,14 +374,14 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "8.0",
       "questions": [
-        "Jak Twoje dziecko reaguje?",
-        "Bawi się z innym dzieckiem?",
-        "Rozmawia z innym dzieckiem?",
-        "Bełkocze lub wydaje dźwięki głosowe?",
-        "Obserwuje inne dziecko?",
-        "Uśmiecha się do innego dziecka?",
-        "Na początku zachowuje się nieśmiało, ale później uśmiecha się?",
-        "Staje się podekscytowane na widok innego dziecka?"
+        "Jaka jest reakcja dziecka?",
+        "Bawi się z innymi dziećmi?",
+        "Rozmawia z innymi dziećmi?",
+        "Gaworzy lub wydaje inne dźwięki?",
+        "Patrzy na inne dzieci?",
+        "Uśmiecha się do innych dzieci?",
+        "Jest na początku nieśmiałe, ale potem się uśmiecha?",
+        "Ekscytuje się na widok innych dzieci?"
       ],
       "third_path": "nan",
       "yes_path": "8_04"
@@ -397,7 +395,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "8.0",
       "questions": [
-        "Czy reaguje na inne dzieci więcej niż w połowie przypadków?"
+        "Czy dziecko przejawia zainteresowanie innymi dziećmi przez ponad połowę spędzonego z nimi czasu?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -411,7 +409,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "9.0",
       "questions": [
-        "Czy Twoje dziecko pokazuje Ci rzeczy, przynosząc je do Ciebie lub trzymając je tak, abyś mógł je zobaczyć - nie po to, żeby prosić o pomoc, ale tylko po to, żeby się nimi podzielić? (NA PRZYKŁAD, pokazując Ci kwiatek, pluszowego misia czy zabawkowy samochód)"
+        "Czy Pana/Pani dziecko przynosi Panu/Pani przedmioty, aby je Panu/Pani pokazać lub podnosi je w taki sposób, żeby mógł/mogła je Pan/Pani obejrzeć – nie po to, aby otrzymać pomoc, ale by je po prostu pokazać? (NA PRZYKŁAD: pokazuje Panu/Pani kwiatek, pluszową zabawkę lub samochodzik?)"
       ],
       "third_path": "nan",
       "yes_path": "9_01"
@@ -425,13 +423,12 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "9.0",
       "questions": [
-        "Czy Twoje dziecko czasami przynosi Ci...",
-        "Zdjęcie lub zabawkę tylko po to, żeby Ci je pokazać?",
-        "Rysunek, który zrobiło?",
-        "Kwiat, który zerwało?",
+        "Czy dziecko czasami przynosi Panu/Pani:",
+        "Zdjęcie lub zabawkę tylko po to, aby je/ją Panu/Pani pokazać?",
+        "Rysunek, który namalowało?",
+        "Kwiatek, który zerwało?",
         "Robaka, którego znalazło na trawie?",
-        "Kilka klocków, które połączyło?",
-        "Inne...(opisz)"
+        "Klocki, które ułożyło?"
       ],
       "third_path": "nan",
       "yes_path": "9_03"
@@ -445,7 +442,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "nan",
       "questions": [
-        "Czy czasami pokazuje Ci coś, nie oczekując pomocy?"
+        "Czy robi tak czasami tylko po to, by pokazać ten przedmiot, a nie otrzymać pomoc?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -459,7 +456,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "10.0",
       "questions": [
-        "Czy twoje dziecko reaguje, kiedy wołasz je po imieniu? (NA PRZYKŁAD czy odwraca głowę, odpowiada mową lub bełkotem lub przestaje robić to, co akurat robi, gdy wołasz je po imieniu?)"
+        "Czy Pana/Pani dziecko reaguje, gdy woła je Pan/Pani po imieniu? (NA PRZYKŁAD: czy dziecko podnosi głowę, odzywa się, gaworzy lub przestaje robić to, co właśnie robiło, gdy woła je Pan/Pani po imieniu?)"
       ],
       "third_path": "nan",
       "yes_path": "10_01"
@@ -473,13 +470,14 @@
       "node_type": "YesNoBranching",
       "question_group_id": "10.0",
       "questions": [
-        "Jeśli dziecko nie zajmuje się czymś przyjemnym lub interesującym, co robi, kiedy wołasz je po imieniu?",
-        "[P] Ogląda się na ciebie?",
-        "[P] Odpowiada mową lub bełkotem?",
-        "[P] Przerywa to co robi?",
-        "[F] Wydaje się słyszeć, ale ignoruje Cię?",
-        "[F] Odpowiada tylko wtedy, gdy jesteś tuż przed twarzą dziecka?",
-        "[F] Odpowiada tylko wtedy, gdy zostanie dotknięte?"
+        "Jeśli dziecko nie jest w danej chwili zajęte żadną interesującą zabawą, to jak reaguje, gdy woła je Pan/Pani po imieniu?",
+        "[P] Podnosi głowę?",
+        "[P] Mówi lub gaworzy?",
+        "[P] Przestaje robić to, co robiło?",
+        "[F] Nie reaguje?",
+        "[F] Wydaje się słyszeć, ale ignoruje Pana/Panią?",
+        "[F] Reaguje tylko wtedy, gdy Pan/Pani jest tuż przed jego twarzą?",
+        "[F] Reaguje tylko wtedy, gdy się je dotknie?"
       ],
       "third_path": "10_4",
       "yes_path": "PASS"
@@ -493,13 +491,14 @@
       "node_type": "SingleSelect",
       "question_group_id": "10.0",
       "questions": [
-        "Która z tych opcji występuje najczęściej?",
-        "[P] Ogląda się na ciebie?",
-        "[P] Odpowiada mową lub bełkotem?",
-        "[P] Przerywa to co robi?",
-        "[F] Wydaje się słyszeć, ale ignoruje Cię?",
-        "[F] Odpowiada tylko wtedy, gdy jesteś tuż przed twarzą dziecka?",
-        "[F] Odpowiada tylko wtedy, gdy zostanie dotknięte?"
+        "Które reakcje występują u dziecka częściej?",
+        "[P] Podnosi głowę?",
+        "[P] Mówi lub gaworzy?",
+        "[P] Przestaje robić to, co robiło?",
+        "[F] Nie reaguje?",
+        "[F] Wydaje się słyszeć, ale ignoruje Pana/Panią?",
+        "[F] Reaguje tylko wtedy, gdy Pan/Pani jest tuż przed jego twarzą?",
+        "[F] Reaguje tylko wtedy, gdy się je dotknie?"
       ],
       "third_path": "See comments",
       "yes_path": "nan"
@@ -513,7 +512,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "11.0",
       "questions": [
-        "Kiedy uśmiechasz się do dziecka, czy dziecko odpowiada uśmiechem?"
+        "Gdy uśmiecha się Pan/Pani do dziecka, to czy dziecko odpowiada Panu/Pani uśmiechem?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -527,13 +526,13 @@
       "node_type": "YesNoBranching",
       "question_group_id": "11.0",
       "questions": [
-        "Czy twoje dziecko...",
-        "[P] Uśmiecha się, kiedy ty się uśmiechasz?",
-        "[P] Uśmiecha się, kiedy wchodzisz do pokoju?",
-        "[P] Uśmiecha się, kiedy wracasz po nieobecności?",
-        "[F] Uśmiecha się zawsze?",
-        "[F] Uśmiecha się do ulubionej zabawki lub czynności?",
-        "[F] Uśmiecha się przypadkowo lub bez powodu?"
+        "Czy dziecko...",
+        "[P] Uśmiecha się, gdy Pan/Pani się uśmiecha?",
+        "[P] Uśmiecha się, gdy Pan/Pani wchodzi do pomieszczenia?",
+        "[P] Uśmiecha się, gdy Pan/Pani wraca do domu?",
+        "[F] Zawsze się uśmiecha?",
+        "[F] Uśmiecha się na widok ulubionej zabawki lub podczas wykonywania ulubionej czynności?",
+        "[F] Uśmiecha się nagle lub bez przyczyny?"
       ],
       "third_path": "11_3",
       "yes_path": "PASS"
@@ -547,13 +546,13 @@
       "node_type": "SingleSelect",
       "question_group_id": "10.0",
       "questions": [
-        "Która z tych opcji występuje najczęściej?",
-        "[P] Uśmiecha się, kiedy ty się uśmiechasz?",
-        "[P] Uśmiecha się, kiedy wchodzisz do pokoju?",
-        "[P] Uśmiecha się, kiedy wracasz po nieobecności?",
-        "[F] Uśmiecha się zawsze?",
-        "[F] Uśmiecha się do ulubionej zabawki lub czynności?",
-        "[F] Uśmiecha się przypadkowo lub bez powodu?"
+        "Które reakcje występują u dziecka częściej?",
+        "[P] Uśmiecha się, gdy Pan/Pani się uśmiecha?",
+        "[P] Uśmiecha się, gdy Pan/Pani wchodzi do pomieszczenia?",
+        "[P] Uśmiecha się, gdy Pan/Pani wraca do domu?",
+        "[F] Zawsze się uśmiecha?",
+        "[F] Uśmiecha się na widok ulubionej zabawki lub podczas wykonywania ulubionej czynności?",
+        "[F] Uśmiecha się nagle lub bez przyczyny?"
       ],
       "third_path": "See comments",
       "yes_path": "nan"
@@ -567,7 +566,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "12.0",
       "questions": [
-        "Czy Twoje dziecko reaguje niepokojem na codzienne odgłosy? (NA PRZYKŁAD, czy Twoje dziecko krzyczy lub płacze w reakcji na odgłosy, takie jak odkurzacz czy głośna muzyka?)"
+        "Czy Pana/Pani dziecko denerwuje się, gdy słyszy codzienne odgłosy? (NA PRZYKŁAD: dźwięk odkurzacza lub głośna muzyka?)"
       ],
       "third_path": "nan",
       "yes_path": "12_1"
@@ -581,17 +580,17 @@
       "node_type": "OneYesWillDoKeepAsking",
       "question_group_id": "12.0",
       "questions": [
-        "Czy Twoje dziecko negatywnie reaguje na dźwięk...",
+        "Czy dziecko negatywnie reaguje na dźwięk...",
         "Pralki?",
-        "Płaczących niemowląt?",
+        "Płaczu drugiego dziecka?",
         "Odkurzacza?",
         "Suszarki do włosów?",
         "Ruchu ulicznego?",
-        "Pisków lub wrzasków niemowląt?",
+        "Pisków lub krzyków dzieci?",
         "Głośnej muzyki?",
-        "Telefonu/dzwonka do drzwi?",
-        "Hałaśliwych miejsc, takich jak supermarket lub restauracja?",
-        "Inne...(opisz):"
+        "Telefonu lub dzwonka do drzwi?",
+        "Rozlegający się w supermarkecie lub restauracji?",
+        "Inne..."
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -605,12 +604,12 @@
       "node_type": "YesNoBranching",
       "question_group_id": "11.0",
       "questions": [
-        "Jak Twoje dziecko reaguje na te odgłosy?",
-        "[P] Spokojnie zakrywa uszy?",
-        "[P] Mówi Ci, że nie lubi danego dźwięku?",
+        "Jak Pani/Pana dziecko reaguje na te dźwięki?",
+        "[P] Spokojnie zakrywa dłońmi uszy?",
+        "[P] Mówi Panu/Pani, że nie podoba mu się ten dźwięk?",
         "[F] Krzyczy?",
         "[F] Płacze?",
-        "[F] Zakrywa uszy w stanie zdenerwowania?"
+        "[F] Zatyka uszy, gdy jest zdenerwowane?"
       ],
       "third_path": "11_3",
       "yes_path": "PASS"
@@ -625,11 +624,11 @@
       "question_group_id": "10.0",
       "questions": [
         "Które z tych zachowań Twoje dziecko najczęściej wykazuje?",
-        "[P] Spokojnie zakrywa uszy?",
-        "[P] Mówi Ci, że nie lubi danego dźwięku?",
+        "[P] Spokojnie zakrywa dłońmi uszy?",
+        "[P] Mówi Panu/Pani, że nie podoba mu się ten dźwięk?",
         "[F] Krzyczy?",
         "[F] Płacze?",
-        "[F] Zakrywa uszy w stanie zdenerwowania?"
+        "[F] Zatyka uszy, gdy jest zdenerwowane?"
       ],
       "third_path": "See comments",
       "yes_path": "nan"
@@ -643,7 +642,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "13.0",
       "questions": [
-        "Czy Twoje dziecko chodzi?"
+        "Czy Pana/Pani dziecko potrafi chodzić?"
       ],
       "third_path": "nan",
       "yes_path": "13_01"
@@ -657,7 +656,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "13.0",
       "questions": [
-        "Czy Twoje dziecko chodzi bez trzymania się czegokolwiek?"
+        "Czy chodzi, nie przytrzymując się niczego?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -671,7 +670,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "14.0",
       "questions": [
-        "Czy Twoje dziecko patrzy Ci w oczy, kiedy do niego mówisz, bawisz się z nim lub przebierasz je?"
+        "Czy Pana/Pani dziecko utrzymuje z Panem/Panią kontakt wzrokowy, gdy Pan/Pani do niego mówi, bawi się z nim lub je ubiera?"
       ],
       "third_path": "nan",
       "yes_path": "14_01"
@@ -685,13 +684,13 @@
       "node_type": "YesNoBranching",
       "question_group_id": "14.0",
       "questions": [
-        "Czy Twoje dziecko patrzy Ci w oczy...",
-        "Gdy potrzebuje czegoś?",
-        "Kiedy się z nim bawisz?",
+        "Czy dziecko utrzymuje z Panem/Panią kontakt wzrokowy...",
+        "Gdy czegoś potrzebuje?",
+        "Gdy Pan/Pani się z nim bawi?",
         "Podczas karmienia?",
-        "Podczas zmiany pieluchy?",
-        "Kiedy czytasz mu bajkę?",
-        "Kiedy do niego mówisz?"
+        "Podczas przewijania?",
+        "Gdy czyta mu Pan/Pani bajkę?",
+        "Gdy mówi Pan/Pani do niego?"
       ],
       "third_path": "PASS",
       "yes_path": "14_03"
@@ -705,7 +704,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "14.0",
       "questions": [
-        "Czy Twoje dziecko patrzy Ci codziennie w oczy?"
+        "Czy dziecko nawiązuje z Panem/Panią kontakt wzrokowy każdego dnia?"
       ],
       "third_path": "nan",
       "yes_path": "14_04"
@@ -719,7 +718,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "14.0",
       "questions": [
-        "W dni, kiedy jesteście razem cały czas, czy Twoje dziecko patrzy Ci w oczy przynajmniej 5 razy?"
+        "Czy podczas spędzonego ze sobą dnia dziecko nawiązuje z Panem/Panią kontakt wzrokowy przynajmniej 5 razy?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -733,7 +732,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "15.0",
       "questions": [
-        "Czy Twoje dziecko próbuje naśladować to, co robisz? (NA PRZYKŁAD, macha ręką na pożegnanie, klaska lub wydaje zabawny dźwięk, kiedy Ty to robisz)"
+        "Czy Pana/Pani dziecko próbuje naśladować to, co Pan/Pani robi? (NA PRZYKŁAD: machanie ręką na pożegnanie, klaskanie lub wydawanie śmiesznych dźwięków)"
       ],
       "third_path": "nan",
       "yes_path": "15_01"
@@ -747,13 +746,13 @@
       "node_type": "YesNoBranching",
       "question_group_id": "15.0",
       "questions": [
-        "Czy Twoje dziecko próbuje naśladować Cię, gdy... ",
-        "Wystawiasz język?",
-        "Wydajesz zabawny dźwięk?",
-        "Machasz na pożegnanie?",
-        "Klaskasz w dłonie?",
-        "Przykładasz palec do ust jako sygnał 'cii'?",
-        "Przesyłasz buziaka?",
+        "Czy dziecko próbuje Pana/Panią naśladować, gdy Pan/Pani...",
+        "Pokazuje język?",
+        "Wydaje zabawny dźwięk?",
+        "Macha na pożegnanie?",
+        "Klaszcze w dłonie?",
+        "Przykłada palec do ust w uciszającym geście?\n",
+        "Przesyła buziaka?",
         "Inne..."
       ],
       "third_path": "FAIL",
@@ -768,7 +767,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "nan",
       "questions": [
-        "Czy Twoje dziecko spogląda wokół, gdy odwracasz głowę, aby spojrzeć na coś?"
+        "Gdy odwraca Pan/Pani głowę, by na coś spojrzeć, to czy Pana/Pani dziecko także odwraca głowę, by spojrzeć w tę samą stronę?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -782,12 +781,12 @@
       "node_type": "OneYesWillDoKeepAsking",
       "question_group_id": "nan",
       "questions": [
-        "Czy Twoje dziecko...",
-        "[P] Spogląda w kierunku rzeczy, na które patrzysz?",
-        "[P] Wskazuje na rzecz, na którą patrzysz?",
-        "[P] Ogląda się wokół, aby zobaczyć, na co patrzysz?",
-        "[F] Ignoruje Cię?",
-        "[F] Patrzy na Twoją twarz?"
+        "Czy dziecko...",
+        "[P] Patrzy w tym samym kierunku co Pan/Pani?",
+        "[P] Wskazuje kierunek, w który Pan/Pani patrzy?",
+        "[P] Odwraca się, żeby zobaczyć, na co Pan/Pani patrzy?",
+        "[F] Ignoruje Pana/Panią?",
+        "[F] Patrzy na Pana/Pani twarz?"
       ],
       "third_path": "nan",
       "yes_path": "16_03"
@@ -802,11 +801,11 @@
       "question_group_id": "10.0",
       "questions": [
         "Które z tych zachowań dziecko prezentuje najczęściej?",
-        "[P] Spogląda w kierunku rzeczy, na które patrzysz?",
-        "[P] Wskazuje na rzecz, na którą patrzysz?",
-        "[P] Ogląda się wokół, aby zobaczyć, na co patrzysz?",
-        "[F] Ignoruje Cię?",
-        "[F] Patrzy na Twoją twarz?"
+        "[P] Patrzy w tym samym kierunku co Pan/Pani?",
+        "[P] Wskazuje kierunek, w który Pan/Pani patrzy?",
+        "[P] Odwraca się, żeby zobaczyć, na co Pan/Pani patrzy?",
+        "[F] Ignoruje Pana/Panią?",
+        "[F] Patrzy na Pana/Pani twarz?"
       ],
       "third_path": "See comments",
       "yes_path": "nan"
@@ -820,7 +819,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "17.0",
       "questions": [
-        "Czy Twoje dziecko stara się przyciągnąć Twoją uwagę? (NA PRZYKŁAD, czy Twoje dziecko patrzy na Ciebie po pochwałę lub mówi „patrz” lub „popatrz na mnie”?)"
+        "Czy Pana/Pani dziecko próbuje zwrócić na siebie uwagę i sprawić by Pan/Pani na nie spojrzał/a? (NA PRZYKŁAD: czy Pana/Pani dziecko spogląda na Pana/Panią, by otrzymać pochwałę lub czy mówi 'zobacz', 'popatrz na mnie'?)"
       ],
       "third_path": "nan",
       "yes_path": "17_01"
@@ -834,12 +833,12 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "17.0",
       "questions": [
-        "Proszę podaj mi przykład, jak Twoje dziecko próbuje zwrócić Twoją uwagę.",
-        "Mówi „Patrz!” lub „Popatrz na mnie!”?",
-        "Gaworzy lub wydaje dźwięk, aby zwrócić Twoją uwagę na to, co robi?",
-        "Patrzy na Ciebie, aby otrzymać pochwałę lub komentarz?",
-        "Ciągle spogląda, aby sprawdzić, czy patrzysz?",
-        "Inne...(opisz)"
+        "Proszę podać przykład, jak dziecko próbuje zwrócić na siebie Pana/Pani uwagę. Czy dziecko...",
+        "Mówi 'Spójrz!' albo 'Popatrz na mnie!'?",
+        "Gaworzy lub wydaje inne dźwięki, aby sprawić, by Pan/Pani spojrzał na to, co robi dziecko?",
+        "Patrzy na Pana/Panią, by usłyszeć pochwałę lub uwagę?",
+        "Sprawdza czy Pan/Pani patrzy?",
+        "Inne..."
       ],
       "third_path": "True",
       "yes_path": "PASS"
@@ -853,7 +852,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "18.0",
       "questions": [
-        "Czy Twoje dziecko rozumie, kiedy mówisz mu, żeby coś zrobiło? (NA PRZYKŁAD, jeśli nie wskazujesz palcem, czy Twoje dziecko rozumie polecenia takie jak „połóż książkę na krześle” lub „przynieś mi koc”?)"
+        "Czy Pana/Pani dziecko rozumie, gdy każe mu Pan/Pani coś zrobić? (NA PRZYKŁAD: jeśli nie wskazuje Pan/Pani palcem, to czy Pana/Pani dziecko rozumie zdanie: 'połóż książkę na krześle' lub 'przynieś mi koc'?)"
       ],
       "third_path": "nan",
       "yes_path": "18_01"
@@ -867,7 +866,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "18.0",
       "questions": [
-        "Gdy sytuacja daje mu/jej wskazówkę, czy potrafi wykonać polecenie? Na przykład, kiedy jesteś ubrany(a) i mówisz mu/jej, żeby wziął(a) swoje buty, czy widzisz, że rozumie?"
+        "Czy dziecko wykona polecenie, jeśli otrzyma jasny opis danej sytuacji? Na przykład, gdy Pan/Pani stoi już ubrany/a i gotowy/a do wyjścia i każe dziecku ubrać buty, to czy dziecko rozumie, co ma zrobić?"
       ],
       "third_path": "nan",
       "yes_path": "18_03"
@@ -881,7 +880,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "18.0",
       "questions": [
-        "Jeśli jest czas na kolację i jedzenie jest na stole, i powiesz dziecku, aby usiadło, czy podejdzie i usiądzie przy stole?"
+        "W porze obiadowej, gdy jedzenie czeka na stole, Pan/Pani mówi dziecku, aby usiadło, to czy ono przyjdzie i usiądzie przy stole?"
       ],
       "third_path": "nan",
       "yes_path": "18_04"
@@ -895,9 +894,10 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "18.0",
       "questions": [
-        "W sytuacji, kiedy nie ma żadnych wskazówek, czy twoje dziecko potrafi wykonać polecenie? Na przykład...: Jeśli powiesz 'Pokaż mi swój but' bez wskazywania, gestów lub podpowiedzi (kiedy nie wychodzicie ani się nie ubieracie), czy twoje dziecko pokaże ci swój but?",
-        "Jeśli powiesz 'Przynieś mi koc' lub poprosisz o inny przedmiot bez wskazywania, gestów lub podpowiedzi, czy twoje dziecko przyniesie ci go?",
-        "Jeśli powiesz 'Połóż książkę na krześle' bez wskazywania, gestów lub podpowiedzi, czy twoje dziecko położy książkę na krześle?"
+        "W sytuacji, kiedy nie ma żadnych wskazówek, czy twoje dziecko potrafi wykonać polecenie? Na przykład...",
+        "Jeśli powie Pan/Pani: „Pokaż mi swój but”, bez wskazywania na przedmiot, bez wykonywania innego gestu i bez żadnych wskazówek (np. gdy nie szykujecie się do wyjścia z domu ani nie ubieracie się), to czy dziecko pokaże Panu/Pani swój but?",
+        "Jeśli powie Pan/Pani: „Podaj mi kocyk” lub poprosi o inny przedmiot bez wskazywania na niego, wykonywania innych gestów i bez żadnych wskazówek, to czy dziecko go Panu/Pani poda?",
+        "Jeśli powie Pan/Pani: „Połóż książkę na krześle” bez wskazywania na te przedmioty, wykonywania innych gestów i bez żadnych wskazówek, to czy dziecko położy książkę na krześle?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -911,7 +911,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "19.0",
       "questions": [
-        "Czy twoje dziecko patrzy na twoją twarz, aby zobaczyć jak reagujesz, gdy dzieje się coś nowego? (NA PRZYKŁAD kiedy słyszy dziwny lub zabawny dźwięk lub widzi nową zabawkę, czy patrzy na twoją twarz?)"
+        "Gdy dziecko znajdzie się w nowej, nieznanej sytuacji, czy wtedy spojrzy na Pana/Panią, by sprawdzić, jak Pan/Pani na to zareaguje? (NA PRZYKŁAD: gdy dziecko usłyszy jakiś dziwny lub zabawny dźwięk lub gdy widzi nową zabawkę, czy popatrzy wtedy na Pana/Panią?)"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -925,7 +925,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "19.0",
       "questions": [
-        "Czy twoje dziecko patrzy na ciebie, kiedy słyszy dziwny lub przerażający dźwięk, zanim na niego zareaguje?"
+        "Gdy dziecko słyszy dziwny lub straszny dźwięk, to czy spojrzy na Pana/Panią zanim samo zareaguje?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -939,7 +939,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "19.0",
       "questions": [
-        "Czy twoje dziecko patrzy na ciebie, kiedy ktoś nowy się zbliża?"
+        "Czy dziecko spogląda na Pana/Panią, gdy podchodzi do niego osoba, której nie zna?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -953,7 +953,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "19.0",
       "questions": [
-        "Czy twoje dziecko patrzy na ciebie, kiedy jest podstawione przed czymś nieznanym lub trochę przerażającym?"
+        "Czy dziecko spogląda na Pana/Panią, gdy natrafia na coś nieznanego lub niepokojącego?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -967,7 +967,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "20.0",
       "questions": [
-        "Czy twoje dziecko lubi aktywności ruchowe? (Na przykład, być huśtanym lub podrzucanym na kolanach)"
+        "Czy Pana/Pani dziecko lubi zabawy ruchowe? (NA PRZYKŁAD: lubi być kołysane lub huśtane na Pana/Pani kolanach?)"
       ],
       "third_path": "nan",
       "yes_path": "20_1"
@@ -981,7 +981,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "20.0",
       "questions": [
-        "Czy dziecko lubi być huśtane lub podrzucane?"
+        "Czy dziecko lubi być huśtane lub kołysane?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -995,11 +995,11 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "20.0",
       "questions": [
-        "Jak dziecko reaguje, gdy je huśtasz lub podrzucasz?",
+        "Jak dziecko reaguje, gdy Pan/Pani je kołysze lub huśta?",
         "Śmieje się lub uśmiecha?",
-        "Mówi lub bełkocze?",
-        "Prosi o więcej, wyciągając ręce?",
-        "Inne... (opisz)"
+        "Mówi lub gaworzy?",
+        "Domaga się więcej, wyciągając ręce do góry?",
+        "Inne..."
       ],
       "third_path": "nan",
       "yes_path": "PASS"
