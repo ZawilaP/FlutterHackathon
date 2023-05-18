@@ -781,12 +781,12 @@
       "node_type": "OneYesWillDoKeepAsking",
       "question_group_id": "nan",
       "questions": [
-        "Czy Twoje dziecko...",
-        "[P] Spogląda w kierunku rzeczy, na które patrzysz?",
-        "[P] Wskazuje na rzecz, na którą patrzysz?",
-        "[P] Ogląda się wokół, aby zobaczyć, na co patrzysz?",
-        "[F] Ignoruje Cię?",
-        "[F] Patrzy na Twoją twarz?"
+        "Czy dziecko...",
+        "[P] Patrzy w tym samym kierunku co Pan/Pani?",
+        "[P] Wskazuje kierunek, w który Pan/Pani patrzy?",
+        "[P] Odwraca się, żeby zobaczyć, na co Pan/Pani patrzy?",
+        "[F] Ignoruje Pana/Panią?",
+        "[F] Patrzy na Pana/Pani twarz?"
       ],
       "third_path": "nan",
       "yes_path": "16_03"
@@ -801,11 +801,11 @@
       "question_group_id": "10.0",
       "questions": [
         "Które z tych zachowań dziecko prezentuje najczęściej?",
-        "[P] Spogląda w kierunku rzeczy, na które patrzysz?",
-        "[P] Wskazuje na rzecz, na którą patrzysz?",
-        "[P] Ogląda się wokół, aby zobaczyć, na co patrzysz?",
-        "[F] Ignoruje Cię?",
-        "[F] Patrzy na Twoją twarz?"
+        "[P] Patrzy w tym samym kierunku co Pan/Pani?",
+        "[P] Wskazuje kierunek, w który Pan/Pani patrzy?",
+        "[P] Odwraca się, żeby zobaczyć, na co Pan/Pani patrzy?",
+        "[F] Ignoruje Pana/Panią?",
+        "[F] Patrzy na Pana/Pani twarz?"
       ],
       "third_path": "See comments",
       "yes_path": "nan"
