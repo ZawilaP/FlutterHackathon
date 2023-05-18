@@ -833,12 +833,12 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "17.0",
       "questions": [
-        "Proszę podaj mi przykład, jak Twoje dziecko próbuje zwrócić Twoją uwagę.",
-        "Mówi „Patrz!” lub „Popatrz na mnie!”?",
-        "Gaworzy lub wydaje dźwięk, aby zwrócić Twoją uwagę na to, co robi?",
-        "Patrzy na Ciebie, aby otrzymać pochwałę lub komentarz?",
-        "Ciągle spogląda, aby sprawdzić, czy patrzysz?",
-        "Inne...(opisz)"
+        "Proszę podać przykład, jak dziecko próbuje zwrócić na siebie Pana/Pani uwagę. Czy dziecko...",
+        "Mówi 'Spójrz!' albo 'Popatrz na mnie!'?",
+        "Gaworzy lub wydaje inne dźwięki, aby sprawić, by Pan/Pani spojrzał na to, co robi dziecko?",
+        "Patrzy na Pana/Panią, by usłyszeć pochwałę lub uwagę?",
+        "Sprawdza czy Pan/Pani patrzy?",
+        "Inne..."
       ],
       "third_path": "True",
       "yes_path": "PASS"
