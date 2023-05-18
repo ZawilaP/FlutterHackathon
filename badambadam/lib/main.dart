@@ -17,7 +17,6 @@ import 'routes/loginPageRoute.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
@@ -65,6 +64,10 @@ class MyApp extends StatelessWidget {
                 '/login': (context) => LoginFormValidation(),
                 '/admin': (context) => AdminPanelRoute(),
                 '/questions': (context) => FetchData(),
+                '/newAdmin': (context) => NewAdminRoute(),
+                '/adminBasicSurvey': (context) => AdminBasicSurveyListRoute(),
+                '/adminAdvancedSurvey': (context) =>
+                    AdminAdvancedSurveyListRoute(),
               },
               locale: myAppState.locale,
               localizationsDelegates: [

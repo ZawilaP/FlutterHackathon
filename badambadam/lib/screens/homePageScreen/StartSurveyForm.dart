@@ -49,9 +49,9 @@ class _StartSurveyForm extends State<StartSurveyForm> {
           width: 500,
           child: TextFormField(
             controller: selectDate,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               prefixIcon: Icon(Icons.calendar_today_rounded),
-              labelText: 'Wprowadź datę urodzenia dziecka',
+              labelText: AppLocalizations.of(context).birthPlaceholder,
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))),
             ),
@@ -73,7 +73,6 @@ class _StartSurveyForm extends State<StartSurveyForm> {
             },
             onTap: () async {
               DateTime? pickeddate = await showDatePicker(
-                  locale: const Locale("pl"),
                   context: context,
                   initialDate: DateTime.now(),
                   firstDate: DateTime.now().subtract(Duration(days: 365 * 5)),
@@ -99,7 +98,7 @@ class _StartSurveyForm extends State<StartSurveyForm> {
             child: TextFormField(
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.home),
-                labelText: AppLocalizations.of(context)!.zipCodePlaceholder,
+                labelText: AppLocalizations.of(context).zipCodePlaceholder,
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
