@@ -131,7 +131,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 24.0, vertical: 12),
                       child: Text(
-                        'Wykonaj badanie uszczegóławiające (M-CHAT R/F)',
+                        'Wykonaj ankietę dodatkową',
                         style: DefaultTextStyle.of(context).style.copyWith(
                             fontSize: 20,
                             // color: Colors.white70,
@@ -159,36 +159,27 @@ class ScoreDisplayContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 310,
+      height: 280,
       width: double.infinity,
       color: Theme.of(context).colorScheme.primary,
       child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Drogi rodzicu, wynik Twojego dziecka to: '),
+            child: Text('Wynik Twojego dziecka: '),
           ),
           SizedBox(
             height: 15,
           ),
           CircularPercentIndicator(
-            radius: 120.0,
+            radius: 100.0,
             animation: true,
-            animationDuration: 500,
+            animationDuration: 900,
             lineWidth: 15.0,
             percent: score! / allAnswers!.length,
-            center: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "$score/${allAnswers!.length}",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
-                ),
-                Text(
-                  "punktów",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
-                ),
-              ],
+            center: Text(
+              "$score/${allAnswers!.length}",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32.0),
             ),
             circularStrokeCap: CircularStrokeCap.round,
             backgroundColor: Colors.white,

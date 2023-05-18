@@ -60,7 +60,7 @@ class _PDFSaveState extends State<PDFSave> {
       pw.MultiPage(
         theme: pw.ThemeData.withFont(base: ttfBase),
         build: (pw.Context context) => [
-          pw.Text('Wyniki badania M-CHAT-R', style: pw.TextStyle(fontSize: 20)),
+          pw.Text('Wyniki badania M-Chat-R', style: pw.TextStyle(fontSize: 20)),
           pw.Divider(thickness: 0.5),
           pw.Row(
               mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
@@ -146,7 +146,6 @@ class _PDFSaveState extends State<PDFSave> {
 
   @override
   Widget build(BuildContext context) {
-    print(topLevelSurvey);
     final ButtonStyle style = ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),

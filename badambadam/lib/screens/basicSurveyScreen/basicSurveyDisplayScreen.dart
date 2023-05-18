@@ -109,7 +109,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                         if (allAnswers.value.values.contains(-1)) {
                           _showMyDialog();
                         } else {
-                          updateGuidList(DateTime.now().toString().trim());
+                          updateGuidList(DateTime.now().toString().trim() + "-" + generateSixDigitString());
                           addAllTopLevelNodes(topLevelQuestions);
                           addAllAnswersMap(allAnswers.value);
                           writeCurrentAnswers();
