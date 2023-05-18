@@ -131,7 +131,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 24.0, vertical: 12),
                       child: Text(
-                        'Wykonaj badanie uszczegóławiające (M-CHAT R/F',
+                        'Wykonaj badanie uszczegóławiające M-CHAT R/F',
                         style: DefaultTextStyle.of(context).style.copyWith(
                             fontSize: 20,
                             fontWeight: FontWeight.bold),

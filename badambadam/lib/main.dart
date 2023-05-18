@@ -47,6 +47,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
           fontFamily: 'Poppins',
+          scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: MaterialStateProperty.all<bool>(true),
+        ),
           colorScheme: ColorScheme.fromSeed(
               seedColor: Color.fromARGB(255, 118, 114, 105),
               background: Color.fromRGBO(253, 253, 253, 1),

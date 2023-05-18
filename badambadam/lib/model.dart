@@ -237,7 +237,7 @@ Future<void> saveSurvey(String guid, List<dynamic> data) async {
   await ref.set(data);
 }
 
-Future<void> saveAdvancedSurvey(String guid, List<dynamic> data) async {
+Future<void> saveAdvancedSurvey(String guid, Map<dynamic, dynamic> data) async {
   DatabaseReference ref = FirebaseDatabase.instance.ref(
       "advancedAnswers/${guid.replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}");
   await ref.set(data);
