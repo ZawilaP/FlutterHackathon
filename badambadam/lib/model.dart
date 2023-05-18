@@ -289,3 +289,13 @@ Future<Map<String, dynamic>> getAdvancedSurveyRawAnswers() async {
   var x = snapshot.value as Map<String, dynamic>;
   return x;
 }
+
+String generateSixDigitString() {
+  Random random = Random();
+  String result = '';
+
+  for (int i = 0; i < 6; i++) {
+    result += random.nextInt(10).toString();
+  }
+  return result;
+}
