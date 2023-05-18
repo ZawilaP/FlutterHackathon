@@ -8,7 +8,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "1.0",
       "questions": [
-        "Czy gdy wskazujesz na coś po drugiej stronie pokoju, Twoje dziecko na to patrzy? (NA PRZYKŁAD, gdy wskazujesz na zabawkę lub zwierzę, Twoje dziecko patrzy na tę zabawkę lub zwierzę?)"
+        "Jeśli wskaże Pan/Pani jakiś przedmiot znajdujący się w pomieszczeniu, to czy Pana/Pani dziecko na niego spojrzy? (NA PRZYKŁAD: jeśli wskaże Pan/Pani zabawkę albo zwierzę, to czy Pana/Pani dziecko spojrzy na tę zabawkę lub zwierzę?)"
       ],
       "third_path": "nan",
       "yes_path": "1_01"
@@ -21,14 +21,14 @@
       "node_type": "YesNoBranching",
       "question_group_id": "1.0",
       "questions": [
-        "Jeśli wskażesz na coś, jak zwykle reaguje Twoje dziecko?",
-        "[P] Patrzy na przedmiot?",
-        "[P] Wskazuje na przedmiot?",
-        "[P] Patrzy i komentuje przedmiot?",
-        "[P] Patrzy, gdy Ty wskazujesz i mówisz 'patrz!'?",
-        "[F] Ignoruje Ciebie?",
-        "[F] Patrzy bez celu po pokoju?",
-        "[F] Patrzy na Twój palec?"
+        "Gdy Pan/Pani na coś wskazuje, to jak wtedy zazwyczaj reaguje Pana/Pani dziecko?",
+        "[P] Patrzy na ten przedmiot?",
+        "[P] Wskazuje ten przedmiot?",
+        "[P] Patrzy na przedmiot i komentuje?",
+        "[P] Patrzy, czy Pan/Pani pokazuje i mówi 'spójrz!'?",
+        "[F] Ignoruje Pana/Panią?",
+        "[F] Rozgląda się po pokoju w losowych kierunkach?",
+        "[F] Patrzy na Pana/Pani palec?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -41,14 +41,14 @@
       "node_type": "SingleSelect",
       "question_group_id": "1.0",
       "questions": [
-        "Która z tych czynności jest przez niego/nią najczęściej wykonywana?",
-        "[P] Patrzy na przedmiot?",
-        "[P] Wskazuje na przedmiot?",
-        "[P] Patrzy i komentuje przedmiot?",
-        "[P] Patrzy, gdy Ty wskazujesz i mówisz 'patrz!'?",
-        "[F] Ignoruje Ciebie?",
-        "[F] Patrzy bez celu po pokoju?",
-        "[F] Patrzy na Twój palec?"
+        "Które reakcje występują u dziecka najczęściej?",
+        "[P] Patrzy na ten przedmiot?",
+        "[P] Wskazuje ten przedmiot?",
+        "[P] Patrzy na przedmiot i komentuje?",
+        "[P] Patrzy, czy Pan/Pani pokazuje i mówi 'spójrz!'?",
+        "[F] Ignoruje Pana/Panią?",
+        "[F] Rozgląda się po pokoju w losowych kierunkach?",
+        "[F] Patrzy na Pana/Pani palec?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -61,9 +61,9 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "2.0",
       "questions": [
-        "Zgłosiłeś/aś, że zastanawiałeś/aś się, czy Twoje dziecko jest głuche. Co spowodowało takie podejrzenia? Czy ono/ona",
-        "często ignoruje dźwięki?",
-        "często ignoruje innych ludzi?"
+        "Powiedział/a Pan/Pani, że zastanawiał/a się kiedyś, czy Pana/Pani dziecko jest głuche. Co skłoniło Pana/Panią do takich przypuszczeń? Czy dziecko?",
+        "często ignoruje odgłosy?",
+        "często ignoruje ludzi?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -76,7 +76,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "2.0",
       "questions": [
-        "Czy badano słuch Twojego dziecka?"
+        "Czy Pana/Pani dziecko miało przeprowadzane badanie słuchu?"
       ],
       "third_path": "nan",
       "yes_path": "2_02"
@@ -89,8 +89,8 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "2.0",
       "questions": [
-        "Jakie były wyniki badania słuchu? (wybierz jedną odpowiedź):",
-        "Słuch w zakresie normy",
+        "Jakie były wyniki badania? (proszę wybrać jedną odpowiedź):",
+        "Prawidłowy słuch",
         "Słuch poniżej normy",
         "Wyniki niejednoznaczne lub niewystarczające"
       ],
