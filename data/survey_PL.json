@@ -423,13 +423,12 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "9.0",
       "questions": [
-        "Czy Twoje dziecko czasami przynosi Ci...",
-        "Zdjęcie lub zabawkę tylko po to, żeby Ci je pokazać?",
-        "Rysunek, który zrobiło?",
-        "Kwiat, który zerwało?",
+        "Czy dziecko czasami przynosi Panu/Pani:",
+        "Zdjęcie lub zabawkę tylko po to, aby je/ją Panu/Pani pokazać?",
+        "Rysunek, który namalowało?",
+        "Kwiatek, który zerwało?",
         "Robaka, którego znalazło na trawie?",
-        "Kilka klocków, które połączyło?",
-        "Inne...(opisz)"
+        "Klocki, które ułożyło?"
       ],
       "third_path": "nan",
       "yes_path": "9_03"
@@ -443,7 +442,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "nan",
       "questions": [
-        "Czy czasami pokazuje Ci coś, nie oczekując pomocy?"
+        "Czy robi tak czasami tylko po to, by pokazać ten przedmiot, a nie otrzymać pomoc?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
