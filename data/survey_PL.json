@@ -866,7 +866,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "18.0",
       "questions": [
-        "Gdy sytuacja daje mu/jej wskazówkę, czy potrafi wykonać polecenie? Na przykład, kiedy jesteś ubrany(a) i mówisz mu/jej, żeby wziął(a) swoje buty, czy widzisz, że rozumie?"
+        "Czy dziecko wykona polecenie, jeśli otrzyma jasny opis danej sytuacji? Na przykład, gdy Pan/Pani stoi już ubrany/a i gotowy/a do wyjścia i każe dziecku ubrać buty, to czy dziecko rozumie, co ma zrobić?"
       ],
       "third_path": "nan",
       "yes_path": "18_03"
@@ -880,7 +880,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "18.0",
       "questions": [
-        "Jeśli jest czas na kolację i jedzenie jest na stole, i powiesz dziecku, aby usiadło, czy podejdzie i usiądzie przy stole?"
+        "W porze obiadowej, gdy jedzenie czeka na stole, Pan/Pani mówi dziecku, aby usiadło, to czy ono przyjdzie i usiądzie przy stole?"
       ],
       "third_path": "nan",
       "yes_path": "18_04"
@@ -894,9 +894,10 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "18.0",
       "questions": [
-        "W sytuacji, kiedy nie ma żadnych wskazówek, czy twoje dziecko potrafi wykonać polecenie? Na przykład...: Jeśli powiesz 'Pokaż mi swój but' bez wskazywania, gestów lub podpowiedzi (kiedy nie wychodzicie ani się nie ubieracie), czy twoje dziecko pokaże ci swój but?",
-        "Jeśli powiesz 'Przynieś mi koc' lub poprosisz o inny przedmiot bez wskazywania, gestów lub podpowiedzi, czy twoje dziecko przyniesie ci go?",
-        "Jeśli powiesz 'Połóż książkę na krześle' bez wskazywania, gestów lub podpowiedzi, czy twoje dziecko położy książkę na krześle?"
+        "W sytuacji, kiedy nie ma żadnych wskazówek, czy twoje dziecko potrafi wykonać polecenie? Na przykład...",
+        "Jeśli powie Pan/Pani: „Pokaż mi swój but”, bez wskazywania na przedmiot, bez wykonywania innego gestu i bez żadnych wskazówek (np. gdy nie szykujecie się do wyjścia z domu ani nie ubieracie się), to czy dziecko pokaże Panu/Pani swój but?",
+        "Jeśli powie Pan/Pani: „Podaj mi kocyk” lub poprosi o inny przedmiot bez wskazywania na niego, wykonywania innych gestów i bez żadnych wskazówek, to czy dziecko go Panu/Pani poda?",
+        "Jeśli powie Pan/Pani: „Połóż książkę na krześle” bez wskazywania na te przedmioty, wykonywania innych gestów i bez żadnych wskazówek, to czy dziecko położy książkę na krześle?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
