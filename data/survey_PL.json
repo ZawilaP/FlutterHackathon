@@ -580,17 +580,17 @@
       "node_type": "OneYesWillDoKeepAsking",
       "question_group_id": "12.0",
       "questions": [
-        "Czy Twoje dziecko negatywnie reaguje na dźwięk...",
+        "Czy dziecko negatywnie reaguje na dźwięk...",
         "Pralki?",
-        "Płaczących niemowląt?",
+        "Płaczu drugiego dziecka?",
         "Odkurzacza?",
         "Suszarki do włosów?",
         "Ruchu ulicznego?",
-        "Pisków lub wrzasków niemowląt?",
+        "Pisków lub krzyków dzieci?",
         "Głośnej muzyki?",
-        "Telefonu/dzwonka do drzwi?",
-        "Hałaśliwych miejsc, takich jak supermarket lub restauracja?",
-        "Inne...(opisz):"
+        "Telefonu lub dzwonka do drzwi?",
+        "Rozlegający się w supermarkecie lub restauracji?",
+        "Inne..."
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -604,12 +604,12 @@
       "node_type": "YesNoBranching",
       "question_group_id": "11.0",
       "questions": [
-        "Jak Twoje dziecko reaguje na te odgłosy?",
-        "[P] Spokojnie zakrywa uszy?",
-        "[P] Mówi Ci, że nie lubi danego dźwięku?",
+        "Jak Pani/Pana dziecko reaguje na te dźwięki?",
+        "[P] Spokojnie zakrywa dłońmi uszy?",
+        "[P] Mówi Panu/Pani, że nie podoba mu się ten dźwięk?",
         "[F] Krzyczy?",
         "[F] Płacze?",
-        "[F] Zakrywa uszy w stanie zdenerwowania?"
+        "[F] Zatyka uszy, gdy jest zdenerwowane?"
       ],
       "third_path": "11_3",
       "yes_path": "PASS"
@@ -624,11 +624,11 @@
       "question_group_id": "10.0",
       "questions": [
         "Które z tych zachowań Twoje dziecko najczęściej wykazuje?",
-        "[P] Spokojnie zakrywa uszy?",
-        "[P] Mówi Ci, że nie lubi danego dźwięku?",
+        "[P] Spokojnie zakrywa dłońmi uszy?",
+        "[P] Mówi Panu/Pani, że nie podoba mu się ten dźwięk?",
         "[F] Krzyczy?",
         "[F] Płacze?",
-        "[F] Zakrywa uszy w stanie zdenerwowania?"
+        "[F] Zatyka uszy, gdy jest zdenerwowane?"
       ],
       "third_path": "See comments",
       "yes_path": "nan"
