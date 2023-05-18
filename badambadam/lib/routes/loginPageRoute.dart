@@ -146,6 +146,7 @@ class _LoginFormValidation extends State<LoginFormValidation> {
                       final credential = await FirebaseAuth.instance
                           .signInWithEmailAndPassword(
                               email: _email, password: _password);
+                      Navigator.pushNamed(context, '/admin');
                     } on FirebaseAuthException catch (e) {
                       _showMyDialog();
                     } on Error catch (_) {
