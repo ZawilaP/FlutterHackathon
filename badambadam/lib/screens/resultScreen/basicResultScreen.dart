@@ -131,10 +131,9 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 24.0, vertical: 12),
                       child: Text(
-                        'Wykonaj ankietę dodatkową',
+                        'Wykonaj badanie uszczegóławiające (M-CHAT R/F',
                         style: DefaultTextStyle.of(context).style.copyWith(
                             fontSize: 20,
-                            // color: Colors.white70,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -159,27 +158,36 @@ class ScoreDisplayContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 280,
+      height: 310,
       width: double.infinity,
       color: Theme.of(context).colorScheme.primary,
       child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Wynik Twojego dziecka: '),
+            child: Text('Drogi rodzicu, wynik Twojego dziecka to: '),
           ),
           SizedBox(
             height: 15,
           ),
           CircularPercentIndicator(
-            radius: 100.0,
+            radius: 120.0,
             animation: true,
-            animationDuration: 900,
+            animationDuration: 500,
             lineWidth: 15.0,
             percent: score! / allAnswers!.length,
-            center: Text(
-              "$score/${allAnswers!.length}",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32.0),
+            center: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "$score/${allAnswers!.length}",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                ),
+                Text(
+                  "punktów",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                ),
+              ],
             ),
             circularStrokeCap: CircularStrokeCap.round,
             backgroundColor: Colors.white,
