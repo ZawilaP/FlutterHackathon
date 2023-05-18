@@ -1,0 +1,12 @@
+{
+  "helloWorld": "Hello WORLD ENGLISH!",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "entryText": "Ladies and Gentlemen, we know that it is Parents who have the best intuitions about the development of their children. Most of their insights relate to their children's skills and interests and are a source of joy. Sometimes, however, as parents, we also have some intuitions and observations that cause us concern. It's always a good idea to dispel them, so that nothing shatters the adventure of exploring the world together with our little one. \nWe place in your hands the M-CHAT-R tool, which was created to assess the risk of autism spectrum disorders and allows an initial assessment of the child's normal development in terms of social development and communication skills. In most cases, if there are even any developmental abnormalities, they end with visits to a speech therapist or simple exercises in the privacy of the home. Only 1% of the children surveyed require further diagnosis and therapy for autism spectrum disorders. For these children, there is an opportunity for faster help. \n So we encourage you to fill out the questionnaire, especially since you can do it at a time and place most convenient for you, due to the availability of the survey online. \nThe Modified Checklist for Autism in Toddlers (M-CHAT-R), related materials and all information about how to use it are available at https://www.mchatscreen.com .\nThe M-CHAT-R tool is designed for children aged 16 to 30 months. Completing the questionnaire for children younger than 16 months will give false results, as they are entitled not yet to master many of the skills that older children have. Parents of younger children (between 12 and 18 months of age) are encouraged to consult the list of developmental skills corresponding to this age http://synapsis.org.pl/zycie-z-autyzmem/dla-rodzicow-i-opiekunow/12-18-miesiac.\nTo participate in the survey enter your child's zip code and date of birth:",
+  "zipCodePlaceholder": "Enter your zip code",
+  "birthPlaceholder": "Select date of birth of your child",
+  "yes": "YES",
+  "no": "NO",
+  "loading": "Loading.."
+}

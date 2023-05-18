@@ -55,17 +55,13 @@ class FakeBackendSingleton {
     return SurveyIDPair("1", Uuid().v4().toString());
   }
 
-  Future<Survey> getSurvey(String? guid) async {
+  Future<Survey> getSurvey(String? guid, String locale) async {
     // can get a past survey from backend (not implemented now) via a guid
     // or get the survey from the local json file (if guid is null)
     // if the survey is already loaded, returns it from memory
     if (guid == null) {
-      if (this.survey == null) {
-        this.survey = Survey();
-        return survey!.load();
-      } else {
-        return Future(() => survey!);
-      }
+      this.survey = Survey();
+      return survey!.load(locale);
     } else {
       throw Exception("GetSurvey(guid) not implemented");
     }
@@ -134,7 +130,7 @@ class Survey {
   }
 
   // load survey from json file (from backend later)
-  Future<Survey> load() async {
+  Future<Survey> load(String locale) async {
     await register();
     // await saveSurvey("231231", ["dummyvalue"]);
     // await updateQuestion(81, {"questions/0": "PG13"});
@@ -144,7 +140,9 @@ class Survey {
     final snapshot = await ref2.get();
     var x = snapshot.value as Map;
 
-    List questions = x["questions"] as List;
+    if (locale == "en") locale = ""; // default locale
+    //List questions = x["questions"] as List;
+    List questions = x["questions$locale"] as List;
     sortListById(questions);
     for (var item in questions) {
       Node n = Node(item["id"], item["is_top_level"], item["is_inverted"],
@@ -192,8 +190,8 @@ class Node {
   NodeStatus status = NodeStatus.unansweredYet;
   NodeAnswer? answer;
 
-  Node(String _id, String _isTopLevel, String _isInverted, String _nodeType, String _question_group_id,
-      List<dynamic> _questions) {
+  Node(String _id, String _isTopLevel, String _isInverted, String _nodeType,
+      String _question_group_id, List<dynamic> _questions) {
     id = _id;
     isTopLevel = _isTopLevel == "YES" ? true : false;
     isInverted = _isInverted == "YES" ? true : false;
@@ -243,7 +241,8 @@ Future<void> saveAdvancedSurvey(String guid, Map<dynamic, dynamic> data) async {
   await ref.set(data);
 }
 
-Future<void> saveAdvancedRawSurvey(String guid, Map<dynamic, dynamic> data) async {
+Future<void> saveAdvancedRawSurvey(
+    String guid, Map<dynamic, dynamic> data) async {
   DatabaseReference ref = FirebaseDatabase.instance.ref(
       "advancedRawAnswers/${guid.replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}");
   await ref.set(data);

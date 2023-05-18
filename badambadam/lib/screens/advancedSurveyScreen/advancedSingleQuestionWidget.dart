@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AdvancedSingleQuestion extends StatefulWidget {
   AdvancedSingleQuestion({
@@ -42,8 +43,10 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
                 padding: const EdgeInsets.only(bottom: 8, top: 8),
                 child: Text(
                   'Pytanie ${widget.questionNode!.id.replaceAll('_0', '.')}',
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          color: Theme.of(context).colorScheme.primary),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(color: Theme.of(context).colorScheme.primary),
                 ),
               ),
               subtitle: Text(
@@ -92,11 +95,11 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
                           Theme.of(context).colorScheme.primary,
                       children: <Widget>[
                         Text(
-                          'TAK',
+                          AppLocalizations.of(context)!.yes,
                           style: TextStyle(fontSize: 21),
                         ),
                         Text(
-                          'NIE',
+                          AppLocalizations.of(context)!.no,
                           style: TextStyle(fontSize: 21),
                         )
                       ]),

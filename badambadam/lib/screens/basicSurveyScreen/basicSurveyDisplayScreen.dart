@@ -14,6 +14,7 @@ class SurveyWidget extends StatefulWidget {
 
 class _SurveyWidgetState extends State<SurveyWidget> {
   Survey? survey;
+  String lastLocale = '';
 
   void showSurvey(Survey s) {
     setState(() {
@@ -23,9 +24,12 @@ class _SurveyWidgetState extends State<SurveyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (survey == null) {
+    String currentLocale = Localizations.localeOf(context).languageCode;
+    if (survey == null || lastLocale != currentLocale) {
       // if not there - then load one
-      FakeBackendSingleton().getSurvey(null).then(showSurvey);
+      String locale = currentLocale;
+      lastLocale = locale;
+      FakeBackendSingleton().getSurvey(null, locale).then(showSurvey);
       return Center(child: Text('Ładowanie...'));
     } else {
       List<Node> topLevelSurvey = survey!.getTopLevelNodesOnly();
@@ -109,7 +113,9 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                         if (allAnswers.value.values.contains(-1)) {
                           _showMyDialog();
                         } else {
-                          updateGuidList(DateTime.now().toString().trim() + "-" + generateSixDigitString());
+                          updateGuidList(DateTime.now().toString().trim() +
+                              "-" +
+                              generateSixDigitString());
                           addAllTopLevelNodes(topLevelQuestions);
                           addAllAnswersMap(allAnswers.value);
                           writeCurrentAnswers();
