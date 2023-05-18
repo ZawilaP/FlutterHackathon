@@ -226,7 +226,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "6.0",
       "questions": [
-        "Czy Twoje dziecko wskazuje jednym palcem, prosząc o coś lub prosząc o pomoc? (NA PRZYKŁAD, wskazując na przekąskę lub zabawkę, która jest poza zasięgiem)"
+        "Czy Pana/Pani dziecko wskazuje palcem, aby o coś poprosić lub otrzymać pomoc? (NA Zaliczone Niezaliczone PRZYKŁAD: czy wskazuje na przekąskę lub zabawkę, która jest poza jego zasięgiem?)"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -272,7 +272,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "7.0",
       "questions": [
-        "Czy Twoje dziecko wskazuje jednym palcem, aby pokazać Ci coś interesującego? (NA PRZYKŁAD, czy Twoje dziecko obserwuje inne dzieci, uśmiecha się do nich lub do nich idzie?)"
+        "Czy Pana/Pani dziecko wskazuje palcem, aby pokazać Panu/Pani coś ciekawego? (NA PRZYKŁAD: czy wskazuje na przelatujący samolot lub na przejeżdżającą ciężarówkę?)"
       ],
       "third_path": "nan",
       "yes_path": "7_01"
@@ -333,7 +333,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "8.0",
       "questions": [
-        "Czy Twoje dziecko interesuje się innymi dziećmi? (NA PRZYKŁAD, czy Twoje dziecko obserwuje inne dzieci, uśmiecha się do nich lub do nich idzie?)"
+        "Czy Pana/Pani dziecko interesuje się innymi dziećmi? (NA PRZYKŁAD: czy Pana/Pani dziecko Zaliczone Niezaliczone patrzy na inne dzieci, uśmiecha się lub podchodzi do nich?)"
       ],
       "third_path": "nan",
       "yes_path": "8_01"
@@ -410,7 +410,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "9.0",
       "questions": [
-        "Czy Twoje dziecko pokazuje Ci rzeczy, przynosząc je do Ciebie lub trzymając je tak, abyś mógł je zobaczyć - nie po to, żeby prosić o pomoc, ale tylko po to, żeby się nimi podzielić? (NA PRZYKŁAD, pokazując Ci kwiatek, pluszowego misia czy zabawkowy samochód)"
+        "Czy Pana/Pani dziecko przynosi Panu/Pani przedmioty, aby je Panu/Pani pokazać lub podnosi je w taki sposób, żeby mógł/mogła je Pan/Pani obejrzeć – nie po to, aby otrzymać pomoc, ale by je po prostu pokazać? (NA PRZYKŁAD: pokazuje Panu/Pani kwiatek, pluszową zabawkę lub samochodzik?)"
       ],
       "third_path": "nan",
       "yes_path": "9_01"
@@ -458,7 +458,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "10.0",
       "questions": [
-        "Czy twoje dziecko reaguje, kiedy wołasz je po imieniu? (NA PRZYKŁAD czy odwraca głowę, odpowiada mową lub bełkotem lub przestaje robić to, co akurat robi, gdy wołasz je po imieniu?)"
+        "Czy Pana/Pani dziecko reaguje, gdy woła je Pan/Pani po imieniu? (NA PRZYKŁAD: czy dziecko Zaliczone Niezaliczone podnosi głowę, odzywa się, gaworzy lub przestaje robić to, co właśnie robiło, gdy woła je Pan/Pani po imieniu?)"
       ],
       "third_path": "nan",
       "yes_path": "10_01"
@@ -512,7 +512,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "11.0",
       "questions": [
-        "Kiedy uśmiechasz się do dziecka, czy dziecko odpowiada uśmiechem?"
+        "Gdy uśmiecha się Pan/Pani do dziecka, to czy dziecko odpowiada Panu/Pani uśmiechem?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -566,7 +566,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "12.0",
       "questions": [
-        "Czy Twoje dziecko reaguje niepokojem na codzienne odgłosy? (NA PRZYKŁAD, czy Twoje dziecko krzyczy lub płacze w reakcji na odgłosy, takie jak odkurzacz czy głośna muzyka?)"
+        "Czy Pana/Pani dziecko denerwuje się, gdy słyszy codzienne odgłosy? (NA PRZYKŁAD: dźwięk Zaliczone Niezaliczone odkurzacza lub głośna muzyka?)"
       ],
       "third_path": "nan",
       "yes_path": "12_1"
@@ -642,7 +642,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "13.0",
       "questions": [
-        "Czy Twoje dziecko chodzi?"
+        "Czy Pana/Pani dziecko potrafi chodzić?"
       ],
       "third_path": "nan",
       "yes_path": "13_01"
@@ -670,7 +670,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "14.0",
       "questions": [
-        "Czy Twoje dziecko patrzy Ci w oczy, kiedy do niego mówisz, bawisz się z nim lub przebierasz je?"
+        "Czy Pana/Pani dziecko utrzymuje z Panem/Panią kontakt wzrokowy, gdy Pan/Pani do niego Zaliczone Niezaliczone mówi, bawi się z nim lub je ubiera?"
       ],
       "third_path": "nan",
       "yes_path": "14_01"
@@ -732,7 +732,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "15.0",
       "questions": [
-        "Czy Twoje dziecko próbuje naśladować to, co robisz? (NA PRZYKŁAD, macha ręką na pożegnanie, klaska lub wydaje zabawny dźwięk, kiedy Ty to robisz)"
+        "Czy Pana/Pani dziecko próbuje naśladować to, co Pan/Pani robi? (NA PRZYKŁAD: machanie ręką na pożegnanie, klaskanie lub wydawanie śmiesznych dźwięków)"
       ],
       "third_path": "nan",
       "yes_path": "15_01"
@@ -767,7 +767,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "nan",
       "questions": [
-        "Czy Twoje dziecko spogląda wokół, gdy odwracasz głowę, aby spojrzeć na coś?"
+        "Gdy odwraca Pan/Pani głowę, by na coś spojrzeć, to czy Pana/Pani dziecko także odwraca Zaliczone Niezaliczone głowę, by spojrzeć w tę samą stronę?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -819,7 +819,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "17.0",
       "questions": [
-        "Czy Twoje dziecko stara się przyciągnąć Twoją uwagę? (NA PRZYKŁAD, czy Twoje dziecko patrzy na Ciebie po pochwałę lub mówi „patrz” lub „popatrz na mnie”?)"
+        "Czy Pana/Pani dziecko próbuje zwrócić na siebie uwagę i sprawić by Pan/Pani na nie spojrzał/a? (NA PRZYKŁAD: czy Pana/Pani dziecko spogląda na Pana/Panią, by otrzymać pochwałę lub czy mówi 'zobacz', 'popatrz na mnie'?)"
       ],
       "third_path": "nan",
       "yes_path": "17_01"
@@ -852,7 +852,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "18.0",
       "questions": [
-        "Czy Twoje dziecko rozumie, kiedy mówisz mu, żeby coś zrobiło? (NA PRZYKŁAD, jeśli nie wskazujesz palcem, czy Twoje dziecko rozumie polecenia takie jak „połóż książkę na krześle” lub „przynieś mi koc”?)"
+        "Czy Pana/Pani dziecko rozumie, gdy każe mu Pan/Pani coś zrobić? (NA PRZYKŁAD: jeśli nie wskazuje Pan/Pani palcem, to czy Pana/Pani dziecko rozumie zdanie: 'połóż książkę na krześle' lub 'przynieś mi koc'?)"
       ],
       "third_path": "nan",
       "yes_path": "18_01"
@@ -910,7 +910,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "19.0",
       "questions": [
-        "Czy twoje dziecko patrzy na twoją twarz, aby zobaczyć jak reagujesz, gdy dzieje się coś nowego? (NA PRZYKŁAD kiedy słyszy dziwny lub zabawny dźwięk lub widzi nową zabawkę, czy patrzy na twoją twarz?)"
+        "Gdy dziecko znajdzie się w nowej, nieznanej sytuacji, czy wtedy spojrzy na Pana/Panią, by sprawdzić, jak Pan/Pani na to zareaguje? (NA PRZYKŁAD: gdy dziecko usłyszy jakiś dziwny lub zabawny dźwięk lub gdy widzi nową zabawkę, czy popatrzy wtedy na Pana/Panią?)"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -966,7 +966,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "20.0",
       "questions": [
-        "Czy twoje dziecko lubi aktywności ruchowe? (Na przykład, być huśtanym lub podrzucanym na kolanach)"
+        "Czy Pana/Pani dziecko lubi zabawy ruchowe? (NA PRZYKŁAD: lubi być kołysane lub huśtane na Zaliczone Niezaliczone Pana/Pani kolanach?)"
       ],
       "third_path": "nan",
       "yes_path": "20_1"
