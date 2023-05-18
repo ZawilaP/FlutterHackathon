@@ -925,7 +925,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "19.0",
       "questions": [
-        "Czy twoje dziecko patrzy na ciebie, kiedy słyszy dziwny lub przerażający dźwięk, zanim na niego zareaguje?"
+        "Gdy dziecko słyszy dziwny lub straszny dźwięk, to czy spojrzy na Pana/Panią zanim samo zareaguje?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -939,7 +939,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "19.0",
       "questions": [
-        "Czy twoje dziecko patrzy na ciebie, kiedy ktoś nowy się zbliża?"
+        "Czy dziecko spogląda na Pana/Panią, gdy podchodzi do niego osoba, której nie zna?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -953,7 +953,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "19.0",
       "questions": [
-        "Czy twoje dziecko patrzy na ciebie, kiedy jest podstawione przed czymś nieznanym lub trochę przerażającym?"
+        "Czy dziecko spogląda na Pana/Panią, gdy natrafia na coś nieznanego lub niepokojącego?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
