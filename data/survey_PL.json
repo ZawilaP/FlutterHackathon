@@ -346,7 +346,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "8.0",
       "questions": [
-        "Czy interesuje się dziećmi, które nie są jego/jej rodzeństwem?"
+        "Czy jest zainteresowane dziećmi innymi niż swoje rodzeństwo?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -360,7 +360,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "8.0",
       "questions": [
-        "Czy Twoje dziecko zwykle reaguje na inne dzieci, gdy jesteście na placu zabaw lub w supermarkecie?"
+        "Gdy jesteście na placu zabaw lub w supermarkecie, to czy Pana/Pani dziecko przejawia zainteresowanie innymi dziećmi?"
       ],
       "third_path": "nan",
       "yes_path": "8_03"
@@ -374,14 +374,14 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "8.0",
       "questions": [
-        "Jak Twoje dziecko reaguje?",
-        "Bawi się z innym dzieckiem?",
-        "Rozmawia z innym dzieckiem?",
-        "Bełkocze lub wydaje dźwięki głosowe?",
-        "Obserwuje inne dziecko?",
-        "Uśmiecha się do innego dziecka?",
-        "Na początku zachowuje się nieśmiało, ale później uśmiecha się?",
-        "Staje się podekscytowane na widok innego dziecka?"
+        "Jaka jest reakcja dziecka?",
+        "Bawi się z innymi dziećmi?",
+        "Rozmawia z innymi dziećmi?",
+        "Gaworzy lub wydaje inne dźwięki?",
+        "Patrzy na inne dzieci?",
+        "Uśmiecha się do innych dzieci?",
+        "Jest na początku nieśmiałe, ale potem się uśmiecha?",
+        "Ekscytuje się na widok innych dzieci?"
       ],
       "third_path": "nan",
       "yes_path": "8_04"
@@ -395,7 +395,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "8.0",
       "questions": [
-        "Czy reaguje na inne dzieci więcej niż w połowie przypadków?"
+        "Czy dziecko przejawia zainteresowanie innymi dziećmi przez ponad połowę spędzonego z nimi czasu?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
