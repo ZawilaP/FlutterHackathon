@@ -17,6 +17,7 @@ import 'routes/editQuestionsRoute.dart';
 import 'routes/loginPageRoute.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +36,15 @@ class MyApp extends StatelessWidget {
       create: (context) => MyAppState(),
       child: MaterialApp(
         title: 'M-CHAT-RF',
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [
+          Locale('en'), // English
+          Locale('pl'), // Polish
+        ],
         theme: ThemeData(
           scrollbarTheme: ScrollbarThemeData(
             thumbVisibility: MaterialStateProperty.all<bool>(true),
