@@ -684,13 +684,13 @@
       "node_type": "YesNoBranching",
       "question_group_id": "14.0",
       "questions": [
-        "Czy Twoje dziecko patrzy Ci w oczy...",
-        "Gdy potrzebuje czegoś?",
-        "Kiedy się z nim bawisz?",
+        "Czy dziecko utrzymuje z Panem/Panią kontakt wzrokowy...",
+        "Gdy czegoś potrzebuje?",
+        "Gdy Pan/Pani się z nim bawi?",
         "Podczas karmienia?",
-        "Podczas zmiany pieluchy?",
-        "Kiedy czytasz mu bajkę?",
-        "Kiedy do niego mówisz?"
+        "Podczas przewijania?",
+        "Gdy czyta mu Pan/Pani bajkę?",
+        "Gdy mówi Pan/Pani do niego?"
       ],
       "third_path": "PASS",
       "yes_path": "14_03"
@@ -704,7 +704,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "14.0",
       "questions": [
-        "Czy Twoje dziecko patrzy Ci codziennie w oczy?"
+        "Czy dziecko nawiązuje z Panem/Panią kontakt wzrokowy każdego dnia?"
       ],
       "third_path": "nan",
       "yes_path": "14_04"
@@ -718,7 +718,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "14.0",
       "questions": [
-        "W dni, kiedy jesteście razem cały czas, czy Twoje dziecko patrzy Ci w oczy przynajmniej 5 razy?"
+        "Czy podczas spędzonego ze sobą dnia dziecko nawiązuje z Panem/Panią kontakt wzrokowy przynajmniej 5 razy?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
