@@ -20,7 +20,7 @@ const noRiskActions = [
 ];
 
 const smallRiskActions = [
-  'Co możesz teraz zrobić:',
+  'Co możesz teraz zrobić: ',
   'Wypełnij drugą badania, M-CHAT-R/F, w której znajdziesz pytania uszczegóławiające. Po jego wypełnieniu z większym prawdopodobieństwem można ocenić, czy wskazana jest dalsza specjalistyczna diagnoza w kierunku spektrum autyzmu, czy jednak uzyskany wynik nie jest niepokojący',
   'Skontaktuj się ze specjalistą (lekarzem, psychologiem, pedagogiem), aby porozmawiać i omówić wyniki badania oraz wyjaśnić swoje wątpliwości',
   'Skorzystaj z bezpłatnej teleporady w ramach kontraktu z NFZ. W celu umówienia się wypełnij ankietę: https://ankieta.synapsis.waw.pl/ankieta/',

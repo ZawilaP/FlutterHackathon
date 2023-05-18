@@ -95,10 +95,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
         ),
         Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Text(
-            intro,
-            style: TextStyle(fontWeight: FontWeight.bold)
-          ),
+          child: Text(intro, style: TextStyle(fontWeight: FontWeight.bold)),
         ),
         Divider(),
         Padding(
@@ -131,14 +128,14 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
                       Navigator.pushNamed(context, '/advancedSurvey');
                     },
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24.0, vertical: 12),
                       child: Text(
                         'Wykonaj badanie uszczegóławiające (M-CHAT R/F)',
                         style: DefaultTextStyle.of(context).style.copyWith(
                             fontSize: 20,
                             // color: Colors.white70,
-                            fontWeight: FontWeight.bold
-                            ),
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),

@@ -21,7 +21,7 @@ class _PDFSaveState extends State<PDFSave> {
   var pdf = pw.Document();
   Survey? survey;
   List<String>? topLevelSurvey = getTopLevelNodes();
-  
+
   var anchor;
 
   void showSurvey(Survey s) {
@@ -55,7 +55,6 @@ class _PDFSaveState extends State<PDFSave> {
         .split('-');
 
     var currentGuidUserNumber = currentGuid[currentGuid.length - 1];
-
 
     pdf.addPage(
       pw.MultiPage(
@@ -122,11 +121,15 @@ class _PDFSaveState extends State<PDFSave> {
               data: List<List<String>>.generate(
                   topLevelSurvey!.length,
                   (index) => <String>[
-                       topLevelSurvey![index].split('+')[0],
+                        topLevelSurvey![index].split('+')[0],
                         widget.allAnswers![index] == 0
-                            ? (topLevelSurvey![index].split('+')[1] == 'true' ? 'NIE' : 'TAK')
-                            : (topLevelSurvey![index].split('+')[1] == 'true' ? 'TAK' :'NIE'),
-                       widget.allAnswers![index].toString()
+                            ? (topLevelSurvey![index].split('+')[1] == 'true'
+                                ? 'NIE'
+                                : 'TAK')
+                            : (topLevelSurvey![index].split('+')[1] == 'true'
+                                ? 'TAK'
+                                : 'NIE'),
+                        widget.allAnswers![index].toString()
                       ]))
         ],
       ),
@@ -161,7 +164,9 @@ class _PDFSaveState extends State<PDFSave> {
           child: Text(
             'Pobierz wyniki',
             style: DefaultTextStyle.of(context).style.copyWith(
-                fontSize: 15, color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
+                fontSize: 15,
+                color: Theme.of(context).colorScheme.primary,
+                fontWeight: FontWeight.bold),
           ),
         ),
         style: style,
