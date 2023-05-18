@@ -526,13 +526,13 @@
       "node_type": "YesNoBranching",
       "question_group_id": "11.0",
       "questions": [
-        "Czy twoje dziecko...",
-        "[P] Uśmiecha się, kiedy ty się uśmiechasz?",
-        "[P] Uśmiecha się, kiedy wchodzisz do pokoju?",
-        "[P] Uśmiecha się, kiedy wracasz po nieobecności?",
-        "[F] Uśmiecha się zawsze?",
-        "[F] Uśmiecha się do ulubionej zabawki lub czynności?",
-        "[F] Uśmiecha się przypadkowo lub bez powodu?"
+        "Czy dziecko...",
+        "[P] Uśmiecha się, gdy Pan/Pani się uśmiecha?",
+        "[P] Uśmiecha się, gdy Pan/Pani wchodzi do pomieszczenia?",
+        "[P] Uśmiecha się, gdy Pan/Pani wraca do domu?",
+        "[F] Zawsze się uśmiecha?",
+        "[F] Uśmiecha się na widok ulubionej zabawki lub podczas wykonywania ulubionej czynności?",
+        "[F] Uśmiecha się nagle lub bez przyczyny?"
       ],
       "third_path": "11_3",
       "yes_path": "PASS"
@@ -546,13 +546,13 @@
       "node_type": "SingleSelect",
       "question_group_id": "10.0",
       "questions": [
-        "Która z tych opcji występuje najczęściej?",
-        "[P] Uśmiecha się, kiedy ty się uśmiechasz?",
-        "[P] Uśmiecha się, kiedy wchodzisz do pokoju?",
-        "[P] Uśmiecha się, kiedy wracasz po nieobecności?",
-        "[F] Uśmiecha się zawsze?",
-        "[F] Uśmiecha się do ulubionej zabawki lub czynności?",
-        "[F] Uśmiecha się przypadkowo lub bez powodu?"
+        "Które reakcje występują u dziecka częściej?",
+        "[P] Uśmiecha się, gdy Pan/Pani się uśmiecha?",
+        "[P] Uśmiecha się, gdy Pan/Pani wchodzi do pomieszczenia?",
+        "[P] Uśmiecha się, gdy Pan/Pani wraca do domu?",
+        "[F] Zawsze się uśmiecha?",
+        "[F] Uśmiecha się na widok ulubionej zabawki lub podczas wykonywania ulubionej czynności?",
+        "[F] Uśmiecha się nagle lub bez przyczyny?"
       ],
       "third_path": "See comments",
       "yes_path": "nan"
