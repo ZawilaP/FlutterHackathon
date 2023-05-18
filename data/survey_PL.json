@@ -240,11 +240,11 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "6.0",
       "questions": [
-        "Jeśli Twoje dziecko chce czegoś, co jest poza jego/jej zasięgiem, na przykład przekąski lub zabawki, jak to robi?",
-        "Czy sięga po przedmiot całymi rękami?",
-        "Czy prowadzi Cię do przedmiotu?",
-        "Czy próbuje zdobyć przedmiot samodzielnie?",
-        "Czy prosi o to słowami lub dźwiękami?"
+        "Gdy Pana/Pani dziecko chce sięgnąć po coś, co jest poza jego zasięgiem, np. przekąskę lub zabawkę, co wtedy robi?",
+        "Wyciąga całą dłoń po przedmiot?",
+        "Prowadzi Pana/Panią do tego przedmiotu?",
+        "Samo próbuje dosięgnąć tego przedmiotu?",
+        "Prosi o przedmiot za pomocą słów lub innych dźwięków?"
       ],
       "third_path": "nan",
       "yes_path": "6_03"
@@ -258,7 +258,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "6.0",
       "questions": [
-        "Gdybyś powiedział/a 'Pokaż mi', czy on/ona wskazałby to?"
+        "Jeśli powie Pan/Pani „pokaż mi”, to czy dziecko wskaże ten przedmiot?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
