@@ -107,6 +107,7 @@ class MyHomePage extends StatelessWidget {
           fit: BoxFit.cover,
           scale: 2,
         ),
+        automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
             style: IconButton.styleFrom(hoverColor: Colors.transparent),
