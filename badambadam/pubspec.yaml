@@ -24,7 +24,7 @@ dependencies:
   link_text: ^0.2.0
   firebase_database: ^10.0.9
   firebase_core: ^2.4.1
-  intl: ^0.18.0
+  intl: ^0.17.0
   google_fonts: ^4.0.3
   firebase_auth: ^4.2.2
 
