@@ -145,7 +145,7 @@
       "node_type": "Simple_yes_no",
       "question_group_id": "4.0",
       "questions": [
-        "Czy Pana/Pani dziecko lubi wdrapywać się na różne przedmioty? (NA PRZYKŁAD: na meble, na Zaliczone Niezaliczone urządzenia znajdujące się na placu zabaw lub na schody?)"
+        "Czy Pana/Pani dziecko lubi wdrapywać się na różne przedmioty? (NA PRZYKŁAD: na meble, na urządzenia znajdujące się na placu zabaw lub na schody?)"
       ],
       "third_path": "nan",
       "yes_path": "4_01"
@@ -226,7 +226,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "6.0",
       "questions": [
-        "Czy Pana/Pani dziecko wskazuje palcem, aby o coś poprosić lub otrzymać pomoc? (NA Zaliczone Niezaliczone PRZYKŁAD: czy wskazuje na przekąskę lub zabawkę, która jest poza jego zasięgiem?)"
+        "Czy Pana/Pani dziecko wskazuje palcem, aby o coś poprosić lub otrzymać pomoc? (NA PRZYKŁAD: czy wskazuje na przekąskę lub zabawkę, która jest poza jego zasięgiem?)"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -333,7 +333,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "8.0",
       "questions": [
-        "Czy Pana/Pani dziecko interesuje się innymi dziećmi? (NA PRZYKŁAD: czy Pana/Pani dziecko Zaliczone Niezaliczone patrzy na inne dzieci, uśmiecha się lub podchodzi do nich?)"
+        "Czy Pana/Pani dziecko interesuje się innymi dziećmi? (NA PRZYKŁAD: czy Pana/Pani dziecko patrzy na inne dzieci, uśmiecha się lub podchodzi do nich?)"
       ],
       "third_path": "nan",
       "yes_path": "8_01"
@@ -458,7 +458,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "10.0",
       "questions": [
-        "Czy Pana/Pani dziecko reaguje, gdy woła je Pan/Pani po imieniu? (NA PRZYKŁAD: czy dziecko Zaliczone Niezaliczone podnosi głowę, odzywa się, gaworzy lub przestaje robić to, co właśnie robiło, gdy woła je Pan/Pani po imieniu?)"
+        "Czy Pana/Pani dziecko reaguje, gdy woła je Pan/Pani po imieniu? (NA PRZYKŁAD: czy dziecko podnosi głowę, odzywa się, gaworzy lub przestaje robić to, co właśnie robiło, gdy woła je Pan/Pani po imieniu?)"
       ],
       "third_path": "nan",
       "yes_path": "10_01"
@@ -566,7 +566,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "12.0",
       "questions": [
-        "Czy Pana/Pani dziecko denerwuje się, gdy słyszy codzienne odgłosy? (NA PRZYKŁAD: dźwięk Zaliczone Niezaliczone odkurzacza lub głośna muzyka?)"
+        "Czy Pana/Pani dziecko denerwuje się, gdy słyszy codzienne odgłosy? (NA PRZYKŁAD: dźwięk odkurzacza lub głośna muzyka?)"
       ],
       "third_path": "nan",
       "yes_path": "12_1"
@@ -670,7 +670,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "14.0",
       "questions": [
-        "Czy Pana/Pani dziecko utrzymuje z Panem/Panią kontakt wzrokowy, gdy Pan/Pani do niego Zaliczone Niezaliczone mówi, bawi się z nim lub je ubiera?"
+        "Czy Pana/Pani dziecko utrzymuje z Panem/Panią kontakt wzrokowy, gdy Pan/Pani do niego mówi, bawi się z nim lub je ubiera?"
       ],
       "third_path": "nan",
       "yes_path": "14_01"
@@ -767,7 +767,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "nan",
       "questions": [
-        "Gdy odwraca Pan/Pani głowę, by na coś spojrzeć, to czy Pana/Pani dziecko także odwraca Zaliczone Niezaliczone głowę, by spojrzeć w tę samą stronę?"
+        "Gdy odwraca Pan/Pani głowę, by na coś spojrzeć, to czy Pana/Pani dziecko także odwraca głowę, by spojrzeć w tę samą stronę?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -966,7 +966,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "20.0",
       "questions": [
-        "Czy Pana/Pani dziecko lubi zabawy ruchowe? (NA PRZYKŁAD: lubi być kołysane lub huśtane na Zaliczone Niezaliczone Pana/Pani kolanach?)"
+        "Czy Pana/Pani dziecko lubi zabawy ruchowe? (NA PRZYKŁAD: lubi być kołysane lub huśtane na Pana/Pani kolanach?)"
       ],
       "third_path": "nan",
       "yes_path": "20_1"
