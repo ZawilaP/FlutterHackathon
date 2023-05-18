@@ -21,6 +21,7 @@ class _PDFSaveState extends State<PDFSave> {
   var pdf = pw.Document();
   Survey? survey;
   List<String>? topLevelSurvey = getTopLevelNodes();
+  
   var anchor;
 
   void showSurvey(Survey s) {
@@ -54,6 +55,7 @@ class _PDFSaveState extends State<PDFSave> {
         .split('-');
 
     var currentGuidUserNumber = currentGuid[currentGuid.length - 1];
+
 
     pdf.addPage(
       pw.MultiPage(
@@ -120,11 +122,11 @@ class _PDFSaveState extends State<PDFSave> {
               data: List<List<String>>.generate(
                   topLevelSurvey!.length,
                   (index) => <String>[
-                        topLevelSurvey![index].split('+')[0],
-                        topLevelSurvey![index].split('+')[1] == 'true'
-                            ? 'TAK'
-                            : 'NIE',
-                        widget.allAnswers![index].toString()
+                       topLevelSurvey![index].split('+')[0],
+                        widget.allAnswers![index] == 0
+                            ? (topLevelSurvey![index].split('+')[1] == 'true' ? 'NIE' : 'TAK')
+                            : (topLevelSurvey![index].split('+')[1] == 'true' ? 'TAK' :'NIE'),
+                       widget.allAnswers![index].toString()
                       ]))
         ],
       ),
@@ -141,6 +143,7 @@ class _PDFSaveState extends State<PDFSave> {
 
   @override
   Widget build(BuildContext context) {
+    print(topLevelSurvey);
     final ButtonStyle style = ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
