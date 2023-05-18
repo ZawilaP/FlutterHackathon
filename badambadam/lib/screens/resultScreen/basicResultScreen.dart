@@ -97,9 +97,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
           padding: const EdgeInsets.all(12.0),
           child: Text(
             intro,
-            style: widget.score! >= 3
-                ? TextStyle(fontWeight: FontWeight.bold)
-                : TextStyle(),
+            style: TextStyle(fontWeight: FontWeight.bold)
           ),
         ),
         Divider(),
