@@ -67,7 +67,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
     // bool noAnswer = !answers!.contains('FAIL_YES') &&
     //     !answers.contains('FAIL_NO') &&
     //     !answers.contains('PASS_YES') &&
-    //     !answers.contains('PASS_NO') ; 
+    //     !answers.contains('PASS_NO') ;
 
     var noAnswerCount = answers!.where((element) => element == '-1');
 
@@ -216,7 +216,9 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
                 List<String>? answers = widget
                     .allRawAnswers![widget.allRawAnswers!.keys.toList()[index]];
                 return <String>[
-                  widget.allRawAnswers!.keys.toList()[index].replaceAll('_0', '.'),
+                  widget.allRawAnswers!.keys
+                      .toList()[index]
+                      .replaceAll('_0', '.'),
                   getQuestions(questionType, questionList),
                   getAnswers(questionType, answers, questionList,
                       widget.allRawAnswers!.keys.toList()[index])

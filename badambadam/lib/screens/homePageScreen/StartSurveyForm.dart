@@ -68,7 +68,7 @@ class _StartSurveyForm extends State<StartSurveyForm> {
             },
             onTap: () async {
               DateTime? pickeddate = await showDatePicker(
-                locale: const Locale("pl"),
+                  locale: const Locale("pl"),
                   context: context,
                   initialDate: DateTime.now(),
                   firstDate: DateTime.now().subtract(Duration(days: 365 * 5)),

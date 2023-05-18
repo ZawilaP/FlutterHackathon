@@ -21,6 +21,7 @@ class _PDFSaveState extends State<PDFSave> {
   var pdf = pw.Document();
   Survey? survey;
   List<String>? topLevelSurvey = getTopLevelNodes();
+
   var anchor;
 
   void showSurvey(Survey s) {
@@ -121,9 +122,13 @@ class _PDFSaveState extends State<PDFSave> {
                   topLevelSurvey!.length,
                   (index) => <String>[
                         topLevelSurvey![index].split('+')[0],
-                        topLevelSurvey![index].split('+')[1] == 'true'
-                            ? 'TAK'
-                            : 'NIE',
+                        widget.allAnswers![index] == 0
+                            ? (topLevelSurvey![index].split('+')[1] == 'true'
+                                ? 'NIE'
+                                : 'TAK')
+                            : (topLevelSurvey![index].split('+')[1] == 'true'
+                                ? 'TAK'
+                                : 'NIE'),
                         widget.allAnswers![index].toString()
                       ]))
         ],
@@ -158,7 +163,9 @@ class _PDFSaveState extends State<PDFSave> {
           child: Text(
             'Pobierz wyniki',
             style: DefaultTextStyle.of(context).style.copyWith(
-                fontSize: 15, color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
+                fontSize: 15,
+                color: Theme.of(context).colorScheme.primary,
+                fontWeight: FontWeight.bold),
           ),
         ),
         style: style,

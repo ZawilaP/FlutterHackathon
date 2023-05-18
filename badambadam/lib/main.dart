@@ -2,7 +2,6 @@ import 'package:badambadam/routes/adminAdvancedSurveyListRoute.dart';
 import 'package:badambadam/routes/adminBasicSurveyListRoute.dart';
 import 'package:badambadam/routes/newAdminRoute.dart';
 import 'package:badambadam/screens/homePageScreen/StartSurveyForm.dart';
-import 'package:badambadam/storage.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:link_text/link_text.dart';
