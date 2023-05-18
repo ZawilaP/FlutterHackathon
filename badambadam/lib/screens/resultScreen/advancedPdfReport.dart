@@ -146,7 +146,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
       pw.MultiPage(
         theme: pw.ThemeData.withFont(base: ttfBase),
         build: (pw.Context context) => [
-          pw.Text('Wyniki badania M-Chat-RF',
+          pw.Text('Wyniki badania uszczegóławiającego M-CHAT R/F',
               style: pw.TextStyle(fontSize: 20)),
           pw.Divider(thickness: 0.5),
           pw.Row(
