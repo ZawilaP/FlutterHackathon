@@ -981,7 +981,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "20.0",
       "questions": [
-        "Czy dziecko lubi być huśtane lub podrzucane?"
+        "Czy dziecko lubi być huśtane lub kołysane?"
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -995,11 +995,11 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "20.0",
       "questions": [
-        "Jak dziecko reaguje, gdy je huśtasz lub podrzucasz?",
+        "Jak dziecko reaguje, gdy Pan/Pani je kołysze lub huśta?",
         "Śmieje się lub uśmiecha?",
-        "Mówi lub bełkocze?",
-        "Prosi o więcej, wyciągając ręce?",
-        "Inne... (opisz)"
+        "Mówi lub gaworzy?",
+        "Domaga się więcej, wyciągając ręce do góry?",
+        "Inne..."
       ],
       "third_path": "nan",
       "yes_path": "PASS"
