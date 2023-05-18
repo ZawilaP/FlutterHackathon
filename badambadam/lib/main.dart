@@ -36,6 +36,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'M-CHAT-RF',
         theme: ThemeData(
+          scrollbarTheme: ScrollbarThemeData(
+            thumbVisibility: MaterialStateProperty.all<bool>(true),
+          ),
           useMaterial3: true,
           fontFamily: 'Poppins',
           colorScheme: ColorScheme.fromSeed(
@@ -64,8 +67,8 @@ class MyApp extends StatelessWidget {
           '/login': (context) => LoginFormValidation(),
           '/admin': (context) => AdminPanelRoute(),
           '/questions': (context) => FetchData(),
-          '/newAdmin':(context) => NewAdminRoute(),
-          '/adminBasicSurvey':(context) => AdminBasicSurveyListRoute(),
+          '/newAdmin': (context) => NewAdminRoute(),
+          '/adminBasicSurvey': (context) => AdminBasicSurveyListRoute(),
           '/adminAdvancedSurvey': (context) => AdminAdvancedSurveyListRoute(),
         },
       ),
@@ -127,15 +130,24 @@ class MyHomePage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Text(entryTextPl[0], textAlign: TextAlign.justify,),
+              child: Text(
+                entryTextPl[0],
+                textAlign: TextAlign.justify,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
                   children: entryTextPl.sublist(1, entryTextPl.length).map((e) {
                 return ListTile(
-                  leading: Icon(Icons.check, color: Theme.of(context).colorScheme.primary,),
-                  title: LinkText(e, textAlign: TextAlign.justify,),
+                  leading: Icon(
+                    Icons.check,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  title: LinkText(
+                    e,
+                    textAlign: TextAlign.justify,
+                  ),
                 );
               }).toList()),
             ),
