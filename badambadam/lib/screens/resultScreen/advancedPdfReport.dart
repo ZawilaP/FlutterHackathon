@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'dart:html' as html;
@@ -9,10 +10,12 @@ import 'package:intl/intl.dart';
 import 'dart:convert';
 
 class AdvancedPDFSave extends StatefulWidget {
-  const AdvancedPDFSave({super.key, this.score, this.allRawAnswers});
+  const AdvancedPDFSave(
+      {super.key, this.score, this.allRawAnswers, this.allCalculatedAnswers});
 
   final int? score;
   final Map<String, List<String>>? allRawAnswers;
+  final Map<dynamic, dynamic>? allCalculatedAnswers;
 
   @override
   _AdvancedPDFSaveState createState() => _AdvancedPDFSaveState();
@@ -147,7 +150,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
         theme: pw.ThemeData.withFont(base: ttfBase),
         build: (pw.Context context) => [
           pw.Text('Wyniki badania uszczegóławiającego M-CHAT R/F',
-              style: pw.TextStyle(fontSize: 20)),
+              style: pw.TextStyle(fontSize: 18)),
           pw.Divider(thickness: 0.5),
           pw.Row(
               mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
@@ -178,8 +181,55 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
                     ])
               ]),
           pw.SizedBox(height: 8),
+          pw.Padding(
+            padding: pw.EdgeInsets.symmetric(vertical: 8),
+            child: pw.Text('Tabela podsumowująca Pana/Pani odpowiedzi:'),
+          ),
           pw.Table.fromTextArray(
-              headers: <String>['', 'Pytanie', 'Odpowiedz'],
+              headers: <String>['Numer pytania', 'Odpowiedz'],
+              border: null,
+              headerStyle: pw.TextStyle(
+                fontSize: 11,
+                fontWeight: pw.FontWeight.bold,
+              ),
+              cellStyle: pw.TextStyle(
+                fontSize: 10,
+              ),
+              // columnWidths: {
+              //   0: pw.FlexColumnWidth(1),
+              //   1: pw.FlexColumnWidth(4),
+              // },
+              cellAlignment: pw.Alignment.center,
+              cellAlignments: {
+                0: pw.Alignment.centerLeft,
+                1: pw.Alignment.center,
+                // 2: pw.Alignment.centerLeft
+              },
+              headerDecoration: pw.BoxDecoration(
+                color: PdfColor.fromHex('#FFB200'),
+              ),
+              rowDecoration: const pw.BoxDecoration(
+                border: pw.Border(
+                  bottom: pw.BorderSide(
+                    width: .5,
+                  ),
+                ),
+              ),
+              data: List<List<String>>.generate(
+                  widget.allCalculatedAnswers!.length, (index) {
+                return <String>[
+                  widget.allCalculatedAnswers!.keys.toList()[index].toString(),
+                  widget.allCalculatedAnswers!.values.toList()[index] == 1
+                      ? 'Niezaliczone'
+                      : 'Zaliczone'
+                ];
+              })),
+          pw.Padding(
+            padding: pw.EdgeInsets.symmetric(vertical: 8),
+            child: pw.Text('Poniżej zamieszczono odpowiedzi szczegółowe:'),
+          ),
+          pw.Table.fromTextArray(
+              headers: <String>['Numer pytania', 'Pytanie', 'Odpowiedz'],
               border: null,
               headerStyle: pw.TextStyle(
                 fontSize: 11,

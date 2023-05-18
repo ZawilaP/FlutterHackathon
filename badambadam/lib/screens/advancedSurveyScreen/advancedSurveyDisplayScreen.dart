@@ -288,21 +288,23 @@ class _AdvancedSurveyDisplayScreenState
                               // updateGuidList(
                               // "${DateTime.now().toString().trim()}_test");
                               print("BUTTON PRESSED");
+                              Map<dynamic, dynamic> calculatedAnswers = calculateAll(allAdvancedAnswersDetail);
 
                               // used for writing results to db
                               calculateAll(allAdvancedAnswersDetail);
                               writeCurrentAdvancedRawAnswers(
                                   allAdvancedAnswersDetail.value);
                               writeCurrentAdvancedAnswers(
-                                  calculateAll(allAdvancedAnswersDetail));
+                                  calculatedAnswers);
 
                               // used for pdf
                               addAllAdvancedRawAnswersMap(
                                   allAdvancedAnswersDetail.value);
+                              addCalculatedAdvancedAnswers(calculatedAnswers);
                               addAdvancedSurveyQuestions(
                                   getQuestionsList(allNodes));
                               addFinalAdvancedScore(
-                                  calculateAll(allAdvancedAnswersDetail)
+                                  calculatedAnswers
                                       .cast<String, int>());
 
                               Navigator.pushNamed(context, '/advancedResult');

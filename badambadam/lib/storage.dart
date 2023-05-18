@@ -123,13 +123,24 @@ Map<String, List<String>> getAllAdvancedRawAnswersMap() {
   return box.read("advancedRawAnswersMap")?.cast<String, List<String>>() ?? {};
 }
 
+void addCalculatedAdvancedAnswers(Map<dynamic, dynamic> calculatedAnswers) {
+  final box = GetStorage();
+  box.remove('calculatedAdvancedAnswersMap');
+  box.write('calculatedAdvancedAnswersMap', calculatedAnswers);
+}
+
+Map<dynamic, dynamic> getCalculatedAdvancedAnswers() {
+  final box = GetStorage();
+  return box.read("calculatedAdvancedAnswersMap") ?? {};
+}
+
 Future<void> writeCurrentAnswers() async {
   saveSurvey(getCurrentGuid(), getAllAnswersMap().values.toList());
 }
 
 Future<void> writeCurrentAdvancedAnswers(
     Map<dynamic, dynamic> allAnswers) async {
-  saveAdvancedSurvey(getCurrentGuid(), allAnswers.values.toList());
+  saveAdvancedSurvey(getCurrentGuid(), allAnswers);
 }
 
 Future<void> writeCurrentAdvancedRawAnswers(

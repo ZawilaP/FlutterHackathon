@@ -18,6 +18,7 @@ class AdvancedResultRoute extends StatelessWidget {
         body: AdvancedResultDisplayScreen(
           allRawAnswers: getAllAdvancedRawAnswersMap(),
           score: getFinalAdvancedScore(),
+          allCalculatedAnswers: getCalculatedAdvancedAnswers(),
         ));
   }
 }

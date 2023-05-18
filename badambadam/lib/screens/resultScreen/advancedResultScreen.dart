@@ -6,10 +6,11 @@ import 'package:link_text/link_text.dart';
 import 'advanced_result_texts_pl.dart';
 
 class AdvancedResultDisplayScreen extends StatefulWidget {
-  const AdvancedResultDisplayScreen({super.key, this.score, this.allRawAnswers});
+  const AdvancedResultDisplayScreen({super.key, this.score, this.allRawAnswers, this.allCalculatedAnswers});
 
   final int? score;
   final Map<String, List<String>>? allRawAnswers;
+  final Map<dynamic, dynamic>? allCalculatedAnswers;
 
 
   @override
@@ -84,6 +85,7 @@ class _AdvancedResultDisplayScreenState extends State<AdvancedResultDisplayScree
        AdvancedPDFSave(
           score: widget.score,
           allRawAnswers: widget.allRawAnswers,
+          allCalculatedAnswers: widget.allCalculatedAnswers,
         ),
         Padding(
           padding: const EdgeInsets.all(12.0),
