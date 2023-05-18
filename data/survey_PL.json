@@ -131,7 +131,7 @@
         "Miesza w garnku wymyślone jedzenie?",
         "Wkłada do samochodzika lub ciężarówki figurkę lub lalkę, jak gdyby miała ona być kierowcą lub pasażerem?",
         "Udaje, że odkurza dywan, zamiata podłogę lub kosi trawnik?",
-        "Inne...."
+        "Inne..."
       ],
       "third_path": "nan",
       "yes_path": "PASS"
@@ -177,7 +177,7 @@
       "node_type": "Simple_Yes_No",
       "question_group_id": "5.0",
       "questions": [
-        "Czy Twoje dziecko wykonuje nietypowe ruchy palcami w pobliżu oczu? (NA PRZYKŁAD, czy Twoje dziecko macha palcami blisko oczu?)"
+        "Czy Pana/Pani dziecko wykonuje dziwne ruchy palcami blisko oczu? (NA PRZYKŁAD: czy Pana/Pani dziecko porusza palcami blisko oczu?)"
       ],
       "third_path": "nan",
       "yes_path": "5_01"
@@ -191,15 +191,14 @@
       "node_type": "OneYesWillDoStopAsking",
       "question_group_id": "5.0",
       "questions": [
-        "Czy on/ona",
-        "[P] Patrzy na swoje ręce?",
-        "[P] Porusza palcami podczas zabawy w a-ku-ku?",
-        "[F] Macha palcami blisko swoich oczu?",
-        "[F] Trzyma ręce blisko swoich oczu?",
-        "[F] Trzyma ręce z boku swoich oczu?",
-        "[F] Rozwija skrzydełka (tj. trzepie rękami) na boki swoich oczu?",
-        "[F] Rozwija skrzydełka (tj. trzepie rękami) w pobliżu swojej twarzy?",
-        "[F] Inne... (opisz)"
+        "Czy dziecko...",
+        "[P] Patrzy na dłonie?",
+        "[P] Rusza palcami podczas zabawy w 'a kuku'?",
+        "[F] Porusza palcami blisko oczu?",
+        "[F] Trzyma podniesione ręce blisko oczu?",
+        "[F] Trzyma podniesione ręce przy oczach?",
+        "[F] Macha dłońmi przy twarzy?",
+        "[F] Inne..."
       ],
       "third_path": "nan",
       "yes_path": "5_02"
