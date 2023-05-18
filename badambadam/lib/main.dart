@@ -17,6 +17,8 @@ import 'routes/loginPageRoute.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,66 +34,72 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => MyAppState(),
-      child: MaterialApp(
-        title: 'M-CHAT-RF',
-        localizationsDelegates: [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: [
-          Locale('en'), // English
-          Locale('pl'), // Polish
-        ],
-        theme: ThemeData(
-          useMaterial3: true,
-          fontFamily: 'Poppins',
-          scrollbarTheme: ScrollbarThemeData(
-          thumbVisibility: MaterialStateProperty.all<bool>(true),
-        ),
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: Color.fromARGB(255, 118, 114, 105),
-              background: Color.fromRGBO(253, 253, 253, 1),
-              primary: Color.fromRGBO(255, 178, 0, 1),
-              onPrimary: Color.fromRGBO(45, 42, 40, 1)),
-          textTheme: const TextTheme(
-            displayLarge:
-                TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-            titleLarge: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'RobotoCondensed'),
-            bodyMedium: TextStyle(fontSize: 18.0),
-          ),
-        ),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => MyHomePage(),
-          '/survey': (context) => const SurveyRoute(),
-          '/advancedSurvey': (context) => const AdvancedSurveyRoute(),
-          '/surveys': (context) => SurveysRoute(),
-          '/result': (context) => const ResultRoute(),
-          '/advancedResult': (context) => const AdvancedResultRoute(),
-          '/login': (context) => LoginFormValidation(),
-          '/admin': (context) => AdminPanelRoute(),
-          '/questions': (context) => FetchData(),
-          '/newAdmin':(context) => NewAdminRoute(),
-          '/adminBasicSurvey':(context) => AdminBasicSurveyListRoute(),
-          '/adminAdvancedSurvey': (context) => AdminAdvancedSurveyListRoute(),
-        },
-      ),
-    );
+        create: (context) => MyAppState(),
+        child: Consumer<MyAppState>(builder: (context, myAppState, child) {
+          return MaterialApp(
+              title: 'M-CHAT-RF',
+              theme: ThemeData(
+                useMaterial3: true,
+                fontFamily: 'Poppins',
+                colorScheme: ColorScheme.fromSeed(
+                    seedColor: Color.fromRGBO(255, 178, 0, 1),
+                    primary: Color.fromRGBO(255, 178, 0, 1),
+                    onPrimary: Color.fromRGBO(45, 42, 40, 1)),
+                textTheme: const TextTheme(
+                  displayLarge:
+                      TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+                  titleLarge: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'RobotoCondensed'),
+                  bodyMedium: TextStyle(fontSize: 18.0),
+                ),
+              ),
+              initialRoute: '/',
+              routes: {
+                '/survey': (context) => const SurveyRoute(),
+                '/advancedSurvey': (context) => const AdvancedSurveyRoute(),
+                '/surveys': (context) => SurveysRoute(),
+                '/result': (context) => const ResultRoute(),
+                '/advancedResult': (context) => const AdvancedResultRoute(),
+                '/login': (context) => LoginFormValidation(),
+                '/admin': (context) => AdminPanelRoute(),
+                '/questions': (context) => FetchData(),
+              },
+              locale: myAppState.locale,
+              localizationsDelegates: [
+                AppLocalizations.delegate, // Add this line
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: [
+                Locale('en'), // English
+                Locale('pl') // Polish
+              ],
+              home: MyHomePage());
+        }));
   }
 }
 
 class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
+  Locale _locale = Locale('en');
+  Locale get locale => _locale;
+
+  void changeLocale(Locale newLocale) {
+    _locale = newLocale;
+    notifyListeners();
+    print("changeLocale invoekd");
+    print(_locale);
+  }
 }
 
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final myAppState = context.watch<MyAppState>();
+
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(
@@ -100,7 +108,7 @@ class MyHomePage extends StatelessWidget {
           scale: 2,
         ),
         actions: <Widget>[
-          /*IconButton(
+          IconButton(
             style: IconButton.styleFrom(hoverColor: Colors.transparent),
             icon: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -109,7 +117,8 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              setCurrentLanguage("PL");
+              // setCurrentLanguage("PL");
+              myAppState.changeLocale(Locale('pl'));
             },
           ),
           IconButton(
@@ -119,9 +128,9 @@ class MyHomePage extends StatelessWidget {
               child: Image.asset('graphics/flag_eng.png'),
             ),
             onPressed: () {
-              setCurrentLanguage("ENG");
+              myAppState.changeLocale(Locale('en'));
             },
-          ),*/
+          ),
           Padding(
               padding: EdgeInsets.only(right: 50.0),
               child: ElevatedButton(
@@ -139,15 +148,27 @@ class MyHomePage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Text(entryTextPl[0], textAlign: TextAlign.justify,),
+              child: Text(
+                AppLocalizations.of(context)!.helloWorld,
+                textAlign: TextAlign.justify,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
-                  children: entryTextPl.sublist(1, entryTextPl.length).map((e) {
+                  children: AppLocalizations.of(context)!
+                      .entryText
+                      .split("\n")
+                      .map((e) {
                 return ListTile(
-                  leading: Icon(Icons.check, color: Theme.of(context).colorScheme.primary,),
-                  title: LinkText(e, textAlign: TextAlign.justify,),
+                  leading: Icon(
+                    Icons.check,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  title: LinkText(
+                    e,
+                    textAlign: TextAlign.justify,
+                  ),
                 );
               }).toList()),
             ),

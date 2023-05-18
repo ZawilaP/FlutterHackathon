@@ -20,6 +20,8 @@ class AdvancedSurveyDisplayScreen extends StatefulWidget {
 
 class _AdvancedSurveyDisplayScreenState
     extends State<AdvancedSurveyDisplayScreen> {
+  String lastLocale = '';
+
   Survey? survey;
 
   void showSurvey(Survey s) {
@@ -48,9 +50,12 @@ class _AdvancedSurveyDisplayScreenState
 
   @override
   Widget build(BuildContext context) {
-    if (survey == null) {
+    String currentLocale = Localizations.localeOf(context).languageCode;
+    if (survey == null || lastLocale != currentLocale) {
       // if not there - then load one
-      FakeBackendSingleton().getSurvey(null).then(showSurvey);
+      String locale = currentLocale;
+      lastLocale = locale;
+      FakeBackendSingleton().getSurvey(null, locale).then(showSurvey);
       try {
         widget.allPrimaryAnswers!.removeWhere((key, value) => value != 1);
       } catch (e) {
@@ -231,7 +236,7 @@ class _AdvancedSurveyDisplayScreenState
                         rules['10_02']! ||
                         rules['11_02']! ||
                         rules['12_03']! ||
-                        rules['16_02']! ) {
+                        rules['16_02']!) {
                       return SingleSelectsWidget(
                           questionNode: questionNode,
                           allAdvancedAnswersDetail: allAdvancedAnswersDetail);
@@ -288,14 +293,14 @@ class _AdvancedSurveyDisplayScreenState
                               // updateGuidList(
                               // "${DateTime.now().toString().trim()}_test");
                               print("BUTTON PRESSED");
-                              Map<dynamic, dynamic> calculatedAnswers = calculateAll(allAdvancedAnswersDetail);
+                              Map<dynamic, dynamic> calculatedAnswers =
+                                  calculateAll(allAdvancedAnswersDetail);
 
                               // used for writing results to db
                               calculateAll(allAdvancedAnswersDetail);
                               writeCurrentAdvancedRawAnswers(
                                   allAdvancedAnswersDetail.value);
-                              writeCurrentAdvancedAnswers(
-                                  calculatedAnswers);
+                              writeCurrentAdvancedAnswers(calculatedAnswers);
 
                               // used for pdf
                               addAllAdvancedRawAnswersMap(
@@ -304,8 +309,7 @@ class _AdvancedSurveyDisplayScreenState
                               addAdvancedSurveyQuestions(
                                   getQuestionsList(allNodes));
                               addFinalAdvancedScore(
-                                  calculatedAnswers
-                                      .cast<String, int>());
+                                  calculatedAnswers.cast<String, int>());
 
                               Navigator.pushNamed(context, '/advancedResult');
                             },

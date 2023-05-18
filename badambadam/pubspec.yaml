@@ -39,6 +39,7 @@ flutter:
   assets:
     - graphics/
     - assets/
+  generate: true
   fonts:
     - family: RobotoCondensed
       fonts:
