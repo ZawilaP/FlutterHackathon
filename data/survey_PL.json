@@ -470,13 +470,14 @@
       "node_type": "YesNoBranching",
       "question_group_id": "10.0",
       "questions": [
-        "Jeśli dziecko nie zajmuje się czymś przyjemnym lub interesującym, co robi, kiedy wołasz je po imieniu?",
-        "[P] Ogląda się na ciebie?",
-        "[P] Odpowiada mową lub bełkotem?",
-        "[P] Przerywa to co robi?",
-        "[F] Wydaje się słyszeć, ale ignoruje Cię?",
-        "[F] Odpowiada tylko wtedy, gdy jesteś tuż przed twarzą dziecka?",
-        "[F] Odpowiada tylko wtedy, gdy zostanie dotknięte?"
+        "Jeśli dziecko nie jest w danej chwili zajęte żadną interesującą zabawą, to jak reaguje, gdy woła je Pan/Pani po imieniu?",
+        "[P] Podnosi głowę?",
+        "[P] Mówi lub gaworzy?",
+        "[P] Przestaje robić to, co robiło?",
+        "[F] Nie reaguje?",
+        "[F] Wydaje się słyszeć, ale ignoruje Pana/Panią?",
+        "[F] Reaguje tylko wtedy, gdy Pan/Pani jest tuż przed jego twarzą?",
+        "[F] Reaguje tylko wtedy, gdy się je dotknie?"
       ],
       "third_path": "10_4",
       "yes_path": "PASS"
@@ -490,13 +491,14 @@
       "node_type": "SingleSelect",
       "question_group_id": "10.0",
       "questions": [
-        "Która z tych opcji występuje najczęściej?",
-        "[P] Ogląda się na ciebie?",
-        "[P] Odpowiada mową lub bełkotem?",
-        "[P] Przerywa to co robi?",
-        "[F] Wydaje się słyszeć, ale ignoruje Cię?",
-        "[F] Odpowiada tylko wtedy, gdy jesteś tuż przed twarzą dziecka?",
-        "[F] Odpowiada tylko wtedy, gdy zostanie dotknięte?"
+        "Które reakcje występują u dziecka częściej?",
+        "[P] Podnosi głowę?",
+        "[P] Mówi lub gaworzy?",
+        "[P] Przestaje robić to, co robiło?",
+        "[F] Nie reaguje?",
+        "[F] Wydaje się słyszeć, ale ignoruje Pana/Panią?",
+        "[F] Reaguje tylko wtedy, gdy Pan/Pani jest tuż przed jego twarzą?",
+        "[F] Reaguje tylko wtedy, gdy się je dotknie?"
       ],
       "third_path": "See comments",
       "yes_path": "nan"
