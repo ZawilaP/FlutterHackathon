@@ -1,3 +1,4 @@
+import 'package:badambadam/screens/metricScreen/quantityInputMetricQuestionWidget.dart';
 import 'package:badambadam/screens/metricScreen/selectMetricQuestionWidget.dart';
 import 'package:badambadam/storage.dart';
 import 'package:badambadam/screens/metricScreen/binaryMetricQuestionWidget.dart';
@@ -222,6 +223,7 @@ class MetricRoute extends StatelessWidget {
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "autismSigns"),
+            QuantityInputQuestion(questionId: "11", questionText: "Dziecko urodzone w tygodniu ciąży", localParamName: "pregnancyWeek"),
             ElevatedButton(
                 style: style,
                 onPressed: () {
@@ -236,6 +238,7 @@ class MetricRoute extends StatelessWidget {
                       getMetricDataString("gender") == "" ||
                       getMetricDataString("weight") == "" ||
                       getMetricDataString("familyInformation") == "" || 
+                      getMetricDataString("pregnancyWeek") == "" ||
                       getPostalCode() == "") {
                     _showMyDialog();
                   } else {
@@ -268,7 +271,7 @@ class PostalCodeFormatter extends TextInputFormatter {
     }
     if (newValue.text.length == 2 && oldValue.text.length != 3) {
       return TextEditingValue(
-          text: newValue.text + '-',
+          text: '${newValue.text}-',
           selection: TextSelection.collapsed(offset: newValue.text.length + 1));
     }
     return newValue;
