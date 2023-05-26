@@ -275,7 +275,8 @@ Future<void> saveMetric(String guid) async {
     "familyDevelopmentIssues":
         getMetricDataString("familyDevelopmentIssues"),
     "familyOtherAutismSigns": getMetricDataString("familyOtherAutismSigns"),
-    "weight": getMetricDataString("weight")
+    "weight": getMetricDataString("weight"),
+    "familyInformation": getMetricDataString("familyInformation")
   };
 
   await ref.set(data);

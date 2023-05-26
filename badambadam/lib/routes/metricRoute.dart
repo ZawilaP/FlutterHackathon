@@ -160,68 +160,68 @@ class MetricRoute extends StatelessWidget {
                 )
             ),
         ),
-            BinaryMetricQuestion(questionId: "1",
+            SelectMetricQuestion(
+                questionId: "1",
+                questionText: "Wypełniający",
+                // firstOption: "TAK",
+                // secondOption: "NIE",
+                localParamName: "familyInformation"
+            ),
+            BinaryMetricQuestion(questionId: "2",
                 questionText: "Płeć dziecka:",
                 firstOption: "ŻEŃSKA",
                 secondOption: "MĘSKA",
                 localParamName: "gender"),
             BinaryMetricQuestion(
-                questionId: "2",
+                questionId: "3",
                 questionText: "Czy dziecko ma choroby genetyczne?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "geneticDiseases"),
             BinaryMetricQuestion(
-                questionId: "3",
+                questionId: "4",
                 questionText: "Czy dziecko ma poważne problemy zdrowotne?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "healthIssues"),
             BinaryMetricQuestion(
-                questionId: "4",
+                questionId: "5",
                 questionText: "Czy dziecko ma poważne problemy ze wzrokiem?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "visionIssues"),
             BinaryMetricQuestion(
-                questionId: "5",
+                questionId: "6",
                 questionText: "Czy dziecko ma poważne problemy ze słuchem?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "hearingIssues"),
             BinaryMetricQuestion(
-                questionId: "6",
+                questionId: "7",
                 questionText: "Czy dziecko ma problemy w rozwoju ruchowym?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "mobilityIssues"),
             BinaryMetricQuestion(
-                questionId: "7",
+                questionId: "8",
                 questionText: "Czy dziecko jest/było rehabilitowane ruchowo?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "mobilityRehab"),
             BinaryMetricQuestion(
-                questionId: "8",
+                questionId: "9",
                 questionText:
                     "Czy kiedykolwiek dziecko wycofało się ze zdobytych umiejętności na okres dłuższy niż 2 tygodnie?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "skillsIssues"),
             BinaryMetricQuestion(
-                questionId: "9",
+                questionId: "10",
                 questionText:
                     "Czy ktoś w rodzinie ma zdiagnozowane zaburzenie ze spektrum autyzmu?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "autismSigns"),
-            SelectMetricQuestion(
-              questionId: "10",
-              questionText: "Wypełniający",
-              // firstOption: "TAK",
-              // secondOption: "NIE",
-              localParamName: "familyInformation"
-            ),
             ElevatedButton(
                 style: style,
                 onPressed: () {
