@@ -3,15 +3,6 @@ import 'package:flutter/material.dart';
 import '../../model.dart';
 import '../../storage.dart';
 
-List<String> list = <String>[
-  'Ojciec',
-  'Matka',
-  'Dziadek',
-  'Babcia',
-  'Inna osoba z rodziny',
-  'Opiekun prawny',
-  'Inna osoba'
-];
 
 class SelectMetricQuestion extends StatefulWidget {
   SelectMetricQuestion(
@@ -19,20 +10,22 @@ class SelectMetricQuestion extends StatefulWidget {
       this.questionNode,
       required this.questionId,
       required this.questionText,
-      required this.localParamName
+      required this.localParamName,
+      required this.familyList
       });
 
   final Node? questionNode;
   final String questionId;
   final String questionText;
   final String localParamName;
+  final List<String> familyList;
 
   @override
   State<SelectMetricQuestion> createState() => _SelectMetricQuestionState();
 }
 
 class _SelectMetricQuestionState extends State<SelectMetricQuestion> {
-  String dropdownValue = list.first;
+  String dropdownValue = "Ojciec";
 
   @override
   void initState() {
@@ -75,7 +68,6 @@ class _SelectMetricQuestionState extends State<SelectMetricQuestion> {
                   value: dropdownValue,
                   icon: Icon(Icons.arrow_downward, color: Theme.of(context).colorScheme.primary),
                   elevation: 16,
-                  // style: TextStyle(color: Theme.of(context).colorScheme.primary),
                   underline: Container(
                     height: 2,
                     color: Theme.of(context).colorScheme.primary,
@@ -86,7 +78,7 @@ class _SelectMetricQuestionState extends State<SelectMetricQuestion> {
                       setMetricDataString(widget.localParamName, value);
                     });
                   },
-                  items: list.map<DropdownMenuItem<String>>((String value) {
+                  items: widget.familyList.map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),

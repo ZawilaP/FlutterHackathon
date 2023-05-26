@@ -40,6 +40,9 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
               title: 'M-CHAT-RF',
               theme: ThemeData(
+                scrollbarTheme: ScrollbarThemeData(
+                  thumbVisibility: MaterialStateProperty.all<bool>(true),
+                ),
                 useMaterial3: true,
                 fontFamily: 'Poppins',
                 colorScheme: ColorScheme.fromSeed(
