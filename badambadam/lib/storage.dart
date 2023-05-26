@@ -1,7 +1,7 @@
 import 'package:badambadam/model.dart';
 import 'package:get_storage/get_storage.dart';
 
-void setMetricDataString(String boxElement, String value) {
+void setMetricDataString(String boxElement, String? value) {
   final box = GetStorage();
   box.remove(boxElement);
   box.write(boxElement, value);
@@ -10,6 +10,25 @@ void setMetricDataString(String boxElement, String value) {
 void cleanDataString(String boxElement) {
   final box = GetStorage();
   box.remove(boxElement);
+}
+
+void cleanMetricData() {
+  cleanDataString("autismSigns");
+  cleanDataString("skillsIssues");
+  cleanDataString("mobilityRehab");
+  cleanDataString("mobilityIssues");
+  cleanDataString("hearingIssues");
+  cleanDataString("visionIssues");
+  cleanDataString("healthIssues");
+  cleanDataString("geneticDiseases");
+  cleanDataString("gender");
+  cleanDataString("postalCode");
+  cleanDataString("familyAutismSigns");
+  cleanDataString("familyAtypicalAutismSigns");
+  cleanDataString("familyAspergerAutismSigns");
+  cleanDataString("familyDevelopmentIssues");
+  cleanDataString("familyOtherAutismSigns");
+  cleanDataString("weight");
 }
 
 String getMetricDataString(String boxElement) {

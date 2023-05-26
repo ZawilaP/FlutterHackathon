@@ -62,18 +62,8 @@ class MetricRoute extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
+                  cleanMetricData();
                   Navigator.of(context).pop();
-                  cleanDataString("autismSigns");
-                  cleanDataString("skillsIssues");
-                  cleanDataString("mobilityRehab");
-                  cleanDataString("mobilityIssues");
-                  cleanDataString("hearingIssues");
-                  cleanDataString("visionIssues");
-                  cleanDataString("healthIssues");
-                  cleanDataString("geneticDiseases");
-                  cleanDataString("gender");
-                  cleanDataString("postalCode");
-                  cleanDataString("familyInformation");
                 },
               ),
               TextButton(
@@ -82,18 +72,8 @@ class MetricRoute extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
+                  cleanMetricData();
                   Navigator.pushNamed(context, '/');
-                  cleanDataString("autismSigns");
-                  cleanDataString("skillsIssues");
-                  cleanDataString("mobilityRehab");
-                  cleanDataString("mobilityIssues");
-                  cleanDataString("hearingIssues");
-                  cleanDataString("visionIssues");
-                  cleanDataString("healthIssues");
-                  cleanDataString("geneticDiseases");
-                  cleanDataString("gender");
-                  cleanDataString("postalCode");
-                  cleanDataString("familyInformation");
                 },
               ),
             ],
@@ -119,7 +99,9 @@ class MetricRoute extends StatelessWidget {
       body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
           children: <Widget>[
-            SizedBox(
+      Padding(
+      padding: const EdgeInsets.all(10.0),
+            child: SizedBox(
                 width: 500,
                 child: TextFormField(
                   decoration: InputDecoration(
@@ -148,8 +130,37 @@ class MetricRoute extends StatelessWidget {
                   },
                   onChanged: (text) => setPostalCode(text),
                 )),
-            BinaryMetricQuestion(
-                questionId: "1",
+      ),
+        Padding(
+            padding: const EdgeInsets.all(10.0),
+
+            child: SizedBox(
+                width: 500,
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: "Waga urodzeniowa dziecka (w gramach):",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                  ),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  // The validator receives the text that the user has entered.
+                  validator: (String? text) {
+                    const String errorMessage = "Waga nie może być ujemna i przekraczać 10kg";
+                    if (text == null) {
+                      return errorMessage;
+                    }
+                    if (text.isEmpty) {
+                      return errorMessage;
+                    } else if (int.tryParse(text) != null && (int.parse(text) < 0 || int.parse(text) > 9999)) {
+                      return errorMessage;
+                    }
+                    return null;
+                  },
+                  onChanged: (text) => setMetricDataString("weight", text),
+                )
+            ),
+        ),
+            BinaryMetricQuestion(questionId: "1",
                 questionText: "Płeć dziecka:",
                 firstOption: "ŻEŃSKA",
                 secondOption: "MĘSKA",
@@ -223,6 +234,7 @@ class MetricRoute extends StatelessWidget {
                       getMetricDataString("healthIssues") == "" ||
                       getMetricDataString("geneticDiseases") == "" ||
                       getMetricDataString("gender") == "" ||
+                      getMetricDataString("weight") == "" ||
                       getMetricDataString("familyInformation") == "" || 
                       getPostalCode() == "") {
                     _showMyDialog();

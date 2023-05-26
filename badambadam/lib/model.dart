@@ -1,3 +1,4 @@
+import 'package:badambadam/storage.dart';
 import 'package:uuid/uuid.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -35,6 +36,7 @@ void sortListById(List<dynamic> list) {
 class SurveyIDPair {
   String surveyID;
   String accessGUID;
+
   SurveyIDPair(this.surveyID, this.accessGUID);
 }
 
@@ -202,6 +204,7 @@ class Node {
       questions.add(Question(q.toString()));
     }
   }
+
   @override
   String toString() {
     return "Node: $id, $isTopLevel, $isInverted, $nodeType, $questionGroupId, $questions";
@@ -211,6 +214,7 @@ class Node {
 class Question {
   String text = "empty";
   bool isNegated = false;
+
   Question(String _text) {
     if (_text.startsWith("[P]")) {
       isNegated = false;
@@ -245,6 +249,34 @@ Future<void> saveAdvancedRawSurvey(
     String guid, Map<dynamic, dynamic> data) async {
   DatabaseReference ref = FirebaseDatabase.instance.ref(
       "advancedRawAnswers/${guid.replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}");
+  await ref.set(data);
+}
+
+Future<void> saveMetric(String guid) async {
+  DatabaseReference ref = FirebaseDatabase.instance.ref(
+      "metrics/${guid.replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}");
+
+  Map<dynamic, dynamic> data = {
+    "gender": getMetricDataString("gender"),
+    "postalCode": getMetricDataString("postalCode"),
+    "autismSigns": getMetricDataString("autismSigns"),
+    "skillsIssues": getMetricDataString("skillsIssues"),
+    "mobilityRehab": getMetricDataString("mobilityRehab"),
+    "mobilityIssues": getMetricDataString("mobilityIssues"),
+    "hearingIssues": getMetricDataString("hearingIssues"),
+    "visionIssues": getMetricDataString("visionIssues"),
+    "healthIssues": getMetricDataString("healthIssues"),
+    "geneticDiseases": getMetricDataString("geneticDiseases"),
+    "familyAutismSigns": getMetricDataString("familyAutismSigns"),
+    "familyAtypicalAutismSigns":
+        getMetricDataString("familyAtypicalAutismSigns"),
+    "familyAspergerAutismSigns":
+        getMetricDataString("familyAspergerAutismSigns"),
+    "familyDevelopmentIssues":
+        getMetricDataString("familyDevelopmentIssues"),
+    "familyOtherAutismSigns": getMetricDataString("familyOtherAutismSigns")
+  };
+
   await ref.set(data);
 }
 
