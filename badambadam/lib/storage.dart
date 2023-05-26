@@ -12,6 +12,24 @@ void cleanDataString(String boxElement) {
   box.remove(boxElement);
 }
 
+void cleanMetricData() {
+  cleanDataString("autismSigns");
+  cleanDataString("skillsIssues");
+  cleanDataString("mobilityRehab");
+  cleanDataString("mobilityIssues");
+  cleanDataString("hearingIssues");
+  cleanDataString("visionIssues");
+  cleanDataString("healthIssues");
+  cleanDataString("geneticDiseases");
+  cleanDataString("gender");
+  cleanDataString("postalCode");
+  cleanDataString("familyAutismSigns");
+  cleanDataString("familyAtypicalAutismSigns");
+  cleanDataString("familyAspergerAutismSigns");
+  cleanDataString("familyDevelopmentIssues");
+  cleanDataString("familyOtherAutismSigns");
+}
+
 String getMetricDataString(String boxElement) {
   final box = GetStorage();
   return box.read(boxElement) ?? "";

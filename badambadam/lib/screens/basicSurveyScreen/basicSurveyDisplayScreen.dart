@@ -113,13 +113,13 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                         if (allAnswers.value.values.contains(-1)) {
                           _showMyDialog();
                         } else {
-                          updateGuidList(DateTime.now().toString().trim() +
-                              "-" +
-                              generateSixDigitString());
+                          String guid = "${DateTime.now().toString().trim()}-${generateSixDigitString()}";
+                          updateGuidList(guid);
                           addAllTopLevelNodes(topLevelQuestions);
                           addAllAnswersMap(allAnswers.value);
                           writeCurrentAnswers();
                           addFinalScore();
+                          saveMetric(guid);
                           Navigator.pushNamed(context, '/result');
                         }
                       },
