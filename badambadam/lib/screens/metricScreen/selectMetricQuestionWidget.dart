@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../model.dart';
+import '../../storage.dart';
 
 List<String> list = <String>[
   'Ojciec',
@@ -32,6 +33,12 @@ class SelectMetricQuestion extends StatefulWidget {
 
 class _SelectMetricQuestionState extends State<SelectMetricQuestion> {
   String dropdownValue = list.first;
+
+  @override
+  void initState() {
+    super.initState();
+    setMetricDataString(widget.localParamName, dropdownValue);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +83,7 @@ class _SelectMetricQuestionState extends State<SelectMetricQuestion> {
                   onChanged: (String? value) {
                     setState(() {
                       dropdownValue = value!;
+                      setMetricDataString(widget.localParamName, value);
                     });
                   },
                   items: list.map<DropdownMenuItem<String>>((String value) {
