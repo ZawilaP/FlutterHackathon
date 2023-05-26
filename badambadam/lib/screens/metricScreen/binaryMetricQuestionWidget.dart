@@ -51,7 +51,10 @@ class _BinaryMetricQuestionState extends State<BinaryMetricQuestion>
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Theme.of(context).colorScheme.primary)),
                 ),
-                subtitle: Text(widget.questionText)),
+                subtitle: Padding(
+                  padding:const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                  child: Text(widget.questionText),
+                )),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

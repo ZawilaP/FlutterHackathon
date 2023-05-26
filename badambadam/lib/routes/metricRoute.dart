@@ -1,3 +1,4 @@
+import 'package:badambadam/screens/metricScreen/selectMetricQuestionWidget.dart';
 import 'package:badambadam/storage.dart';
 import 'package:badambadam/screens/metricScreen/binaryMetricQuestionWidget.dart';
 import 'package:flutter/material.dart';
@@ -18,18 +19,9 @@ class MetricRoute extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .primary,
-        foregroundColor: Theme
-            .of(context)
-            .colorScheme
-            .onPrimary,
-        shadowColor: Theme
-            .of(context)
-            .colorScheme
-            .onPrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        shadowColor: Theme.of(context).colorScheme.onPrimary,
         elevation: 8);
 
     Future<void> _showMyDialog() async {
@@ -38,8 +30,7 @@ class MetricRoute extends StatelessWidget {
         barrierDismissible: false, // user must tap button!
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text(
-                'Proszę odpowiedzieć na każde pytanie!'),
+            title: const Text('Proszę odpowiedzieć na każde pytanie!'),
             actions: <Widget>[
               TextButton(
                 child: const Text(
@@ -82,6 +73,7 @@ class MetricRoute extends StatelessWidget {
                   cleanDataString("geneticDiseases");
                   cleanDataString("gender");
                   cleanDataString("postalCode");
+                  cleanDataString("familyInformation");
                 },
               ),
               TextButton(
@@ -101,6 +93,7 @@ class MetricRoute extends StatelessWidget {
                   cleanDataString("geneticDiseases");
                   cleanDataString("gender");
                   cleanDataString("postalCode");
+                  cleanDataString("familyInformation");
                 },
               ),
             ],
@@ -131,9 +124,7 @@ class MetricRoute extends StatelessWidget {
                 child: TextFormField(
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.home),
-                    labelText: AppLocalizations
-                        .of(context)
-                        .zipCodePlaceholder,
+                    labelText: AppLocalizations.of(context).zipCodePlaceholder,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10))),
                   ),
@@ -142,7 +133,8 @@ class MetricRoute extends StatelessWidget {
                   // The validator receives the text that the user has entered.
                   validator: (String? text) {
                     String pattern = r'^\d\d-\d\d\d$';
-                    const String errorMessage = "Podaj kod pocztowy (np. 01-234)";
+                    const String errorMessage =
+                        "Podaj kod pocztowy (np. 01-234)";
                     RegExp regExp = RegExp(pattern);
                     if (text == null) {
                       return errorMessage;
@@ -156,51 +148,69 @@ class MetricRoute extends StatelessWidget {
                   },
                   onChanged: (text) => setPostalCode(text),
                 )),
-            BinaryMetricQuestion(questionId: "1",
+            BinaryMetricQuestion(
+                questionId: "1",
                 questionText: "Płeć dziecka:",
                 firstOption: "ŻEŃSKA",
                 secondOption: "MĘSKA",
                 localParamName: "gender"),
-            BinaryMetricQuestion(questionId: "2",
+            BinaryMetricQuestion(
+                questionId: "2",
                 questionText: "Czy dziecko ma choroby genetyczne?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "geneticDiseases"),
-            BinaryMetricQuestion(questionId: "3",
+            BinaryMetricQuestion(
+                questionId: "3",
                 questionText: "Czy dziecko ma poważne problemy zdrowotne?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "healthIssues"),
-            BinaryMetricQuestion(questionId: "4",
+            BinaryMetricQuestion(
+                questionId: "4",
                 questionText: "Czy dziecko ma poważne problemy ze wzrokiem?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "visionIssues"),
-            BinaryMetricQuestion(questionId: "5",
+            BinaryMetricQuestion(
+                questionId: "5",
                 questionText: "Czy dziecko ma poważne problemy ze słuchem?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "hearingIssues"),
-            BinaryMetricQuestion(questionId: "6",
+            BinaryMetricQuestion(
+                questionId: "6",
                 questionText: "Czy dziecko ma problemy w rozwoju ruchowym?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "mobilityIssues"),
-            BinaryMetricQuestion(questionId: "7",
+            BinaryMetricQuestion(
+                questionId: "7",
                 questionText: "Czy dziecko jest/było rehabilitowane ruchowo?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "mobilityRehab"),
-            BinaryMetricQuestion(questionId: "8",
-                questionText: "Czy kiedykolwiek dziecko wycofało się ze zdobytych umiejętności na okres dłuższy niż 2 tygodnie?",
+            BinaryMetricQuestion(
+                questionId: "8",
+                questionText:
+                    "Czy kiedykolwiek dziecko wycofało się ze zdobytych umiejętności na okres dłuższy niż 2 tygodnie?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "skillsIssues"),
-            BinaryMetricQuestion(questionId: "9",
-                questionText: "Czy ktoś w rodzinie ma zdiagnozowane zaburzenie ze spektrum autyzmu?",
+            BinaryMetricQuestion(
+                questionId: "9",
+                questionText:
+                    "Czy ktoś w rodzinie ma zdiagnozowane zaburzenie ze spektrum autyzmu?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "autismSigns"),
+            SelectMetricQuestion(
+              questionId: "10",
+              questionText: "Wypełniający",
+              // firstOption: "TAK",
+              // secondOption: "NIE",
+              localParamName: "familyInformation"
+            ),
             ElevatedButton(
                 style: style,
                 onPressed: () {
@@ -213,6 +223,7 @@ class MetricRoute extends StatelessWidget {
                       getMetricDataString("healthIssues") == "" ||
                       getMetricDataString("geneticDiseases") == "" ||
                       getMetricDataString("gender") == "" ||
+                      getMetricDataString("familyInformation") == "" || 
                       getPostalCode() == "") {
                     _showMyDialog();
                   } else {
@@ -224,24 +235,22 @@ class MetricRoute extends StatelessWidget {
                   }
                 },
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 11),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 11),
                   child: Text(
                     'Przejdź dalej',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700, fontSize: 20),
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
                   ),
                 )),
-          ]
-      ),
+          ]),
     );
   }
 }
 
 class PostalCodeFormatter extends TextInputFormatter {
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue,
-      TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
     if (newValue.text.length > 6) {
       return oldValue;
     }
