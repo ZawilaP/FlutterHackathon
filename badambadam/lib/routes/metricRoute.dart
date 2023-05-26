@@ -100,75 +100,85 @@ class MetricRoute extends StatelessWidget {
       body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
           children: <Widget>[
-      Padding(
-      padding: const EdgeInsets.all(10.0),
-            child: SizedBox(
-                width: 500,
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.home),
-                    labelText: AppLocalizations.of(context).zipCodePlaceholder,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                  ),
-                  inputFormatters: [PostalCodeFormatter()],
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  // The validator receives the text that the user has entered.
-                  validator: (String? text) {
-                    String pattern = r'^\d\d-\d\d\d$';
-                    const String errorMessage =
-                        "Podaj kod pocztowy (np. 01-234)";
-                    RegExp regExp = RegExp(pattern);
-                    if (text == null) {
-                      return errorMessage;
-                    }
-                    if (text.isEmpty) {
-                      return errorMessage;
-                    } else if (!regExp.hasMatch(text)) {
-                      return errorMessage;
-                    }
-                    return null;
-                  },
-                  onChanged: (text) => setPostalCode(text),
-                )),
-      ),
-        Padding(
-            padding: const EdgeInsets.all(10.0),
-
-            child: SizedBox(
-                width: 500,
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    labelText: "Waga urodzeniowa dziecka (w gramach):",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                  ),
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  // The validator receives the text that the user has entered.
-                  validator: (String? text) {
-                    const String errorMessage = "Waga nie może być ujemna i przekraczać 10kg";
-                    if (text == null) {
-                      return errorMessage;
-                    }
-                    if (text.isEmpty) {
-                      return errorMessage;
-                    } else if (int.tryParse(text) != null && (int.parse(text) < 0 || int.parse(text) > 9999)) {
-                      return errorMessage;
-                    }
-                    return null;
-                  },
-                  onChanged: (text) => setMetricDataString("weight", text),
-                )
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SizedBox(
+                  width: 500,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.home),
+                      labelText:
+                          AppLocalizations.of(context).zipCodePlaceholder,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                    ),
+                    inputFormatters: [PostalCodeFormatter()],
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    // The validator receives the text that the user has entered.
+                    validator: (String? text) {
+                      String pattern = r'^\d\d-\d\d\d$';
+                      const String errorMessage =
+                          "Podaj kod pocztowy (np. 01-234)";
+                      RegExp regExp = RegExp(pattern);
+                      if (text == null) {
+                        return errorMessage;
+                      }
+                      if (text.isEmpty) {
+                        return errorMessage;
+                      } else if (!regExp.hasMatch(text)) {
+                        return errorMessage;
+                      }
+                      return null;
+                    },
+                    onChanged: (text) => setPostalCode(text),
+                  )),
             ),
-        ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SizedBox(
+                  width: 500,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Waga urodzeniowa dziecka (w gramach):",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                    ),
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    // The validator receives the text that the user has entered.
+                    validator: (String? text) {
+                      const String errorMessage =
+                          "Waga nie może być ujemna i przekraczać 10kg";
+                      if (text == null) {
+                        return errorMessage;
+                      }
+                      if (text.isEmpty) {
+                        return errorMessage;
+                      } else if (int.tryParse(text) != null &&
+                          (int.parse(text) < 0 || int.parse(text) > 9999)) {
+                        return errorMessage;
+                      }
+                      return null;
+                    },
+                    onChanged: (text) => setMetricDataString("weight", text),
+                  )),
+            ),
             SelectMetricQuestion(
                 questionId: "1",
                 questionText: "Wypełniający",
+                familyList: <String>[
+                  'Ojciec',
+                  'Matka',
+                  'Dziadek',
+                  'Babcia',
+                  'Inna osoba z rodziny',
+                  'Opiekun prawny',
+                  'Inna osoba'
+                ],
                 // firstOption: "TAK",
                 // secondOption: "NIE",
-                localParamName: "familyInformation"
-            ),
-            BinaryMetricQuestion(questionId: "2",
+                localParamName: "familyInformation"),
+            BinaryMetricQuestion(
+                questionId: "2",
                 questionText: "Płeć dziecka:",
                 firstOption: "ŻEŃSKA",
                 secondOption: "MĘSKA",
@@ -223,7 +233,10 @@ class MetricRoute extends StatelessWidget {
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "autismSigns"),
-            QuantityInputQuestion(questionId: "11", questionText: "Dziecko urodzone w tygodniu ciąży", localParamName: "pregnancyWeek"),
+            QuantityInputQuestion(
+                questionId: "11",
+                questionText: "Dziecko urodzone w tygodniu ciąży",
+                localParamName: "pregnancyWeek"),
             ElevatedButton(
                 style: style,
                 onPressed: () {
@@ -237,7 +250,7 @@ class MetricRoute extends StatelessWidget {
                       getMetricDataString("geneticDiseases") == "" ||
                       getMetricDataString("gender") == "" ||
                       getMetricDataString("weight") == "" ||
-                      getMetricDataString("familyInformation") == "" || 
+                      getMetricDataString("familyInformation") == "" ||
                       getMetricDataString("pregnancyWeek") == "" ||
                       getPostalCode() == "") {
                     _showMyDialog();

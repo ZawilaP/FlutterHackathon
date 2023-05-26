@@ -9,6 +9,8 @@ import '../../storage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
+import '../screens/metricScreen/selectMetricQuestionWidget.dart';
+
 class AdvancedMetricRoute extends StatelessWidget {
   const AdvancedMetricRoute({super.key});
 
@@ -18,18 +20,9 @@ class AdvancedMetricRoute extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .primary,
-        foregroundColor: Theme
-            .of(context)
-            .colorScheme
-            .onPrimary,
-        shadowColor: Theme
-            .of(context)
-            .colorScheme
-            .onPrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        shadowColor: Theme.of(context).colorScheme.onPrimary,
         elevation: 8);
 
     Future<void> _showMyDialog() async {
@@ -38,8 +31,7 @@ class AdvancedMetricRoute extends StatelessWidget {
         barrierDismissible: false, // user must tap button!
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text(
-                'Proszę odpowiedzieć na każde pytanie!'),
+            title: const Text('Proszę odpowiedzieć na każde pytanie!'),
             actions: <Widget>[
               TextButton(
                 child: const Text(
@@ -143,28 +135,59 @@ class AdvancedMetricRoute extends StatelessWidget {
       body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
           children: <Widget>[
-            BinaryMetricQuestion(questionId: "1",
-                questionText: "Czy wskazana osoba/wskazane osoby ma/mają zdiagnozowany autyzm?",
+            SelectMetricQuestion(
+                questionId: "1",
+                questionText: "Kto ma zdiagnozowane spektrum autyzmu?",
+                familyList: <String>[
+                  'Ojciec',
+                  'Matka',
+                  'Siostra (pierwsza)',
+                  'Siostra (druga)',
+                  'Siostra (trzecia)',
+                  'Brat (pierwszy)',
+                  'Brat (drugi)',
+                  'Brat (trzeci)',
+                  'Dziadek',
+                  'Babcia',
+                  'Inna osoba z rodziny',
+                  'Opiekun prawny',
+                  'Inna osoba'
+                ],
+                // firstOption: "TAK",
+                // secondOption: "NIE",
+                localParamName: "familyMemberAutismInformation"),
+            BinaryMetricQuestion(
+                questionId: "2",
+                questionText:
+                    "Czy wskazana osoba/wskazane osoby ma/mają zdiagnozowany autyzm?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "familyAutismSigns"),
-            BinaryMetricQuestion(questionId: "2",
-                questionText: "Czy wskazana osoba/wskazane osoby ma/mają zdiagnozowany autyzm atypowy?",
+            BinaryMetricQuestion(
+                questionId: "3",
+                questionText:
+                    "Czy wskazana osoba/wskazane osoby ma/mają zdiagnozowany autyzm atypowy?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "familyAtypicalAutismSigns"),
-            BinaryMetricQuestion(questionId: "3",
-                questionText: "Czy wskazana osoba/wskazane osoby ma/mają zdiagnozowany Zespół Aspergera?",
+            BinaryMetricQuestion(
+                questionId: "4",
+                questionText:
+                    "Czy wskazana osoba/wskazane osoby ma/mają zdiagnozowany Zespół Aspergera?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "familyAspergerAutismSigns"),
-            BinaryMetricQuestion(questionId: "4",
-                questionText: "Czy wskazana osoba/wskazane osoby ma/mają zdiagnozowany całościowe zaburzenia rozwojowe?",
+            BinaryMetricQuestion(
+                questionId: "5",
+                questionText:
+                    "Czy wskazana osoba/wskazane osoby ma/mają zdiagnozowany całościowe zaburzenia rozwojowe?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "familyDevelopmentIssues"),
-            BinaryMetricQuestion(questionId: "5",
-                questionText: "Czy wskazana osoba/wskazane osoby ma/mają zdiagnozowane inne zaburzenia ze spektrum autyzmu?",
+            BinaryMetricQuestion(
+                questionId: "6",
+                questionText:
+                    "Czy wskazana osoba/wskazane osoby ma/mają zdiagnozowane inne zaburzenia ze spektrum autyzmu?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "familyOtherAutismSigns"),
@@ -182,24 +205,22 @@ class AdvancedMetricRoute extends StatelessWidget {
                   }
                 },
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 11),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 11),
                   child: Text(
                     'Przejdź do badania',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700, fontSize: 20),
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
                   ),
                 )),
-          ]
-      ),
+          ]),
     );
   }
 }
 
 class PostalCodeFormatter extends TextInputFormatter {
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue,
-      TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
     if (newValue.text.length > 6) {
       return oldValue;
     }
