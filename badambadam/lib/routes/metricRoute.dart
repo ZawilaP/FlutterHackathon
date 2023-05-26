@@ -71,17 +71,8 @@ class MetricRoute extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
+                  cleanMetricData();
                   Navigator.of(context).pop();
-                  cleanDataString("autismSigns");
-                  cleanDataString("skillsIssues");
-                  cleanDataString("mobilityRehab");
-                  cleanDataString("mobilityIssues");
-                  cleanDataString("hearingIssues");
-                  cleanDataString("visionIssues");
-                  cleanDataString("healthIssues");
-                  cleanDataString("geneticDiseases");
-                  cleanDataString("gender");
-                  cleanDataString("postalCode");
                 },
               ),
               TextButton(
@@ -90,17 +81,8 @@ class MetricRoute extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
+                  cleanMetricData();
                   Navigator.pushNamed(context, '/');
-                  cleanDataString("autismSigns");
-                  cleanDataString("skillsIssues");
-                  cleanDataString("mobilityRehab");
-                  cleanDataString("mobilityIssues");
-                  cleanDataString("hearingIssues");
-                  cleanDataString("visionIssues");
-                  cleanDataString("healthIssues");
-                  cleanDataString("geneticDiseases");
-                  cleanDataString("gender");
-                  cleanDataString("postalCode");
                 },
               ),
             ],

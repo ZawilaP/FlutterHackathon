@@ -22,7 +22,7 @@ class _StartSurveyForm extends State<StartSurveyForm> {
 
   void _submit() {
     if (_dateKey.currentState!.validate()) {
-      print(getBirthDateString());
+      cleanMetricData();
       Navigator.pushNamed(context, '/metric');
     }
   }
