@@ -13,6 +13,7 @@ void cleanDataString(String boxElement) {
 }
 
 void cleanMetricData() {
+  cleanDataString("familyInformation");
   cleanDataString("autismSigns");
   cleanDataString("skillsIssues");
   cleanDataString("mobilityRehab");
