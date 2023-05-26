@@ -19,13 +19,11 @@ class _StartSurveyForm extends State<StartSurveyForm> {
   TextEditingController selectDate = TextEditingController();
 
   String _birthDateString = '';
-  String _postalCode = '';
 
   void _submit() {
     if (_dateKey.currentState!.validate()) {
       print(getBirthDateString());
-      print(getPostalCode());
-      Navigator.pushNamed(context, '/survey');
+      Navigator.pushNamed(context, '/metric');
     }
   }
 
@@ -93,46 +91,12 @@ class _StartSurveyForm extends State<StartSurveyForm> {
           ),
         ),
         SizedBox(height: 15),
-        SizedBox(
-            width: 500,
-            child: TextFormField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.home),
-                labelText: AppLocalizations.of(context).zipCodePlaceholder,
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-              ),
-              inputFormatters: [PostalCodeFormatter()],
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              // The validator receives the text that the user has entered.
-              validator: (String? text) {
-                String pattern = r'^\d\d-\d\d\d$';
-                const String errorMessage = "Podaj kod pocztowy (np. 01-234)";
-                RegExp regExp = RegExp(pattern);
-                if (text == null) {
-                  return errorMessage;
-                }
-                if (text.isEmpty) {
-                  return errorMessage;
-                } else if (!regExp.hasMatch(text)) {
-                  return errorMessage;
-                }
-                return null;
-              },
-              onChanged: (text) => setState(() {
-                _postalCode = text;
-                setPostalCode(text);
-              }),
-            )),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
           child: Center(
             child: ElevatedButton(
               onPressed: () {
                 if (_birthDateString.isEmpty) {
-                  return;
-                }
-                if (_postalCode.isEmpty) {
                   return;
                 }
                 _submit();
@@ -150,21 +114,5 @@ class _StartSurveyForm extends State<StartSurveyForm> {
         )
       ]),
     );
-  }
-}
-
-class PostalCodeFormatter extends TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
-    if (newValue.text.length > 6) {
-      return oldValue;
-    }
-    if (newValue.text.length == 2 && oldValue.text.length != 3) {
-      return TextEditingValue(
-          text: newValue.text + '-',
-          selection: TextSelection.collapsed(offset: newValue.text.length + 1));
-    }
-    return newValue;
   }
 }

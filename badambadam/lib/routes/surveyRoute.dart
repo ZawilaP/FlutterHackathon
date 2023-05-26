@@ -33,6 +33,21 @@ class SurveyRoute extends StatelessWidget {
                 ),
                 onPressed: () {
                   Navigator.pushNamed(context, '/');
+                  cleanDataString("autismSigns");
+                  cleanDataString("skillsIssues");
+                  cleanDataString("mobilityRehab");
+                  cleanDataString("mobilityIssues");
+                  cleanDataString("hearingIssues");
+                  cleanDataString("visionIssues");
+                  cleanDataString("healthIssues");
+                  cleanDataString("geneticDiseases");
+                  cleanDataString("gender");
+                  cleanDataString("postalCode");
+                  cleanDataString("familyAutismSigns");
+                  cleanDataString("familyAtypicalAutismSigns");
+                  cleanDataString("familyAspergerAutismSigns");
+                  cleanDataString("familyDevelopmentIssues");
+                  cleanDataString("familyOtherAutismSigns");
                 },
               ),
             ],

@@ -1,5 +1,7 @@
 import 'package:badambadam/routes/adminAdvancedSurveyListRoute.dart';
 import 'package:badambadam/routes/adminBasicSurveyListRoute.dart';
+import 'package:badambadam/routes/advancedMetricRoute.dart';
+import 'package:badambadam/routes/metricRoute.dart';
 import 'package:badambadam/routes/newAdminRoute.dart';
 import 'package:badambadam/screens/homePageScreen/StartSurveyForm.dart';
 import 'package:english_words/english_words.dart';
@@ -68,6 +70,8 @@ class MyApp extends StatelessWidget {
                 '/adminBasicSurvey': (context) => AdminBasicSurveyListRoute(),
                 '/adminAdvancedSurvey': (context) =>
                     AdminAdvancedSurveyListRoute(),
+                '/metric': (context) => MetricRoute(),
+                '/advancedMetric': (context) => AdvancedMetricRoute()
               },
               locale: myAppState.locale,
               localizationsDelegates: [
@@ -93,7 +97,7 @@ class MyAppState extends ChangeNotifier {
   void changeLocale(Locale newLocale) {
     _locale = newLocale;
     notifyListeners();
-    print("changeLocale invoekd");
+    print("changeLocale invoked");
     print(_locale);
   }
 }

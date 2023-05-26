@@ -1,6 +1,22 @@
 import 'package:badambadam/model.dart';
 import 'package:get_storage/get_storage.dart';
 
+void setMetricDataString(String boxElement, String value) {
+  final box = GetStorage();
+  box.remove(boxElement);
+  box.write(boxElement, value);
+}
+
+void cleanDataString(String boxElement) {
+  final box = GetStorage();
+  box.remove(boxElement);
+}
+
+String getMetricDataString(String boxElement) {
+  final box = GetStorage();
+  return box.read(boxElement) ?? "";
+}
+
 String getBirthDateString() {
   final box = GetStorage();
   return box.read("birthDate") ?? "";

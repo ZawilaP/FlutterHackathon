@@ -1,32 +1,36 @@
+import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
 import '../../model.dart';
 
-class SingleSurveyQuestion extends StatefulWidget {
-  SingleSurveyQuestion({
+class BinaryMetricQuestion extends StatefulWidget {
+  BinaryMetricQuestion({
     super.key,
     this.questionNode,
-    required this.allAnswers,
+    required this.questionId,
+    required this.questionText,
+    required this.firstOption,
+    required this.secondOption,
+    required this.localParamName
   });
 
   final Node? questionNode;
-  final ValueNotifier<Map<String, int>> allAnswers;
+  final String questionId;
+  final String questionText;
+  final String firstOption;
+  final String secondOption;
+  final String localParamName;
 
   @override
-  State<SingleSurveyQuestion> createState() => _SingleSurveyQuestionState();
+  State<BinaryMetricQuestion> createState() => _BinaryMetricQuestionState();
 }
 
-class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
+class _BinaryMetricQuestionState extends State<BinaryMetricQuestion>
     with AutomaticKeepAliveClientMixin {
   List<bool> selected = <bool>[false, false];
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-
-    var wholeQuestionText = widget.questionNode!.questions[0]
-        .toString()
-        .replaceAll('(', '\n')
-        .replaceAll(')', '');
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
@@ -42,12 +46,12 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
           children: <Widget>[
             ListTile(
                 title: Padding(
-                  padding: const EdgeInsets.only(bottom: 8, top: 8),
-                  child: Text('Pytanie ${widget.questionNode!.id}',
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                  child: Text('Pytanie ${widget.questionId}',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Theme.of(context).colorScheme.primary)),
                 ),
-                subtitle: Text(wholeQuestionText)),
+                subtitle: Text(widget.questionText)),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -58,41 +62,34 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
                       onPressed: (int index) {
                         setState(() {
                           for (int buttonIndex = 0;
-                              buttonIndex < selected.length;
-                              buttonIndex++) {
+                          buttonIndex < selected.length;
+                          buttonIndex++) {
                             if (buttonIndex == index) {
                               selected[buttonIndex] = true;
                             } else {
                               selected[buttonIndex] = false;
                             }
                           }
-
-                          // I know it's a bit shitty but works well.
-                          if ((widget.questionNode!.isInverted && index == 0) ||
-                              (!widget.questionNode!.isInverted &&
-                                  index == 1)) {
-                            widget.allAnswers.value[widget.questionNode!.id] =
-                                1;
-                          } else {
-                            widget.allAnswers.value[widget.questionNode!.id] =
-                                0;
+                          if (index == 0) {
+                            setMetricDataString(widget.localParamName, widget.firstOption);
                           }
-
-                          print(widget.allAnswers);
+                          if (index == 1) {
+                            setMetricDataString(widget.localParamName, widget.secondOption);
+                          }
                         });
                       },
                       borderWidth: 1.5,
                       highlightColor: Theme.of(context).colorScheme.primary,
                       selectedBorderColor:
-                          Theme.of(context).colorScheme.primary,
+                      Theme.of(context).colorScheme.primary,
                       borderRadius: BorderRadius.circular(10),
                       children: <Widget>[
                         Text(
-                          'TAK',
+                          widget.firstOption,
                           style: TextStyle(fontSize: 21),
                         ),
                         Text(
-                          'NIE',
+                          widget.secondOption,
                           style: TextStyle(fontSize: 21),
                         )
                       ]),
