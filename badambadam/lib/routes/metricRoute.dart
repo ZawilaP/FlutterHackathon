@@ -108,7 +108,7 @@ class MetricRoute extends StatelessWidget {
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.home),
                       labelText:
-                          AppLocalizations.of(context).zipCodePlaceholder,
+                          AppLocalizations.of(context)!.zipCodePlaceholder,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                     ),
