@@ -138,7 +138,7 @@ class AdvancedMetricRoute extends StatelessWidget {
             SelectMetricQuestion(
                 questionId: "1",
                 questionText: "Kto ma zdiagnozowane spektrum autyzmu?",
-                familyList: <String>[
+                valueList: <String>[
                   'Ojciec',
                   'Matka',
                   'Siostra (pierwsza)',
@@ -153,8 +153,7 @@ class AdvancedMetricRoute extends StatelessWidget {
                   'Opiekun prawny',
                   'Inna osoba'
                 ],
-                // firstOption: "TAK",
-                // secondOption: "NIE",
+                hintText: "Wybierz osobę",
                 localParamName: "familyMemberAutismInformation"),
             BinaryMetricQuestion(
                 questionId: "2",
