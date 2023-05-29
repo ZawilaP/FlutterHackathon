@@ -94,7 +94,7 @@ class MyApp extends StatelessWidget {
 
 class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
-  Locale _locale = Locale('en');
+  Locale _locale = Locale('pl');
   Locale get locale => _locale;
 
   void changeLocale(Locale newLocale) {
