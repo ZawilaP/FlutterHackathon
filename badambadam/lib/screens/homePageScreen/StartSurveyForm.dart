@@ -49,7 +49,7 @@ class _StartSurveyForm extends State<StartSurveyForm> {
             controller: selectDate,
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.calendar_today_rounded),
-              labelText: AppLocalizations.of(context).birthPlaceholder,
+              labelText: AppLocalizations.of(context)!.birthPlaceholder,
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))),
             ),
