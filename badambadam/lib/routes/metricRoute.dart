@@ -164,8 +164,8 @@ class MetricRoute extends StatelessWidget {
             ),
             SelectMetricQuestion(
                 questionId: "1",
-                questionText: "Wypełniający",
-                familyList: <String>[
+                questionText: "Kim jest wypełniający badanie?",
+                valueList: <String>[
                   'Ojciec',
                   'Matka',
                   'Dziadek',
@@ -174,14 +174,14 @@ class MetricRoute extends StatelessWidget {
                   'Opiekun prawny',
                   'Inna osoba'
                 ],
-                // firstOption: "TAK",
-                // secondOption: "NIE",
+                hintText: "Wybierz osobę",
                 localParamName: "familyInformation"),
-            BinaryMetricQuestion(
+            SelectMetricQuestion(
                 questionId: "2",
-                questionText: "Płeć dziecka:",
-                firstOption: "ŻEŃSKA",
-                secondOption: "MĘSKA",
+                questionText: "Jaka jest płeć dziecka?",
+                valueList: <String>['Męska', 'Żeńska'],
+                hintText: "Wybierz płeć dziecka",
+                // secondOption: "MĘSKA",
                 localParamName: "gender"),
             BinaryMetricQuestion(
                 questionId: "3",
