@@ -1,15 +1,9 @@
-import 'package:badambadam/screens/metricScreen/quantityInputMetricQuestionWidget.dart';
 import 'package:badambadam/screens/metricScreen/selectMetricQuestionWidget.dart';
 import 'package:badambadam/storage.dart';
 import 'package:badambadam/screens/metricScreen/binaryMetricQuestionWidget.dart';
 import 'package:flutter/material.dart';
-import '../screens/basicSurveyScreen/basicSurveyDisplayScreen.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
-import '../../main.dart';
-import '../../storage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 
 class MetricRoute extends StatelessWidget {
   MetricRoute({super.key});
@@ -101,7 +95,10 @@ class MetricRoute extends StatelessWidget {
       body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
           children: <Widget>[
-            PostalCodeInput(questionId: "1", questionText: "Proszę podać kod pocztowy",),
+            PostalCodeInput(
+              questionId: "1",
+              questionText: "Proszę podać kod pocztowy",
+            ),
             SelectMetricQuestion(
                 questionId: "2",
                 questionText: "Jaka jest płeć dziecka?",
@@ -259,8 +256,7 @@ class _PostalCodeInputState extends State<PostalCodeInput>
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
                   child: Text(widget.questionText),
-                )
-                ),
+                )),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               child: TextFormField(

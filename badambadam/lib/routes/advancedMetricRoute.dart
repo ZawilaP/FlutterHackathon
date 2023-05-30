@@ -1,15 +1,6 @@
 import 'package:badambadam/storage.dart';
 import 'package:badambadam/screens/metricScreen/binaryMetricQuestionWidget.dart';
 import 'package:flutter/material.dart';
-import '../screens/basicSurveyScreen/basicSurveyDisplayScreen.dart';
-import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
-import '../../main.dart';
-import '../../storage.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
-
-import '../screens/metricScreen/selectMetricQuestionWidget.dart';
 
 class AdvancedMetricRoute extends StatelessWidget {
   const AdvancedMetricRoute({super.key});
@@ -135,25 +126,9 @@ class AdvancedMetricRoute extends StatelessWidget {
       body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
           children: <Widget>[
-            SelectMetricQuestion(
+            MultiSelectMetricQuestion(
                 questionId: "1",
                 questionText: "Kto ma zdiagnozowane spektrum autyzmu?",
-                valueList: <String>[
-                  'Ojciec',
-                  'Matka',
-                  'Siostra (pierwsza)',
-                  'Siostra (druga)',
-                  'Siostra (trzecia)',
-                  'Brat (pierwszy)',
-                  'Brat (drugi)',
-                  'Brat (trzeci)',
-                  'Dziadek',
-                  'Babcia',
-                  'Inna osoba z rodziny',
-                  'Opiekun prawny',
-                  'Inna osoba'
-                ],
-                hintText: "Wybierz osobę",
                 localParamName: "familyMemberAutismInformation"),
             BinaryMetricQuestion(
                 questionId: "2",
@@ -216,18 +191,188 @@ class AdvancedMetricRoute extends StatelessWidget {
   }
 }
 
-class PostalCodeFormatter extends TextInputFormatter {
+class MultiSelectMetricQuestion extends StatefulWidget {
+  MultiSelectMetricQuestion(
+      {super.key,
+      required this.questionId,
+      required this.questionText,
+      required this.localParamName});
+
+  final String questionId;
+  final String questionText;
+  final String localParamName;
+
   @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
-    if (newValue.text.length > 6) {
-      return oldValue;
-    }
-    if (newValue.text.length == 2 && oldValue.text.length != 3) {
-      return TextEditingValue(
-          text: newValue.text + '-',
-          selection: TextSelection.collapsed(offset: newValue.text.length + 1));
-    }
-    return newValue;
+  State<MultiSelectMetricQuestion> createState() =>
+      _MultiSelectMetricQuestionState();
+}
+
+class _MultiSelectMetricQuestionState extends State<MultiSelectMetricQuestion>
+    with AutomaticKeepAliveClientMixin {
+  List<bool> _selectedAnswers = [];
+  List<String> _selectedFamilyMembers = [];
+  List<String> familyMembers = <String>[
+    'Ojciec',
+    'Matka',
+    'Siostra (pierwsza)',
+    'Siostra (druga)',
+    'Siostra (trzecia)',
+    'Brat (pierwszy)',
+    'Brat (drugi)',
+    'Brat (trzeci)',
+    'Dziadek',
+    'Babcia',
+    'Inna osoba z rodziny',
+    'Opiekun prawny',
+    'Inna osoba'
+  ];
+  bool _otherFlag = false;
+
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
   }
+
+  List<Widget> familyMembersTextWidget(List<String> familyMembers) {
+    List<Widget> textWidgets = [];
+    for (var question in familyMembers) {
+      textWidgets.add(Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+                width: 350,
+                child: Text(
+                  question.toString(),
+                  maxLines: 5,
+                  style: TextStyle(fontSize: 16),
+                )),
+          ),
+        ],
+      ));
+    }
+
+    return textWidgets;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedAnswers =
+        List<bool>.generate(familyMembers.length, (index) => false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+      child: Card(
+        color: Theme.of(context).colorScheme.background,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.black45, width: 0.75),
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: Column(
+          children: [
+            ListTile(
+              title: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8, top: 8),
+                        child: Text(
+                          'Pytanie ${widget.questionId}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .copyWith(
+                                  color: Theme.of(context).colorScheme.primary),
+                        ),
+                      ),
+                      Text(
+                        widget.questionText,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    ],
+                  )),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(
+                    top: 15.0, bottom: 15.0, left: 5.0, right: 5.0),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height * 0.2,
+                      maxHeight: MediaQuery.of(context).size.height),
+                  child: SingleChildScrollView(
+                    child: ToggleButtons(
+                      isSelected: _selectedAnswers,
+                      borderRadius: BorderRadius.circular(10),
+                      direction: Axis.vertical,
+                      onPressed: (int index) {
+                        setState(() {
+                          _selectedAnswers[index] = !_selectedAnswers[index];
+
+                          if (_selectedAnswers[index]) {
+                            _selectedFamilyMembers.add(familyMembers[index]);
+                          } else if (!_selectedAnswers[index] &&
+                              _selectedFamilyMembers
+                                  .contains(familyMembers[index])) {
+                            _selectedFamilyMembers.remove(familyMembers[index]);
+                          }
+
+                          print(_selectedFamilyMembers);
+
+                          if (familyMembers[index] == 'Inna osoba') {
+                            _otherFlag = true;
+                          } else {
+                            _otherFlag = false;
+                          }
+
+                          setMetricDataString(widget.localParamName,
+                              _selectedFamilyMembers.toString());
+                        });
+                      },
+                      children: familyMembersTextWidget(familyMembers),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            _otherFlag
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15.0, vertical: 10),
+                    child: TextField(
+                      controller: myController,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(color: Colors.grey)),
+                          hintText: "Kim jest inna osoba?"),
+                      onChanged: (text) {
+                        _selectedFamilyMembers[_selectedFamilyMembers.length -
+                            1] = 'Inna_osoba+${myController.text}';
+                        setMetricDataString(widget.localParamName,
+                            _selectedFamilyMembers.toString());
+                      },
+                    ),
+                  )
+                : SizedBox(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
 }
