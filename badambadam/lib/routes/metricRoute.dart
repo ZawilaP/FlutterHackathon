@@ -12,7 +12,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class MetricRoute extends StatelessWidget {
-  const MetricRoute({super.key});
+  MetricRoute({super.key});
+  var pregancyWeeksList = List.generate(27, (i) => (42 - i));
 
   @override
   Widget build(BuildContext context) {
@@ -100,70 +101,15 @@ class MetricRoute extends StatelessWidget {
       body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: SizedBox(
-                  width: 500,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.home),
-                      labelText:
-                          AppLocalizations.of(context)!.zipCodePlaceholder,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                    ),
-                    inputFormatters: [PostalCodeFormatter()],
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    // The validator receives the text that the user has entered.
-                    validator: (String? text) {
-                      String pattern = r'^\d\d-\d\d\d$';
-                      const String errorMessage =
-                          "Podaj kod pocztowy (np. 01-234)";
-                      RegExp regExp = RegExp(pattern);
-                      if (text == null) {
-                        return errorMessage;
-                      }
-                      if (text.isEmpty) {
-                        return errorMessage;
-                      } else if (!regExp.hasMatch(text)) {
-                        return errorMessage;
-                      }
-                      return null;
-                    },
-                    onChanged: (text) => setPostalCode(text),
-                  )),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: SizedBox(
-                  width: 500,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Waga urodzeniowa dziecka (w gramach):",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                    ),
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    // The validator receives the text that the user has entered.
-                    validator: (String? text) {
-                      const String errorMessage =
-                          "Waga nie może być ujemna i przekraczać 10kg";
-                      if (text == null) {
-                        return errorMessage;
-                      }
-                      if (text.isEmpty) {
-                        return errorMessage;
-                      } else if (int.tryParse(text) != null &&
-                          (int.parse(text) < 0 || int.parse(text) > 9999)) {
-                        return errorMessage;
-                      }
-                      return null;
-                    },
-                    onChanged: (text) => setMetricDataString("weight", text),
-                  )),
-            ),
+            PostalCodeInput(questionId: "1", questionText: "Proszę podać kod pocztowy",),
             SelectMetricQuestion(
-                questionId: "1",
+                questionId: "2",
+                questionText: "Jaka jest płeć dziecka?",
+                valueList: <String>['Męska', 'Żeńska'],
+                hintText: "Wybierz płeć dziecka",
+                localParamName: "gender"),
+            SelectMetricQuestion(
+                questionId: "3",
                 questionText: "Kim jest wypełniający badanie?",
                 valueList: <String>[
                   'Ojciec',
@@ -177,66 +123,65 @@ class MetricRoute extends StatelessWidget {
                 hintText: "Wybierz osobę",
                 localParamName: "familyInformation"),
             SelectMetricQuestion(
-                questionId: "2",
-                questionText: "Jaka jest płeć dziecka?",
-                valueList: <String>['Męska', 'Żeńska'],
-                hintText: "Wybierz płeć dziecka",
-                // secondOption: "MĘSKA",
-                localParamName: "gender"),
+                questionId: "4",
+                questionText: "Dziecko urodzone w tygodniu ciąży",
+                localParamName: "pregnancyWeek",
+                hintText: 'Wybierz tydzień',
+                valueList: List.generate(27, (i) => (i + 16).toString())),
+            WeightInput(
+              questionId: "5",
+              questionText: "Proszę podać wagę urodzeniową dziecka (w gramach)",
+            ),
             BinaryMetricQuestion(
-                questionId: "3",
+                questionId: "6",
                 questionText: "Czy dziecko ma choroby genetyczne?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "geneticDiseases"),
             BinaryMetricQuestion(
-                questionId: "4",
+                questionId: "7",
                 questionText: "Czy dziecko ma poważne problemy zdrowotne?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "healthIssues"),
             BinaryMetricQuestion(
-                questionId: "5",
+                questionId: "8",
                 questionText: "Czy dziecko ma poważne problemy ze wzrokiem?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "visionIssues"),
             BinaryMetricQuestion(
-                questionId: "6",
+                questionId: "9",
                 questionText: "Czy dziecko ma poważne problemy ze słuchem?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "hearingIssues"),
             BinaryMetricQuestion(
-                questionId: "7",
+                questionId: "10",
                 questionText: "Czy dziecko ma problemy w rozwoju ruchowym?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "mobilityIssues"),
             BinaryMetricQuestion(
-                questionId: "8",
+                questionId: "11",
                 questionText: "Czy dziecko jest/było rehabilitowane ruchowo?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "mobilityRehab"),
             BinaryMetricQuestion(
-                questionId: "9",
+                questionId: "12",
                 questionText:
                     "Czy kiedykolwiek dziecko wycofało się ze zdobytych umiejętności na okres dłuższy niż 2 tygodnie?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "skillsIssues"),
             BinaryMetricQuestion(
-                questionId: "10",
+                questionId: "13",
                 questionText:
                     "Czy ktoś w rodzinie ma zdiagnozowane zaburzenie ze spektrum autyzmu?",
                 firstOption: "TAK",
                 secondOption: "NIE",
                 localParamName: "autismSigns"),
-            QuantityInputQuestion(
-                questionId: "11",
-                questionText: "Dziecko urodzone w tygodniu ciąży",
-                localParamName: "pregnancyWeek"),
             ElevatedButton(
                 style: style,
                 onPressed: () {
@@ -273,6 +218,161 @@ class MetricRoute extends StatelessWidget {
           ]),
     );
   }
+}
+
+class PostalCodeInput extends StatefulWidget {
+  PostalCodeInput(
+      {super.key, required this.questionId, required this.questionText});
+
+  String questionId;
+  String questionText;
+
+  @override
+  State<PostalCodeInput> createState() => _PostalCodeInputState();
+}
+
+class _PostalCodeInputState extends State<PostalCodeInput>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Card(
+        color: Theme.of(context).colorScheme.background,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.grey.shade500, width: 1),
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: Column(
+          children: [
+            ListTile(
+                title: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                  child: Text('Pytanie ${widget.questionId}',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.primary)),
+                ),
+                subtitle: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                  child: Text(widget.questionText),
+                )
+                ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.home),
+                  hintText: AppLocalizations.of(context).zipCodePlaceholder,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                ),
+                inputFormatters: [PostalCodeFormatter()],
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (String? text) {
+                  String pattern = r'^\d\d-\d\d\d$';
+                  const String errorMessage = "Podaj kod pocztowy (np. 01-234)";
+                  RegExp regExp = RegExp(pattern);
+                  if (text == null) {
+                    return errorMessage;
+                  }
+                  if (text.isEmpty) {
+                    return errorMessage;
+                  } else if (!regExp.hasMatch(text)) {
+                    return errorMessage;
+                  }
+                  return null;
+                },
+                onChanged: (text) => setPostalCode(text),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+}
+
+class WeightInput extends StatefulWidget {
+  const WeightInput(
+      {super.key, required this.questionId, required this.questionText});
+
+  final String questionId;
+  final String questionText;
+
+  @override
+  State<WeightInput> createState() => _WeightInputState();
+}
+
+class _WeightInputState extends State<WeightInput>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Card(
+        color: Theme.of(context).colorScheme.background,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.grey.shade500, width: 1),
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: Column(
+          children: [
+            ListTile(
+                title: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                  child: Text('Pytanie ${widget.questionId}',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.primary)),
+                ),
+                subtitle: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                  child: Text(widget.questionText),
+                )),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  hintText: "Waga urodzeniowa dziecka",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                ),
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (String? text) {
+                  const String errorMessage =
+                      "Waga nie może być ujemna i przekraczać 10kg";
+                  if (text == null) {
+                    return errorMessage;
+                  }
+                  if (text.isEmpty) {
+                    return errorMessage;
+                  } else if (int.tryParse(text) != null &&
+                      (int.parse(text) < 0 || int.parse(text) > 9999)) {
+                    return errorMessage;
+                  }
+                  return null;
+                },
+                onChanged: (text) => setMetricDataString("weight", text),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class PostalCodeFormatter extends TextInputFormatter {

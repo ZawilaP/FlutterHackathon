@@ -17,7 +17,7 @@ class SelectMetricQuestion extends StatefulWidget {
   final String questionId;
   final String questionText;
   final String localParamName;
-  final List<String> valueList;
+  final List<dynamic> valueList;
   final String? hintText;
 
   @override
@@ -110,12 +110,12 @@ class _SelectMetricQuestionState extends State<SelectMetricQuestion>
                         });
                       },
                       items: widget.valueList
-                          .map<DropdownMenuItem<String>>((String value) {
+                          .map<DropdownMenuItem<String>>((dynamic value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(value),
+                            child: Text(value.toString()),
                           ),
                         );
                       }).toList(),
