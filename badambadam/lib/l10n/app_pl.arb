@@ -5,5 +5,6 @@
     "birthPlaceholder": "Wybierz datę urodzin swojego dziecka",
     "yes": "TAK",
     "no": "NIE",
-    "loading": "Ładowanie.."
+    "loading": "Ładowanie..",
+    "zipCodePlaceholder": "__-___"
 }
