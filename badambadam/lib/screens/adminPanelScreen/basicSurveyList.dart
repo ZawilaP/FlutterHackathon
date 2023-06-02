@@ -146,11 +146,6 @@ class _BasicSurveyListState extends State<BasicSurveyList> {
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
                               child: ListTile(
-                                onTap: () {
-                                  _showMyDialog(
-                                      filteredMap.keys.toList()[index],
-                                      filteredMap.values.toList()[index]);
-                                },
                                 title: Text(
                                   'Numer badania: $currentId',
                                   style: TextStyle(
@@ -160,9 +155,17 @@ class _BasicSurveyListState extends State<BasicSurveyList> {
                                 ),
                                 subtitle: Text(
                                     'Data wykonania badania: ${surveyId.replaceAll(r'-' + currentId, '')}'),
-                                trailing: Icon(
-                                  Icons.remove_red_eye_outlined,
-                                  color: Theme.of(context).colorScheme.primary,
+                                trailing: Tooltip(
+                                  message: 'Zobacz szczegóły',
+                                  child: IconButton(
+                                    icon: Icon(Icons.remove_red_eye_outlined),
+                                    color: Theme.of(context).colorScheme.primary,
+                                    onPressed: () {
+                                      _showMyDialog(
+                                        filteredMap.keys.toList()[index],
+                                        filteredMap.values.toList()[index]);
+                                    },
+                                  ),
                                 ),
                               ),
                             );
