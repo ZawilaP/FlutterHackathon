@@ -12,79 +12,16 @@ class AdvancedSurveyList extends StatefulWidget {
 
 class _AdvancedSurveyListState extends State<AdvancedSurveyList> {
   final Future<Map<String, dynamic>> _answers = getAdvancedSurveyRawAnswers();
+  final Future<Map<String, dynamic>> _answersCalculated =
+      getAdvancedSurveyAnswers();
   DatabaseReference reference =
       FirebaseDatabase.instance.ref().child('questions');
-
-  Widget listWidget(
-      {required Map question,
-      required int index,
-      required Map answers,
-      required String surveyId}) {
-    // var point = answers[int.parse(question['id']) - 1];
-    if (answers.keys.contains(question['id'])) {
-      var questionText = question['questions'][0].toString();
-      return Card(
-        child: ListTile(
-          // title: Text(questionText),
-          leading: Text(question['id']),
-          title: Text(answers[question['id']].toString()),
-
-          // trailing: Text(
-          //   '${point == 1 ? (question['is_inverted'] == "YES" ? "YES" : "NO") : (question['is_inverted'] == "YES" ? "NO" : "YES")} (${point.toString()})',
-          //   style: TextStyle(
-          //       color: point > 0
-          //           ? Colors.red[300]
-          //           : Theme.of(context).colorScheme.onPrimary),
-          // ),
-        ),
-      );
-    }
-
-    return SizedBox();
-  }
+  DatabaseReference referenceCalculatedPoints =
+      FirebaseDatabase.instance.ref().child('advancedAnswers');
 
   @override
   Widget build(BuildContext context) {
-    // Future<void> _showMyDialog(
-    //     String surveyId, Map<dynamic, dynamic> answers) async {
-    //   return showDialog<void>(
-    //     context: context,
-    //     barrierDismissible: false, // user must tap button!
-    //     builder: (BuildContext context) {
-    //       return AlertDialog(
-    //         title: Text(surveyId),
-    //         content: SizedBox(
-    //           width: MediaQuery.of(context).size.width * 0.5,
-    //           height: MediaQuery.of(context).size.width * 0.7,
-    //           child: FirebaseAnimatedList(
-    //             query: dbRef,
-    //             itemBuilder: (BuildContext context, DataSnapshot snapshot,
-    //                 Animation<double> animation, int index) {
-    //               Map question = snapshot.value as Map;
-    //               question['key'] = snapshot.key;
-    //               return listWidget(
-    //                   question: question,
-    //                   index: index,
-    //                   answers: answers,
-    //                   surveyId: surveyId);
-    //             },
-    //           ),
-    //         ),
-    //         actions: <Widget>[
-    //           TextButton(
-    //             child: const Text(
-    //               'Zamknij',
-    //               style: TextStyle(fontSize: 20),
-    //             ),
-    //             onPressed: () {
-    //               Navigator.of(context).pop();
-    //             },
-    //           ),
-    //         ],
-    //       );
-    //     },
-    //   );
-    // }
+  
 
     return FutureBuilder(
         future: _answers,
@@ -116,17 +53,6 @@ class _AdvancedSurveyListState extends State<AdvancedSurveyList> {
                         borderRadius: BorderRadius.circular(15.0),
                       ),
                       child: ListTile(
-                        onTap: () {
-                          // _showMyDialog(answersMap.keys.toList()[index],
-                          //     answersMap.values.toList()[index]);
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AdvancedSurveyDetail(
-                                        surveyId: surveyId,
-                                        answers: answersMap.values.toList()[index]
-                                      )));
-                        },
                         title: Text(
                           'Numer badania: $currentId',
                           style: TextStyle(
@@ -136,9 +62,30 @@ class _AdvancedSurveyListState extends State<AdvancedSurveyList> {
                         ),
                         subtitle: Text(
                             'Data wykonania badania: ${surveyId.replaceAll(r'-' + currentId, '')}'),
-                        trailing: Icon(
-                          Icons.remove_red_eye_outlined,
-                          color: Theme.of(context).colorScheme.primary,
+                        trailing: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.2,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Tooltip(
+                                message: 'Zobacz szczegóły',
+                                child: IconButton(
+                                  icon: Icon(Icons.remove_red_eye_outlined),
+                                  color: Theme.of(context).colorScheme.primary,
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                AdvancedSurveyDetail(
+                                                    surveyId: surveyId,
+                                                    answers: answersMap.values
+                                                        .toList()[index])));
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ));
                 });
