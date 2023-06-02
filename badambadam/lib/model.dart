@@ -312,10 +312,10 @@ Future<Map<String, dynamic>> getSurveyAnswers() async {
   return x;
 }
 
-Future<dynamic> getAdvancedSurveyAnswers() async {
+Future<Map<String, dynamic>> getAdvancedSurveyAnswers() async {
   final ref2 = FirebaseDatabase.instance.ref("advancedAnswers");
   final snapshot = await ref2.get();
-  var x = snapshot.value as Map;
+  var x = snapshot.value as Map<String, dynamic>;
   return x;
 }
 

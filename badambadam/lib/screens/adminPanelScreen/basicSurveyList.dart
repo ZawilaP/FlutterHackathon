@@ -50,7 +50,6 @@ class _BasicSurveyListState extends State<BasicSurveyList> {
     Future<void> _showMyDialog(String surveyId, List<dynamic> answers) async {
       return showDialog<void>(
         context: context,
-        barrierDismissible: false, // user must tap button!
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(surveyId),
