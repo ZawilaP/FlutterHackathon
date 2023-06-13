@@ -48,6 +48,10 @@ class _AdvancedSurveyDisplayScreenState
     return resultQuestionLists;
   }
 
+  int calculateAdvancedScore(Map<String, int> answers) {
+    return (answers.values.reduce((a, b) => a + b));
+  }
+
   @override
   Widget build(BuildContext context) {
     String currentLocale = Localizations.localeOf(context).languageCode;
@@ -301,6 +305,8 @@ class _AdvancedSurveyDisplayScreenState
                               writeCurrentAdvancedRawAnswers(
                                   allAdvancedAnswersDetail.value);
                               writeCurrentAdvancedAnswers(calculatedAnswers);
+                              saveCurrentAdvancedScore(calculateAdvancedScore(
+                                  calculatedAnswers.cast<String, int>()));
 
                               // used for pdf
                               addAllAdvancedRawAnswersMap(

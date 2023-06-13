@@ -22,6 +22,10 @@ class _SurveyWidgetState extends State<SurveyWidget> {
     });
   }
 
+  int calculateScore(Map<String, int> answers) {
+    return(answers.values.reduce((a, b) => a + b));
+  }
+
   @override
   Widget build(BuildContext context) {
     String currentLocale = Localizations.localeOf(context).languageCode;
@@ -120,6 +124,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                           writeCurrentAnswers();
                           addFinalScore();
                           saveMetric(guid);
+                          saveScore(guid, calculateScore(allAnswers.value));
                           Navigator.pushNamed(context, '/result');
                         }
                       },

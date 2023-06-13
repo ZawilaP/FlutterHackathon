@@ -6,18 +6,20 @@ import 'package:link_text/link_text.dart';
 import 'advanced_result_texts_pl.dart';
 
 class AdvancedResultDisplayScreen extends StatefulWidget {
-  const AdvancedResultDisplayScreen({super.key, this.score, this.allRawAnswers, this.allCalculatedAnswers});
+  const AdvancedResultDisplayScreen(
+      {super.key, this.score, this.allRawAnswers, this.allCalculatedAnswers});
 
   final int? score;
   final Map<String, List<String>>? allRawAnswers;
   final Map<dynamic, dynamic>? allCalculatedAnswers;
 
-
   @override
-  State<AdvancedResultDisplayScreen> createState() => _AdvancedResultDisplayScreenState();
+  State<AdvancedResultDisplayScreen> createState() =>
+      _AdvancedResultDisplayScreenState();
 }
 
-class _AdvancedResultDisplayScreenState extends State<AdvancedResultDisplayScreen> {
+class _AdvancedResultDisplayScreenState
+    extends State<AdvancedResultDisplayScreen> {
   @override
   Widget build(BuildContext context) {
     String intro = " ";
@@ -53,76 +55,86 @@ class _AdvancedResultDisplayScreenState extends State<AdvancedResultDisplayScree
         shadowColor: Theme.of(context).colorScheme.onPrimary,
         elevation: 8);
 
-    return ListView(
-      children: [
-        SizedBox(
-          height: 10,
-        ),
-        ScoreDisplayContainer(
-          score: widget.score,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: RichText(
-              text: TextSpan(children: [
-            TextSpan(
-                text: "Identyfikator Twojego badania wykonanego ",
-                style: DefaultTextStyle.of(context).style),
-            TextSpan(
-                text:
-                    "${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()} ",
-                style: DefaultTextStyle.of(context)
-                    .style
-                    .copyWith(fontWeight: FontWeight.bold)),
-            TextSpan(text: 'to: ', style: DefaultTextStyle.of(context).style),
-            TextSpan(
-                text: currentGuidUserNumber,
-                style: DefaultTextStyle.of(context)
-                    .style
-                    .copyWith(fontWeight: FontWeight.bold))
-          ])),
-        ),
-       AdvancedPDFSave(
-          score: widget.score,
-          allRawAnswers: widget.allRawAnswers,
-          allCalculatedAnswers: widget.allCalculatedAnswers,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Text(
-            intro,
-            style: widget.score! >= 2
-                ? TextStyle(fontWeight: FontWeight.bold)
-                : TextStyle(),
-          ),
-        ),
-        Divider(),
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Text(paragraph, style: TextStyle(fontWeight: FontWeight.bold),),
-        ),
-        Divider(),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(actions[0]),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-              children: actions.sublist(1, actions.length).map((e) {
-            return ListTile(
-              leading: Icon(Icons.check),
-              title: LinkText(e),
-            );
-          }).toList()),
-        ),
-      ],
-    );
+    return widget.allRawAnswers!.isNotEmpty
+        ? ListView(
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              ScoreDisplayContainer(
+                score: widget.score,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: RichText(
+                    text: TextSpan(children: [
+                  TextSpan(
+                      text: "Identyfikator Twojego badania wykonanego ",
+                      style: DefaultTextStyle.of(context).style),
+                  TextSpan(
+                      text:
+                          "${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()} ",
+                      style: DefaultTextStyle.of(context)
+                          .style
+                          .copyWith(fontWeight: FontWeight.bold)),
+                  TextSpan(
+                      text: 'to: ', style: DefaultTextStyle.of(context).style),
+                  TextSpan(
+                      text: currentGuidUserNumber,
+                      style: DefaultTextStyle.of(context)
+                          .style
+                          .copyWith(fontWeight: FontWeight.bold))
+                ])),
+              ),
+              AdvancedPDFSave(
+                score: widget.score,
+                allRawAnswers: widget.allRawAnswers,
+                allCalculatedAnswers: widget.allCalculatedAnswers,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  intro,
+                  style: widget.score! >= 2
+                      ? TextStyle(fontWeight: FontWeight.bold)
+                      : TextStyle(),
+                ),
+              ),
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  paragraph,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(actions[0]),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                    children: actions.sublist(1, actions.length).map((e) {
+                  return ListTile(
+                    leading: Icon(Icons.check),
+                    title: LinkText(e),
+                  );
+                }).toList()),
+              ),
+            ],
+          )
+        : Center(
+            child: Text(
+              'Proszę wrócić do strony głównej i wypełnić badanie ponownie.\nPrzepraszamy!',
+              textAlign: TextAlign.center,
+            ),
+          );
   }
 }
 
 class ScoreDisplayContainer extends StatelessWidget {
-
   const ScoreDisplayContainer({super.key, this.score});
   final int? score;
 
@@ -141,7 +153,10 @@ class ScoreDisplayContainer extends StatelessWidget {
           SizedBox(
             height: 15,
           ),
-          Text(score! >= 2 ? 'Dodatni' : 'Ujemny', style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),)
+          Text(
+            score! >= 2 ? 'Dodatni' : 'Ujemny',
+            style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+          )
         ],
       ),
     );

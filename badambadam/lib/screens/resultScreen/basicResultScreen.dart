@@ -59,90 +59,101 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
 
     var currentGuidUserNumber = currentGuid[currentGuid.length - 1];
 
-    return ListView(
-      children: [
-        SizedBox(
-          height: 10,
-        ),
-        ScoreDisplayContainer(
-          score: widget.score,
-          allAnswers: widget.allAnswers!.values.toList(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: RichText(
-              text: TextSpan(children: [
-            TextSpan(
-                text: "Identyfikator Twojego badania wykonanego ",
-                style: DefaultTextStyle.of(context).style),
-            TextSpan(
-                text:
-                    "${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()} ",
-                style: DefaultTextStyle.of(context)
-                    .style
-                    .copyWith(fontWeight: FontWeight.bold)),
-            TextSpan(text: 'to: ', style: DefaultTextStyle.of(context).style),
-            TextSpan(
-                text: currentGuidUserNumber,
-                style: DefaultTextStyle.of(context)
-                    .style
-                    .copyWith(fontWeight: FontWeight.bold))
-          ])),
-        ),
-        PDFSave(
-          score: widget.score,
-          allAnswers: widget.allAnswers!.values.toList(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Text(intro, style: TextStyle(fontWeight: FontWeight.bold)),
-        ),
-        Divider(),
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Text(paragraph),
-        ),
-        Divider(),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(actions[0]),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-              children: actions.sublist(1, actions.length).map((e) {
-            return ListTile(
-              leading: Icon(Icons.check),
-              title: LinkText(e),
-            );
-          }).toList()),
-        ),
-        widget.score! >= 3
-            ? Padding(
-                padding: const EdgeInsets.only(bottom: 15, top: 8),
-                child: Center(
-                  child: ElevatedButton(
-                    style: style,
-                    onPressed: () {
-                      // Navigate to the second screen using a named route.
-                      Navigator.pushNamed(context, '/advancedSurvey');
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24.0, vertical: 12),
-                      child: Text(
-                        'Wykonaj badanie uszczegóławiające M-CHAT R/F',
-                        style: DefaultTextStyle.of(context).style.copyWith(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+    return widget.allAnswers!.values.isNotEmpty
+        ? ListView(
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              ScoreDisplayContainer(
+                score: widget.score,
+                allAnswers: widget.allAnswers!.values.toList(),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: RichText(
+                    text: TextSpan(children: [
+                  TextSpan(
+                      text: "Identyfikator Twojego badania wykonanego ",
+                      style: DefaultTextStyle.of(context).style),
+                  TextSpan(
+                      text:
+                          "${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()} ",
+                      style: DefaultTextStyle.of(context)
+                          .style
+                          .copyWith(fontWeight: FontWeight.bold)),
+                  TextSpan(
+                      text: 'to: ', style: DefaultTextStyle.of(context).style),
+                  TextSpan(
+                      text: currentGuidUserNumber,
+                      style: DefaultTextStyle.of(context)
+                          .style
+                          .copyWith(fontWeight: FontWeight.bold))
+                ])),
+              ),
+              PDFSave(
+                score: widget.score,
+                allAnswers: widget.allAnswers!.values.toList(),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child:
+                    Text(intro, style: TextStyle(fontWeight: FontWeight.bold)),
+              ),
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(paragraph),
+              ),
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(actions[0]),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                    children: actions.sublist(1, actions.length).map((e) {
+                  return ListTile(
+                    leading: Icon(Icons.check),
+                    title: LinkText(e),
+                  );
+                }).toList()),
+              ),
+              widget.score! >= 3
+                  ? Padding(
+                      padding: const EdgeInsets.only(bottom: 15, top: 8),
+                      child: Center(
+                        child: ElevatedButton(
+                          style: style,
+                          onPressed: () {
+                            // Navigate to the second screen using a named route.
+                            Navigator.pushNamed(context, '/advancedSurvey');
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 24.0, vertical: 12),
+                            child: Text(
+                              'Wykonaj badanie uszczegóławiające M-CHAT R/F',
+                              style: DefaultTextStyle.of(context)
+                                  .style
+                                  .copyWith(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-              )
-            : SizedBox(),
-      ],
-    );
+                    )
+                  : SizedBox(),
+            ],
+          )
+        : Center(
+            child: Text(
+              'Proszę wrócić do strony głównej i wypełnić badanie ponownie.\nPrzepraszamy!',
+              textAlign: TextAlign.center,
+            ),
+          );
   }
 }
 
@@ -172,8 +183,6 @@ class ScoreDisplayContainer extends StatelessWidget {
           ),
           CircularPercentIndicator(
             radius: 120.0,
-            animation: true,
-            animationDuration: 500,
             lineWidth: 15.0,
             percent: score! / allAnswers!.length,
             center: Column(
