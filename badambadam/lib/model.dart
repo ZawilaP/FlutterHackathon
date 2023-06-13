@@ -245,6 +245,18 @@ Future<void> saveAdvancedSurvey(String guid, Map<dynamic, dynamic> data) async {
   await ref.set(data);
 }
 
+Future<void> saveScore(String guid, int score) async {
+  DatabaseReference ref = FirebaseDatabase.instance.ref(
+      "scores/${guid.replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}");
+  await ref.set(score);
+}
+
+Future<void> saveAdvancedScore(String guid, dynamic score) async {
+  DatabaseReference ref = FirebaseDatabase.instance.ref(
+      "advancedScores/${guid.replaceAll(".", "-").replaceAll(" ", "-").replaceAll(":", "-").replaceAll("_", "-")}");
+  await ref.set(score);
+}
+
 Future<void> saveAdvancedRawSurvey(
     String guid, Map<dynamic, dynamic> data) async {
   DatabaseReference ref = FirebaseDatabase.instance.ref(
@@ -272,13 +284,13 @@ Future<void> saveMetric(String guid) async {
         getMetricDataString("familyAtypicalAutismSigns"),
     "familyAspergerAutismSigns":
         getMetricDataString("familyAspergerAutismSigns"),
-    "familyDevelopmentIssues":
-        getMetricDataString("familyDevelopmentIssues"),
+    "familyDevelopmentIssues": getMetricDataString("familyDevelopmentIssues"),
     "familyOtherAutismSigns": getMetricDataString("familyOtherAutismSigns"),
     "weight": getMetricDataString("weight"),
     "familyInformation": getMetricDataString("familyInformation"),
-    "pregnancyWeek" : getMetricDataString("pregnancyWeek"),
-    "familyMemberAutismInformation": getMetricDataString("familyMemberAutismInformation")
+    "pregnancyWeek": getMetricDataString("pregnancyWeek"),
+    "familyMemberAutismInformation":
+        getMetricDataString("familyMemberAutismInformation")
   };
 
   await ref.set(data);
