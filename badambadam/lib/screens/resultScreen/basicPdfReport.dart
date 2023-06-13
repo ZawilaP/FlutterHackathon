@@ -72,7 +72,7 @@ class _PDFSaveState extends State<PDFSave> {
                           text: pw.TextSpan(children: <pw.TextSpan>[
                         pw.TextSpan(text: "Wynik: "),
                         pw.TextSpan(
-                            text: '${widget.score}/20',
+                            text: '${widget.score}/20 punktów',
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
                       ])),
                     ]),

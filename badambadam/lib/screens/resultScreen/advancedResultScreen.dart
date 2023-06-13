@@ -138,6 +138,20 @@ class ScoreDisplayContainer extends StatelessWidget {
   const ScoreDisplayContainer({super.key, this.score});
   final int? score;
 
+  String getScoreText(int? score) {
+    String currText = '';
+
+    if (score == 1) {
+      currText = 'punkt';
+    } else if (score! > 1 && score <= 4) {
+      currText = 'punkty';
+    } else {
+      currText = 'punktów';
+    }
+
+    return currText;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -154,8 +168,15 @@ class ScoreDisplayContainer extends StatelessWidget {
             height: 15,
           ),
           Text(
-            score! >= 2 ? 'Dodatni' : 'Ujemny',
-            style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+            '$score ${getScoreText(score)}',
+            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            score! >= 2 ? 'Wynik jest dodatni' : 'Wynik jest ujemny',
+            style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
           )
         ],
       ),

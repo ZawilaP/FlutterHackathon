@@ -130,6 +130,20 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
     return 'Brak odpowiedzi';
   }
 
+  String getScoreText(int? score) {
+    String currText = '';
+
+    if (score == 1) {
+      currText = 'punkt';
+    } else if (score! > 1 && score <= 4) {
+      currText = 'punkty';
+    } else {
+      currText = 'punktów';
+    }
+
+    return currText;
+  }
+
   createPDF() async {
     final fontBase = await rootBundle.load("assets/fonts/Poppins-Regular.ttf");
     final ttfBase = pw.Font.ttf(fontBase);
@@ -161,8 +175,11 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
                       pw.RichText(
                           text: pw.TextSpan(children: <pw.TextSpan>[
                         pw.TextSpan(text: "Wynik Twojego dziecka: "),
+                      ])),
+                      pw.RichText(
+                          text: pw.TextSpan(children: <pw.TextSpan>[
                         pw.TextSpan(
-                            text: widget.score! >= 2 ? 'Dodatni' : 'Ujemny',
+                            text: '${widget.score} ${getScoreText(widget.score)} - ${widget.score! >= 2 ? 'wynik dodatni.' : 'wynik ujemny.'}' ,
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
                       ])),
                     ]),
