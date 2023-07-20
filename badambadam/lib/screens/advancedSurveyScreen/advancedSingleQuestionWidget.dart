@@ -42,7 +42,7 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
               title: Padding(
                 padding: const EdgeInsets.only(bottom: 8, top: 8),
                 child: Text(
-                  'Pytanie ${widget.questionNode!.id.replaceAll('_0', '.')}',
+                  '${AppLocalizations.of(context)!.question} ${widget.questionNode!.id.replaceAll('_0', '.')}',
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!
