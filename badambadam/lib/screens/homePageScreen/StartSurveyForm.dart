@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import '../../main.dart';
 import '../../storage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 
 class StartSurveyForm extends StatefulWidget {
   const StartSurveyForm({Key? key, required this.onSubmit}) : super(key: key);
@@ -29,8 +26,7 @@ class _StartSurveyForm extends State<StartSurveyForm> {
 
   @override
   Widget build(BuildContext context) {
-    final myAppState = context.watch<MyAppState>();
-
+    
     final ButtonStyle style = ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
