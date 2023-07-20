@@ -6,5 +6,8 @@
     "yes": "TAK",
     "no": "NIE",
     "loading": "Ładowanie..",
-    "zipCodePlaceholder": "__-___"
+    "zipCodePlaceholder": "__-___",
+    "surveyStart": "Rozpocznij ankietę",
+    "dateInput1" : "Wprowadź datę w formacie rrrr-mm-dd.",
+    "dateInput2" : "Dziecko powinno mieć między 16 a 30 miesięcy."
 }

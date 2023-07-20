@@ -5,5 +5,8 @@
   "yes": "YES",
   "no": "NO",
   "loading": "Loading..",
-  "zipCodePlaceholder": "__-___"
+  "zipCodePlaceholder": "__-___",
+  "surveyStart": "Start the survey",
+  "dateInput1" : "Input the date in format yyyy-mm-dd.",
+  "dateInput2" : "Your child's age should be between 16 and 30 months."
 }
