@@ -81,7 +81,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
     if (questionType == 'Simple_Yes_No') {
       var isReversed = reversedQuestionsIds.contains(questionId);
       return noAnswer
-          ? 'Brak odpowiedzi'
+          ? 'Brak odpowiedzi.'
           : (answers[0] == 'PASS'
               ? (isReversed ? 'NIE' : 'TAK')
               : (isReversed ? 'TAK' : 'NIE'));
@@ -159,6 +159,8 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
 
     var currentGuidUserNumber = currentGuid[currentGuid.length - 1];
 
+    bool noAnswerFlag = false;
+
     pdf.addPage(
       pw.MultiPage(
         theme: pw.ThemeData.withFont(base: ttfBase),
@@ -179,7 +181,8 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
                       pw.RichText(
                           text: pw.TextSpan(children: <pw.TextSpan>[
                         pw.TextSpan(
-                            text: '${widget.score} ${getScoreText(widget.score)} - ${widget.score! >= 2 ? 'wynik dodatni.' : 'wynik ujemny.'}' ,
+                            text:
+                                '${widget.score} ${getScoreText(widget.score)} - ${widget.score! >= 2 ? 'wynik dodatni.' : 'wynik ujemny.'}',
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
                       ])),
                     ]),
@@ -269,7 +272,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
               headerDecoration: pw.BoxDecoration(
                 color: PdfColor.fromHex('#FFB200'),
               ),
-              rowDecoration: const pw.BoxDecoration(
+              rowDecoration: pw.BoxDecoration(
                 border: pw.Border(
                   bottom: pw.BorderSide(
                     width: .5,
@@ -282,7 +285,12 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
                 String questionType = questionList[questionList.length - 1];
                 List<String>? answers = widget
                     .allRawAnswers![widget.allRawAnswers!.keys.toList()[index]];
-                return <String>[
+                var noAnswerCount =
+                    answers!.where((element) => element == '-1');
+
+                bool noAnswer = answers.length == noAnswerCount.length;
+
+                return noAnswer ? <String>[''] : <String>[
                   widget.allRawAnswers!.keys
                       .toList()[index]
                       .replaceAll('_0', '.'),
