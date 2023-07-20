@@ -1,6 +1,7 @@
 import 'package:badambadam/storage.dart';
 import 'package:badambadam/screens/metricScreen/binaryMetricQuestionWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AdvancedMetricRoute extends StatelessWidget {
   const AdvancedMetricRoute({super.key});
