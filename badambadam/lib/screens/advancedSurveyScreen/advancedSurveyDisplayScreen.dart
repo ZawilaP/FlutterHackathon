@@ -374,9 +374,7 @@ class _AdvancedSurveyDisplayScreenState
 
     // 3
     if (answers.keys.contains("3")) {
-      if (answers["3_01"]!.contains("PASS_YES")) {
-        resultsMap["3"] = 1;
-      }
+      resultsMap["3"] = answers["3_01"]!.contains("PASS_YES") ? 0 : 1;
     }
     //4
     if (answers.keys.contains("4")) {
