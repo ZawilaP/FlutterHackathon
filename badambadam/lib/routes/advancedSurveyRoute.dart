@@ -118,30 +118,30 @@ class AdvancedSurveyRoute extends StatelessWidget {
           ),
         ),
         body: AdvancedSurveyDisplayScreen(
-          // allPrimaryAnswers: getAllAnswersMap().cast<String, int>(),
+          allPrimaryAnswers: getAllAnswersMap().cast<String, int>(),
           // I leave this one for testing
-          allPrimaryAnswers: Map<String, int>.from({
-            '1': 1,
-            '2': 1,
-            '3': 1,
-            '4': 0,
-            '5': 0,
-            '6': 0,
-            '7': 0,
-            '8': 0,
-            '9': 0,
-            '10': 0,
-            '11': 0,
-            '12': 0,
-            '13': 0,
-            '14': 0,
-            '15': 0,
-            '16': 0,
-            '17': 0,
-            '18': 0,
-            '19': 0,
-            '20': 0
-          }),
+          // allPrimaryAnswers: Map<String, int>.from({
+          //   '1': 1,
+          //   '2': 1,
+          //   '3': 1,
+          //   '4': 0,
+          //   '5': 0,
+          //   '6': 0,
+          //   '7': 0,
+          //   '8': 0,
+          //   '9': 0,
+          //   '10': 0,
+          //   '11': 0,
+          //   '12': 0,
+          //   '13': 0,
+          //   '14': 0,
+          //   '15': 0,
+          //   '16': 0,
+          //   '17': 0,
+          //   '18': 0,
+          //   '19': 0,
+          //   '20': 0
+          // }),
         ));
   }
 }
