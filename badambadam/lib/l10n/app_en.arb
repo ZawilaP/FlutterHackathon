@@ -55,5 +55,9 @@
   "brotherOne": "Brother (first)",
   "brotherTwo": "Brother (second)",
   "brotherThree": "Brother (third)",
-  "whoIsTheOtherPerson": "Who is the other person?"
+  "whoIsTheOtherPerson": "Who is the other person?",
+  "submitAnswers": "Submit answers",
+  "hasToAnswer1": "Please respond YES or NO to every question.",
+  "hasToAnswer2": "Think about how your child behaves on a daily basis.",
+  "hasToAnswer3": "Answer NO if you saw a behaviour several times but the child usually behaves differently"
 }

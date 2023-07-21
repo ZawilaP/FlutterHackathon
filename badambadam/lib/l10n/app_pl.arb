@@ -56,5 +56,9 @@
     "brotherOne": "Brat (pierwszy)",
     "brotherTwo": "Brat (drugi)",
     "brotherThree": "Brat (trzeci)",
-    "whoIsTheOtherPerson": "Kim jest inna osoba?"
+    "whoIsTheOtherPerson": "Kim jest inna osoba?",
+    "submitAnswers": "Zatwierdź odpowiedzi",
+    "hasToAnswer1": "Proszę odpowiedzieć TAK lub NIE na każde pytanie.",
+    "hasToAnswer2": "Proszę pomyśleć o tym, w jaki sposób dziecko zachowuje się na codzień.",
+    "hasToAnswer3": "Jeśli widział/a Pan/Pani zachowanie kilka razy, ale dziecko zwykle się tak nie zachowuje, proszę zaznaczyć NIE."
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../model.dart';
 import 'singleQuestionWidget.dart';
 import '../../storage.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SurveyWidget extends StatefulWidget {
   SurveyWidget({
@@ -23,7 +24,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
   }
 
   int calculateScore(Map<String, int> answers) {
-    return(answers.values.reduce((a, b) => a + b));
+    return (answers.values.reduce((a, b) => a + b));
   }
 
   @override
@@ -34,7 +35,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
       String locale = currentLocale;
       lastLocale = locale;
       FakeBackendSingleton().getSurvey(null, locale).then(showSurvey);
-      return Center(child: Text('Ładowanie...'));
+      return Center(child: Text(AppLocalizations.of(context).loading));
     } else {
       List<Node> topLevelSurvey = survey!.getTopLevelNodesOnly();
       List<String> topLevelQuestions = [];
@@ -53,21 +54,18 @@ class _SurveyWidgetState extends State<SurveyWidget> {
           shadowColor: Theme.of(context).colorScheme.onPrimary,
           elevation: 8);
 
-      Future<void> _showMyDialog() async {
+      Future<void> showMyDialog() async {
         return showDialog<void>(
           context: context,
-          barrierDismissible: false, // user must tap button!
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text(
-                  'Proszę odpowiedzieć TAK lub NIE na każde pytanie.'),
+              title: Text(AppLocalizations.of(context).hasToAnswer1),
               content: SingleChildScrollView(
                 child: ListBody(
-                  children: const <Widget>[
+                  children: <Widget>[
+                    Text(AppLocalizations.of(context).hasToAnswer2),
                     Text(
-                        'Proszę pomyśleć o tym, w jaki sposób dziecko zachowuje się na codzień.'),
-                    Text(
-                      'Jeśli widział/a Pan/Pani zachowanie kilka razy, ale dziecko zwykle się tak nie zachowuje, proszę zaznaczyć NIE.',
+                      AppLocalizations.of(context).hasToAnswer3,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -75,8 +73,8 @@ class _SurveyWidgetState extends State<SurveyWidget> {
               ),
               actions: <Widget>[
                 TextButton(
-                  child: const Text(
-                    'Zamknij',
+                  child: Text(
+                    AppLocalizations.of(context).close,
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
@@ -115,9 +113,10 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                       style: style,
                       onPressed: () {
                         if (allAnswers.value.values.contains(-1)) {
-                          _showMyDialog();
+                          showMyDialog();
                         } else {
-                          String guid = "${DateTime.now().toString().trim()}-${generateSixDigitString()}";
+                          String guid =
+                              "${DateTime.now().toString().trim()}-${generateSixDigitString()}";
                           updateGuidList(guid);
                           addAllTopLevelNodes(topLevelQuestions);
                           addAllAnswersMap(allAnswers.value);
@@ -132,7 +131,7 @@ class _SurveyWidgetState extends State<SurveyWidget> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 8.0, horizontal: 11),
                         child: Text(
-                          'Zatwierdź odpowiedzi',
+                          AppLocalizations.of(context).submitAnswers,
                           style: TextStyle(
                               fontWeight: FontWeight.w700, fontSize: 20),
                         ),

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import '../../model.dart';
 import '../../storage.dart';
 import 'radioResponseWidget.dart';
-import 'advancedTextFieldWidget.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AdvancedSurveyDisplayScreen extends StatefulWidget {
   AdvancedSurveyDisplayScreen({
     super.key,
@@ -630,7 +629,7 @@ class RadioButtonsWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8, top: 8),
                 child: Text(
-                  'Pytanie ${questionNode.id.replaceAll('_0', '.')}',
+                  '${AppLocalizations.of(context).question}  ${questionNode.id.replaceAll('_0', '.')}',
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!
@@ -734,7 +733,7 @@ class _SingleSelectsWidgetState extends State<SingleSelectsWidget>
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8, top: 8),
                   child: Text(
-                    'Pytanie ${widget.questionNode.id.replaceAll('_0', '.')}',
+                    '${AppLocalizations.of(context).question} ${widget.questionNode.id.replaceAll('_0', '.')}',
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge!
