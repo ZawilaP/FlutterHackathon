@@ -7,7 +7,7 @@
     "no": "NIE",
     "surveyStart": "Rozpocznij ankietę",
     "dateInput1" : "Wprowadź datę w formacie rrrr-mm-dd.",
-    "dateInput2" : "Dziecko powinno mieć między 16 a 30 miesięcy."
+    "dateInput2" : "Dziecko powinno mieć między 16 a 30 miesięcy.",
     "loading": "Ładowanie...",
     "zipCodePlaceholder": "__-___",
     "answerEveryQuestion": "Proszę odpowiedzieć na każde pytanie!",
@@ -27,7 +27,7 @@
     "legalGuardian": "Opiekun prawny",
     "someoneElse": "Inna osoba",
     "choosePerson": "Wybierz osobę",
-    "whichPregnancyWeek": "Dziecko urodzone w tygodniu ciąży"
+    "whichPregnancyWeek": "Dziecko urodzone w tygodniu ciąży",
     "chooseWeek": "Wybierz tydzień",
     "birthWeight": "Proszę podać wagę urodzeniową dziecka (w gramach)",
     "geneticDiseases": "Czy dziecko ma choroby genetyczne?",

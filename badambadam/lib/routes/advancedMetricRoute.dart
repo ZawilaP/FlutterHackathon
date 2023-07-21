@@ -23,11 +23,11 @@ class AdvancedMetricRoute extends StatelessWidget {
         barrierDismissible: false, // user must tap button!
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text(AppLocalizations.of(context)!.answerEveryQuestion),
+            title: Text(AppLocalizations.of(context).answerEveryQuestion),
             actions: <Widget>[
               TextButton(
-                child: const Text(
-                  AppLocalizations.of(context)!.close,
+                child: Text(
+                  AppLocalizations.of(context).close,
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
@@ -46,12 +46,12 @@ class AdvancedMetricRoute extends StatelessWidget {
         barrierDismissible: false, // user must tap button!
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text(
-                AppLocalizations.of(context)!.changesWontBeSaved),
+            title: Text(
+                AppLocalizations.of(context).changesWontBeSaved),
             actions: <Widget>[
               TextButton(
-                child: const Text(
-                  AppLocalizations.of(context)!.no,
+                child: Text(
+                  AppLocalizations.of(context).no,
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
@@ -60,8 +60,8 @@ class AdvancedMetricRoute extends StatelessWidget {
                 },
               ),
               TextButton(
-                child: const Text(
-                  AppLocalizations.of(context)!.yes,
+                child: Text(
+                  AppLocalizations.of(context).yes,
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
@@ -81,12 +81,12 @@ class AdvancedMetricRoute extends StatelessWidget {
         barrierDismissible: false, // user must tap button!
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text(
-                AppLocalizations.of(context)!.changesWontBeSaved),
+            title: Text(
+                AppLocalizations.of(context).changesWontBeSaved),
             actions: <Widget>[
               TextButton(
-                child: const Text(
-                  AppLocalizations.of(context)!.no,
+                child: Text(
+                  AppLocalizations.of(context).no,
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
@@ -95,8 +95,8 @@ class AdvancedMetricRoute extends StatelessWidget {
                 },
               ),
               TextButton(
-                child: const Text(
-                  AppLocalizations.of(context)!.yes,
+                child: Text(
+                  AppLocalizations.of(context).yes,
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
@@ -129,37 +129,37 @@ class AdvancedMetricRoute extends StatelessWidget {
           children: <Widget>[
             MultiSelectMetricQuestion(
                 questionId: "1",
-                questionText: AppLocalizations.of(context)!.familyMemberAutismInformation,
+                questionText: AppLocalizations.of(context).familyMemberAutismInformation,
                 localParamName: "familyMemberAutismInformation"),
             BinaryMetricQuestion(
                 questionId: "2",
-                questionText: AppLocalizations.of(context)!.familyAutismSigns,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).familyAutismSigns,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "familyAutismSigns"),
             BinaryMetricQuestion(
                 questionId: "3",
-                questionText: AppLocalizations.of(context)!.familyAtypicalAutismSigns,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).familyAtypicalAutismSigns,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "familyAtypicalAutismSigns"),
             BinaryMetricQuestion(
                 questionId: "4",
-                questionText: AppLocalizations.of(context)!.familyAspergerAutismSigns,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).familyAspergerAutismSigns,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "familyAspergerAutismSigns"),
             BinaryMetricQuestion(
                 questionId: "5",
-                questionText: AppLocalizations.of(context)!.familyDevelopmentIssues,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).familyDevelopmentIssues,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "familyDevelopmentIssues"),
             BinaryMetricQuestion(
                 questionId: "6",
-                questionText: AppLocalizations.of(context)!.familyOtherAutismSigns,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).familyOtherAutismSigns,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "familyOtherAutismSigns"),
             ElevatedButton(
                 style: style,
@@ -178,7 +178,7 @@ class AdvancedMetricRoute extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(vertical: 8.0, horizontal: 11),
                   child: Text(
-                    AppLocalizations.of(context)!.proceedToSurvey,
+                    AppLocalizations.of(context).proceedToSurvey,
                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
                   ),
                 )),
@@ -207,21 +207,22 @@ class _MultiSelectMetricQuestionState extends State<MultiSelectMetricQuestion>
     with AutomaticKeepAliveClientMixin {
   List<bool> _selectedAnswers = [];
   List<String> _selectedFamilyMembers = [];
-  List<String> familyMembers = <String>[
-    AppLocalizations.of(context)!.father,
-    AppLocalizations.of(context)!.mother,
-    AppLocalizations.of(context)!.sisterOne,
-    AppLocalizations.of(context)!.sisterTwo,
-    AppLocalizations.of(context)!.sisterThree,
-    AppLocalizations.of(context)!.brotherOne,
-    AppLocalizations.of(context)!.brotherTwo,
-    AppLocalizations.of(context)!.brotherThree,
-    AppLocalizations.of(context)!.grandpa,
-    AppLocalizations.of(context)!.grandma,
-    AppLocalizations.of(context)!.otherFromFamily,
-    AppLocalizations.of(context)!.legalGuardian,
-    AppLocalizations.of(context)!.someoneElse
+    List<String> familyMembers = <String>[
+    'Ojciec',
+    'Matka',
+    'Siostra (pierwsza)',
+    'Siostra (druga)',
+    'Siostra (trzecia)',
+    'Brat (pierwszy)',
+    'Brat (drugi)',
+    'Brat (trzeci)',
+    'Dziadek',
+    'Babcia',
+    'Inna osoba z rodziny',
+    'Opiekun prawny',
+    'Inna osoba'
   ];
+
   bool _otherFlag = false;
 
   final myController = TextEditingController();
@@ -267,6 +268,23 @@ class _MultiSelectMetricQuestionState extends State<MultiSelectMetricQuestion>
   Widget build(BuildContext context) {
     super.build(context);
 
+
+  familyMembers = <String>[
+    AppLocalizations.of(context).mother,
+    AppLocalizations.of(context).sisterOne,
+    AppLocalizations.of(context).father,
+    AppLocalizations.of(context).sisterTwo,
+    AppLocalizations.of(context).sisterThree,
+    AppLocalizations.of(context).brotherOne,
+    AppLocalizations.of(context).brotherTwo,
+    AppLocalizations.of(context).brotherThree,
+    AppLocalizations.of(context).grandpa,
+    AppLocalizations.of(context).grandma,
+    AppLocalizations.of(context).otherFromFamily,
+    AppLocalizations.of(context).legalGuardian,
+    AppLocalizations.of(context).someoneElse
+  ];
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
       child: Card(
@@ -287,7 +305,7 @@ class _MultiSelectMetricQuestionState extends State<MultiSelectMetricQuestion>
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8, top: 8),
                         child: Text(
-                          '${AppLocalizations.of(context)!.question} ${widget.questionId}',
+                          '${AppLocalizations.of(context).question} ${widget.questionId}',
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!
@@ -327,7 +345,7 @@ class _MultiSelectMetricQuestionState extends State<MultiSelectMetricQuestion>
 
                           print(_selectedFamilyMembers);
 
-                          if (familyMembers[index] == AppLocalizations.of(context)!.someoneElse) {
+                          if (familyMembers[index] == AppLocalizations.of(context).someoneElse) {
                             _otherFlag = true;
                           } else {
                             _otherFlag = false;
@@ -353,10 +371,10 @@ class _MultiSelectMetricQuestionState extends State<MultiSelectMetricQuestion>
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide(color: Colors.grey)),
-                          hintText: AppLocalizations.of(context)!.whoIsTheOtherPerson),
+                          hintText: AppLocalizations.of(context).whoIsTheOtherPerson),
                       onChanged: (text) {
                         _selectedFamilyMembers[_selectedFamilyMembers.length -
-                            1] = '${AppLocalizations.of(context)!.someoneElse}+${myController.text}';
+                            1] = '${AppLocalizations.of(context).someoneElse}+${myController.text}';
                         setMetricDataString(widget.localParamName,
                             _selectedFamilyMembers.toString());
                       },

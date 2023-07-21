@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../model.dart';
 import '../../storage.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SelectMetricQuestion extends StatefulWidget {
   SelectMetricQuestion(
@@ -63,7 +64,7 @@ class _SelectMetricQuestionState extends State<SelectMetricQuestion>
                 title: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
-                  child: Text('Pytanie ${widget.questionId}',
+                  child: Text('${AppLocalizations.of(context).question} ${widget.questionId}',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Theme.of(context).colorScheme.primary)),
                 ),

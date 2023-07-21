@@ -26,11 +26,11 @@ class MetricRoute extends StatelessWidget {
         barrierDismissible: false, // user must tap button!
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text(AppLocalizations.of(context)!.answerEveryQuestion),
+            title:  Text(AppLocalizations.of(context).answerEveryQuestion),
             actions: <Widget>[
               TextButton(
-                child: const Text(
-                  AppLocalizations.of(context)!.close,
+                child:  Text(
+                  AppLocalizations.of(context).close,
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
@@ -49,12 +49,12 @@ class MetricRoute extends StatelessWidget {
         barrierDismissible: false, // user must tap button!
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text(
-                AppLocalizations.of(context)!.changesWontBeSaved),
+            title:  Text(
+                AppLocalizations.of(context).changesWontBeSaved),
             actions: <Widget>[
               TextButton(
-                child: const Text(
-                  AppLocalizations.of(context)!.no,
+                child: Text(
+                  AppLocalizations.of(context).no,
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
@@ -63,8 +63,8 @@ class MetricRoute extends StatelessWidget {
                 },
               ),
               TextButton(
-                child: const Text(
-                  AppLocalizations.of(context)!.no,
+                child: Text(
+                  AppLocalizations.of(context).yes,
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
@@ -97,85 +97,85 @@ class MetricRoute extends StatelessWidget {
           children: <Widget>[
             PostalCodeInput(
               questionId: "1",
-              questionText: AppLocalizations.of(context)!.providePostalCode,
+              questionText: AppLocalizations.of(context).providePostalCode,
             ),
             SelectMetricQuestion(
                 questionId: "2",
-                questionText: AppLocalizations.of(context)!.childGender,
-                valueList: <String>[AppLocalizations.of(context)!.male, AppLocalizations.of(context)!.female],
-                hintText: AppLocalizations.of(context)!.chooseGender,
+                questionText: AppLocalizations.of(context).childGender,
+                valueList: <String>[AppLocalizations.of(context).male, AppLocalizations.of(context).female],
+                hintText: AppLocalizations.of(context).chooseGender,
                 localParamName: "gender"),
             SelectMetricQuestion(
                 questionId: "3",
-                questionText: AppLocalizations.of(context)!.whoIsFillingTheSurvey,
+                questionText: AppLocalizations.of(context).whoIsFillingTheSurvey,
                 valueList: <String>[
-                  AppLocalizations.of(context)!.father,
-                  AppLocalizations.of(context)!.mother,
-                  AppLocalizations.of(context)!.grandpa,
-                  AppLocalizations.of(context)!.grandma,
-                  AppLocalizations.of(context)!.otherFromFamily,
-                  AppLocalizations.of(context)!.legalGuardian,
-                  AppLocalizations.of(context)!.someoneElse
+                  AppLocalizations.of(context).father,
+                  AppLocalizations.of(context).mother,
+                  AppLocalizations.of(context).grandpa,
+                  AppLocalizations.of(context).grandma,
+                  AppLocalizations.of(context).otherFromFamily,
+                  AppLocalizations.of(context).legalGuardian,
+                  AppLocalizations.of(context).someoneElse
                 ],
-                hintText: AppLocalizations.of(context)!.choosePerson,
+                hintText: AppLocalizations.of(context).choosePerson,
                 localParamName: "familyInformation"),
             SelectMetricQuestion(
                 questionId: "4",
-                questionText: AppLocalizations.of(context)!.whichPregnancyWeek,
+                questionText: AppLocalizations.of(context).whichPregnancyWeek,
                 localParamName: "pregnancyWeek",
-                hintText: AppLocalizations.of(context)!.chooseWeek,
+                hintText: AppLocalizations.of(context).chooseWeek,
                 valueList: List.generate(27, (i) => (i + 16).toString())),
             WeightInput(
               questionId: "5",
-              questionText: AppLocalizations.of(context)!.birthWeight,
+              questionText: AppLocalizations.of(context).birthWeight,
             ),
             BinaryMetricQuestion(
                 questionId: "6",
-                questionText: AppLocalizations.of(context)!.geneticDiseases,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).geneticDiseases,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "geneticDiseases"),
             BinaryMetricQuestion(
                 questionId: "7",
-                questionText: AppLocalizations.of(context)!.healthIssues,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).healthIssues,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "healthIssues"),
             BinaryMetricQuestion(
                 questionId: "8",
-                questionText: AppLocalizations.of(context)!.visionIssues,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).visionIssues,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "visionIssues"),
             BinaryMetricQuestion(
                 questionId: "9",
-                questionText: AppLocalizations.of(context)!.hearingIssues,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).hearingIssues,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "hearingIssues"),
             BinaryMetricQuestion(
                 questionId: "10",
-                questionText: AppLocalizations.of(context)!.mobilityIssues,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).mobilityIssues,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "mobilityIssues"),
             BinaryMetricQuestion(
                 questionId: "11",
-                questionText: AppLocalizations.of(context)!.mobilityRehab,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).mobilityRehab,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "mobilityRehab"),
             BinaryMetricQuestion(
                 questionId: "12",
-                questionText: AppLocalizations.of(context)!.skillsIssues,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).skillsIssues,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "skillsIssues"),
             BinaryMetricQuestion(
                 questionId: "13",
-                questionText: AppLocalizations.of(context)!.autismSigns,
-                firstOption: AppLocalizations.of(context)!.yes,
-                secondOption: AppLocalizations.of(context)!.no,
+                questionText: AppLocalizations.of(context).autismSigns,
+                firstOption: AppLocalizations.of(context).yes,
+                secondOption: AppLocalizations.of(context).no,
                 localParamName: "autismSigns"),
             ElevatedButton(
                 style: style,
@@ -195,7 +195,7 @@ class MetricRoute extends StatelessWidget {
                       getPostalCode() == "") {
                     _showMyDialog();
                   } else {
-                    if (getMetricDataString("autismSigns") == AppLocalizations.of(context)!.yes) {
+                    if (getMetricDataString("autismSigns") == AppLocalizations.of(context).yes) {
                       Navigator.pushNamed(context, '/advancedMetric');
                     } else {
                       Navigator.pushNamed(context, '/survey');
@@ -206,7 +206,7 @@ class MetricRoute extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(vertical: 8.0, horizontal: 11),
                   child: Text(
-                    AppLocalizations.of(context)!.continueForward,
+                    AppLocalizations.of(context).continueForward,
                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
                   ),
                 )),
@@ -246,7 +246,7 @@ class _PostalCodeInputState extends State<PostalCodeInput>
                 title: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
-                  child: Text('${AppLocalizations.of(context)!.question} ${widget.questionId}',
+                  child: Text('${AppLocalizations.of(context).question} ${widget.questionId}',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Theme.of(context).colorScheme.primary)),
                 ),
@@ -260,7 +260,7 @@ class _PostalCodeInputState extends State<PostalCodeInput>
               child: TextFormField(
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.home),
-                  hintText: AppLocalizations.of(context)!.zipCodePlaceholder,
+                  hintText: AppLocalizations.of(context).zipCodePlaceholder,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                 ),
@@ -324,7 +324,7 @@ class _WeightInputState extends State<WeightInput>
                 title: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
-                  child: Text('${AppLocalizations.of(context)!.question} ${widget.questionId}',
+                  child: Text('${AppLocalizations.of(context).question} ${widget.questionId}',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Theme.of(context).colorScheme.primary)),
                 ),
@@ -337,14 +337,14 @@ class _WeightInputState extends State<WeightInput>
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               child: TextFormField(
                 decoration: InputDecoration(
-                  hintText: AppLocalizations.of(context)!.weightAtBirth,
+                  hintText: AppLocalizations.of(context).weightAtBirth,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                 ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (String? text) {
-                  const String errorMessage =
-                      AppLocalizations.of(context)!.weightMustBeCorrect;
+                   String errorMessage =
+                      AppLocalizations.of(context).weightMustBeCorrect;
                   if (text == null) {
                     return errorMessage;
                   }
