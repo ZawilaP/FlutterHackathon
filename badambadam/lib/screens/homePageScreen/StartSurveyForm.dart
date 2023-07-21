@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import '../../main.dart';
 import '../../storage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 
 class StartSurveyForm extends StatefulWidget {
   const StartSurveyForm({Key? key, required this.onSubmit}) : super(key: key);
@@ -29,8 +26,7 @@ class _StartSurveyForm extends State<StartSurveyForm> {
 
   @override
   Widget build(BuildContext context) {
-    final myAppState = context.watch<MyAppState>();
-
+    
     final ButtonStyle style = ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -49,23 +45,20 @@ class _StartSurveyForm extends State<StartSurveyForm> {
             controller: selectDate,
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.calendar_today_rounded),
-              labelText: AppLocalizations.of(context)!.birthPlaceholder,
+              labelText: AppLocalizations.of(context).birthPlaceholder,
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))),
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (selectDate) {
-              if (selectDate == null || selectDate.isEmpty) {
-                return 'Wprowadź datę.';
-              }
-              if (DateTime.tryParse(selectDate) == null) {
-                return 'Wprowadź datę w formacie rrrr-mm-dd.';
+              if (selectDate == null || selectDate.isEmpty || DateTime.tryParse(selectDate) == null) {
+                return AppLocalizations.of(context).dateInput1;
               }
               if (DateTime.parse(selectDate)
                       .isAfter(DateTime.now().subtract(Duration(days: 487))) ||
                   DateTime.parse(selectDate)
                       .isBefore(DateTime.now().subtract(Duration(days: 913)))) {
-                return 'Dziecko powinno mieć między 16 a 30 miesięcy.';
+                return AppLocalizations.of(context).dateInput2;
               }
               return null;
             },
@@ -105,7 +98,7 @@ class _StartSurveyForm extends State<StartSurveyForm> {
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 11),
-                child: Text('Rozpocznij ankietę',
+                child: Text(AppLocalizations.of(context).surveyStart,
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
               ),

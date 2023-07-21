@@ -5,6 +5,9 @@
     "birthPlaceholder": "Wybierz datę urodzin swojego dziecka",
     "yes": "TAK",
     "no": "NIE",
+    "surveyStart": "Rozpocznij ankietę",
+    "dateInput1" : "Wprowadź datę w formacie rrrr-mm-dd.",
+    "dateInput2" : "Dziecko powinno mieć między 16 a 30 miesięcy."
     "loading": "Ładowanie...",
     "zipCodePlaceholder": "__-___",
     "answerEveryQuestion": "Proszę odpowiedzieć na każde pytanie!",
@@ -53,5 +56,5 @@
     "brotherOne": "Brat (pierwszy)",
     "brotherTwo": "Brat (drugi)",
     "brotherThree": "Brat (trzeci)",
-    "whoIsTheOtherPerson": "Kim jest inna osoba?",
+    "whoIsTheOtherPerson": "Kim jest inna osoba?"
 }
