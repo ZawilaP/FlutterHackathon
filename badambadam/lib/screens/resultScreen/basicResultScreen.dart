@@ -1,10 +1,10 @@
 import 'package:badambadam/screens/resultScreen/basicPdfReport.dart';
 import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
-import 'package:badambadam/screens/resultScreen/result_texts_pl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:link_text/link_text.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResultDisplayScreen extends StatefulWidget {
   const ResultDisplayScreen({this.score, this.allAnswers});
@@ -26,17 +26,35 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
     // setting texts based on child's score
     setState(() {
       if (widget.score! <= 2) {
-        intro = noRiskIntro;
-        paragraph = noRiskParagraph;
-        actions = noRiskActions;
+        intro = AppLocalizations.of(context).noRiskIntro;
+        paragraph = AppLocalizations.of(context).noRiskParagraph;
+        actions = [
+          AppLocalizations.of(context).noRiskAction1,
+          AppLocalizations.of(context).noRiskAction2,
+          AppLocalizations.of(context).noRiskAction3,
+          AppLocalizations.of(context).noRiskAction4
+        ];
       } else if (widget.score! >= 3 && widget.score! <= 7) {
-        intro = smallRiskIntro;
-        paragraph = smallRiskParagraph;
-        actions = smallRiskActions;
+        intro = AppLocalizations.of(context).smallRiskIntro;
+        paragraph = AppLocalizations.of(context).smallRiskParagraph;
+        actions = [
+          AppLocalizations.of(context).smallRiskAction1,
+          AppLocalizations.of(context).smallRiskAction2,
+          AppLocalizations.of(context).smallRiskAction3,
+          AppLocalizations.of(context).smallRiskAction4,
+          AppLocalizations.of(context).smallRiskAction5,
+        ];
       } else {
-        intro = bigRiskIntro;
-        paragraph = bigRiskParagraph;
-        actions = bigRiskActions;
+        intro = AppLocalizations.of(context).bigRiskIntro;
+        paragraph = AppLocalizations.of(context).bigRiskParagraph;
+        actions = [
+          AppLocalizations.of(context).bigRiskAction1,
+          AppLocalizations.of(context).bigRiskAction2,
+          AppLocalizations.of(context).bigRiskAction3,
+          AppLocalizations.of(context).bigRiskAction4,
+          AppLocalizations.of(context).bigRiskAction5,
+          AppLocalizations.of(context).bigRiskAction6,
+        ];
       }
     });
 
@@ -74,7 +92,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
                 child: RichText(
                     text: TextSpan(children: [
                   TextSpan(
-                      text: "Identyfikator Twojego badania wykonanego ",
+                      text: AppLocalizations.of(context).surveyId,
                       style: DefaultTextStyle.of(context).style),
                   TextSpan(
                       text:
@@ -134,7 +152,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 24.0, vertical: 12),
                             child: Text(
-                              'Wykonaj badanie uszczegóławiające M-CHAT R/F',
+                              AppLocalizations.of(context).advancedSurveyButton,
                               style: DefaultTextStyle.of(context)
                                   .style
                                   .copyWith(
@@ -150,7 +168,7 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
           )
         : Center(
             child: Text(
-              'Proszę wrócić do strony głównej i wypełnić badanie ponownie.\nPrzepraszamy!',
+              AppLocalizations.of(context).somethingWrong,
               textAlign: TextAlign.center,
             ),
           );
@@ -176,7 +194,7 @@ class ScoreDisplayContainer extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Drogi rodzicu, wynik Twojego dziecka to: '),
+            child: Text(AppLocalizations.of(context).dearParent),
           ),
           SizedBox(
             height: 15,
@@ -193,7 +211,7 @@ class ScoreDisplayContainer extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
                 ),
                 Text(
-                  "punktów",
+                  AppLocalizations.of(context).points,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
                 ),
               ],
