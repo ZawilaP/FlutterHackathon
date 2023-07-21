@@ -42,7 +42,7 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
               title: Padding(
                 padding: const EdgeInsets.only(bottom: 8, top: 8),
                 child: Text(
-                  '${AppLocalizations.of(context)!.question} ${widget.questionNode!.id.replaceAll('_0', '.')}',
+                  '${AppLocalizations.of(context).question} ${widget.questionNode!.id.replaceAll('_0', '.')}',
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!
@@ -95,11 +95,11 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
                           Theme.of(context).colorScheme.primary,
                       children: <Widget>[
                         Text(
-                          AppLocalizations.of(context)!.yes,
+                          AppLocalizations.of(context).yes,
                           style: TextStyle(fontSize: 21),
                         ),
                         Text(
-                          AppLocalizations.of(context)!.no,
+                          AppLocalizations.of(context).no,
                           style: TextStyle(fontSize: 21),
                         )
                       ]),

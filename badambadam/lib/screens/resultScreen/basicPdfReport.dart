@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:badambadam/model.dart';
 import 'package:badambadam/storage.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PDFSave extends StatefulWidget {
   const PDFSave({super.key, this.score, this.allAnswers});
@@ -161,7 +162,7 @@ class _PDFSaveState extends State<PDFSave> {
         label: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
           child: Text(
-            'Pobierz wyniki',
+            AppLocalizations.of(context).downloadResults,
             style: DefaultTextStyle.of(context).style.copyWith(
                 fontSize: 15,
                 color: Theme.of(context).colorScheme.primary,

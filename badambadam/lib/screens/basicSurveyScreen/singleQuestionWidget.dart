@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SingleSurveyQuestion extends StatefulWidget {
   SingleSurveyQuestion({
@@ -43,7 +44,7 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
             ListTile(
                 title: Padding(
                   padding: const EdgeInsets.only(bottom: 8, top: 8),
-                  child: Text('Pytanie ${widget.questionNode!.id}',
+                  child: Text('${AppLocalizations.of(context).question} ${widget.questionNode!.id}',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Theme.of(context).colorScheme.primary)),
                 ),
@@ -87,12 +88,12 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
                           Theme.of(context).colorScheme.primary,
                       borderRadius: BorderRadius.circular(10),
                       children: <Widget>[
-                        Text(
-                          'TAK',
+                         Text(
+                          AppLocalizations.of(context).yes,
                           style: TextStyle(fontSize: 21),
                         ),
                         Text(
-                          'NIE',
+                          AppLocalizations.of(context).no,
                           style: TextStyle(fontSize: 21),
                         )
                       ]),
