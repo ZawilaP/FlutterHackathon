@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:badambadam/model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RadioButtons extends StatefulWidget {
   const RadioButtons({
@@ -82,7 +83,7 @@ class _RadioButtonsState extends State<RadioButtons>
                       });
                     },
                   ),
-                  Text('TAK'),
+                  Text(AppLocalizations.of(context).yes),
                   SizedBox(
                     width: 8,
                   ),
@@ -103,7 +104,7 @@ class _RadioButtonsState extends State<RadioButtons>
                       });
                     },
                   ),
-                  Text('NIE')
+                  Text(AppLocalizations.of(context).no)
                 ],
               ),
             )),

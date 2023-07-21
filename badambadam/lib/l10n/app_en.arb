@@ -59,5 +59,6 @@
   "submitAnswers": "Submit answers",
   "hasToAnswer1": "Please respond YES or NO to every question.",
   "hasToAnswer2": "Think about how your child behaves on a daily basis.",
-  "hasToAnswer3": "Answer NO if you saw a behaviour several times but the child usually behaves differently"
+  "hasToAnswer3": "Answer NO if you saw a behaviour several times but the child usually behaves differently",
+  "somethingWrong": "Something went wrong. Please return to the home page."
 }

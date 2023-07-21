@@ -65,10 +65,10 @@ class _AdvancedSurveyDisplayScreenState
         print(e);
       }
 
-      return Center(child: Text('Ładowanie...'));
+      return Center(child: Text(AppLocalizations.of(context).loading));
     }
     if (widget.allPrimaryAnswers!.isEmpty) {
-      return Center(child: Text('Coś poszło nie tak. Wróć do strony głównej.'));
+      return Center(child: Text(AppLocalizations.of(context).somethingWrong));
     } else {
       // filter questions that were scored in the primary survey
       List<Node> allNodes = survey!.nodes
@@ -322,7 +322,7 @@ class _AdvancedSurveyDisplayScreenState
                               padding: const EdgeInsets.symmetric(
                                   vertical: 8.0, horizontal: 11),
                               child: Text(
-                                'Zatwierdź odpowiedzi',
+                                AppLocalizations.of(context).submitAnswers,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700, fontSize: 20),
                               ),
