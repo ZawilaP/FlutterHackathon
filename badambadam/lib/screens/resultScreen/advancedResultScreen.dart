@@ -4,7 +4,7 @@ import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:link_text/link_text.dart';
-import 'advanced_result_texts_pl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AdvancedResultDisplayScreen extends StatefulWidget {
   const AdvancedResultDisplayScreen(
@@ -31,13 +31,24 @@ class _AdvancedResultDisplayScreenState
 
     setState(() {
       if (widget.score! < 2) {
-        intro = negativeIntro;
-        paragraph = negativeParagraph;
-        actions = negativeActions;
+        intro = AppLocalizations.of(context).negativeIntro;
+        paragraph = AppLocalizations.of(context).negativeParagraph;
+        actions = [
+          AppLocalizations.of(context).negativeActions1,
+          AppLocalizations.of(context).negativeActions2,
+          AppLocalizations.of(context).negativeActions3,
+          AppLocalizations.of(context).negativeActions4
+        ];
       } else {
-        intro = positiveIntro;
-        paragraph = positiveParagraph;
-        actions = positiveActions;
+        intro = AppLocalizations.of(context).positiveIntro;
+        paragraph = AppLocalizations.of(context).positiveParagraph;
+        actions = [
+          AppLocalizations.of(context).positiveActions1,
+          AppLocalizations.of(context).positiveActions2,
+          AppLocalizations.of(context).positiveActions3,
+          AppLocalizations.of(context).positiveActions4,
+          AppLocalizations.of(context).positiveActions5
+        ];
       }
     });
 
@@ -72,16 +83,14 @@ class _AdvancedResultDisplayScreenState
                 child: RichText(
                     text: TextSpan(children: [
                   TextSpan(
-                      text: "Identyfikator Twojego badania wykonanego ",
+                      text: AppLocalizations.of(context).surveyId,
                       style: DefaultTextStyle.of(context).style),
                   TextSpan(
                       text:
-                          "${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()} ",
+                          "${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()} : ",
                       style: DefaultTextStyle.of(context)
                           .style
                           .copyWith(fontWeight: FontWeight.bold)),
-                  TextSpan(
-                      text: 'to: ', style: DefaultTextStyle.of(context).style),
                   TextSpan(
                       text: currentGuidUserNumber,
                       style: DefaultTextStyle.of(context)
@@ -136,7 +145,7 @@ class _AdvancedResultDisplayScreenState
           )
         : Center(
             child: Text(
-              'Proszę wrócić do strony głównej i wypełnić badanie ponownie.\nPrzepraszamy!',
+              AppLocalizations.of(context).somethingWrong,
               textAlign: TextAlign.center,
             ),
           );
@@ -147,15 +156,15 @@ class ScoreDisplayContainer extends StatelessWidget {
   const ScoreDisplayContainer({super.key, this.score});
   final int? score;
 
-  String getScoreText(int? score) {
+  String getScoreText(int? score, BuildContext context) {
     String currText = '';
 
     if (score == 1) {
-      currText = 'punkt';
+      currText = AppLocalizations.of(context).singlePoint;
     } else if (score! > 1 && score <= 4) {
-      currText = 'punkty';
+      currText = AppLocalizations.of(context).points2;
     } else {
-      currText = 'punktów';
+      currText = AppLocalizations.of(context).points;
     }
 
     return currText;
@@ -171,20 +180,22 @@ class ScoreDisplayContainer extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Wynik Twojego dziecka: '),
+            child: Text(AppLocalizations.of(context).dearParent),
           ),
           SizedBox(
             height: 15,
           ),
           Text(
-            '$score ${getScoreText(score)}',
+            '$score ${getScoreText(score, context)}',
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
           ),
           SizedBox(
             height: 15,
           ),
           Text(
-            score! >= 2 ? 'Wynik jest dodatni' : 'Wynik jest ujemny',
+            score! >= 2
+                ? AppLocalizations.of(context).positiveResult
+                : AppLocalizations.of(context).negativeResult,
             style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
           )
         ],

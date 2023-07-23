@@ -99,12 +99,10 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
                       style: DefaultTextStyle.of(context).style),
                   TextSpan(
                       text:
-                          "${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()} ",
+                          "${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()} : ",
                       style: DefaultTextStyle.of(context)
                           .style
                           .copyWith(fontWeight: FontWeight.bold)),
-                  TextSpan(
-                      text: 'to: ', style: DefaultTextStyle.of(context).style),
                   TextSpan(
                       text: currentGuidUserNumber,
                       style: DefaultTextStyle.of(context)

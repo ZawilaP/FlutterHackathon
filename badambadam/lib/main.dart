@@ -4,7 +4,6 @@ import 'package:badambadam/routes/advancedMetricRoute.dart';
 import 'package:badambadam/routes/metricRoute.dart';
 import 'package:badambadam/routes/newAdminRoute.dart';
 import 'package:badambadam/screens/homePageScreen/StartSurveyForm.dart';
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:link_text/link_text.dart';
 import 'package:provider/provider.dart';
@@ -93,7 +92,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyAppState extends ChangeNotifier {
-  Locale _locale = Locale('en'); 
+  Locale _locale = Locale('pl'); 
   Locale get locale => _locale;
 
   void changeLocale(Locale newLocale) {
@@ -159,14 +158,14 @@ class MyHomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text(
-                AppLocalizations.of(context)!.helloWorld,
+                AppLocalizations.of(context).helloWorld,
                 textAlign: TextAlign.justify,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
-                  children: AppLocalizations.of(context)!
+                  children: AppLocalizations.of(context)
                       .entryText
                       .split("\n")
                       .map((e) {
@@ -189,12 +188,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-
-const entryTextPl = [
-  "Drodzy Rodzice, \nwiemy, że to właśnie Wy macie najlepszą wiedzę o swoich dzieciach. Większość Waszych spostrzeżeń dotyczy umiejętności oraz zainteresowań dzieci i jest powodem do radości. Czasami zdarza się jednak, że możecie być zaniepokojeni rozwojem dziecka. Wówczas warto sprawdzić, czy rzeczywiście jest powód do niepokoju. ",
-  "Oddajemy w Wasze ręce narzędzie M-CHAT-R, które zostało stworzone w celu oceny ryzyka wystąpienia spektrum autyzmu. Pozwala na wstępną ocenę dziecka w zakresie jego rozwoju społecznego oraz umiejętności komunikowania się. W większości przypadków, jeśli nawet występują jakieś nieprawidłowości rozwojowe, wymagają one jedynie wizyt u logopedy lub prostych ćwiczeń w domowym zaciszu. Tylko niewielki procent badanych dzieci wymaga dalszej diagnostyki w kierunku spektrum autyzmu. Dla tych dzieci jest to szansa na szybszą terapię.",
-  "Zachęcamy więc do wypełnienia kwestionariusza online. Pamiętajcie, że warto jest zawsze wyjaśniać wątpliwości, aby nic nie burzyło przygody, jaką jest wspólne odkrywania świata z naszym Maluchem.",
-  "The Modified Checklist for Autism in Toddlers (M-CHAT-R), powiązane z nim materiały oraz wszelkie informacje o możliwości ich użytkowania dostępne są na stronie https://www.mchatscreen.com .",
-  "Narzędzie M-CHAT-R przeznaczone jest dla dzieci w wieku od 16 do 30 miesięcy. Wypełnienie kwestionariusza dla dzieci młodszych da nieprawdziwe wyniki, gdyż mają one prawo nie opanować jeszcze wielu umiejętności, jakie posiadają dzieci starsze. Rodziców młodszych dzieci (pomiędzy 12 a 18 miesiącem życia) zachęcamy do zapoznania się z listą umiejętności rozwojowych odpowiadających temu wiekowi: http://badabada.pl/dla-rodzicow/rozwoj-dziecka",
-  "By wziąć udział w ankiecie podaj kod pocztowy oraz datę urodzenia swojego dziecka:"
-];
