@@ -18,9 +18,7 @@ class _LoginFormValidation extends State<LoginFormValidation> {
     // Register for login changes upon LoginFormValidation instance creation.
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        print('User is currently signed out!');
       } else {
-        print('User is signed in!');
         Navigator.pushNamed(context, '/admin');
       }
     });

@@ -66,7 +66,6 @@ class _SurveysRoute extends State<SurveysRoute> {
           ElevatedButton(
             child: Text("Show all past surveys"),
             onPressed: () async {
-              print(await getAnswers());
               _showMyDialog();
             },
           ),

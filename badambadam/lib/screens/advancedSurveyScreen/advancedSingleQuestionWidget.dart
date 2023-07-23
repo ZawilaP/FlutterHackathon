@@ -85,7 +85,6 @@ class _AdvancedSingleQuestionState extends State<AdvancedSingleQuestion>
                           }
                           // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
                           widget.allAnswers.notifyListeners();
-                          print(widget.allAnswers);
                         });
                       },
                       borderWidth: 1.5,

@@ -343,8 +343,6 @@ class _MultiSelectMetricQuestionState extends State<MultiSelectMetricQuestion>
                             _selectedFamilyMembers.remove(familyMembers[index]);
                           }
 
-                          print(_selectedFamilyMembers);
-
                           if (familyMembers[index] == AppLocalizations.of(context).someoneElse) {
                             _otherFlag = true;
                           } else {

@@ -67,13 +67,6 @@ class _EnglishAdvancedPDFSaveState extends State<EnglishAdvancedPDFSave> {
 
   String getAnswers(String questionType, List<String>? answers,
       List<String> questionList, String questionId) {
-    // bool noAnswer = !answers!.contains('FAIL_YES') &&
-    //     !answers.contains('FAIL_NO') &&
-    //     !answers.contains('PASS_YES') &&
-    //     !answers.contains('PASS_NO') ;
-
-    print(answers.toString());
-
     var noAnswerCount = answers!.where((element) => element == '-1');
 
     bool noAnswer = answers.length == noAnswerCount.length;
@@ -290,14 +283,16 @@ class _EnglishAdvancedPDFSaveState extends State<EnglishAdvancedPDFSave> {
 
                 bool noAnswer = answers.length == noAnswerCount.length;
 
-                return noAnswer ? <String>[''] : <String>[
-                  widget.allRawAnswers!.keys
-                      .toList()[index]
-                      .replaceAll('_0', '.'),
-                  getQuestions(questionType, questionList),
-                  getAnswers(questionType, answers, questionList,
-                      widget.allRawAnswers!.keys.toList()[index])
-                ];
+                return noAnswer
+                    ? <String>['']
+                    : <String>[
+                        widget.allRawAnswers!.keys
+                            .toList()[index]
+                            .replaceAll('_0', '.'),
+                        getQuestions(questionType, questionList),
+                        getAnswers(questionType, answers, questionList,
+                            widget.allRawAnswers!.keys.toList()[index])
+                      ];
               }))
         ],
       ),

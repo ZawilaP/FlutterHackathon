@@ -98,8 +98,6 @@ class MyAppState extends ChangeNotifier {
   void changeLocale(Locale newLocale) {
     _locale = newLocale;
     notifyListeners();
-    print("changeLocale invoked");
-    print(_locale);
   }
 }
 

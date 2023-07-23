@@ -73,7 +73,6 @@ void setCurrentLanguage(String lang) {
 
 List<dynamic> getGuidList() {
   final box = GetStorage();
-  print(box.read("guidList"));
   return box.read("guidList") ?? List.empty();
 }
 
@@ -110,7 +109,6 @@ void addAllAnswersMap(Map<String, int> answers) {
 
 Map<String, int> getAllAnswersMap() {
   final box = GetStorage();
-  print(box.read("answersMap"));
   return box.read("answersMap")?.cast<String, int>() ?? {};
 }
 
@@ -156,7 +154,6 @@ void addAllAdvancedRawAnswersMap(Map<String, List<String>> answers) {
 
 Map<String, List<String>> getAllAdvancedRawAnswersMap() {
   final box = GetStorage();
-  print(box.read("advancedRawAnswersMap"));
   return box.read("advancedRawAnswersMap")?.cast<String, List<String>>() ?? {};
 }
 
