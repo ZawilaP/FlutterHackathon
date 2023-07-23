@@ -30,6 +30,7 @@ void cleanMetricData() {
   cleanDataString("familyDevelopmentIssues");
   cleanDataString("familyOtherAutismSigns");
   cleanDataString("weight");
+  cleanDataString("birthDate");
 }
 
 String getMetricDataString(String boxElement) {
