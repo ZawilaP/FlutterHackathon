@@ -1,4 +1,5 @@
 import 'package:badambadam/screens/resultScreen/advancedPdfReport.dart';
+import 'package:badambadam/screens/resultScreen/advancedPdfReportEnglish.dart';
 import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -25,6 +26,8 @@ class _AdvancedResultDisplayScreenState
     String intro = " ";
     String paragraph = " ";
     List<String> actions = [];
+
+    String currentLocale = Localizations.localeOf(context).languageCode;
 
     setState(() {
       if (widget.score! < 2) {
@@ -86,11 +89,17 @@ class _AdvancedResultDisplayScreenState
                           .copyWith(fontWeight: FontWeight.bold))
                 ])),
               ),
-              AdvancedPDFSave(
-                score: widget.score,
-                allRawAnswers: widget.allRawAnswers,
-                allCalculatedAnswers: widget.allCalculatedAnswers,
-              ),
+              currentLocale == 'pl'
+                  ? AdvancedPDFSave(
+                      score: widget.score,
+                      allRawAnswers: widget.allRawAnswers,
+                      allCalculatedAnswers: widget.allCalculatedAnswers,
+                    )
+                  : EnglishAdvancedPDFSave(
+                      score: widget.score,
+                      allRawAnswers: widget.allRawAnswers,
+                      allCalculatedAnswers: widget.allCalculatedAnswers,
+                    ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(

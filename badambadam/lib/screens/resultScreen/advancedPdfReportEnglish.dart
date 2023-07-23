@@ -7,9 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:badambadam/model.dart';
 import 'package:badambadam/storage.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AdvancedPDFSave extends StatefulWidget {
-  const AdvancedPDFSave(
+class EnglishAdvancedPDFSave extends StatefulWidget {
+  const EnglishAdvancedPDFSave(
       {super.key, this.score, this.allRawAnswers, this.allCalculatedAnswers});
 
   final int? score;
@@ -17,10 +18,10 @@ class AdvancedPDFSave extends StatefulWidget {
   final Map<dynamic, dynamic>? allCalculatedAnswers;
 
   @override
-  _AdvancedPDFSaveState createState() => _AdvancedPDFSaveState();
+  _EnglishAdvancedPDFSaveState createState() => _EnglishAdvancedPDFSaveState();
 }
 
-class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
+class _EnglishAdvancedPDFSaveState extends State<EnglishAdvancedPDFSave> {
   var pdf = pw.Document();
   Survey? survey;
   List<List<String>>? advancedSurveyQuestions = getAdvancedSurveyQuestions();
@@ -61,7 +62,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
           .getRange(0, tempQuestionList.length - 1)
           .join('\n');
     }
-    return 'Błąd';
+    return 'Error';
   }
 
   String getAnswers(String questionType, List<String>? answers,
@@ -70,6 +71,8 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
     //     !answers.contains('FAIL_NO') &&
     //     !answers.contains('PASS_YES') &&
     //     !answers.contains('PASS_NO') ;
+
+    print(answers.toString());
 
     var noAnswerCount = answers!.where((element) => element == '-1');
 
@@ -80,10 +83,10 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
     if (questionType == 'Simple_Yes_No') {
       var isReversed = reversedQuestionsIds.contains(questionId);
       return noAnswer
-          ? 'Brak odpowiedzi.'
+          ? 'No answer.'
           : (answers[0] == 'PASS'
-              ? (isReversed ? 'NIE' : 'TAK')
-              : (isReversed ? 'TAK' : 'NIE'));
+              ? (isReversed ? 'NO' : 'YES')
+              : (isReversed ? 'YES' : 'NO'));
     }
     if (questionType == 'YesNoBranching' ||
         questionType == 'OneYesWillDoStopAsking' ||
@@ -93,9 +96,9 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
 
         if (!answerWordsList.contains('-1')) {
           var passOrFailWords =
-              answers[i].toString().split('_')[0] == 'PASS' ? '(Z)' : '(NZ)';
+              answers[i].toString().split('_')[0] == 'PASS' ? '(P)' : '(F)';
           var newAnswerWords =
-              answers[i].toString().split('_')[1] == 'YES' ? 'TAK' : 'NIE';
+              answers[i].toString().split('_')[1] == 'YES' ? 'YES' : 'NO';
           bool isOpenAnswer = answers[i].toString().split('_')[0] == 'OPEN';
 
           if (isOpenAnswer) {
@@ -104,12 +107,12 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
             answers[i] = '${i + 1}. $passOrFailWords $newAnswerWords';
           }
         } else {
-          answers[i] = '${i + 1}. Brak odpowiedzi';
+          answers[i] = '${i + 1}. No answer.';
         }
       }
 
       return noAnswer
-          ? 'Brak odpowiedzi'
+          ? 'No answer'
           : answers
               .toString()
               .replaceAll('[', '')
@@ -122,22 +125,20 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
       } else if (answers.contains('FAIL_YES')) {
         return questionList[answers.indexOf('FAIL_YES') + 1].toString();
       } else {
-        return 'Brak odpowiedzi';
+        return 'No answer';
       }
     }
 
-    return 'Brak odpowiedzi';
+    return 'No answer';
   }
 
   String getScoreText(int? score) {
     String currText = '';
 
     if (score == 1) {
-      currText = 'punkt';
-    } else if (score! > 1 && score <= 4) {
-      currText = 'punkty';
+      currText = 'point';
     } else {
-      currText = 'punktów';
+      currText = 'points';
     }
 
     return currText;
@@ -164,7 +165,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
       pw.MultiPage(
         theme: pw.ThemeData.withFont(base: ttfBase),
         build: (pw.Context context) => [
-          pw.Text('Wyniki badania uszczegóławiającego M-CHAT R/F',
+          pw.Text('Results of the M-CHAT R/F exam',
               style: pw.TextStyle(fontSize: 18)),
           pw.Divider(thickness: 0.5),
           pw.Row(
@@ -175,13 +176,13 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
                     children: [
                       pw.RichText(
                           text: pw.TextSpan(children: <pw.TextSpan>[
-                        pw.TextSpan(text: "Wynik Twojego dziecka: "),
+                        pw.TextSpan(text: "Your child's score: "),
                       ])),
                       pw.RichText(
                           text: pw.TextSpan(children: <pw.TextSpan>[
                         pw.TextSpan(
                             text:
-                                '${widget.score} ${getScoreText(widget.score)} - ${widget.score! >= 2 ? 'wynik dodatni.' : 'wynik ujemny.'}',
+                                '${widget.score} ${getScoreText(widget.score)} - ${widget.score! >= 2 ? 'passed' : 'failed'}',
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
                       ])),
                     ]),
@@ -190,22 +191,22 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
                     children: [
                       pw.RichText(
                           text: pw.TextSpan(children: <pw.TextSpan>[
-                        pw.TextSpan(text: "Identyfikator badania: "),
+                        pw.TextSpan(text: "Survey ID: "),
                         pw.TextSpan(
                             text: currentGuidUserNumber,
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
                       ])),
                       pw.Text(
-                          'Data badania: ${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()}')
+                          'Date of completion: ${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()}')
                     ])
               ]),
           pw.SizedBox(height: 8),
           pw.Padding(
             padding: pw.EdgeInsets.symmetric(vertical: 8),
-            child: pw.Text('Tabela podsumowująca Pana/Pani odpowiedzi:'),
+            child: pw.Text('Summary of your answers:'),
           ),
           pw.Table.fromTextArray(
-              headers: <String>['Numer pytania', 'Odpowiedz'],
+              headers: <String>['Question number', 'Answer'],
               border: null,
               headerStyle: pw.TextStyle(
                 fontSize: 11,
@@ -239,16 +240,16 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
                 return <String>[
                   widget.allCalculatedAnswers!.keys.toList()[index].toString(),
                   widget.allCalculatedAnswers!.values.toList()[index] == 1
-                      ? 'Niezaliczone'
-                      : 'Zaliczone'
+                      ? 'Fail'
+                      : 'Pass'
                 ];
               })),
           pw.Padding(
             padding: pw.EdgeInsets.symmetric(vertical: 8),
-            child: pw.Text('Poniżej zamieszczono odpowiedzi szczegółowe:'),
+            child: pw.Text('Detailed answers:'),
           ),
           pw.Table.fromTextArray(
-              headers: <String>['Numer pytania', 'Pytanie', 'Odpowiedz'],
+              headers: <String>['Question number', 'Question', 'Answer'],
               border: null,
               headerStyle: pw.TextStyle(
                 fontSize: 11,
@@ -328,7 +329,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
         label: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
           child: Text(
-            'Pobierz wyniki',
+            AppLocalizations.of(context).downloadResults,
             style: DefaultTextStyle.of(context).style.copyWith(
                 fontSize: 15,
                 color: Theme.of(context).colorScheme.primary,
