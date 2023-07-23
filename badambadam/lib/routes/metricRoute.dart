@@ -268,7 +268,7 @@ class _PostalCodeInputState extends State<PostalCodeInput>
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (String? text) {
                   String pattern = r'^\d\d-\d\d\d$';
-                  const String errorMessage = "Podaj kod pocztowy (np. 01-234)";
+                  String errorMessage = AppLocalizations.of(context).zipCodeFormat;
                   RegExp regExp = RegExp(pattern);
                   if (text == null) {
                     return errorMessage;

@@ -17,9 +17,11 @@ class _StartSurveyForm extends State<StartSurveyForm> {
 
   String _birthDateString = '';
 
-  void _submit() {
+  void _submit(var birthDayString) {
     if (_dateKey.currentState!.validate()) {
       cleanMetricData();
+      setMetricDataString("birthDate", birthDayString);
+
       Navigator.pushNamed(context, '/metric');
     }
   }
@@ -92,7 +94,7 @@ class _StartSurveyForm extends State<StartSurveyForm> {
                 if (_birthDateString.isEmpty) {
                   return;
                 }
-                _submit();
+                _submit(_birthDateString);
               },
               style: style,
               child: Padding(

@@ -84,31 +84,6 @@ class Survey {
   late String simpleID;
   late String accessGUID;
 
-  /// Calculates the survey result
-  /// -1 is "not able to calculate", 0+ integer is a real result
-  /// implemented only for high level survey
-  // int calculateResult() {
-  //   if (detailLevel == DetailLevel.detailed) {
-  //     return -1;
-  //   } else {
-  //     int result = 0;
-  //     for (var node in nodes) {
-  //       // checking top level nodes only
-  //       if (node.isTopLevel) {
-  //         if (node.status != NodeStatus.answered) {
-  //           print('No answer for ${node.questions[0].text}');
-  //           return -1; // at least one not answered, unable to calculate
-  //         }
-  //       }
-  //       if (node.isInverted) {
-  //         result += node.answer == NodeAnswer.no ? 1 : 0;
-  //       } else {
-  //         result += node.answer == NodeAnswer.yes ? 1 : 0;
-  //       }
-  //     }
-  //     return result;
-  //   }
-  // }
 
   Future<void> register() async {
     //
@@ -290,7 +265,8 @@ Future<void> saveMetric(String guid) async {
     "familyInformation": getMetricDataString("familyInformation"),
     "pregnancyWeek": getMetricDataString("pregnancyWeek"),
     "familyMemberAutismInformation":
-        getMetricDataString("familyMemberAutismInformation")
+        getMetricDataString("familyMemberAutismInformation"),
+    "birthDate" : getMetricDataString("birthDate")
   };
 
   await ref.set(data);

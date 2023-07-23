@@ -77,9 +77,6 @@ class _RadioButtonsState extends State<RadioButtons>
                         _point = value;
                         _otherFlag = true;
                         updateAnswers(widget.question.id, widget.inputIndex, _point);
-                        print(widget.allAdvancedAnswersDetails
-                            .value[widget.question.id]);
-                        print(widget.allAdvancedAnswersDetails.value);
                       });
                     },
                   ),
@@ -98,9 +95,6 @@ class _RadioButtonsState extends State<RadioButtons>
                         _otherFlag = false;
                         myController.clear();
                         updateAnswers(widget.question.id, widget.inputIndex, _point);
-                        print(widget.allAdvancedAnswersDetails
-                            .value[widget.question.id]);
-                        print(widget.allAdvancedAnswersDetails.value);
                       });
                     },
                   ),
@@ -120,7 +114,6 @@ class _RadioButtonsState extends State<RadioButtons>
                     widget.allAdvancedAnswersDetails
                             .value[widget.question.id]![widget.inputIndex] =
                         "OPEN_${myController.text}";
-                    print(widget.allAdvancedAnswersDetails.toString());
                   },
                 ),
               )

@@ -137,7 +137,6 @@ class _SelectMetricQuestionState extends State<SelectMetricQuestion>
                               borderSide: BorderSide(color: Colors.grey)),
                           hintText: "Kim jest inna osoba?"),
                       onChanged: (text) {
-                        print(myController.text);
                         setMetricDataString(widget.localParamName,
                             "$_dropdownValue+${myController.text}");
                       },

@@ -295,7 +295,6 @@ class _AdvancedSurveyDisplayScreenState
                             onPressed: () {
                               // updateGuidList(
                               // "${DateTime.now().toString().trim()}_test");
-                              print("BUTTON PRESSED");
                               Map<dynamic, dynamic> calculatedAnswers =
                                   calculateAll(allAdvancedAnswersDetail);
 
@@ -347,13 +346,10 @@ class _AdvancedSurveyDisplayScreenState
       bool oneFail = answers["1_01"]!.contains("FAIL_YES");
       // it can be optimized, but not for now
       if (!onePass & !oneFail) {
-        print("What does he do?");
         resultsMap["1"] = 0;
       } else if (onePass & !oneFail) {
-        print("1");
         resultsMap["1"] = 1;
       } else if (!onePass & oneFail) {
-        print("1: 0");
         resultsMap["1"] = 0;
       } else if (onePass & oneFail) {
         bool pass = answers["1_02"]!.contains("PASS_YES");
@@ -437,7 +433,6 @@ class _AdvancedSurveyDisplayScreenState
       bool oneFailTen = answers["10_01"]!.contains("FAIL_YES");
       // it can be optimized, but not for now
       if (!onePassTen & !oneFailTen) {
-        print("What does he do?");
         resultsMap["10"] = 0;
       } else if (onePassTen & !oneFailTen) {
         resultsMap["10"] = 1;
@@ -463,7 +458,6 @@ class _AdvancedSurveyDisplayScreenState
         bool oneFail11 = answers["11_01"]!.contains("FAIL_YES");
         // it can be optimized, but not for now
         if (!onePass11 & !oneFail11) {
-          print("What does he do?");
           resultsMap["11"] = 0;
         } else if (onePass11 & !oneFail11) {
           resultsMap["11"] = 1;
@@ -491,7 +485,6 @@ class _AdvancedSurveyDisplayScreenState
         bool oneFail12 = answers["12_02"]!.contains("FAIL_YES");
         // it can be optimized, but not for now
         if (!onePass12 & !oneFail12) {
-          print("What does he do?");
           resultsMap["12"] = 0;
         } else if (onePass12 & !oneFail12) {
           resultsMap["12"] = 1;
@@ -543,7 +536,6 @@ class _AdvancedSurveyDisplayScreenState
       bool oneFail16 = answers["16_01"]!.contains("FAIL_YES");
       // it can be optimized, but not for now
       if (!onePass16 & !oneFail16) {
-        print("What does he do?");
         resultsMap["16"] = 0;
       } else if (onePass16 & !oneFail16) {
         resultsMap["16"] = 1;
@@ -595,8 +587,6 @@ class _AdvancedSurveyDisplayScreenState
       }
     }
 
-    print("RESULTS");
-    print(resultsMap);
     return resultsMap;
   }
 }
@@ -769,14 +759,12 @@ class _SingleSelectsWidgetState extends State<SingleSelectsWidget>
                   // The button that is tapped is set to true, and the others to false.
                   for (int i = 0; i < _selectedAnswers.length; i++) {
                     _selectedAnswers[i] = i == index;
-                    print(_selectedAnswers);
                     widget.allAdvancedAnswersDetail
                             .value[widget.questionNode.id]![i] =
                         _selectedAnswers[i]
                             ? (isFail ? 'FAIL_YES' : 'PASS_YES')
                             : '-1';
                   }
-                  print(widget.allAdvancedAnswersDetail.value);
                 });
               },
               children: listQuestions(widget.questionNode.questions),

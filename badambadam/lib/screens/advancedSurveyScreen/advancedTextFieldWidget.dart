@@ -32,7 +32,6 @@ class _AdvancedTextFieldState extends State<AdvancedTextField> {
       onChanged: (text) {
         widget.allAdvancedAnswersDetails.value[widget.nodeId] =
             ["OPEN_${myController.text}"].toList();
-        print(widget.allAdvancedAnswersDetails.toString());
       },
     );
   }

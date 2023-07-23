@@ -78,8 +78,6 @@ class _SingleSurveyQuestionState extends State<SingleSurveyQuestion>
                             widget.allAnswers.value[widget.questionNode!.id] =
                                 0;
                           }
-
-                          print(widget.allAnswers);
                         });
                       },
                       borderWidth: 1.5,
