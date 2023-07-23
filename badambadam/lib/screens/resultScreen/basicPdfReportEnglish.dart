@@ -8,17 +8,17 @@ import 'package:badambadam/storage.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class PDFSave extends StatefulWidget {
-  const PDFSave({super.key, this.score, this.allAnswers});
+class EnglishPDFSave extends StatefulWidget {
+  const EnglishPDFSave({super.key, this.score, this.allAnswers});
 
   final int? score;
   final List<int>? allAnswers;
 
   @override
-  _PDFSaveState createState() => _PDFSaveState();
+  _EnglishPDFSaveState createState() => _EnglishPDFSaveState();
 }
 
-class _PDFSaveState extends State<PDFSave> {
+class _EnglishPDFSaveState extends State<EnglishPDFSave> {
   var pdf = pw.Document();
   Survey? survey;
   List<String>? topLevelSurvey = getTopLevelNodes();
@@ -61,7 +61,7 @@ class _PDFSaveState extends State<PDFSave> {
       pw.MultiPage(
         theme: pw.ThemeData.withFont(base: ttfBase),
         build: (pw.Context context) => [
-          pw.Text('Wynik badania M-CHAT-R', style: pw.TextStyle(fontSize: 20)),
+          pw.Text('Result of the M-CHAT-R exam', style: pw.TextStyle(fontSize: 20)),
           pw.Divider(thickness: 0.5),
           pw.Row(
               mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
@@ -71,9 +71,9 @@ class _PDFSaveState extends State<PDFSave> {
                     children: [
                       pw.RichText(
                           text: pw.TextSpan(children: <pw.TextSpan>[
-                        pw.TextSpan(text: "Wynik: "),
+                        pw.TextSpan(text: "Result: "),
                         pw.TextSpan(
-                            text: '${widget.score}/20 punktów',
+                            text: '${widget.score}/20 points',
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
                       ])),
                     ]),
@@ -82,18 +82,18 @@ class _PDFSaveState extends State<PDFSave> {
                     children: [
                       pw.RichText(
                           text: pw.TextSpan(children: <pw.TextSpan>[
-                        pw.TextSpan(text: "Identyfikator ankiety: "),
+                        pw.TextSpan(text: "The survey ID: "),
                         pw.TextSpan(
                             text: currentGuidUserNumber,
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
                       ])),
                       pw.Text(
-                          'Data wykonania badania: ${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()}')
+                          'Date of completion: ${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now()).toString()}')
                     ])
               ]),
           pw.SizedBox(height: 8),
           pw.Table.fromTextArray(
-              headers: <String>['Pytanie', 'Odpowiedz', 'Wynik'],
+              headers: <String>['Question', 'Answer', 'Result'],
               border: null,
               headerStyle: pw.TextStyle(
                 fontSize: 11,
@@ -125,11 +125,11 @@ class _PDFSaveState extends State<PDFSave> {
                         topLevelSurvey![index].split('+')[0],
                         widget.allAnswers![index] == 0
                             ? (topLevelSurvey![index].split('+')[1] == 'true'
-                                ? 'NIE'
-                                : 'TAK')
+                                ? 'NO'
+                                : 'YES')
                             : (topLevelSurvey![index].split('+')[1] == 'true'
-                                ? 'TAK'
-                                : 'NIE'),
+                                ? 'YES'
+                                : 'NO'),
                         widget.allAnswers![index].toString()
                       ]))
         ],

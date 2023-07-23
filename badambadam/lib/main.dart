@@ -93,7 +93,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyAppState extends ChangeNotifier {
-  Locale _locale = Locale('pl'); 
+  Locale _locale = Locale('en'); 
   Locale get locale => _locale;
 
   void changeLocale(Locale newLocale) {

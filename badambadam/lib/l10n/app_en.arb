@@ -9,6 +9,7 @@
   "dateInput2": "Your child's age should be between 16 and 30 months.",
   "loading": "Loading...",
   "zipCodePlaceholder": "__-___",
+  "zipCodeFormat": "Please provide your postal code (for example 01-234)",
   "answerEveryQuestion": "Please answer every question!",
   "close": "Close",
   "changesWontBeSaved": "Changes won't be saved, do you want to continue?",

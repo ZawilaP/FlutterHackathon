@@ -1,4 +1,5 @@
 import 'package:badambadam/screens/resultScreen/basicPdfReport.dart';
+import 'package:badambadam/screens/resultScreen/basicPdfReportEnglish.dart';
 import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -22,6 +23,8 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
     String intro = " ";
     String paragraph = " ";
     List<String> actions = [];
+
+    String currentLocale = Localizations.localeOf(context).languageCode;
 
     // setting texts based on child's score
     setState(() {
@@ -109,10 +112,15 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
                           .copyWith(fontWeight: FontWeight.bold))
                 ])),
               ),
-              PDFSave(
-                score: widget.score,
-                allAnswers: widget.allAnswers!.values.toList(),
-              ),
+              currentLocale == 'pl'
+                  ? PDFSave(
+                      score: widget.score,
+                      allAnswers: widget.allAnswers!.values.toList(),
+                    )
+                  : EnglishPDFSave(
+                      score: widget.score,
+                      allAnswers: widget.allAnswers!.values.toList(),
+                    ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child:
