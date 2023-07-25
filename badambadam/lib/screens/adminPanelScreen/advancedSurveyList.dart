@@ -15,7 +15,7 @@ class _AdvancedSurveyListState extends State<AdvancedSurveyList> {
   final Future<Map<String, dynamic>> _answersCalculated =
       getAdvancedSurveyAnswers();
   DatabaseReference reference =
-      FirebaseDatabase.instance.ref().child('questions');
+      FirebaseDatabase.instance.ref().child('questionspl');
   DatabaseReference referenceCalculatedPoints =
       FirebaseDatabase.instance.ref().child('advancedAnswers');
 
