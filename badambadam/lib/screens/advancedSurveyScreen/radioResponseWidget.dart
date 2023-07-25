@@ -80,7 +80,7 @@ class _RadioButtonsState extends State<RadioButtons>
                       });
                     },
                   ),
-                  Text(AppLocalizations.of(context).yes),
+                  Text(AppLocalizations.of(context).yes, style: TextStyle(fontSize: 15),),
                   SizedBox(
                     width: 8,
                   ),
@@ -98,7 +98,7 @@ class _RadioButtonsState extends State<RadioButtons>
                       });
                     },
                   ),
-                  Text(AppLocalizations.of(context).no)
+                  Text(AppLocalizations.of(context).no, style: TextStyle(fontSize: 15),)
                 ],
               ),
             )),

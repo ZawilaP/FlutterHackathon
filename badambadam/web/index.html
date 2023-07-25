@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -27,7 +28,7 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>badambadam</title>
   <link rel="manifest" href="manifest.json">
@@ -39,39 +40,44 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
+
 <body>
   <script>
-    window.addEventListener('load', function(ev) {
+    window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         }
-      }).then(function(engineInitializer) {
+      }).then(function (engineInitializer) {
         return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
+      }).then(function (appRunner) {
         return appRunner.runApp();
       });
     });
   </script>
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-    
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        authDomain: "dupa123-4b1fa.firebaseapp.com",
-        databaseURL: "https://dupa123-4b1fa-default-rtdb.firebaseio.com",
-        projectId: "dupa123-4b1fa",
-        storageBucket: "dupa123-4b1fa.appspot.com",
-        messagingSenderId: "660153904831",
-        appId: "1:660153904831:web:5a3a358f6f72afae39e00a"
-      };
-    
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-    </script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCBJOKG9ts3K0kpSGs1J_P_G5l22zhdniI",
+      authDomain: "fs-ankieta-badabada.firebaseapp.com",
+      databaseURL:
+        "https://fs-ankieta-badabada-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "fs-ankieta-badabada",
+      storageBucket: "fs-ankieta-badabada.appspot.com",
+      messagingSenderId: "479245572336",
+      appId: "1:479245572336:web:11ffb1bcac600d373b8a35",
+      measurementId: "G-EY19LLMCXB"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
 </body>
+
 </html>

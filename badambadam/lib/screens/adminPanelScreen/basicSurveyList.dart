@@ -11,9 +11,9 @@ class BasicSurveyList extends StatefulWidget {
 
 class _BasicSurveyListState extends State<BasicSurveyList> {
   final Future<Map<String, dynamic>> _answers = getSurveyAnswers();
-  Query dbRef = FirebaseDatabase.instance.ref().child('questions');
+  Query dbRef = FirebaseDatabase.instance.ref().child('questionspl');
   DatabaseReference reference =
-      FirebaseDatabase.instance.ref().child('questions');
+      FirebaseDatabase.instance.ref().child('questionspl');
   String _searchQuery = '';
   Map<String, dynamic> filteredMap = {};
   Map<String, dynamic> answersMap = {};
