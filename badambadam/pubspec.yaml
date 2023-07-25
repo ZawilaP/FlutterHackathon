@@ -20,14 +20,13 @@ dependencies:
   percent_indicator: ^4.0.1
   pdf: ^3.9.0
   open_file: ^3.3.1
-  url_launcher: 6.0.17
-  link_text: ^0.2.0
+  url_launcher: ^6.1.12
   firebase_database: ^10.0.9
   firebase_core: ^2.4.1
-  intl: ^0.17.0
+  intl: ^0.18.0
   google_fonts: ^4.0.3
   firebase_auth: ^4.2.2
-  quantity_input: ^1.0.2
+  flutter_linkify: ^6.0.0
 
 dev_dependencies:
   flutter_test:

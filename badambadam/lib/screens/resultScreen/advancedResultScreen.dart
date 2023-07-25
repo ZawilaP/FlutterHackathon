@@ -2,9 +2,11 @@ import 'package:badambadam/screens/resultScreen/advancedPdfReport.dart';
 import 'package:badambadam/screens/resultScreen/advancedPdfReportEnglish.dart';
 import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:intl/intl.dart';
-import 'package:link_text/link_text.dart';
+import 'package:linkify/linkify.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AdvancedResultDisplayScreen extends StatefulWidget {
   const AdvancedResultDisplayScreen(
@@ -137,7 +139,14 @@ class _AdvancedResultDisplayScreenState
                     children: actions.sublist(1, actions.length).map((e) {
                   return ListTile(
                     leading: Icon(Icons.check),
-                    title: LinkText(e),
+                    title: Linkify(
+                      text: e,
+                      onOpen: (link) async {
+                        if (!await launchUrl(Uri.parse(link.url))) {
+                          throw Exception('Could not launch ${link.url}');
+                        }
+                      },
+                    ),
                   );
                 }).toList()),
               ),

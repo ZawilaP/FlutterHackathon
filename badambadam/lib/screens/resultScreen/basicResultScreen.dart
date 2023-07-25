@@ -2,10 +2,12 @@ import 'package:badambadam/screens/resultScreen/basicPdfReport.dart';
 import 'package:badambadam/screens/resultScreen/basicPdfReportEnglish.dart';
 import 'package:badambadam/storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:link_text/link_text.dart';
+import 'package:linkify/linkify.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ResultDisplayScreen extends StatefulWidget {
   const ResultDisplayScreen({this.score, this.allAnswers});
@@ -140,7 +142,14 @@ class _ResultDisplayScreenState extends State<ResultDisplayScreen> {
                     children: actions.sublist(1, actions.length).map((e) {
                   return ListTile(
                     leading: Icon(Icons.check),
-                    title: LinkText(e),
+                    title: Linkify(
+                      text: e,
+                      onOpen: (link) async {
+                        if (!await launchUrl(Uri.parse(link.url))) {
+                          throw Exception('Could not launch ${link.url}');
+                        }
+                      },
+                    ),
                   );
                 }).toList()),
               ),
