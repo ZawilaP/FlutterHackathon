@@ -53,12 +53,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCz_NJ0XyfbpIiiqjA3-ZLs-S9DPG0Ilos',
-    appId: '1:660153904831:web:5a3a358f6f72afae39e00a',
-    messagingSenderId: '660153904831',
-    projectId: 'dupa123-4b1fa',
-    authDomain: 'dupa123-4b1fa.firebaseapp.com',
-    databaseURL: 'https://dupa123-4b1fa-default-rtdb.firebaseio.com',
-    storageBucket: 'dupa123-4b1fa.appspot.com',
+    // apiKey: 'AIzaSyCz_NJ0XyfbpIiiqjA3-ZLs-S9DPG0Ilos',
+    // appId: '1:660153904831:web:5a3a358f6f72afae39e00a',
+    // messagingSenderId: '660153904831',
+    // projectId: 'dupa123-4b1fa',
+    // authDomain: 'dupa123-4b1fa.firebaseapp.com',
+    // databaseURL: 'https://dupa123-4b1fa-default-rtdb.firebaseio.com',
+    // storageBucket: 'dupa123-4b1fa.appspot.com',
+    apiKey: "AIzaSyCBJOKG9ts3K0kpSGs1J_P_G5l22zhdniI",
+    authDomain: "fs-ankieta-badabada.firebaseapp.com",
+    projectId: "fs-ankieta-badabada",
+    storageBucket: "fs-ankieta-badabada.appspot.com",
+    messagingSenderId: "479245572336",
+    appId: "1:479245572336:web:11ffb1bcac600d373b8a35",
+    measurementId: "G-EY19LLMCXB",
+    databaseURL: 'https://fs-ankieta-badabada-default-rtdb.firebaseio.com',
   );
 }

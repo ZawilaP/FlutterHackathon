@@ -5,7 +5,7 @@ import 'package:badambadam/routes/metricRoute.dart';
 import 'package:badambadam/routes/newAdminRoute.dart';
 import 'package:badambadam/screens/homePageScreen/StartSurveyForm.dart';
 import 'package:flutter/material.dart';
-import 'package:link_text/link_text.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:provider/provider.dart';
 import 'routes/surveyRoute.dart';
 import 'routes/surveysRoute.dart';
@@ -19,6 +19,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -92,7 +93,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyAppState extends ChangeNotifier {
-  Locale _locale = Locale('pl'); 
+  Locale _locale = Locale('pl');
   Locale get locale => _locale;
 
   void changeLocale(Locale newLocale) {
@@ -172,8 +173,13 @@ class MyHomePage extends StatelessWidget {
                     Icons.check,
                     color: Theme.of(context).colorScheme.primary,
                   ),
-                  title: LinkText(
-                    e,
+                  title: Linkify(
+                    onOpen: (link) async {
+                      if (!await launchUrl(Uri.parse(link.url))) {
+                        throw Exception('Could not launch ${link.url}');
+                      }
+                    },
+                    text: e,
                     textAlign: TextAlign.justify,
                   ),
                 );
