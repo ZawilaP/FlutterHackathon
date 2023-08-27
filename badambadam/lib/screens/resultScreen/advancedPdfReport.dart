@@ -54,7 +54,11 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
         questionType == 'SingleSelect') {
       var tempQuestionList = questionList;
       for (int i = 1; i < tempQuestionList.length; i++) {
-        tempQuestionList[i] = '$i. ${tempQuestionList[i]}';
+        bool isFail = tempQuestionList[i].length > 1 &&
+            tempQuestionList[i].split(' ')[0] == '[F]';
+        tempQuestionList[i] = isFail
+            ? '$i. ${tempQuestionList[i].substring(3, tempQuestionList[i].length)}'
+            : '$i. ${tempQuestionList[i]}';
       }
 
       return tempQuestionList
@@ -75,7 +79,7 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
 
     bool noAnswer = answers.length == noAnswerCount.length;
 
-    var reversedQuestionsIds = ['2', '5', '7']; // hardcoded for now
+    var reversedQuestionsIds = ['2', '5', '12']; // hardcoded for now
 
     if (questionType == 'Simple_Yes_No') {
       var isReversed = reversedQuestionsIds.contains(questionId);
@@ -289,14 +293,16 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
 
                 bool noAnswer = answers.length == noAnswerCount.length;
 
-                return noAnswer ? <String>[''] : <String>[
-                  widget.allRawAnswers!.keys
-                      .toList()[index]
-                      .replaceAll('_0', '.'),
-                  getQuestions(questionType, questionList),
-                  getAnswers(questionType, answers, questionList,
-                      widget.allRawAnswers!.keys.toList()[index])
-                ];
+                return noAnswer
+                    ? <String>['']
+                    : <String>[
+                        widget.allRawAnswers!.keys
+                            .toList()[index]
+                            .replaceAll('_0', '.'),
+                        getQuestions(questionType, questionList),
+                        getAnswers(questionType, answers, questionList,
+                            widget.allRawAnswers!.keys.toList()[index])
+                      ];
               }))
         ],
       ),
