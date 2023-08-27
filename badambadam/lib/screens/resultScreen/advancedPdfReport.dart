@@ -51,7 +51,8 @@ class _AdvancedPDFSaveState extends State<AdvancedPDFSave> {
 
     if (questionType == 'YesNoBranching' ||
         questionType == 'OneYesWillDoStopAsking' ||
-        questionType == 'SingleSelect') {
+        questionType == 'SingleSelect' ||
+        questionType == 'OneYesWillDoKeepAsking') {
       var tempQuestionList = questionList;
       for (int i = 1; i < tempQuestionList.length; i++) {
         bool isFail = tempQuestionList[i].length > 1 &&
