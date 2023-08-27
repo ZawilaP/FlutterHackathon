@@ -4,6 +4,7 @@ import '../../model.dart';
 import '../../storage.dart';
 import 'radioResponseWidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class AdvancedSurveyDisplayScreen extends StatefulWidget {
   AdvancedSurveyDisplayScreen({
     super.key,
@@ -676,6 +677,9 @@ class _SingleSelectsWidgetState extends State<SingleSelectsWidget>
   List<Widget> listQuestions(List<Question> questions) {
     List<Widget> textWidgets = [];
     for (var question in questions.skip(1)) {
+      List<String> questionWordsList = question.toString().split(' ');
+      bool isFail =
+          questionWordsList.length > 1 && questionWordsList[0] == '[F]';
       textWidgets.add(Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -684,7 +688,11 @@ class _SingleSelectsWidgetState extends State<SingleSelectsWidget>
             child: SizedBox(
                 width: 350,
                 child: Text(
-                  question.toString(),
+                  isFail
+                      ? question
+                          .toString()
+                          .substring(3, question.toString().length)
+                      : question.toString(),
                   maxLines: 5,
                   style: TextStyle(fontSize: 16),
                 )),

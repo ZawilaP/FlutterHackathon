@@ -46,14 +46,15 @@ class _RadioButtonsState extends State<RadioButtons>
     final otherRegexPL = RegExp(r'(Inne..)');
     bool hasOtherWord =
         questionWordsList.any((item) => otherRegex.hasMatch(item));
-    bool hasOtherWordPL = questionWordsList.any((item) => otherRegexPL.hasMatch(item));
+    bool hasOtherWordPL =
+        questionWordsList.any((item) => otherRegexPL.hasMatch(item));
 
     bool isReversed =
         questionWordsList.length > 1 && questionWordsList[0] == '[F]';
 
     void updateAnswers(String questionId, int inputIndex, String? pointValue) {
-      widget.allAdvancedAnswersDetails
-          .value[questionId]![inputIndex] = pointValue!;
+      widget.allAdvancedAnswersDetails.value[questionId]![inputIndex] =
+          pointValue!;
       // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
       widget.allAdvancedAnswersDetails.notifyListeners();
     }
@@ -61,7 +62,9 @@ class _RadioButtonsState extends State<RadioButtons>
     return Column(
       children: [
         ListTile(
-            title: Text(nodeQuestions),
+            title: Text(isReversed
+                ? nodeQuestions.substring(3, nodeQuestions.length)
+                : nodeQuestions),
             trailing: Container(
               width: 150,
               child: Row(
@@ -76,11 +79,15 @@ class _RadioButtonsState extends State<RadioButtons>
                       setState(() {
                         _point = value;
                         _otherFlag = true;
-                        updateAnswers(widget.question.id, widget.inputIndex, _point);
+                        updateAnswers(
+                            widget.question.id, widget.inputIndex, _point);
                       });
                     },
                   ),
-                  Text(AppLocalizations.of(context).yes, style: TextStyle(fontSize: 15),),
+                  Text(
+                    AppLocalizations.of(context).yes,
+                    style: TextStyle(fontSize: 15),
+                  ),
                   SizedBox(
                     width: 8,
                   ),
@@ -94,11 +101,15 @@ class _RadioButtonsState extends State<RadioButtons>
                         _point = value;
                         _otherFlag = false;
                         myController.clear();
-                        updateAnswers(widget.question.id, widget.inputIndex, _point);
+                        updateAnswers(
+                            widget.question.id, widget.inputIndex, _point);
                       });
                     },
                   ),
-                  Text(AppLocalizations.of(context).no, style: TextStyle(fontSize: 15),)
+                  Text(
+                    AppLocalizations.of(context).no,
+                    style: TextStyle(fontSize: 15),
+                  )
                 ],
               ),
             )),
@@ -109,7 +120,9 @@ class _RadioButtonsState extends State<RadioButtons>
                   controller: myController,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: hasOtherWord ? 'Describe other behaviours' : "Proszę opisać inne zachowania"),
+                      hintText: hasOtherWord
+                          ? 'Describe other behaviours'
+                          : "Proszę opisać inne zachowania"),
                   onChanged: (text) {
                     widget.allAdvancedAnswersDetails
                             .value[widget.question.id]![widget.inputIndex] =
